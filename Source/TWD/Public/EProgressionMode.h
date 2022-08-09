@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EProgressionMode.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EProgressionMode : uint8 {
     EPM_Story,
     EPM_Wave,

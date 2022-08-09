@@ -8,16 +8,16 @@ USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDIObjectPoolManagerEntry {
     GENERATED_BODY()
 public:
-    UPROPERTY(Config, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftClassPtr<ASDIObjectPool> PoolClass;
     
-    UPROPERTY(Config, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftClassPtr<UObject> ObjectClass;
     
-    UPROPERTY(Config, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 PoolSize;
     
-    UPROPERTY(Config, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 MaxSize;
     
     FSDIObjectPoolManagerEntry();

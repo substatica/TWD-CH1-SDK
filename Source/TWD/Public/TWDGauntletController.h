@@ -3,16 +3,16 @@
 #include "GauntletTestController.h"
 #include "TWDGauntletController.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class UTWDGauntletController : public UGauntletTestController {
     GENERATED_BODY()
 public:
     UTWDGauntletController();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTestsRefreshed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTestsComplete();
     
 };

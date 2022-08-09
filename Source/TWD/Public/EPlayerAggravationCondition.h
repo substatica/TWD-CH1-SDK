@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EPlayerAggravationCondition.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EPlayerAggravationCondition : uint8 {
     None,
     InCombatVolume,

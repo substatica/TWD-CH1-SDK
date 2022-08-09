@@ -10,7 +10,7 @@ struct SDICOREPLUGIN_API FSDIObjectReference : public FSDIReferenceCounter {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UObject* Reference;
     
 public:

@@ -3,11 +3,11 @@
 #include "Matinee/InterpTrackInst.h"
 #include "InterpTrackInstAkAudioRTPC.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class UInterpTrackInstAkAudioRTPC : public UInterpTrackInst {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LastUpdatePosition;
     
     UInterpTrackInstAkAudioRTPC();

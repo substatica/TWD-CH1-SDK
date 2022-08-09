@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDCharacterSkinSection.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDCharacterSkinSection : uint8 {
     Hair,
     Head,

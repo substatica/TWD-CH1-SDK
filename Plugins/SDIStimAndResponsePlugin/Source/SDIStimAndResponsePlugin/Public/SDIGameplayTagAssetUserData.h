@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/AssetUserData.h"
 #include "GameplayTagAssetInterface.h"
-#include "GameplayTagContainer.h"
+#include "Engine/AssetUserData.h"
 #include "SDIDynamicGameplayTagAssetInterface.h"
+#include "GameplayTagContainer.h"
 #include "GameplayTagContainer.h"
 #include "SDIGameplayTagAssetUserData.generated.h"
 
-UCLASS(BlueprintType, EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class SDISTIMANDRESPONSEPLUGIN_API USDIGameplayTagAssetUserData : public UAssetUserData, public IGameplayTagAssetInterface, public ISDIDynamicGameplayTagAssetInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGameplayTagContainer GameplayTagContainer;
     
 public:

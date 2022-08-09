@@ -1,37 +1,37 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "ETWDWaypointTriggerEvent.h"
 #include "TWDWaypointEventHistoryEventMap.h"
-#include "TWDWaypointSettings.h"
+#include "ETWDWaypointTriggerEvent.h"
 #include "UObject/NoExportTypes.h"
+#include "TWDWaypointSettings.h"
 #include "ETWDWaypointTriggerAction.h"
 #include "TWDWaypointPatrolComponent.generated.h"
 
-class ATWDWaypointPath;
 class ATWDWaypoint;
+class ATWDWaypointPath;
 class AActor;
 
-UCLASS(BlueprintType, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class TWD_API UTWDWaypointPatrolComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 LastIndexChange;
     
 private:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDWaypointPath* WaypointPath;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ATWDWaypoint*, FTWDWaypointEventHistoryEventMap> EventHistory;
     
 public:
     UTWDWaypointPatrolComponent();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool WasEventSeenForActor(AActor* Actor, ATWDWaypoint* Waypoint, ETWDWaypointTriggerEvent Event) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool WasEventSeen(ATWDWaypoint* Waypoint, ETWDWaypointTriggerEvent Event) const;
     
     UFUNCTION(BlueprintCallable)
@@ -52,28 +52,28 @@ public:
     UFUNCTION(BlueprintCallable)
     FVector NextWaypointPosition();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasWaypointPath() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasCurrentWaypoint() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTWDWaypointSettings GetWaypointSettingsAtIndex(int32 Index) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDWaypointPath* GetWaypointPath() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetCurrentWaypointPosition() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetCurrentWaypointIndex() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDWaypoint* GetCurrentWaypoint() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETWDWaypointTriggerAction GetCurrentTriggerAction() const;
     
     UFUNCTION(BlueprintCallable)

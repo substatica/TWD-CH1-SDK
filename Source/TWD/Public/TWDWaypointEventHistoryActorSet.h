@@ -6,7 +6,7 @@ USTRUCT(BlueprintType)
 struct TWD_API FTWDWaypointEventHistoryActorSet {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSet<FName> ActorNames;
     
     FTWDWaypointEventHistoryActorSet();

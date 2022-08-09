@@ -1,42 +1,42 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "ESDIUtilityAIDifficulty.h"
 #include "AIController.h"
+#include "ESDIUtilityAIDifficulty.h"
 #include "SDICoreUtilityAIController.generated.h"
 
+class UBlackboardComponent;
 class USDICoreUtilityAI;
 class UBehaviorTree;
 class ACharacter;
-class UBlackboardComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API ASDICoreUtilityAIController : public AAIController {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<USDICoreUtilityAI> UtilityAIClass;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bUtilityAIEnabled;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ESDIUtilityAIDifficulty Difficulty;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSubclassOf<USDICoreUtilityAI> LastCharacterUtilityAIClass;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     USDICoreUtilityAI* UtilityAI;
     
 public:
     ASDICoreUtilityAIController();
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     bool UtilityAIEnabled() const;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateUtilityAI();
     
 public:
@@ -52,22 +52,22 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetAIName(const FString& AIName);
     
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     bool IsUsingUtilityAI() const;
     
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     USDICoreUtilityAI* GetUtilityAI() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetServerTimestamp() const;
     
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     ESDIUtilityAIDifficulty GetDifficulty() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ACharacter* GetChar() const;
     
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     UBlackboardComponent* GetBlackboard() const;
     
 };

@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct SDISKINPLUGIN_API FSDIMeshMaterialParamMultiMap {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<UMeshComponent*, FSDIMeshMaterialParamMap> CompParamMap;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bCompParamMapDirty;
     
     FSDIMeshMaterialParamMultiMap();

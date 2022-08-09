@@ -6,7 +6,7 @@ USTRUCT(BlueprintType)
 struct FTWDReplicatedDurabilityInterfaceData {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float RepDurability;
     
     TWD_API FTWDReplicatedDurabilityInterfaceData();

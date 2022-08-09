@@ -5,15 +5,15 @@
 
 class UCapsuleComponent;
 
-UCLASS(Transient)
+UCLASS(Blueprintable, Transient)
 class SDICOREPLUGIN_API ASDIPrecomputedVisibilityTestActor : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditInstanceOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bEnablePrecomputedVisibility;
     
 protected:
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UCapsuleComponent* CapsuleComponent;
     
 public:

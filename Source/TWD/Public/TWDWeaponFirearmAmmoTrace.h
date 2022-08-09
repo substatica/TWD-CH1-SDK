@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SDIWeaponFirearmAmmoTrace.h"
 #include "Curves/CurveFloat.h"
+#include "SDIWeaponFirearmAmmoTrace.h"
 #include "SDITuningAttribute_TWDWeaponFirearmAmmoTrace.h"
 #include "TWDWeaponPelletCharacterHit.h"
 #include "TWDWeaponDismemberChance.h"
@@ -11,63 +11,63 @@ class ATWDCharacter;
 class ATWDWeaponFirearmAmmoTrace;
 class UAkAudioEvent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDWeaponFirearmAmmoTrace : public ASDIWeaponFirearmAmmoTrace {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ImpactNoiseRadius;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve DurabilityAdditionalSpreadDegrees;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve HeadshotPenetrationChanceDistanceCurve;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSoftClassPtr<ATWDCharacter>, FRuntimeFloatCurve> HeadshotPenetrationChanceDistanceCurveOverrides;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve PassThroughChanceDistanceCurve;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSoftClassPtr<ATWDCharacter>, FRuntimeFloatCurve> PassThroughChanceDistanceCurveOverrides;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 PassThroughMax;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDWeaponDismemberChance DismemberChance;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSoftClassPtr<ATWDCharacter>, FTWDWeaponDismemberChance> DismemberChanceOverrides;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* ImpactAkEvent;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ImpactAkEventSurfaceSwitchGroup;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bCanPenetrateHelmet;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AimAssistMaxDistance;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AimAssistRadius;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AimAssistAngleDeg;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bAimAssistUseSpreadTransform;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 AimAssistAsyncTracePlatformLevel;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<TWeakObjectPtr<ATWDCharacter>, FTWDWeaponPelletCharacterHit> PelletCharacterHits;
     
 public:
@@ -75,7 +75,7 @@ public:
     UFUNCTION(BlueprintCallable)
     ATWDWeaponFirearmAmmoTrace* TuneTWDWeaponFirearmAmmoTrace(FSDITuningAttribute_TWDWeaponFirearmAmmoTrace Attr, float PreModifier, float Add, float PostModifier);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetImpactNoiseRadius() const;
     
 };

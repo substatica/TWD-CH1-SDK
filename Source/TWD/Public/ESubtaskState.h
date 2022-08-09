@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESubtaskState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESubtaskState : uint8 {
     Hidden,
     Active,

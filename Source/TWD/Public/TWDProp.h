@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "SDIInventoryActor.h"
+#include "TWDInventoryActorInterfaceData.h"
 #include "TWDSeamlessTravelActorInterface.h"
 #include "TWDInventoryActorInterface.h"
-#include "TWDReplicatedInventoryActorInterfaceData.h"
 #include "TWDInteractiveHighlightInterface.h"
 #include "TWDInventoryActorBlueprintInterface.h"
-#include "TWDInventoryActorInterfaceData.h"
+#include "TWDReplicatedInventoryActorInterfaceData.h"
 #include "UObject/NoExportTypes.h"
 #include "ETWDNonVREquipmentType.h"
 #include "ETWDLootType.h"
@@ -18,18 +18,18 @@ class UAkAudioEvent;
 class ATWDBackpack;
 class ASDIInventorySlot;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDProp : public ASDIInventoryActor, public ITWDSeamlessTravelActorInterface, public ITWDInventoryActorInterface, public ITWDInteractiveHighlightInterface, public ITWDInventoryActorBlueprintInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UTWDAutoTickAkComponent* AkAudioComponent;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDInventoryActorInterfaceData TWDInventoryData;
     
-    UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_RepTWDInventoryData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_RepTWDInventoryData, meta=(AllowPrivateAccess=true))
     FTWDReplicatedInventoryActorInterfaceData RepTWDInventoryData;
     
 public:
@@ -50,21 +50,21 @@ protected:
     void ServerSetInventorySlotIdx_IFC(uint8 InventorySlotIdx);
     
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ReturnKeyItemToBackpack();
     
     UFUNCTION(BlueprintCallable)
     int32 PostEventToAkAudioComponent(UAkAudioEvent* Event, const FString& EventName);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTWDInventoryData_Timer();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTWDInventoryData(const FTWDReplicatedInventoryActorInterfaceData& OldRepTWDInventoryData);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool AkAudioComponentHasActiveEvents() const;
     
     

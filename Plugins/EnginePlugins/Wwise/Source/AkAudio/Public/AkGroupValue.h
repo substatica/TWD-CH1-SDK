@@ -5,14 +5,14 @@
 
 class UAkMediaAsset;
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkGroupValue : public UAkAudioType {
     GENERATED_BODY()
 public:
-    UPROPERTY(VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSoftObjectPtr<UAkMediaAsset>> MediaDependencies;
     
-    UPROPERTY(AssetRegistrySearchable, VisibleAnywhere)
+    UPROPERTY(AssetRegistrySearchable, EditAnywhere)
     uint32 GroupShortID;
     
     UAkGroupValue();

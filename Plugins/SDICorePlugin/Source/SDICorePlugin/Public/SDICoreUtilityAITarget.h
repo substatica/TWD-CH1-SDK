@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SDICoreUtilityAITargetEntry.h"
 #include "RFloatExp.h"
+#include "SDICoreUtilityAITargetEntry.h"
 #include "SDICoreUtilityAITarget.generated.h"
 
 class USDICoreUtilityAI;
@@ -12,26 +12,26 @@ struct SDICOREPLUGIN_API FSDICoreUtilityAITarget {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     USDICoreUtilityAI* Owner;
     
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloatExp MaintainTime;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PriorityForceSwitchThreshold;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDICoreUtilityAITargetEntry CachedTarget;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float Timer;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bChangedTarget;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TArray<TWeakObjectPtr<AActor>> IgnoredTargets;
     
     FSDICoreUtilityAITarget();

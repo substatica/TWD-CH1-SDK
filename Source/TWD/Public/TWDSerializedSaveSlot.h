@@ -6,7 +6,7 @@ USTRUCT(BlueprintType)
 struct TWD_API FTWDSerializedSaveSlot {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     TArray<uint8> SerializedData;
     
     FTWDSerializedSaveSlot();

@@ -7,24 +7,24 @@
 #include "AkXboxOneGDKAdvancedInitializationSettings.h"
 #include "AkXboxOneGDKInitializationSettings.generated.h"
 
-UCLASS(DefaultConfig, Config=Game)
+UCLASS(Blueprintable, DefaultConfig, Config=Game)
 class AKAUDIO_API UAkXboxOneGDKInitializationSettings : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkCommonInitializationSettings CommonSettings;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkXboxOneGDKApuHeapInitializationSettings ApuHeapSettings;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkCommunicationSettingsWithSystemInitialization CommunicationSettings;
     
-    UPROPERTY(AdvancedDisplay, Config, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkXboxOneGDKAdvancedInitializationSettings AdvancedSettings;
     
     UAkXboxOneGDKInitializationSettings();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MigrateMultiCoreRendering(bool NewValue);
     
 };

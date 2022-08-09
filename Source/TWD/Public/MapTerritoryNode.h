@@ -1,28 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EMapTerritoryNodeType.h"
-#include "MapTerritoryAttribute.h"
 #include "EMapTerritoryNodeStatus.h"
+#include "EMapTerritoryNodeType.h"
 #include "EMapBiomeType.h"
+#include "MapTerritoryAttribute.h"
 #include "MapTerritoryNode.generated.h"
 
 USTRUCT(BlueprintType)
 struct TWD_API FMapTerritoryNode {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EMapTerritoryNodeType Type;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EMapBiomeType Biome;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EMapTerritoryNodeStatus Status;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FMapTerritoryAttribute> Attributes;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<int32> Connections;
     
     FMapTerritoryNode();

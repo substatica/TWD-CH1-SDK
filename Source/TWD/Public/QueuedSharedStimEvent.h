@@ -9,13 +9,13 @@ USTRUCT(BlueprintType)
 struct FQueuedSharedStimEvent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+    UPROPERTY(EditAnywhere)
     TWeakObjectPtr<ATWDAIController> AIControllerSharer;
     
-    UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FActorStimData Stim;
     
-    UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bExisting;
     
     TWD_API FQueuedSharedStimEvent();

@@ -8,21 +8,21 @@
 
 class UNavigationQueryFilter;
 
-UCLASS(ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class TWD_API UTWDPathFollowingComponent : public UCrowdFollowingComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMoveRequestedEvent MoveRequestedEvent;
     
     UTWDPathFollowingComponent();
     UFUNCTION(BlueprintCallable)
     void SetSlowdownAtGoalBlueprint(bool bDoSlowDown);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetSlowdownAtGoal() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float CalculatePathComplexity(FVector StartingLocation, FVector EndingLocation, TSubclassOf<UNavigationQueryFilter> FilterClass, float MaxDistanceRatio, float MaxHeightDifference) const;
     
 };

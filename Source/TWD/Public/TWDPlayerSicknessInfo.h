@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FTWDPlayerSicknessInfo {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Sickness;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SicknessStaminaRecoveryRateMultiplier;
     
     TWD_API FTWDPlayerSicknessInfo();

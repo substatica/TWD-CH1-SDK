@@ -5,5 +5,5 @@
 class ASDIHeldActor;
 class AActor;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSDIHeldActorDroppedSignature, ASDIHeldActor*, HeldActor, AActor*, DroppedBy);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSDIHeldActorDroppedSignature, ASDIHeldActor*, HeldActor, AActor*, DroppedBy);
 

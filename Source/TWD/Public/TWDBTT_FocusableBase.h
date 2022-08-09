@@ -1,28 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "ETWDFocusAction.h"
 #include "TWDBTT_Base.h"
 #include "BehaviorTree/BehaviorTreeTypes.h"
-#include "ETWDFocusAction.h"
 #include "TWDBTT_FocusableBase.generated.h"
 
-class AAIController;
 class AActor;
+class AAIController;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDBTT_FocusableBase : public UTWDBTT_Base {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FBlackboardKeySelector TargetKey;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ETWDFocusAction ActivateAction;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ETWDFocusAction DeactivateAction;
     
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AActor* RestoreFocusActor;
     
 public:

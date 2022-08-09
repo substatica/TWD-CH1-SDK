@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FAkMidiNoteOnOff : public FAkMidiEventBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     uint8 Note;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     uint8 Velocity;
     
     AKAUDIO_API FAkMidiNoteOnOff();

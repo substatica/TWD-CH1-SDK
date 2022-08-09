@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "RInt.h"
 #include "SDIExportAsset.h"
+#include "RInt.h"
 #include "UObject/NoExportTypes.h"
 #include "SDICoreLevelAsset.generated.h"
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class SDICOREPLUGIN_API USDICoreLevelAsset : public USDIExportAsset {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRInt NumPlayers;
     
-    UPROPERTY(VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FGuid> SupportedGameModeGUIDs;
     
 public:

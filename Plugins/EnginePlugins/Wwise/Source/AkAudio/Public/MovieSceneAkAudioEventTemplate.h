@@ -5,11 +5,11 @@
 
 class UMovieSceneAkAudioEventSection;
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct AKAUDIO_API FMovieSceneAkAudioEventTemplate : public FMovieSceneEvalTemplate {
     GENERATED_BODY()
 public:
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UMovieSceneAkAudioEventSection* Section;
     
     FMovieSceneAkAudioEventTemplate();

@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct SDIVRPLAYERPLUGIN_API FSDIWeaponFirearmAmmoTracePelletHit {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTransform SpreadShotTransform;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FHitResult> Hits;
     
     FSDIWeaponFirearmAmmoTracePelletHit();

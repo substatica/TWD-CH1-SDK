@@ -8,7 +8,7 @@ struct SDICOREPLUGIN_API FSDIRubberBandVector : public FSDIRubberBandSettings {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxVelocity;
     
 public:

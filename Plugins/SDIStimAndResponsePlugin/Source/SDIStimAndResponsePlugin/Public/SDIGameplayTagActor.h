@@ -2,17 +2,17 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "GameplayTagAssetInterface.h"
-#include "GameplayTagContainer.h"
 #include "SDIDynamicGameplayTagAssetInterface.h"
+#include "GameplayTagContainer.h"
 #include "GameplayTagContainer.h"
 #include "SDIGameplayTagActor.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISTIMANDRESPONSEPLUGIN_API ASDIGameplayTagActor : public AActor, public IGameplayTagAssetInterface, public ISDIDynamicGameplayTagAssetInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGameplayTagContainer GameplayTagContainer;
     
 public:

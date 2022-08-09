@@ -5,12 +5,12 @@
 
 class UStaticMeshComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDIInteractiveActorStaticMesh : public ASDIInteractiveActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* StaticMeshComponent;
     
 public:

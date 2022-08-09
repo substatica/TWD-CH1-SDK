@@ -3,18 +3,18 @@
 #include "TWDUserWidget.h"
 #include "TWDDialogueAvailabilityWidget.generated.h"
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class TWD_API UTWDDialogueAvailabilityWidget : public UTWDUserWidget {
     GENERATED_BODY()
 public:
     UTWDDialogueAvailabilityWidget();
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void Show();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void Hide();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetTimeRemainingPercent() const;
     
 };

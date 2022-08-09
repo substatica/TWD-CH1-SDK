@@ -9,29 +9,29 @@
 class ASDIWeaponAttachment;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDIWeaponActor : public ASDISkinnedTuningInventoryActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<ASDIWeaponAttachment>> ValidAttachments;
     
-    UPROPERTY(BlueprintReadOnly, EditInstanceOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDIInitialWeaponAttachment> InitialAttachments;
     
 private:
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_RepSpawnedActors)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepSpawnedActors, meta=(AllowPrivateAccess=true))
     TArray<AActor*> RepSpawnedActors;
     
 protected:
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_RepAttachments)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepAttachments, meta=(AllowPrivateAccess=true))
     TArray<ASDIWeaponAttachment*> RepAttachments;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bSwappingAttachments;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<AActor*> SpawnedActors;
     
 public:
@@ -39,31 +39,31 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void WeaponAttachmentDetached(ASDIWeaponAttachment* Attachment, bool bRemove);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void WeaponAttachmentAttached(ASDIWeaponAttachment* Attachment);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerRemoveWeaponAttachment(TSubclassOf<ASDIWeaponAttachment> AttachmentClass);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerRemoveAllWeaponAttachments();
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerDetachWeaponAttachment(TSubclassOf<ASDIWeaponAttachment> AttachmentClass);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerDetachAllWeaponAttachments();
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerAttachWeaponAttachment(TSubclassOf<ASDIWeaponAttachment> AttachmentClass);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerAddWeaponAttachmentInstance(ASDIWeaponAttachment* Attachment);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerAddWeaponAttachment(TSubclassOf<ASDIWeaponAttachment> AttachmentClass);
     
 public:
@@ -77,29 +77,29 @@ public:
     void RemoveAllWeaponAttachments();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepSpawnedActors(const TArray<AActor*>& OldRepSpawnedActors);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepAttachments(const TArray<ASDIWeaponAttachment*>& OldRepAttachments);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsValidAttachment(TSubclassOf<ASDIWeaponAttachment> AttachmentClass) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsAttachmentAttached(TSubclassOf<ASDIWeaponAttachment> AttachmentClass) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetValidAttachmentsByType(ESDIWeaponAttachmentType Type, TArray<TSubclassOf<ASDIWeaponAttachment>>& AttachmentClasses) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetAttachmentsByType(ESDIWeaponAttachmentType Type, TArray<ASDIWeaponAttachment*>& Attachments, bool bAttachedOnly) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetAttachments(TArray<ASDIWeaponAttachment*>& Attachments, bool bAttachedOnly) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIWeaponAttachment* GetAttachment(TSubclassOf<ASDIWeaponAttachment> AttachmentClass) const;
     
     UFUNCTION(BlueprintCallable)

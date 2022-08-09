@@ -3,7 +3,7 @@
 #include "AkPlatformInfo.h"
 #include "AkWin32PlatformInfo.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class UAkWin32PlatformInfo : public UAkPlatformInfo {
     GENERATED_BODY()
 public:

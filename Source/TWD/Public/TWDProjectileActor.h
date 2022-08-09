@@ -1,27 +1,27 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "SDITuningAttribute_TWDProjectileActor.h"
 #include "SDIProjectileActorSphere.h"
 #include "TWDTimeDilationActorInterface.h"
-#include "TWDTimeDilationActorData.h"
 #include "SDITuningInterface.h"
+#include "TWDTimeDilationActorData.h"
 #include "SDITuningAccumulator.h"
-#include "SDITuningAttribute_TWDProjectileActor.h"
 #include "TWDProjectileActor.generated.h"
 
 class ATWDProjectileActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDProjectileActor : public ASDIProjectileActorSphere, public ITWDTimeDilationActorInterface, public ISDITuningInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere, Replicated)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FTWDTimeDilationActorData RepTimeDilationData;
     
-    UPROPERTY(EditAnywhere, Replicated)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FTWDTimeDilationActorData RepPlayerTimeDilationData;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDITuningAccumulator TuningAccumulator;
     
 public:

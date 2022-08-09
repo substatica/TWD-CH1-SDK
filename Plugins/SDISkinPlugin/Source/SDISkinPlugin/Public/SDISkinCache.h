@@ -1,55 +1,55 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "ESDISkinCacheScope.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "SDICoreGameInstanceSubObject.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
+#include "ESDISkinCacheScope.h"
 #include "SDISkinCacheScope.h"
 #include "SDISkinCache.generated.h"
 
-class USDISkinCompositeSkeletalMesh;
 class USkeletalMesh;
 class AActor;
 class USDISkinObject;
 class UObject;
+class USDISkinCompositeSkeletalMesh;
 
-UCLASS(Config=Game)
+UCLASS(Blueprintable, Config=Game)
 class SDISKINPLUGIN_API USDISkinCache : public USDICoreGameInstanceSubObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bEnableCaching;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bCheckForMissingPreAuthoredMeshes;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSoftClassPath> GlobalSkins;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSoftObjectPath> GlobalSkinResources;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSoftObjectPtr<USkeletalMesh>> IncompatibleFeatureLevelFallbackMeshes;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSoftClassPtr<AActor>, TSoftObjectPtr<USkeletalMesh>> IncompatibleFeatureLevelFallbackMeshesByClass;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<ESDISkinCacheScope, FSDISkinCacheScope> SkinCacheScopes;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<USDISkinObject>, ESDISkinCacheScope> CachedSkins;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSet<UObject*> HandledObjects;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSet<TSubclassOf<USDISkinObject>> VerifiedCachedSkins;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TArray<TWeakObjectPtr<USDISkinCompositeSkeletalMesh>> WeakCompositeMeshReferences;
     
 public:

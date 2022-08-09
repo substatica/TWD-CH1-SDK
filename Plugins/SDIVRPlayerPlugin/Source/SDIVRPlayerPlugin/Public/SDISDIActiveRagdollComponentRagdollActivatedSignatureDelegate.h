@@ -5,5 +5,5 @@
 class AActor;
 class USDIActiveRagdollComponent;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSDISDIActiveRagdollComponentRagdollActivatedSignature, AActor*, Actor, USDIActiveRagdollComponent*, Comp);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSDISDIActiveRagdollComponentRagdollActivatedSignature, AActor*, Actor, USDIActiveRagdollComponent*, Comp);
 

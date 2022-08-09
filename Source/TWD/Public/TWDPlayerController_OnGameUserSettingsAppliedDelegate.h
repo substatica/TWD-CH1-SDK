@@ -5,5 +5,5 @@
 class ATWDPlayerController;
 class UTWDGameUserSettings;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FTWDPlayerController_OnGameUserSettingsApplied, ATWDPlayerController*, PC, UTWDGameUserSettings*, GameUserSettings);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FTWDPlayerController_OnGameUserSettingsApplied, ATWDPlayerController*, PC, UTWDGameUserSettings*, GameUserSettings);
 

@@ -8,5 +8,5 @@
 class AActor;
 class UObject;
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE_SevenParams(FSDIStructuresCurvedWedgeGeometryBetterThanDynamicDelegate, const FSDITargetSearchEntry&, Entry, const FSDITargetSearchEntry&, Other, const AActor*, Searcher, const UObject*, SearchData, const FTransform&, SearchTransform, const FSDICurvedWedgeGeometry&, SearchWedge, bool&, bRetVal);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE_SevenParams(FSDIStructuresCurvedWedgeGeometryBetterThanDynamicDelegate, const FSDITargetSearchEntry&, Entry, const FSDITargetSearchEntry&, Other, const AActor*, Searcher, const UObject*, SearchData, const FTransform&, SearchTransform, const FSDICurvedWedgeGeometry&, SearchWedge, bool&, bRetVal);
 

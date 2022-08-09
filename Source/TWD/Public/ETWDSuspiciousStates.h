@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDSuspiciousStates.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDSuspiciousStates : uint8 {
     Oblivious,
     Perceiving,

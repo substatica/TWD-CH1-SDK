@@ -1,10 +1,10 @@
 #include "TWDInteractiveBookActor.h"
-#include "SDIPointGripComponent.h"
-#include "Components/ArrowComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Components/ArrowComponent.h"
 #include "Components/SceneComponent.h"
 #include "TWDWidgetComponent.h"
-#include "Components/CapsuleComponent.h"
+#include "SDIPointGripComponent.h"
 
 class UUserWidget;
 

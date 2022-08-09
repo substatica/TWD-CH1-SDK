@@ -10,7 +10,7 @@ public:
     UPROPERTY(EditAnywhere)
     uint16 MaximumNumberOfXMAVoices;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool UseHardwareCodecLowLatencyMode;
     
     AKAUDIO_API FAkXSXAdvancedInitializationSettings();

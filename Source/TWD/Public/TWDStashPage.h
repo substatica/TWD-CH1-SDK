@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FTWDStashPage {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<ATWDPlayerInventorySlot*> InventorySlots;
     
     TWD_API FTWDStashPage();

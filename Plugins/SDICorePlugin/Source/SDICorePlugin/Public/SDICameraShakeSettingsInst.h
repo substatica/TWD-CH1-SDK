@@ -11,14 +11,14 @@ USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDICameraShakeSettingsInst : public FSDICameraShakeSettings {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UCurveFloat* ShakeScaleCurve;
     
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<UMatineeCameraShake> WeakShake;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDICorePlayerCameraManager> WeakCameraManager;
     
 public:

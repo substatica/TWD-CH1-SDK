@@ -7,18 +7,18 @@
 
 class UObject;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API ASDISignificanceActor : public AActor, public ISDISignificanceBinInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName SignificanceTag;
     
 public:
     ASDISignificanceActor();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float SignificanceFunction(UObject* QueryObj, const FTransform& ViewerTransform);
     
     

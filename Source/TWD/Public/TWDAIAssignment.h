@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EAIBaseGroundMovementSpeedType.h"
-#include "EAssignmentCategory.h"
 #include "UObject/Object.h"
-#include "EAssignmentPriority.h"
 #include "ActorStimData.h"
+#include "EAssignmentCategory.h"
+#include "EAIBaseGroundMovementSpeedType.h"
+#include "EAssignmentPriority.h"
 #include "TWDAIAssignment.generated.h"
 
 class ATWDCharacter;
@@ -15,34 +15,34 @@ UCLASS(Blueprintable)
 class TWD_API UTWDAIAssignment : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAssignmentCategory Category;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAssignmentPriority Priority;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Duration;
     
 protected:
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDAIController* Assignee;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AActor* Assigner;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float TimeElapsed;
     
 public:
     UTWDAIAssignment();
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void Tick(float DeltaTime);
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     bool ShouldAssignedMoveBark() const;
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     bool ShouldAssignedMove() const;
     
     UFUNCTION(BlueprintCallable)
@@ -51,28 +51,28 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetAssignee(ATWDAIController* Controller);
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     bool IsAssignedTargetConsideredHostile() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetAssigner() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDAIController* GetAssignee() const;
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     ATWDCharacter* GetAssignedTarget() const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     AActor* GetAssignedMoveTarget();
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     EAIBaseGroundMovementSpeedType GetAssignedMoveSpeedType() const;
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void EndAssignment();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void BeginAssignment();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)

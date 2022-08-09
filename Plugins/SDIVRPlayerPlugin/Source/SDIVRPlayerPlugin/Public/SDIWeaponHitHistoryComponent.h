@@ -7,15 +7,15 @@
 
 class UPrimitiveComponent;
 
-UCLASS(BlueprintType, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class SDIVRPLAYERPLUGIN_API USDIWeaponHitHistoryComponent : public UActorComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIComponentHistory DamageHistory;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIComponentHistory CollisionHistory;
     
 public:
@@ -38,10 +38,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void ResetCollisionHistory();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasDamaged(UPrimitiveComponent* Component, bool bUseActor, float OverrideHistoryDuration) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasCollidedWith(UPrimitiveComponent* Component, FName BodyName, bool bUseActor, float OverrideHistoryDuration) const;
     
     UFUNCTION(BlueprintCallable)

@@ -1,33 +1,33 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
+#include "GameplayTagContainer.h"
 #include "GameFramework/DamageType.h"
+#include "SDIExportData.h"
 #include "GameplayTagAssetInterface.h"
 #include "SDIExportInterface.h"
-#include "SDIExportData.h"
 #include "GameplayTagContainer.h"
-#include "GameplayTagContainer.h"
+#include "UObject/NoExportTypes.h"
 #include "SDIDamageType.generated.h"
 
 class USDIDamageType;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISTIMANDRESPONSEPLUGIN_API USDIDamageType : public UDamageType, public IGameplayTagAssetInterface, public ISDIExportInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIExportData ExportData;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGameplayTagContainer GameplayTagContainer;
     
 public:
     USDIDamageType();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static USDIDamageType* GetSDIDamageType(UClass* DamageTypeClass, bool& bValid) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FGameplayTagContainer GetGameplayTagContainer() const;
     
     

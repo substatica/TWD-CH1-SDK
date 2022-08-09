@@ -1,8 +1,8 @@
 #include "TWDWeaponBowV2.h"
 #include "Templates/SubclassOf.h"
 #include "SDIPointGripComponent.h"
-#include "Components/SkeletalMeshComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Components/SceneComponent.h"
 
 class UObject;

@@ -1,8 +1,8 @@
 #include "SDICollisionChannelIgnoranceComponent.h"
 
-class USDICollisionChannelIgnoranceComponent;
 class UPrimitiveComponent;
 class AActor;
+class USDICollisionChannelIgnoranceComponent;
 
 int32 USDICollisionChannelIgnoranceComponent::SetComponentIgnorances(const TArray<UPrimitiveComponent*>& OtherComps) {
     return 0;

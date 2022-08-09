@@ -1,14 +1,14 @@
 #include "SDICoreUtilityAI.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
 class APawn;
 class UNavigationQueryFilter;
-class AHUD;
+class AActor;
+class USDICoreUtilityAIState;
 class ASDICoreCharacter;
 class AController;
 class ACharacter;
-class USDICoreUtilityAIState;
+class AHUD;
 class UCanvas;
 
 void USDICoreUtilityAI::TickUtilityAI_Implementation(float DeltaSeconds) {

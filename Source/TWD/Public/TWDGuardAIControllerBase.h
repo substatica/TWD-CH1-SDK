@@ -3,7 +3,7 @@
 #include "TWDAIController.h"
 #include "TWDGuardAIControllerBase.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDGuardAIControllerBase : public ATWDAIController {
     GENERATED_BODY()
 public:

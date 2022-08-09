@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ConstraintModifiableValues.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct TWD_API FConstraintModifiableValues {
     GENERATED_BODY()
 public:

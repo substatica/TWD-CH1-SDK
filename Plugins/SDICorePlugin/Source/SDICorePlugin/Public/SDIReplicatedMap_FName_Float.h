@@ -8,7 +8,7 @@ struct SDICOREPLUGIN_API FSDIReplicatedMap_FName_Float {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDIReplicatedMap_FName_Float_Entry> Entries;
     
 public:

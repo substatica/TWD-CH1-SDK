@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FAkMidiEventBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAkMidiEventType Type;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     uint8 Chan;
     
     AKAUDIO_API FAkMidiEventBase();

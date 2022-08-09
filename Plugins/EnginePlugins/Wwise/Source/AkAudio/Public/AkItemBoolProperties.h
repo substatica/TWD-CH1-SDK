@@ -1,28 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "OnItemBoolPropertyDragDetectedDelegate.h"
-#include "OnItemBoolPropertySelectionChangedDelegate.h"
 #include "Components/Widget.h"
+#include "OnItemBoolPropertySelectionChangedDelegate.h"
+#include "OnItemBoolPropertyDragDetectedDelegate.h"
 #include "AkItemBoolProperties.generated.h"
 
-UCLASS(DefaultConfig, Config=Editor)
+UCLASS(Blueprintable, DefaultConfig, Config=Editor)
 class AKAUDIO_API UAkItemBoolProperties : public UWidget {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemBoolPropertySelectionChanged OnSelectionChanged;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemBoolPropertyDragDetected OnPropertyDragged;
     
     UAkItemBoolProperties();
     UFUNCTION(BlueprintCallable, BlueprintCosmetic)
     void SetSearchText(const FString& newText);
     
-    UFUNCTION(BlueprintCosmetic, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintCosmetic, BlueprintPure)
     FString GetSelectedProperty() const;
     
-    UFUNCTION(BlueprintCosmetic, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintCosmetic, BlueprintPure)
     FString GetSearchText() const;
     
 };

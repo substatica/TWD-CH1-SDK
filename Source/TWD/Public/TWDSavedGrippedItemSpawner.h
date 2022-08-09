@@ -1,29 +1,29 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
 #include "InputCoreTypes.h"
+#include "GameFramework/Actor.h"
 #include "TWDSavedGrippedItemSpawner.generated.h"
 
 class ASDIInventoryActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDSavedGrippedItemSpawner : public AActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EControllerHand GripHand;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bDisableGravity;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSoftClassPtr<ASDIInventoryActor>> ProhibitedItems;
     
 public:
     ATWDSavedGrippedItemSpawner();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SpawnSavedItem();
     
 };

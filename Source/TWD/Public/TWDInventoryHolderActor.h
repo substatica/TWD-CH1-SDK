@@ -4,7 +4,7 @@
 #include "TWDInteractiveHighlightInterface.h"
 #include "TWDInventoryHolderActor.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDInventoryHolderActor : public ASDIInventoryHolderActor, public ITWDInteractiveHighlightInterface {
     GENERATED_BODY()
 public:

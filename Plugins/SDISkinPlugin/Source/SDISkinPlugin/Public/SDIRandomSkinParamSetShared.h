@@ -4,12 +4,12 @@
 #include "SDIRandomSkinParamSetEntry.h"
 #include "SDIRandomSkinParamSetShared.generated.h"
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class SDISKINPLUGIN_API USDIRandomSkinParamSetShared : public UObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDIRandomSkinParamSetEntry> Entries;
     
 public:

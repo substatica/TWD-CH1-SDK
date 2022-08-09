@@ -5,5 +5,5 @@
 class ASDIMovementTargetActor;
 class ASDICharacter;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FSDIMovementTargetActor_OnMovementStopped, ASDIMovementTargetActor*, MovementTarget, ASDICharacter*, Character, bool, bCancelled);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FSDIMovementTargetActor_OnMovementStopped, ASDIMovementTargetActor*, MovementTarget, ASDICharacter*, Character, bool, bCancelled);
 

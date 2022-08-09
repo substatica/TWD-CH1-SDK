@@ -4,5 +4,5 @@
 
 class ASDIInventoryActor;
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE_OneParam(FInventoryGiven, ASDIInventoryActor*, Inventory);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE_OneParam(FInventoryGiven, ASDIInventoryActor*, Inventory);
 

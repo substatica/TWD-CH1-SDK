@@ -1,26 +1,26 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Chaos/ChaosEngineInterface.h"
 #include "UObject/NoExportTypes.h"
+#include "Chaos/ChaosEngineInterface.h"
 #include "SDIRigidBodyRadialImpulse.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDIRigidBodyRadialImpulse {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector Origin;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float Radius;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float Strength;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TEnumAsByte<ERadialImpulseFalloff> Falloff;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bVelChange;
     
     FSDIRigidBodyRadialImpulse();

@@ -1,8 +1,8 @@
 #include "SDIInputSplineActor.h"
 
-class AActor;
 class APawn;
 class ASDIPlayerHand;
+class AActor;
 
 bool ASDIInputSplineActor::UpdateTransform_Implementation() {
     return false;

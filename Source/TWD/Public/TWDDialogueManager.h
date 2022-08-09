@@ -1,44 +1,44 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "TWDBarkHistory.h"
 #include "GameFramework/Actor.h"
 #include "DialogueStartedEventDelegate.h"
-#include "TWDBarkHistory.h"
 #include "DialogueFinishedDelegate.h"
 #include "TWDDialogueManager.generated.h"
 
+class UDataTable;
 class ATWDGameDirector;
 class ATWDCharacter;
-class UDataTable;
 class UTWDDialogue;
 class UTWDBarkSemaphore;
 class ATWDPlayerController;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDDialogueManager : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDialogueStartedEvent DialogueStarted;
     
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TArray<TWeakObjectPtr<ATWDCharacter>> SpecialDialogueCharacters;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<FName, FTWDBarkHistory> GlobalBarkHistory;
     
 private:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UDataTable*> RuleDataTables;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UTWDDialogue*> ActiveDialogues;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDGameDirector* GameDirector;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDBarkSemaphore* BarkSemaphore;
     
 public:
@@ -56,7 +56,7 @@ public:
     UTWDDialogue* PlayDialogue(TSubclassOf<UTWDDialogue> Dialogue, const TArray<ATWDCharacter*>& Characters, ATWDPlayerController* DialogueInstigator, const FDialogueFinished& DialogueFinished);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDialogueFinished(UTWDDialogue* FinishedDialogue, bool bCompleted);
     
 public:

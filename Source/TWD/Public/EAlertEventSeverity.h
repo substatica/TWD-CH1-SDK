@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EAlertEventSeverity.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EAlertEventSeverity : uint8 {
     AlertEventSeverity0,
     PersonalPlusCumulativeFaction,

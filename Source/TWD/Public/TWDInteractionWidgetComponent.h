@@ -4,7 +4,7 @@
 #include "TWDWidgetComponent.h"
 #include "TWDInteractionWidgetComponent.generated.h"
 
-UCLASS(EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class UTWDInteractionWidgetComponent : public UTWDWidgetComponent {
     GENERATED_BODY()
 public:
@@ -12,7 +12,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetDescriptions(const TArray<FSDIInteractionDescription>& Descriptions);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FSDIInteractionDescription> GetDescriptions() const;
     
     UFUNCTION(BlueprintCallable)

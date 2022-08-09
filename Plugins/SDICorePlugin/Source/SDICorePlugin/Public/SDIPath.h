@@ -8,17 +8,17 @@
 
 class USDIPathComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API ASDIPath : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGameplayTagContainer PathTags;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USDIPathComponent* PathComponent;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIPathNodeTriggerDelegate PathNodeTriggerDelegate;
     
     ASDIPath();

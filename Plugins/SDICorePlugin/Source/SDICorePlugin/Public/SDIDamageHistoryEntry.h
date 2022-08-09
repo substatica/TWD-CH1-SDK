@@ -9,13 +9,13 @@ USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDIDamageHistoryEntry {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<AActor> TheActor;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDIReplicatedDamageData> Events;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float LatestServerTimestamp;
     
     FSDIDamageHistoryEntry();

@@ -6,7 +6,7 @@ USTRUCT(BlueprintType)
 struct FTWDReplicatedInventoryActorInterfaceData {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(EditAnywhere, Transient)
     uint8 RepInventorySlotIdx;
     
     TWD_API FTWDReplicatedInventoryActorInterfaceData();

@@ -3,8 +3,8 @@
 
 class ATWDCharacter;
 class UOuterRingToken;
-class UFeedingToken;
 class UGrappleToken;
+class UFeedingToken;
 
 void UGrappleTokenSystem::SetNumOuterRingTokens(int32 Count) {
 }

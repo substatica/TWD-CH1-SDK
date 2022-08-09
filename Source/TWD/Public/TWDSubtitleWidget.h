@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SubtitleSplit.h"
 #include "TWDUserWidget.h"
+#include "SubtitleSplit.h"
 #include "DialogueLine.h"
 #include "EGender.h"
 #include "TWDSubtitleWidget.generated.h"
 
 class UTextBlock;
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class TWD_API UTWDSubtitleWidget : public UTWDUserWidget {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UTextBlock* SubtitleTextBlock;
     
 public:
@@ -22,11 +22,11 @@ public:
     void RemoveSubtitle(int32 Key);
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSubtitleChanged();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FText GetSubtitleText() const;
     
     UFUNCTION(BlueprintCallable)

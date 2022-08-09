@@ -8,10 +8,10 @@ struct SDICOREPLUGIN_API FSDIFloatPIDController : public FSDIPIDControllerSettin
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float Integral;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float PreviousError;
     
 public:

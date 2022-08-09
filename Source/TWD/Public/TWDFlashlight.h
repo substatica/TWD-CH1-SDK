@@ -3,12 +3,12 @@
 #include "TWDProp.h"
 #include "TWDFlashlight.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDFlashlight : public ATWDProp {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bInsideOnRep_bRepInsideInventory;
     
 public:

@@ -14,10 +14,10 @@ class UTWDStabInterface : public UInterface {
 class ITWDStabInterface : public IInterface {
     GENERATED_BODY()
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool AllowStickAfterStab(ATWDWeaponActor* Weapon, const FHitResult& HitInfo) const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool AllowStab(ATWDWeaponActor* Weapon, const FHitResult& HitInfo, bool bThrown) const;
     
 };

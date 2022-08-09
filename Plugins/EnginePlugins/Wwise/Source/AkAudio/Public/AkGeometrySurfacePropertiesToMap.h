@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FAkGeometrySurfacePropertiesToMap {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UAkAcousticTexture> AcousticTexture;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float OcclusionValue;
     
     AKAUDIO_API FAkGeometrySurfacePropertiesToMap();

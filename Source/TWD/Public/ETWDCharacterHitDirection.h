@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDCharacterHitDirection.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDCharacterHitDirection : uint8 {
     None,
     Front,

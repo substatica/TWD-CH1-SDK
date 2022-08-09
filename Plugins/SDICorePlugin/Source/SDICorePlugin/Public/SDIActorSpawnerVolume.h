@@ -6,21 +6,21 @@
 
 class UBoxComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API ASDIActorSpawnerVolume : public ASDIActorSpawner {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     TArray<UBoxComponent*> SpawnerVolumes;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     TArray<UBoxComponent*> ActiveSpawnerVolumes;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 ActiveSpawnerVolumeIndex;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIActorSpawner> SpawnerModel;
     
 public:

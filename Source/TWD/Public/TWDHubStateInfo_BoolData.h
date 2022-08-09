@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FTWDHubStateInfo_BoolData {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString Name;
     
-    UPROPERTY(BlueprintReadWrite)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool Value;
     
     TWD_API FTWDHubStateInfo_BoolData();

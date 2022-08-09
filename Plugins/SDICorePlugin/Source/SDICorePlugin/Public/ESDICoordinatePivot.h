@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESDICoordinatePivot.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESDICoordinatePivot : uint8 {
     Top_Left,
     Top_Center,

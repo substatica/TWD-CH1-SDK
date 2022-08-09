@@ -14,14 +14,14 @@ class SDITUNINGPLUGIN_API ISDITuningInterface : public IInterface {
     GENERATED_BODY()
 public:
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void TuneObject(UObject* Object) const;
     
 public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void Retune();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ResetTuning();
     
 };

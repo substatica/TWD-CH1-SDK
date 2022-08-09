@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "SDIInventoryActor.h"
+#include "TWDInventoryActorInterfaceData.h"
 #include "TWDSeamlessTravelActorInterface.h"
 #include "TWDInventoryActorInterface.h"
 #include "TWDInventoryActorBlueprintInterface.h"
-#include "TWDInventoryActorInterfaceData.h"
-#include "TWDReplicatedInventoryActorInterfaceData.h"
 #include "UObject/NoExportTypes.h"
+#include "TWDReplicatedInventoryActorInterfaceData.h"
 #include "ETWDNonVREquipmentType.h"
 #include "ETWDLootType.h"
 #include "ETWDInventoryType.h"
@@ -15,15 +15,15 @@
 class ATWDBackpack;
 class ASDIInventorySlot;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDPickup : public ASDIInventoryActor, public ITWDSeamlessTravelActorInterface, public ITWDInventoryActorInterface, public ITWDInventoryActorBlueprintInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDInventoryActorInterfaceData TWDInventoryData;
     
-    UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_RepTWDInventoryData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_RepTWDInventoryData, meta=(AllowPrivateAccess=true))
     FTWDReplicatedInventoryActorInterfaceData RepTWDInventoryData;
     
 public:
@@ -34,10 +34,10 @@ protected:
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerSetInventorySlotIdx_IFC(uint8 InventorySlotIdx);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTWDInventoryData_Timer();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTWDInventoryData(const FTWDReplicatedInventoryActorInterfaceData& OldRepTWDInventoryData);
     
     

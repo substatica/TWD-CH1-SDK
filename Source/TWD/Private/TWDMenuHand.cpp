@@ -1,9 +1,9 @@
 #include "TWDMenuHand.h"
+#include "Components/SceneComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "MotionControllerComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/WidgetInteractionComponent.h"
-#include "Components/SceneComponent.h"
 
 ATWDMenuHand::ATWDMenuHand() {
     this->MotionControllerComponent = CreateDefaultSubobject<UMotionControllerComponent>(TEXT("MotionControllerComponent"));

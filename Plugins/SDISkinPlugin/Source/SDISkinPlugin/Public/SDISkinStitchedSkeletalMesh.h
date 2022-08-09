@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct SDISKINPLUGIN_API FSDISkinStitchedSkeletalMesh : public FSDISkinSkeletalMesh {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName SocketName;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTransform RelativeTransform;
     
     FSDISkinStitchedSkeletalMesh();

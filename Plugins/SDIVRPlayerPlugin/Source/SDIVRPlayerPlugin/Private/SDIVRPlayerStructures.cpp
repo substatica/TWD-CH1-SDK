@@ -1,7 +1,7 @@
 #include "SDIVRPlayerStructures.h"
 
-class AActor;
 class ASDIPlayerHand;
+class AActor;
 
 AActor* USDIVRPlayerStructures::GetEntryPlayerHandGripActor(const FSDIPlayerHandInteractComponentEntry& Entry) {
     return NULL;

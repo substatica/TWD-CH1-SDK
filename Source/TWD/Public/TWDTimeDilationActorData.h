@@ -6,7 +6,7 @@ USTRUCT(BlueprintType)
 struct FTWDTimeDilationActorData {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TimeDilationFactor;
     
     TWD_API FTWDTimeDilationActorData();

@@ -10,7 +10,7 @@ public:
     UPROPERTY(EditAnywhere)
     uint32 ACPBatchBufferSize;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool UseHardwareCodecLowLatencyMode;
     
     AKAUDIO_API FAkPS4AdvancedInitializationSettings();

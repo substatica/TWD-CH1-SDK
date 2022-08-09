@@ -5,7 +5,7 @@
 #include "AkWaapiFieldNames.h"
 #include "AkWaapiJsonManager.generated.h"
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkWaapiJsonManager : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
@@ -46,10 +46,10 @@ public:
     UFUNCTION(BlueprintCallable)
     static TArray<FAKWaapiJsonObject> GetArrayField(const FAkWaapiFieldNames& FieldName, FAKWaapiJsonObject Target);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FText Conv_FAKWaapiJsonObjectToText(FAKWaapiJsonObject INAKWaapiJsonObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString Conv_FAKWaapiJsonObjectToString(FAKWaapiJsonObject INAKWaapiJsonObject);
     
 };

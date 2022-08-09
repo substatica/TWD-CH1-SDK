@@ -6,7 +6,7 @@ USTRUCT(BlueprintType)
 struct FSublevelPlatformOverride {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FName, FName> SublevelOverrides;
     
     TWD_API FSublevelPlatformOverride();

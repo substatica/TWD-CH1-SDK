@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SDIPlayerHandInteractComponentEntry.h"
 #include "ESDIInteractRangeType.h"
+#include "SDIPlayerHandInteractComponentEntry.h"
 #include "SDIPlayerHandInteractComponentEntrySet.generated.h"
 
 class ASDIPlayerController;
@@ -12,13 +12,13 @@ struct SDIVRPLAYERPLUGIN_API FSDIPlayerHandInteractComponentEntrySet {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ASDIPlayerController* Owner;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(EditAnywhere, Export, Transient)
     TMap<ESDIInteractRangeType, TWeakObjectPtr<USDIPlayerHandInteractComponent>> Components;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDIPlayerHandInteractComponentEntry> Entries;
     
 public:

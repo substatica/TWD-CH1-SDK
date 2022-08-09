@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EAkCurveInterpolation.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EAkCurveInterpolation : uint8 {
     Log3,
     Sine,

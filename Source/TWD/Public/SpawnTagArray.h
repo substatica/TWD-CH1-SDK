@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FSpawnTagArray {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<ASDIActorSpawner*> Spawners;
     
     TWD_API FSpawnTagArray();

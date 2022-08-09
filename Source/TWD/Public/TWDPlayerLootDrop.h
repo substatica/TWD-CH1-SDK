@@ -5,12 +5,12 @@
 
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDPlayerLootDrop : public ATWDInventoryHolderActor {
     GENERATED_BODY()
 public:
     ATWDPlayerLootDrop();
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool GiveContentsTo(AActor* NewOwner);
     
 };

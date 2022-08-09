@@ -4,14 +4,14 @@
 #include "TWDPlayerStateInfo.h"
 #include "TWDPlayerStateBackendInfo.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FTWDPlayerStateBackendInfo {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDHubStateInfo HubState;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDPlayerStateInfo PlayerState;
     
     TWD_API FTWDPlayerStateBackendInfo();

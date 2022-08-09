@@ -1,23 +1,23 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SDITuningAccumulator.h"
 #include "GameFramework/Character.h"
 #include "SDITuningInterface.h"
+#include "SDITuningAccumulator.h"
 #include "SDIReplicatedTuningModifier.h"
 #include "SDITuningAttribute_CharacterMovementComponent.h"
 #include "SDITuningCharacter.generated.h"
 
 class ASDITuningCharacter;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDITUNINGPLUGIN_API ASDITuningCharacter : public ACharacter, public ISDITuningInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDITuningAccumulator TuningAccumulator;
     
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_RepTuningModifiers)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepTuningModifiers, meta=(AllowPrivateAccess=true))
     TArray<FSDIReplicatedTuningModifier> RepTuningModifiers;
     
 public:
@@ -28,7 +28,7 @@ public:
     ASDITuningCharacter* TuneCharacterMovementComponent(FSDITuningAttribute_CharacterMovementComponent Attr, float PreModifier, float Add, float PostModifier);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTuningModifiers();
     
     

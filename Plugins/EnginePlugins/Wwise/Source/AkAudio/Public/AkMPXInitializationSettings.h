@@ -3,7 +3,7 @@
 #include "AkXSXInitializationSettings.h"
 #include "AkMPXInitializationSettings.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkMPXInitializationSettings : public UAkXSXInitializationSettings {
     GENERATED_BODY()
 public:

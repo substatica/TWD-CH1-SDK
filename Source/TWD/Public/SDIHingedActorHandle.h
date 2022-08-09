@@ -1,65 +1,65 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TWDInteractiveActor.h"
-#include "SDIGripInfo.h"
 #include "UObject/NoExportTypes.h"
+#include "TWDInteractiveActor.h"
 #include "EHandleType.h"
+#include "SDIGripInfo.h"
 #include "SDIHingedActorHandle.generated.h"
 
 class UPrimitiveComponent;
-class UArrowComponent;
 class ASDIPlayerHand;
+class UArrowComponent;
 class UActorComponent;
 class ASDISlidingInteractiveActor;
 class ASDIHingedInteractiveActor;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ASDIHingedActorHandle : public ATWDInteractiveActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* GrippedComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UArrowComponent* RotationDetectionArrow;
     
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ASDIPlayerHand* PlayerHand;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EHandleType HandleType;
     
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float RotationToOpen;
     
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float RotationAllowedIfUnlocked;
     
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float RotationAllowedIfLocked;
     
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ArmLengthReleaseFactor;
     
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ArmLengthReleaseFactorTime;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     TArray<UActorComponent*> GripPoints;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FVector> GripPointInitialWorldLocations;
     
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bForceHideHighlight;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UActorComponent* CurrentGrippedComponent;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDIGripInfo CurrentGrippedInfo;
     
     ASDIHingedActorHandle();

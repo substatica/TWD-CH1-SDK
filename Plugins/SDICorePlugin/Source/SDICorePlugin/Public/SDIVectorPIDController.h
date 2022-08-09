@@ -9,10 +9,10 @@ struct SDICOREPLUGIN_API FSDIVectorPIDController : public FSDIPIDControllerSetti
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector Integral;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector PreviousError;
     
 public:

@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FAkMidiCc : public FAkMidiEventBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAkMidiCcValues Cc;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     uint8 Value;
     
     AKAUDIO_API FAkMidiCc();

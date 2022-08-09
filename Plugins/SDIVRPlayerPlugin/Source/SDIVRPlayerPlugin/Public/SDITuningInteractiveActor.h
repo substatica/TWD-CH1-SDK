@@ -5,12 +5,12 @@
 #include "SDITuningAccumulator.h"
 #include "SDITuningInteractiveActor.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDITuningInteractiveActor : public ASDIInteractiveActor, public ISDITuningInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDITuningAccumulator TuningAccumulator;
     
 public:

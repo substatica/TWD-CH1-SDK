@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "OnFiredRoundDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE(FOnFiredRound);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE(FOnFiredRound);
 

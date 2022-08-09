@@ -5,23 +5,23 @@
 
 class ATWDCharacter;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDGripPhysicsDrawer : public ATWDGripPhysicsActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bIsOpen;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bNonVRDrawerAutoOpen;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVROpenVelocity;
     
 public:
     ATWDGripPhysicsDrawer();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool NonVROpenDrawer(ATWDCharacter* Character);
     
 };

@@ -1,7 +1,7 @@
 #include "SDIInventorySlot.h"
 
-class UPrimitiveComponent;
 class ASDIInventoryActor;
+class UPrimitiveComponent;
 class USceneComponent;
 class AActor;
 

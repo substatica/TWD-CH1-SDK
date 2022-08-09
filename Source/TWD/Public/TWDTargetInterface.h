@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "UObject/Interface.h"
+#include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "TWDTargetInterface.generated.h"
 
+class ATWDWeaponActor;
 class ATWDPlayerController;
 class ATWDPlayerCharacter;
-class ATWDWeaponActor;
 
 UINTERFACE(Blueprintable)
 class UTWDTargetInterface : public UInterface {
@@ -17,10 +17,10 @@ class UTWDTargetInterface : public UInterface {
 class ITWDTargetInterface : public IInterface {
     GENERATED_BODY()
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool GetMeleeTargetLocation(const ATWDPlayerController* PC, const ATWDPlayerCharacter* Char, const ATWDWeaponActor* Weapon, const FTransform& SearchTransform, FVector& OutLocation) const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool AllowMeleeTarget(const ATWDPlayerController* PC, const ATWDPlayerCharacter* Char, const ATWDWeaponActor* Weapon, bool bForLockon) const;
     
 };

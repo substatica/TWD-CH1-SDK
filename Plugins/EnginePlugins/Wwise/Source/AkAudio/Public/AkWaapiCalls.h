@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "OnWaapiProjectLoadedDelegate.h"
-#include "OnEventCallbackDelegate.h"
-#include "AkWaapiSubscriptionId.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "AKWaapiJsonObject.h"
+#include "OnEventCallbackDelegate.h"
+#include "AkWaapiSubscriptionId.h"
 #include "AkWaapiUri.h"
+#include "OnWaapiProjectLoadedDelegate.h"
 #include "OnWaapiConnectionLostDelegate.h"
 #include "AkWaapiCalls.generated.h"
 
-UCLASS(BlueprintType, DefaultConfig, Within=World)
+UCLASS(Blueprintable, DefaultConfig, Within=World)
 class AKAUDIO_API UAkWaapiCalls : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
@@ -32,10 +32,10 @@ public:
     UFUNCTION(BlueprintCallable)
     static int32 GetSubscriptionID(const FAkWaapiSubscriptionId& Subscription);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FText Conv_FAkWaapiSubscriptionIdToText(const FAkWaapiSubscriptionId& INAkWaapiSubscriptionId);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString Conv_FAkWaapiSubscriptionIdToString(const FAkWaapiSubscriptionId& INAkWaapiSubscriptionId);
     
     UFUNCTION(BlueprintCallable, BlueprintCosmetic)

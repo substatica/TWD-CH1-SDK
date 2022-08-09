@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ECustomThrowPhysicsMode.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ECustomThrowPhysicsMode : uint8 {
     OrientToVelocity,
     SpinOnAxis,

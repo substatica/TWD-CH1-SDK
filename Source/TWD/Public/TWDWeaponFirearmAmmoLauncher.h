@@ -3,7 +3,7 @@
 #include "SDIWeaponFirearmAmmoLauncher.h"
 #include "TWDWeaponFirearmAmmoLauncher.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDWeaponFirearmAmmoLauncher : public ASDIWeaponFirearmAmmoLauncher {
     GENERATED_BODY()
 public:

@@ -1,27 +1,27 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SDICoreUtilityAIAimSettings.h"
+#include "SDICoreUtilityAIAction.h"
 #include "UObject/Object.h"
-#include "SDICoreUtilityAIMovementTarget.h"
-#include "ESDIUtilityAIDifficulty.h"
 #include "UObject/NoExportTypes.h"
-#include "GenericTeamAgentInterface.h"
+#include "ESDIUtilityAIDifficulty.h"
 #include "GenericTeamAgentInterface.h"
 #include "SDICoreUtilityAITargetEntry.h"
 #include "UObject/NoExportTypes.h"
 #include "SDICoreUtilityAITargetList.h"
-#include "SDICoreUtilityAIAction.h"
+#include "SDICoreUtilityAIAimSettings.h"
 #include "SpringFloat.h"
-#include "Navigation/PathFollowingComponent.h"
 #include "SDITimestampInputButton.h"
+#include "SDICoreUtilityAIMovementTarget.h"
+#include "Navigation/PathFollowingComponent.h"
+#include "GenericTeamAgentInterface.h"
 #include "UObject/NoExportTypes.h"
 #include "GenericTeamAgentInterface.h"
 #include "SDICoreUtilityAI.generated.h"
 
-class UNavigationQueryFilter;
-class USDICoreUtilityAIState;
 class AHUD;
+class USDICoreUtilityAIState;
+class UNavigationQueryFilter;
 class UPathFollowingComponent;
 class APawn;
 class AActor;
@@ -37,84 +37,84 @@ public:
     DECLARE_DYNAMIC_DELEGATE_FourParams(FSDICoreUtilityAITargetPriorityDynamic, const FSDICoreUtilityAITargetEntry&, Entry, const FSDICoreUtilityAITargetList&, List, int32, Index, float&, Priority);
     
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ESDIUtilityAIDifficulty, FSDICoreUtilityAIAimSettings> AimSettings;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UNavigationQueryFilter> DefaultNavigationQueryClass;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bCanAttack;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bCanWander;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float StuckVelocity;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICoreUtilityAITargetList TargetList;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<USDICoreUtilityAIState>> StateClasses;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSpringFloat YawAimSpring;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSpringFloat PitchAimSpring;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector DebugAimPoint;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector MovementAcceleration;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector MovementInputVector;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDICoreUtilityAIAction> ActionQueue;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<FName, FSDITimestampInputButton> ActionButtons;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UPathFollowingComponent* PathFollowingComp;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ESDIUtilityAIDifficulty DesiredDifficulty;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ESDIUtilityAIDifficulty CurrentDifficulty;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bRequestingRepath;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDICoreUtilityAIMovementTarget MovementTarget;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bWasFalling;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float StuckTimer;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector StuckLocation;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<USDICoreUtilityAIState*> AllStates;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     USDICoreUtilityAIState* ActiveState;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bCurrentlyInsideTick;
     
 public:
     USDICoreUtilityAI();
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void TickUtilityAI(float DeltaSeconds);
     
     UFUNCTION(BlueprintCallable)
@@ -123,7 +123,7 @@ public:
     UFUNCTION(BlueprintCallable)
     bool SetSprinting(bool bSprinting);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SetPawn(APawn* InPawn);
     
     UFUNCTION(BlueprintCallable)
@@ -144,7 +144,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void RequestRepath();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool ProjectPointToNavigation(FVector InLoc, FVector& OutLoc) const;
     
     UFUNCTION(BlueprintCallable)
@@ -156,34 +156,34 @@ public:
     UFUNCTION(BlueprintCallable)
     TEnumAsByte<EPathFollowingRequestResult::Type> MoveToActor(AActor* Goal, float AcceptanceRadius, bool bStopOnOverlap, bool bUsePathfinding, bool bCanStrafe, TSubclassOf<UNavigationQueryFilter> FilterClass, bool bAllowPartialPath, bool bUseDirectOnFailure);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsValidTarget(AActor* Target) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsStuck(float MinStuckTime) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSprinting(bool bCheckVelocity) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayer() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsMoving() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCrouching() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsAI() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool InsideTick() const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void InitUtilityAI(ESDIUtilityAIDifficulty NewDifficulty);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasReachedMovementLocation(FVector Dest, float AcceptanceRadius, bool bProjectDestinationToNavigation) const;
     
     UFUNCTION(BlueprintCallable)
@@ -195,10 +195,10 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     FVector GetWanderDestination(float TestDistance) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetWalkSpeed() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetViewPoint(FVector& Loc, FRotator& Rot) const;
     
     UFUNCTION(BlueprintPure)
@@ -219,19 +219,19 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     int32 GetTarget(const FSDICoreUtilityAITargetList& InTargetList, AActor* Actor, FSDICoreUtilityAITargetEntry& OutTarget) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetSprintSpeed() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetServerTimestamp() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetPathDistanceTo(const FVector& End, float& Distance, TSubclassOf<UNavigationQueryFilter> FilterClass) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetPathDistance(const FVector& Start, const FVector& End, float& Distance, TSubclassOf<UNavigationQueryFilter> FilterClass) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetNumTargetsByTeamId(const FSDICoreUtilityAITargetList& InTargetList, const FGenericTeamId& TeamID, float MaxTimeSinceLostLOS) const;
     
     UFUNCTION(BlueprintPure)
@@ -240,67 +240,67 @@ public:
     UFUNCTION(BlueprintPure)
     int32 GetNumTargetsByAttitudeFrom(const FSDICoreUtilityAITargetList& InTargetList, TEnumAsByte<ETeamAttitude::Type> Attitude, float MaxTimeSinceLostLOS) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetMovementInputVector() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetMaxSpeedWithoutSprinting() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetMaxSpeed() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ESDIUtilityAIDifficulty GetDifficulty() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetCrouchSpeed() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDICoreCharacter* GetCoreChar() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AController* GetController() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ACharacter* GetChar() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FRotator GetAimOffsetRot() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetAimOffsetDeg() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     USDICoreUtilityAIState* GetActiveState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector FindRandomLocationAroundPoint(const FVector& Loc, float Radius) const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     FVector2D DrawHUD(AHUD* HUD, UCanvas* Canvas, FVector ViewLocation, FRotator ViewRotation, FVector2D CanvasOrigin, FVector2D CanvasSize);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void DestroyUtilityAI();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector DeltaBetweenCharacterCapsules(ACharacter* A, ACharacter* B);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanSprint() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanEverSprint() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanEverCrouch() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanCrouch() const;
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     bool AllowWander() const;
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     bool AllowAttack() const;
     
     UFUNCTION(BlueprintCallable)

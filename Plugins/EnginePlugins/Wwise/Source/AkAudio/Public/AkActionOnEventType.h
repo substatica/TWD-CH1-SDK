@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "AkActionOnEventType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class AkActionOnEventType : uint8 {
     Stop,
     Pause,

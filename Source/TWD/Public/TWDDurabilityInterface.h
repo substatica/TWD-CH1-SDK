@@ -20,7 +20,7 @@ public:
     UFUNCTION()
     virtual void OnRep_RepTWDDurabilityData_Internal(const FTWDReplicatedDurabilityInterfaceData& OldRepTWDInventoryData) PURE_VIRTUAL(OnRep_RepTWDDurabilityData_Internal,);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnDurabilityChanged(float OldDurability, float NewDurability);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)

@@ -5,11 +5,11 @@
 
 class UAkAssetData;
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkAssetPlatformData : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAssetData* CurrentAssetData;
     
     UAkAssetPlatformData();

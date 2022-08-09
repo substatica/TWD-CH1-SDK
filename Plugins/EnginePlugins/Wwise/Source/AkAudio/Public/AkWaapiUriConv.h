@@ -4,15 +4,15 @@
 #include "AkWaapiUri.h"
 #include "AkWaapiUriConv.generated.h"
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkWaapiUriConv : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UAkWaapiUriConv();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FText Conv_FAkWaapiUriToText(const FAkWaapiUri& INAkWaapiUri);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString Conv_FAkWaapiUriToString(const FAkWaapiUri& INAkWaapiUri);
     
 };

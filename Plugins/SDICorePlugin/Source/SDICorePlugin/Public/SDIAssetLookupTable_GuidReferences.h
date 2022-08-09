@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDIAssetLookupTable_GuidReferences {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName Key;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FGuid> Guids;
     
     FSDIAssetLookupTable_GuidReferences();

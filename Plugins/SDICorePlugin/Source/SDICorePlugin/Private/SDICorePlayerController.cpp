@@ -3,10 +3,10 @@
 #include "Templates/SubclassOf.h"
 #include "SDICoreUtilityAIPathFollowingComponent.h"
 
-class UDamageType;
-class AActor;
 class AController;
+class AActor;
 class USDICoreDOTComponent;
+class UDamageType;
 class APawn;
 class ASDICoreCharacter;
 class APlayerState;

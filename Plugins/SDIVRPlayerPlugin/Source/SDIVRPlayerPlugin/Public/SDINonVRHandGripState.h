@@ -2,18 +2,18 @@
 #include "CoreMinimal.h"
 #include "SDINonVRHandGripState.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct SDIVRPLAYERPLUGIN_API FSDINonVRHandGripState {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 OverridePriority;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bOverrideLeftHand;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bOverrideRightHand;
     
 public:

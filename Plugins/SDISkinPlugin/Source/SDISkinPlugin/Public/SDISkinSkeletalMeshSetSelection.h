@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct SDISKINPLUGIN_API FSDISkinSkeletalMeshSetSelection : public FSDISkinSelection {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDISkinParamSelections ParamInfo;
     
     FSDISkinSkeletalMeshSetSelection();

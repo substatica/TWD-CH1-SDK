@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDConsumableQuality.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDConsumableQuality : uint8 {
     Low,
     Medium,

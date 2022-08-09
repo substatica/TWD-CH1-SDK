@@ -2,15 +2,15 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "UObject/Interface.h"
+#include "UObject/NoExportTypes.h"
 #include "InputCoreTypes.h"
 #include "ESDIInteractiveInteractType.h"
 #include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
 #include "SDIAIControllerInventoryInterface.generated.h"
 
+class ASDIHeldActor;
 class ASDIWeaponFirearm;
 class ASDIInventoryActor;
-class ASDIHeldActor;
 
 UINTERFACE(BlueprintType, meta=(CannotImplementInterfaceInBlueprint))
 class SDIVRPLAYERPLUGIN_API USDIAIControllerInventoryInterface : public UInterface {

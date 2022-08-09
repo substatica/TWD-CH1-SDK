@@ -1,9 +1,9 @@
 #include "SDICoreUtilityAIState.h"
 
-class AActor;
-class ACharacter;
-class USDICoreUtilityAI;
 class AController;
+class AActor;
+class USDICoreUtilityAI;
+class ACharacter;
 class USDICoreUtilityAIState;
 class AHUD;
 class UCanvas;

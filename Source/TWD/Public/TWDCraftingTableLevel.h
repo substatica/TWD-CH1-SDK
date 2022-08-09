@@ -9,13 +9,13 @@ USTRUCT(BlueprintType)
 struct TWD_API FTWDCraftingTableLevel {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSoftClassPtr<ASDIInventoryActor>, int32> ResourcesToUnlockLevel;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSet<TSoftClassPtr<UTWDRecipe>> RecipesAtLevel;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSet<FName> BuffsAtLevel;
     
     FTWDCraftingTableLevel();

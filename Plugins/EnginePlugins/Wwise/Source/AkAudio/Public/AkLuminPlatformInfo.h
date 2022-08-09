@@ -3,7 +3,7 @@
 #include "AkPlatformInfo.h"
 #include "AkLuminPlatformInfo.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class UAkLuminPlatformInfo : public UAkPlatformInfo {
     GENERATED_BODY()
 public:

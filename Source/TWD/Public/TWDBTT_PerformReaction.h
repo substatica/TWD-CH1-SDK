@@ -1,31 +1,31 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "BehaviorTree/BehaviorTreeTypes.h"
 #include "BehaviorTree/BTTaskNode.h"
+#include "BehaviorTree/BehaviorTreeTypes.h"
 #include "TWDBTT_PerformReaction.generated.h"
 
 class ATWDCharacter;
 
-UCLASS()
+UCLASS(Blueprintable)
 class UTWDBTT_PerformReaction : public UBTTaskNode {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FBlackboardKeySelector PlayBarkKeySelector;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AnimFailSafeTime;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float WaitOverTimestamp;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float AnimOverTimestamp;
     
 public:
     UTWDBTT_PerformReaction();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PlayAnimationActionCallback(ATWDCharacter* Character, bool bSucceed);
     
 };

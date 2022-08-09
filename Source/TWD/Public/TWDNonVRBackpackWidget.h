@@ -6,20 +6,20 @@
 class ATWDBackpack;
 class ASDIInventoryActor;
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class TWD_API UTWDNonVRBackpackWidget : public UTWDNonVRInteractionWidget {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDBackpack* BackpackActor;
     
 protected:
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ASDIInventoryActor* CurrentlySelectedItem;
     
 public:
     UTWDNonVRBackpackWidget();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSelectedItemChanged(ASDIInventoryActor* NewItem);
     
 };

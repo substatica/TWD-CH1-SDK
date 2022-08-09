@@ -1,8 +1,8 @@
 #include "SDIPhysicsMotorComponent.h"
 
-class USceneComponent;
 class UCurveFloat;
 class UPrimitiveComponent;
+class USceneComponent;
 
 void USDIPhysicsMotorComponent::SetUpdateDesiredTransformDuringPhysics(bool bUpdate) {
 }

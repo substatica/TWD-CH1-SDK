@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "UObject/Interface.h"
-#include "SDIReplicatedGripInfo.h"
 #include "InputCoreTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "SDIAttachmentInfo.h"
+#include "SDIReplicatedGripInfo.h"
 #include "UObject/NoExportTypes.h"
 #include "SDIHeldActorHolderInterface.generated.h"
 
-class USceneComponent;
 class ASDIHeldActor;
+class USceneComponent;
 class ASDIPlayerHand;
 
 UINTERFACE(BlueprintType, meta=(CannotImplementInterfaceInBlueprint))

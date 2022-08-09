@@ -10,7 +10,7 @@ struct TWD_API FVariableDialogueLine : public FDialogueLine {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<EGender, FTWDVariableDialogueData> GenderDialogueLines;
     
 public:

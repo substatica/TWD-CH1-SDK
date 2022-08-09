@@ -3,7 +3,7 @@
 #include "SDIReferenceCounter.h"
 #include "SDISoftObjectPathReference.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDISoftObjectPathReference : public FSDIReferenceCounter {
     GENERATED_BODY()
 public:

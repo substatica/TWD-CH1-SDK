@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct TWD_API FMapTerritoryAttribute {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ETWDWorldEventType Type;
     
     FMapTerritoryAttribute();

@@ -2,148 +2,148 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "SDIInventoryHolderInterface.h"
+#include "GameplayTagContainer.h"
 #include "SDISkinnedCharacter.h"
 #include "SDIHeldActorHolderInterface.h"
-#include "SDIExportInterface.h"
-#include "UObject/NoExportTypes.h"
 #include "SDIPlayerHandPawnInterface.h"
 #include "GameplayTagAssetInterface.h"
-#include "GameplayTagContainer.h"
 #include "SDIDynamicGameplayTagAssetInterface.h"
-#include "SDIInventoryHolderInterfaceInventoryList.h"
+#include "GameplayTagContainer.h"
 #include "SDIStimAndResponseInterface.h"
+#include "SDIExportInterface.h"
 #include "SDIExportData.h"
+#include "SDIInventoryHolderInterfaceInventoryList.h"
 #include "Engine/EngineTypes.h"
+#include "SDIAttachmentInfo.h"
 #include "GameplayTagContainer.h"
 #include "SDIReplicatedStimAndResponseInterfaceDataContainer.h"
 #include "SDIStimAndResponseInterfaceDataContainer.h"
 #include "SDICharacterStimulusChangedSignatureDelegate.h"
-#include "ESignificanceState.h"
 #include "SDISpaceTimestampTransform_NetQuantize.h"
 #include "SDIReplicatedGripInfo.h"
-#include "ESDITransformSpace.h"
-#include "UObject/NoExportTypes.h"
-#include "SDIAttachmentInfo.h"
 #include "InputCoreTypes.h"
-#include "GameplayTagContainer.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "ESignificanceState.h"
+#include "ESDITransformSpace.h"
 #include "UObject/NoExportTypes.h"
 #include "SDICharacter.generated.h"
 
+class AActor;
+class UPrimitiveComponent;
 class ASDIInteractiveHighlightManager;
 class ASDIPlayerHand;
 class ASDIInventoryActor;
 class ASDIHeldActor;
-class UDamageType;
-class AActor;
 class UCameraComponent;
 class USceneComponent;
+class UDamageType;
 class AController;
-class UPrimitiveComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDICharacter : public ASDISkinnedCharacter, public ISDIHeldActorHolderInterface, public ISDIInventoryHolderInterface, public ISDIPlayerHandPawnInterface, public IGameplayTagAssetInterface, public ISDIDynamicGameplayTagAssetInterface, public ISDIStimAndResponseInterface, public ISDIExportInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIExportData ExportData;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIInteractiveHighlightManager> InteractiveHighlightManagerClass;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIPlayerHand> PlayerHandBlueprint;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIPlayerHand> PlayerLeftHandBlueprint;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ServerHMDHandReplicationFrequency;
     
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName LeftHandAttachSocket;
     
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName RightHandAttachSocket;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIInventoryHolderInterfaceInventoryList InitialInventory;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HandActivityLevelFadeDownSpeed;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HandActivityLevelFadeUpSpeed;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGameplayTagContainer GameplayTagContainer;
     
-    UPROPERTY(EditAnywhere, ReplicatedUsing=OnRep_RepStimulusData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_RepStimulusData, meta=(AllowPrivateAccess=true))
     FSDIReplicatedStimAndResponseInterfaceDataContainer RepStimulusData;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIStimAndResponseInterfaceDataContainer StimulusData;
     
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICharacterStimulusChangedSignature OnStimulusChangedDelegate;
     
 protected:
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_RepInventoryList)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepInventoryList, meta=(AllowPrivateAccess=true))
     TArray<ASDIInventoryActor*> RepInventoryList;
     
-    UPROPERTY(BlueprintReadOnly, Transient, ReplicatedUsing=OnRep_RepLeftHandHeldActor)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepLeftHandHeldActor, meta=(AllowPrivateAccess=true))
     ASDIHeldActor* RepLeftHandHeldActor;
     
-    UPROPERTY(BlueprintReadOnly, Transient, ReplicatedUsing=OnRep_RepRightHandHeldActor)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepRightHandHeldActor, meta=(AllowPrivateAccess=true))
     ASDIHeldActor* RepRightHandHeldActor;
     
-    UPROPERTY(BlueprintReadOnly, Transient, ReplicatedUsing=OnRep_RepHMDTransform)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepHMDTransform, meta=(AllowPrivateAccess=true))
     FSDISpaceTimestampTransform_NetQuantize RepHMDTransform;
     
-    UPROPERTY(BlueprintReadOnly, Transient, ReplicatedUsing=OnRep_RepLeftHandTransform)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepLeftHandTransform, meta=(AllowPrivateAccess=true))
     FSDISpaceTimestampTransform_NetQuantize RepLeftHandTransform;
     
-    UPROPERTY(BlueprintReadOnly, Transient, ReplicatedUsing=OnRep_RepRightHandTransform)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepRightHandTransform, meta=(AllowPrivateAccess=true))
     FSDISpaceTimestampTransform_NetQuantize RepRightHandTransform;
     
-    UPROPERTY(BlueprintReadOnly, Replicated, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     float RepLeftHandTargetActivityLevel;
     
-    UPROPERTY(BlueprintReadOnly, Replicated, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     float RepLeftHandTargetActivityLevelFadeScale;
     
-    UPROPERTY(BlueprintReadOnly, Replicated, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     float RepRightHandTargetActivityLevel;
     
-    UPROPERTY(BlueprintReadOnly, Replicated, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     float RepRightHandTargetActivityLevelFadeScale;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float LeftHandActivityLevel;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float RightHandActivityLevel;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDISpaceTimestampTransform_NetQuantize LerpHMDTransform;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDISpaceTimestampTransform_NetQuantize LerpLeftHandTransform;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDISpaceTimestampTransform_NetQuantize LerpRightHandTransform;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDISpaceTimestampTransform_NetQuantize LerpHMDTransformStart;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDISpaceTimestampTransform_NetQuantize LerpLeftHandTransformStart;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDISpaceTimestampTransform_NetQuantize LerpRightHandTransformStart;
     
-    UPROPERTY(Replicated, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     float RepLastServerHMDHandReplicationTimestamp;
     
 public:
@@ -154,61 +154,61 @@ public:
     void StopNonVRObjectInteraction();
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void StimulusTick(const FGameplayTagContainer& Stimuli, float DeltaTime);
     
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerSetTransforms(const FSDISpaceTimestampTransform_NetQuantize& HMD, const FSDISpaceTimestampTransform_NetQuantize& LeftHand, const FSDISpaceTimestampTransform_NetQuantize& RightHand, float LHTargetActivityLevel, float LHTargetActivityLevelFadeScale, float RHTargetActivityLevel, float RHTargetActivityLevelFadeScale);
     
 public:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetHeldBy_IFC(ASDIHeldActor* HeldActor, const FSDIReplicatedGripInfo& PrimaryGrip, const FSDIReplicatedGripInfo& SecondaryGrip);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerGiveTo_IFC(ASDIInventoryActor* Inventory, AActor* NewOwner);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerClearHeldBy_IFC(ASDIHeldActor* HeldActor, const FTransform& Transform, const FVector& ThrowVelocity, const FVector& AngularVelocityDeg, const FSDIAttachmentInfo& AttachInfo, bool bCustomThrowPhysicsEngaged);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepStimulusData();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepRightHandTransform(const FSDISpaceTimestampTransform_NetQuantize& OldRepRightHandTransform);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepRightHandHeldActor(ASDIHeldActor* OldRepRightHandHeldActor);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepLeftHandTransform(const FSDISpaceTimestampTransform_NetQuantize& OldRepLeftHandTransform);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepLeftHandHeldActor(ASDIHeldActor* OldRepLeftHandHeldActor);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepInventoryList(const TArray<ASDIInventoryActor*>& OldRepInventoryList);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepHMDTransform(const FSDISpaceTimestampTransform_NetQuantize& OldRepHMDTransform);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSDISpaceTimestampTransform_NetQuantize K2GetRepRightHandTransform() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSDISpaceTimestampTransform_NetQuantize K2GetRepLeftHandTransform() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSDISpaceTimestampTransform_NetQuantize K2GetLerpRightHandTransform() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSDISpaceTimestampTransform_NetQuantize K2GetLerpLeftHandTransform() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSDISpaceTimestampTransform_NetQuantize K2GetLerpHMDTransform() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsNonVRObjectInteracting() const;
     
     UFUNCTION(BlueprintCallable)
@@ -220,34 +220,34 @@ public:
     UFUNCTION(BlueprintCallable)
     bool GrabClassFromInventory(TSubclassOf<ASDIInventoryActor> InvClass, EControllerHand PrimaryHand, EControllerHand SecondaryHand, bool bExact);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ESignificanceState GetSignificanceState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetRightHandActivityLevel() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<ASDIPlayerHand> GetPlayerHandBlueprint(EControllerHand hand) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIPlayerHand* GetPlayerHand(EControllerHand hand) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIPlayerHand* GetOtherPlayerHand(EControllerHand hand) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetLeftHandActivityLevel() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<ASDIInteractiveHighlightManager> GetInteractiveHighlightManagerClass() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UCameraComponent* GetCamera() const;
     
     UFUNCTION(BlueprintCallable)
     bool DropHeldActor(ASDIHeldActor* HeldActor, bool bReturnToInventory, bool bRemoveFromInventory);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTransform ConvertTransformToSpace(const FSDISpaceTimestampTransform_NetQuantize& Transform, ESDITransformSpace Space) const;
     
     

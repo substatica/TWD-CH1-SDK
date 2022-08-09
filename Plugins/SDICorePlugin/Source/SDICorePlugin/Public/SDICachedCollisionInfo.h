@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "SDICachedCollisionInfo.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDICachedCollisionInfo {
     GENERATED_BODY()
 public:

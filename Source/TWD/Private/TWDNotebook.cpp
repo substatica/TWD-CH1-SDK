@@ -3,10 +3,10 @@
 #include "Components/SceneComponent.h"
 #include "Components/BoxComponent.h"
 
-class UPrimitiveComponent;
 class ASDIInventoryActor;
-class UTWDTask;
 class ASDIPlayerHand;
+class UTWDTask;
+class UPrimitiveComponent;
 
 void ATWDNotebook::StopNonVRInteraction() {
 }

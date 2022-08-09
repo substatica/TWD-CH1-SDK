@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ContentWidget.h"
-#include "Components/Widget.h"
-#include "Styling/SlateTypes.h"
-#include "Types/SlateEnums.h"
 #include "Styling/SlateTypes.h"
 #include "AkOnCheckBoxComponentStateChangedDelegate.h"
+#include "Components/ContentWidget.h"
+#include "Styling/SlateTypes.h"
+#include "Components/Widget.h"
+#include "Types/SlateEnums.h"
 #include "AkBoolPropertyToControl.h"
 #include "AkWwiseItemToControl.h"
 #include "OnWwiseItemDropDetectedDelegate.h"
@@ -13,38 +13,38 @@
 #include "UObject/NoExportTypes.h"
 #include "AkCheckBox.generated.h"
 
-UCLASS(DefaultConfig, Config=Editor)
+UCLASS(Blueprintable, DefaultConfig, Config=Editor)
 class AKAUDIO_API UAkCheckBox : public UContentWidget {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ECheckBoxState CheckedState;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UWidget::FGetCheckBoxState CheckedStateDelegate;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FCheckBoxStyle WidgetStyle;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     TEnumAsByte<EHorizontalAlignment> HorizontalAlignment;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool IsFocusable;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkBoolPropertyToControl ThePropertyToControl;
     
-    UPROPERTY(Config, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkWwiseItemToControl ItemToControl;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkOnCheckBoxComponentStateChanged AkOnCheckStateChanged;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnWwiseItemDropDetected OnItemDropped;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnBoolPropertyDropDetected OnPropertyDropped;
     
     UAkCheckBox();
@@ -60,19 +60,19 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetAkBoolProperty(const FString& ItemProperty);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPressed() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsChecked() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ECheckBoxState GetCheckedState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FString GetAkProperty() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FGuid GetAkItemId() const;
     
 };

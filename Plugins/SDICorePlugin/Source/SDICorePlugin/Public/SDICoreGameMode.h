@@ -2,29 +2,29 @@
 #include "CoreMinimal.h"
 #include "SDIExportInterface.h"
 #include "GameFramework/GameMode.h"
-#include "SDICoreGameModePlayerLogoutDelegateDelegate.h"
-#include "SDIExportData.h"
 #include "SDICoreGameModePlayerLoginDelegateDelegate.h"
+#include "SDIExportData.h"
+#include "SDICoreGameModePlayerLogoutDelegateDelegate.h"
 #include "UObject/NoExportTypes.h"
 #include "SDICoreGameMode.generated.h"
 
-UCLASS(NonTransient)
+UCLASS(Blueprintable, NonTransient)
 class SDICOREPLUGIN_API ASDICoreGameMode : public AGameMode, public ISDIExportInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIExportData ExportData;
     
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICoreGameModePlayerLoginDelegate OnPlayerLoginDelegate;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICoreGameModePlayerLogoutDelegate OnPlayerLogoutDelegate;
     
     ASDICoreGameMode();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetServerTimestamp() const;
     
     

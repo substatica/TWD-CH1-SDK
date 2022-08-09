@@ -8,28 +8,28 @@
 class ASDIActorSpawnerNetwork;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API ASDIActorSpawnerTrigger : public ATriggerVolume {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ASDIActorSpawnerNetwork* SpawnNetwork;
     
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<AActor>> ActorsThatCanTrigger;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSpawnerTriggerEvent OnOverlapBeginEvent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSpawnerTriggerEvent OnOverlapEndEvent;
     
     ASDIActorSpawnerTrigger();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOverlapEnd(AActor* OverlappedActor, AActor* OtherActors);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActors);
     
 };

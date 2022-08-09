@@ -5,5 +5,5 @@
 
 class AActor;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActorSpawner_OnEventTrigger, FSpawnerTriggerEvent, EventInfo, TArray<AActor*>, SpawnedActors);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActorSpawner_OnEventTrigger, FSpawnerTriggerEvent, EventInfo, TArray<AActor*>, SpawnedActors);
 

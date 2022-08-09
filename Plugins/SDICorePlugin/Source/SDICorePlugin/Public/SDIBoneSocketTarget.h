@@ -8,13 +8,13 @@ USTRUCT(BlueprintType)
 struct FSDIBoneSocketTarget {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bUseSocket;
     
     UPROPERTY(EditAnywhere)
     FBoneReference BoneReference;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDISocketReference SocketReference;
     
     SDICOREPLUGIN_API FSDIBoneSocketTarget();

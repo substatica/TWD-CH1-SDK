@@ -7,20 +7,20 @@ class UAkSurfaceReflectorSetComponent;
 class UAkRoomComponent;
 class UAkLateReverbComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API AAkSpatialAudioVolume : public AVolume {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UAkSurfaceReflectorSetComponent* SurfaceReflectorSet;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UAkLateReverbComponent* LateReverb;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UAkRoomComponent* Room;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bInterior;
     
     AAkSpatialAudioVolume();

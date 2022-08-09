@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESicknessSourceType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESicknessSourceType : uint8 {
     WalkerInduced,
     Default,

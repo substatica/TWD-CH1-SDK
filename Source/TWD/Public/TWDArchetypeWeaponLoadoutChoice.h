@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct TWD_API FTWDArchetypeWeaponLoadoutChoice {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIWeaponFirearm> WeaponClass;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Chance;
     
     FTWDArchetypeWeaponLoadoutChoice();

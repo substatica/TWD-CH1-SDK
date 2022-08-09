@@ -5,5 +5,5 @@
 class ATWDGripPhysicsDoor;
 class ATWDCharacter;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FTWDGripPhysicsDoorOnInteract, ATWDGripPhysicsDoor*, Door, ATWDCharacter*, Character);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FTWDGripPhysicsDoorOnInteract, ATWDGripPhysicsDoor*, Door, ATWDCharacter*, Character);
 

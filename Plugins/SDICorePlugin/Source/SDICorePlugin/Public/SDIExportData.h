@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDIExportData {
     GENERATED_BODY()
 public:
-    UPROPERTY(VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGuid Guid;
     
     FSDIExportData();

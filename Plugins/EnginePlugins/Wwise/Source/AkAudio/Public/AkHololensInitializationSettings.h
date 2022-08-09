@@ -1,26 +1,26 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AkHololensAdvancedInitializationSettings.h"
-#include "UObject/Object.h"
 #include "AkCommonInitializationSettingsWithSampleRate.h"
+#include "UObject/Object.h"
 #include "AkCommunicationSettingsWithSystemInitialization.h"
+#include "AkHololensAdvancedInitializationSettings.h"
 #include "AkHololensInitializationSettings.generated.h"
 
-UCLASS(DefaultConfig, Config=Game)
+UCLASS(Blueprintable, DefaultConfig, Config=Game)
 class AKAUDIO_API UAkHololensInitializationSettings : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkCommonInitializationSettingsWithSampleRate CommonSettings;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkCommunicationSettingsWithSystemInitialization CommunicationSettings;
     
-    UPROPERTY(AdvancedDisplay, Config, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkHololensAdvancedInitializationSettings AdvancedSettings;
     
     UAkHololensInitializationSettings();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MigrateMultiCoreRendering(bool NewValue);
     
 };

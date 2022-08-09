@@ -6,15 +6,15 @@
 
 class AActor;
 
-UCLASS(Config=Game)
+UCLASS(Blueprintable, Config=Game)
 class UTWDCharacterSkinRegistry : public USDICoreGameInstanceSubObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<TWeakObjectPtr<AActor>, FTWDSkinSelections> SkinUsageRegistry;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<TWeakObjectPtr<AActor>, FTWDSkinSelections> SkinRestrictionRegistry;
     
 public:

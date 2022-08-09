@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "RFloat.h"
-#include "SDIExportActor.h"
 #include "SDITimestampInputButton.h"
+#include "SDIExportActor.h"
 #include "RVector.h"
 #include "SDICameraSettings.h"
+#include "RFloat.h"
 #include "UObject/NoExportTypes.h"
 #include "SDIAttachmentInfo.h"
 #include "SDICachedRigidBodyState.h"
@@ -22,72 +22,72 @@ class APawn;
 class ASDIHeldActor;
 class UCameraComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDINonVRObjectInteractionActor : public ASDIExportActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputCancelButton;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USceneComponent* MovementRoot;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USceneComponent* AttachmentRoot;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DefaultDistance;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRVector MovementClamp;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float InputMovementRate;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float InputRotationScale;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float InputRotationRate;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICameraSettings CameraSettings;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloat ActorBoundsClampForPosition;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDIInteractiveActor> CurrentActor;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTransform CachedActorTransform;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDIAttachmentInfo CachedActorAttachment;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDICachedRigidBodyState CachedActorRigidBodyState;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDIInventorySlot> CachedActorInventorySlot;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<AActor> CachedActorInventoryOwner;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bCachedActorSimulatingPhysics;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bCachedActorCollision;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bCachedActorInsideInventory;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bCachedActorTickEnabled;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bIsInteracting;
     
 public:
@@ -99,85 +99,85 @@ public:
     bool StartInteraction(ASDIInteractiveActor* Actor);
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ShowInteractionUI();
     
 public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ResetMovement();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsInteracting() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputMoveUp(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputMoveRotateYawAtRate(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputMoveRotateYaw(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputMoveRotateRollAtRate(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputMoveRotateRoll(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputMoveRotatePitchAtRate(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputMoveRotatePitch(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputMoveRight(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputMoveForward(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputCancelReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputCancelPressed();
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void HideInteractionUI();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIPlayerController* GetPlayerController() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APlayerCameraManager* GetPlayerCameraManager() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APawn* GetPawn() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSDITimestampInputButton GetInputCancelButton() const;
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     FTransform GetGripTransform(ASDIHeldActor* HeldActor) const;
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIInteractiveActor* GetCurrentActor() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetCameraActor() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UCameraComponent* GetCamera() const;
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void EndInteraction(ASDIInteractiveActor* Actor);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void BeginInteraction(ASDIInteractiveActor* Actor);
     
 public:

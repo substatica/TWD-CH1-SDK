@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EAkResult.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EAkResult : uint8 {
     NotImplemented,
     Success,

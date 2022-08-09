@@ -1,39 +1,39 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "Engine/EngineTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "Engine/LatentActionManager.h"
+#include "AkChannelMask.h"
 #include "OnAkBankCallbackDelegate.h"
+#include "Engine/LatentActionManager.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "PanningRule.h"
-#include "EAkCurveInterpolation.h"
+#include "UObject/NoExportTypes.h"
 #include "AkMultiPositionType.h"
-#include "AkChannelMask.h"
 #include "AkChannelConfiguration.h"
+#include "AkExternalSourceInfo.h"
 #include "OnSetCurrentAudioCultureCallbackDelegate.h"
 #include "OnAkPostEventCallbackDelegate.h"
-#include "AkExternalSourceInfo.h"
-#include "ERTPCValueType.h"
 #include "AkActionOnEventType.h"
+#include "ERTPCValueType.h"
+#include "Engine/EngineTypes.h"
+#include "EAkCurveInterpolation.h"
 #include "AkGameplayStatics.generated.h"
 
-class UAkComponent;
-class AActor;
 class UAkAuxBus;
+class UAkStateValue;
+class AActor;
 class UObject;
 class UAkAudioBank;
+class UAkComponent;
 class UAkAudioEvent;
+class UAkRtpc;
 class UAkAudioType;
 class UAkSwitchValue;
-class UAkStateValue;
-class UAkRtpc;
 class UAkTrigger;
 class UAkMediaAsset;
 class USceneComponent;
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkGameplayStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:

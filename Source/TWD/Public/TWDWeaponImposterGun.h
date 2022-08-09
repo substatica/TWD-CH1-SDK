@@ -3,8 +3,8 @@
 #include "Templates/SubclassOf.h"
 #include "SDIWeaponFirearm.h"
 #include "ESDIInteractiveInteractType.h"
-#include "UObject/NoExportTypes.h"
 #include "EWeaponAnimation.h"
+#include "UObject/NoExportTypes.h"
 #include "TWDWeaponImposterGun.generated.h"
 
 class ASDIHeldActor;
@@ -13,44 +13,44 @@ class USkeletalMeshComponent;
 class UAkComponent;
 class ATWDCharacter;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDWeaponImposterGun : public ASDIWeaponFirearm {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIWeaponFirearm> FirearmToSpawnOnDrop;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIHeldActor> BrokenFirearmToSpawnOnDrop;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float BrokenFirearmSpawnChance;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bReturningToInventory;
     
 public:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EWeaponAnimation WeaponAnimType;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIsRevolver;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HitAccuracyMultiplier;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere, Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USkeletalMeshComponent* Mesh;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UAkComponent* AkAudioComponent;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* FiredRoundAudioEvent;
     
     ATWDWeaponImposterGun();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool PredictFireModeTransform(ESDIInteractiveInteractType Type, FTransform& OutTransform) const;
     
     UFUNCTION(BlueprintCallable)

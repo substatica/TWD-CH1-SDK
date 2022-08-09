@@ -2,8 +2,8 @@
 #include "Components/BoxComponent.h"
 #include "Components/SceneComponent.h"
 
-class AActor;
 class ATWDPlayerInventorySlot;
+class AActor;
 class ASDIInventoryActor;
 class ASDIInventorySlot;
 

@@ -5,31 +5,31 @@
 #include "InputCoreTypes.h"
 #include "SDIVRPlayerUtil.generated.h"
 
-class ASDIPlayerHand;
 class ASDIPlayerHandBase;
 class UObject;
+class ASDIPlayerHand;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API USDIVRPlayerUtil : public USDIUtil {
     GENERATED_BODY()
 public:
     USDIVRPlayerUtil();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     static bool IsEnableOculusOnSteamVR();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ESDIVRControllerType GetVRControllerTypeTemp_RealOculusTypes();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ESDIVRControllerType GetVRControllerType();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ASDIPlayerHandBase* GetPlayerHandBase(const UObject* WorldContextObject, EControllerHand hand);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ASDIPlayerHand* GetPlayerHand(const UObject* WorldContextObject, EControllerHand hand);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString GetHMDDeviceName();
     
 };

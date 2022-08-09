@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "SDIWeaponFirearmAmmoProjectile.h"
-#include "SDITuningAttribute_TWDWeaponFirearmAmmoProjectile.h"
 #include "Curves/CurveFloat.h"
+#include "SDITuningAttribute_TWDWeaponFirearmAmmoProjectile.h"
 #include "TWDWeaponFirearmAmmoProjectile.generated.h"
 
 class ATWDWeaponFirearmAmmoProjectile;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDWeaponFirearmAmmoProjectile : public ASDIWeaponFirearmAmmoProjectile {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve DurabilityAdditionalSpreadDegrees;
     
 public:

@@ -3,15 +3,15 @@
 #include "SDIInputSplineActor.h"
 #include "TWDInputSplineActor.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDInputSplineActor : public ASDIInputSplineActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TimeDilation;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TimeDilationMaxDuration;
     
 public:

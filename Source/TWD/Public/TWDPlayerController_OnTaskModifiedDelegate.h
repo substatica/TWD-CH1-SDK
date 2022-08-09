@@ -4,5 +4,5 @@
 
 class UTWDTask;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FTWDPlayerController_OnTaskModified, UTWDTask*, Task);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FTWDPlayerController_OnTaskModified, UTWDTask*, Task);
 

@@ -1,8 +1,8 @@
 #include "SDIHingedActorHandle.h"
 
 class ASDISlidingInteractiveActor;
-class AActor;
 class ASDIHingedInteractiveActor;
+class AActor;
 
 void ASDIHingedActorHandle::SetDoorLocked(bool bNewLock) {
 }

@@ -2,10 +2,10 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class UHapticFeedbackEffect_Base;
 class ASDIWeaponFirearm;
 class USDIWeaponFirearmFireModeComponent;
 class ASDIWeaponFirearmAmmo;
+class UHapticFeedbackEffect_Base;
 class ASDIInventoryActor;
 class USDIWeaponFirearmADSComponent;
 

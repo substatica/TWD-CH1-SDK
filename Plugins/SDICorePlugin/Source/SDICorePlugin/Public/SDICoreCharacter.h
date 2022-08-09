@@ -2,13 +2,13 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "GameFramework/Character.h"
-#include "SDIAimAssistTargetInterface.h"
 #include "SDIDamageTakenReplicationInterface.h"
+#include "SDIAimAssistTargetInterface.h"
+#include "SDIInputStick.h"
 #include "SDIPooledObjectInterface.h"
 #include "SDIDamageInflictedReplicationInterface.h"
-#include "SDIPooledObjectBlueprintInterface.h"
 #include "SDIReplicatedRagdollBone.h"
-#include "SDIInputStick.h"
+#include "SDIPooledObjectBlueprintInterface.h"
 #include "SDICoreCharacterADSChangedSignatureDelegate.h"
 #include "SDIReplicatedDamageData.h"
 #include "SDIPooledObjectData.h"
@@ -19,130 +19,130 @@ class USDICoreUtilityAI;
 class APlayerController;
 class ASDIObjectPool;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API ASDICoreCharacter : public ACharacter, public ISDIDamageTakenReplicationInterface, public ISDIDamageInflictedReplicationInterface, public ISDIPooledObjectInterface, public ISDIPooledObjectBlueprintInterface, public ISDIAimAssistTargetInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USDICollisionChannelIgnoranceComponent* CapsuleCollisionIgnoranceComp;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USDICollisionChannelIgnoranceComponent* MeshCollisionIgnoranceComp;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SprintCancelMinVelocityPct;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SprintCancelTime;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SprintMinAnalogInput;
     
-    UPROPERTY(EditDefaultsOnly, Replicated)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     TArray<FSDIReplicatedRagdollBone> RepRagdollBones;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIInputStick InputMoveStick;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<USDICoreUtilityAI> UtilityAIClass;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NetObstructedCullDistanceSquared;
     
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_bRepADS)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_bRepADS, meta=(AllowPrivateAccess=true))
     bool bRepADS;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bCtrlSprint;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bCtrlSprintWasToggled;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float SprintCancelTimer;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bCtrlCrouch;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bCtrlCrouchWasToggled;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bAnyRagdollBonesUpdated;
     
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICoreCharacterADSChangedSignature ADSChangedDelegate;
     
 protected:
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_RepDamageTakenData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepDamageTakenData, meta=(AllowPrivateAccess=true))
     FSDIReplicatedDamageData RepDamageTakenData;
     
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_RepDamageInflictedData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepDamageInflictedData, meta=(AllowPrivateAccess=true))
     FSDIReplicatedDamageData RepDamageInflictedData;
     
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDIPooledObjectData PooledObjectData;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName PrimaryAimAssistSocketName;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName SecondaryAimAssistSocketName;
     
 public:
     ASDICoreCharacter();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool UtilityAIConsumingInput() const;
     
     UFUNCTION(BlueprintCallable)
     void SetADS(bool bADS);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetADS(bool bADS);
     
     UFUNCTION(BlueprintCallable)
     void ResetInputs();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void PlayerControllerDetached(APlayerController* PC);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void PlayerControllerAttached(APlayerController* PC);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepDamageTakenData(const FSDIReplicatedDamageData& OldRepDamageTakenData);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepDamageInflictedData(const FSDIReplicatedDamageData& OldRepDamageInflictedData);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_bRepADS(bool bOldRepADS);
     
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnADSChanged(bool bADS);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsThirdPerson() const;
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     bool IsInImmobileState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsFirstPerson() const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool IsADSAllowed() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsADS() const;
     
     UFUNCTION(BlueprintCallable)
@@ -187,13 +187,13 @@ public:
     UFUNCTION(BlueprintCallable)
     void InputCrouchPressed();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<USDICoreUtilityAI> GetUtilityAIClass() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSDIReplicatedDamageData GetLastDamageTaken() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSDIReplicatedDamageData GetLastDamageInflicted() const;
     
     

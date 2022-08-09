@@ -6,16 +6,16 @@ USTRUCT(BlueprintType)
 struct FAkTriangle {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint16 Point0;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint16 Point1;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint16 Point2;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint16 Surface;
     
     AKAUDIO_API FAkTriangle();

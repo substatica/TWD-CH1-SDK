@@ -8,7 +8,7 @@ struct SDICOREPLUGIN_API FSDIComponentReplacementSphere : public FSDIComponentRe
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Radius;
     
 public:

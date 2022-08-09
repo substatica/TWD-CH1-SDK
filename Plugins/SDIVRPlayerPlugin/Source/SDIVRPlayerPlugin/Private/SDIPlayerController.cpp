@@ -1,11 +1,11 @@
 #include "SDIPlayerController.h"
 #include "Templates/SubclassOf.h"
 
-class ASDIInventoryActor;
+class AActor;
 class UCurveFloat;
 class UObject;
 class UHapticFeedbackEffect_Base;
-class AActor;
+class ASDIInventoryActor;
 class ASDIPlayerHand;
 class ASDINonVRObjectInteractionActor;
 class ASDIInteractiveHighlightManager;

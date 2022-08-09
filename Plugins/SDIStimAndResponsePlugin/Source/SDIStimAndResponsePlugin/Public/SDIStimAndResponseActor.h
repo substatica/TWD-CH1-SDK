@@ -1,44 +1,44 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/EngineTypes.h"
 #include "SDIGameplayTagActor.h"
 #include "GameplayTagContainer.h"
 #include "SDIStimAndResponseInterface.h"
 #include "SDIReplicatedStimAndResponseInterfaceDataContainer.h"
 #include "SDIStimAndResponseInterfaceDataContainer.h"
 #include "SaRActorStimulusChangedSignatureDelegate.h"
-#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
 #include "GameplayTagContainer.h"
+#include "UObject/NoExportTypes.h"
 #include "SDIStimAndResponseActor.generated.h"
 
+class UPrimitiveComponent;
 class AActor;
 class UDamageType;
 class AController;
-class UPrimitiveComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISTIMANDRESPONSEPLUGIN_API ASDIStimAndResponseActor : public ASDIGameplayTagActor, public ISDIStimAndResponseInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere, ReplicatedUsing=OnRep_RepStimulusData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_RepStimulusData, meta=(AllowPrivateAccess=true))
     FSDIReplicatedStimAndResponseInterfaceDataContainer RepStimulusData;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIStimAndResponseInterfaceDataContainer StimulusData;
     
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSaRActorStimulusChangedSignature OnStimulusChangedDelegate;
     
     ASDIStimAndResponseActor();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void StimulusTick(const FGameplayTagContainer& Stimuli, float DeltaTime);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepStimulusData();
     
     

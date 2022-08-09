@@ -5,5 +5,5 @@
 
 class ATWDCharacter;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FTWDCharacter_GrappleTokenDelegate, ATWDCharacter*, Character, ETWDCharacterGrappleLocation, Location);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FTWDCharacter_GrappleTokenDelegate, ATWDCharacter*, Character, ETWDCharacterGrappleLocation, Location);
 

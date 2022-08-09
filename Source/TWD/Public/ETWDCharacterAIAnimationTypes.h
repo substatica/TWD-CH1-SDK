@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDCharacterAIAnimationTypes.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDCharacterAIAnimationTypes : uint8 {
     None,
     Vault_1m,

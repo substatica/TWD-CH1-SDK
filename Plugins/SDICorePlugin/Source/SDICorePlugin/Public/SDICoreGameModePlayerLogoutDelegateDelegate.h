@@ -5,5 +5,5 @@
 class ASDICoreGameMode;
 class APlayerController;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSDICoreGameModePlayerLogoutDelegate, ASDICoreGameMode*, GameMode, APlayerController*, PC);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSDICoreGameModePlayerLogoutDelegate, ASDICoreGameMode*, GameMode, APlayerController*, PC);
 

@@ -2,10 +2,10 @@
 
 class UWorld;
 class UTWDSaveGame;
+class UTWDGameAchievements;
 class UTWDGameProgression;
 class UTWDGeneralSaveData;
 class UTWDGameEntitlements;
-class UTWDGameAchievements;
 
 void UTWDGameInstance::TurnOnSplashScreen() {
 }

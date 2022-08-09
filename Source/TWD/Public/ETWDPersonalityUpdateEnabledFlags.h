@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ETWDPersonalityUpdateEnabledFlags.generated.h"
 
-UENUM()
-enum class ETWDPersonalityUpdateEnabledFlags {
+UENUM(BlueprintType)
+enum class ETWDPersonalityUpdateEnabledFlags : uint8 {
     ShouldCombat,
     ShouldCower,
     ShouldAggravate,

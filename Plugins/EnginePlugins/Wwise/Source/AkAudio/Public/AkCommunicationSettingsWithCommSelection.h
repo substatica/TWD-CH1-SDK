@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AkCommunicationSettings.h"
 #include "EAkCommSystem.h"
+#include "AkCommunicationSettings.h"
 #include "AkCommunicationSettingsWithCommSelection.generated.h"
 
 USTRUCT(BlueprintType)

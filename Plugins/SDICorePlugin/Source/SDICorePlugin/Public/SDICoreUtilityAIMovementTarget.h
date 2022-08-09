@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDICoreUtilityAIMovementTarget {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDICoreUtilityAITargetEntry Target;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bChangedTarget;
     
     FSDICoreUtilityAIMovementTarget();

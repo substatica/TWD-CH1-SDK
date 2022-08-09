@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDViveMovementMode.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDViveMovementMode : uint8 {
     Click,
     Hybrid,

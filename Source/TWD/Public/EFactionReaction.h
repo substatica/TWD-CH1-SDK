@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EFactionReaction.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EFactionReaction : uint8 {
     Hated,
     Disliked,

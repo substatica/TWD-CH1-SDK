@@ -15,10 +15,10 @@ class SDICOREPLUGIN_API USDIAimAssistTargetInterface : public UInterface {
 class SDICOREPLUGIN_API ISDIAimAssistTargetInterface : public IInterface {
     GENERATED_BODY()
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool IsAimAssistEnabled(const ASDICorePlayerController* PC, const FVector& ViewLocation, const FRotator& ViewRotation) const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool GetAimAssistTargetInfo(const ASDICorePlayerController* PC, const FVector& ViewLocation, const FRotator& ViewRotation, const FVector& CapsuleStart, const FVector& CapsuleEnd, float StartRadius, float EndRadius, FVector& OutLocation) const;
     
 };

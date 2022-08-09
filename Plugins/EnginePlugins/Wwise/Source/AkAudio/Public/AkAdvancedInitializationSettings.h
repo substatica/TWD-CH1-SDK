@@ -13,16 +13,16 @@ public:
     UPROPERTY(EditAnywhere)
     uint32 IO_Granularity;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TargetAutoStreamBufferLength;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool UseStreamCache;
     
     UPROPERTY(EditAnywhere)
     uint32 MaximumPinnedBytesInCache;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool EnableGameSyncPreparation;
     
     UPROPERTY(EditAnywhere)
@@ -37,13 +37,13 @@ public:
     UPROPERTY(EditAnywhere)
     uint32 MaximumHardwareTimeoutMs;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool DebugOutOfRangeCheckEnabled;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DebugOutOfRangeLimit;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkAdvancedSpatialAudioSettings SpatialAudioSettings;
     
     AKAUDIO_API FAkAdvancedInitializationSettings();

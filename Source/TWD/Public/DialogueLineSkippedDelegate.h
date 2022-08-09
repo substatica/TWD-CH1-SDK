@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "DialogueLineSkippedDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE(FDialogueLineSkipped);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE(FDialogueLineSkipped);
 

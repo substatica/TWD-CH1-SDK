@@ -5,5 +5,5 @@
 class UTWDSplineTrackEventComponent;
 class AActor;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSplineEventTriggerSignature, UTWDSplineTrackEventComponent*, Track, AActor*, Context);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSplineEventTriggerSignature, UTWDSplineTrackEventComponent*, Track, AActor*, Context);
 

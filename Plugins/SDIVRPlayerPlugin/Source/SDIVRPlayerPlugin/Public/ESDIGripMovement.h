@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESDIGripMovement.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESDIGripMovement : uint8 {
     Locked,
     Maintain,

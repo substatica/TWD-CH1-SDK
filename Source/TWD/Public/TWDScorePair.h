@@ -4,14 +4,14 @@
 
 class ATWDCharacter;
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FTWDScorePair {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Score;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     TWeakObjectPtr<ATWDCharacter> Subject;
     
     TWD_API FTWDScorePair();

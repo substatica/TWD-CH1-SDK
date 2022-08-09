@@ -1,8 +1,8 @@
 #include "SDICoreGameInstance.h"
 #include "Templates/SubclassOf.h"
 
-class UObject;
 class USDICoreGameInstanceSubObject;
+class UObject;
 class UTexture;
 
 USDICoreGameInstanceSubObject* USDICoreGameInstance::K2GetSubObject(const UObject* WorldContextObject, TSubclassOf<USDICoreGameInstanceSubObject> SubObjectClass) {

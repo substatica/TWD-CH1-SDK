@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EGlobalPerceptionSortOrder.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EGlobalPerceptionSortOrder : uint8 {
     Ascending,
     Descending,

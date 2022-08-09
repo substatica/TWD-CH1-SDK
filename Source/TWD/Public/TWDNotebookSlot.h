@@ -3,7 +3,7 @@
 #include "TWDPlayerInventorySlot.h"
 #include "TWDNotebookSlot.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDNotebookSlot : public ATWDPlayerInventorySlot {
     GENERATED_BODY()
 public:

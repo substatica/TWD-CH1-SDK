@@ -2,21 +2,21 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
+class ASDIHeldActor;
 class UTWDTask;
-class UCurveFloat;
-class ATWDCharacter;
 class ATWDPlayerCharacter;
+class UCurveFloat;
 class ATWDWeaponActor;
+class ATWDMovementTargetActor;
 class AActor;
 class UTWDSubtask;
-class UObject;
 class UTWDDialogue;
+class ATWDCharacter;
 class UAkAudioEvent;
-class ATWDMovementTargetActor;
 class UPrimitiveComponent;
-class ASDIHeldActor;
 class ASDIPlayerHand;
 class ATWDDismemberDroppedLimb;
+class UObject;
 class ATWDWeaponGun;
 class ATWDPlayerHand;
 class ATWDHMDCameraActor;

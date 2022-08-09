@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDPSVRMovementMode.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDPSVRMovementMode : uint8 {
     Fixed,
     Hybrid,

@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FTWDWeaponDismemberChance {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ETWDCharacterHitRegion, FRuntimeFloatCurve> DismemberChanceDistanceCurve;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bRequireFullChance;
     
     TWD_API FTWDWeaponDismemberChance();

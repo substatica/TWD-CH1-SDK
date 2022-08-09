@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "AkCommunicationSettings.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FAkCommunicationSettings {
     GENERATED_BODY()
 public:
@@ -18,7 +18,7 @@ public:
     UPROPERTY(EditAnywhere)
     uint16 NotificationPort;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString NetworkName;
     
     AKAUDIO_API FAkCommunicationSettings();

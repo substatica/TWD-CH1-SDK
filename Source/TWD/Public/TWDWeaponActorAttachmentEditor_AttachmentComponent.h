@@ -6,12 +6,12 @@
 
 class ATWDWeaponAttachment;
 
-UCLASS(ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class UTWDWeaponActorAttachmentEditor_AttachmentComponent : public USceneComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDWeaponAttachment> AttachmentClass;
     
 public:

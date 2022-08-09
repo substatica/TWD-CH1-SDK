@@ -5,29 +5,29 @@
 
 class ASDIWeaponFirearm;
 class UTWDCraftingTableProgression;
-class ASDIWeaponFirearmAmmo;
 class AController;
 class APawn;
 class USDIWeaponFirearmFireModeComponent;
+class ASDIWeaponFirearmAmmo;
 
-UCLASS(NonTransient)
+UCLASS(Blueprintable, NonTransient)
 class TWD_API ATWDWaveModeGameMode : public ATWDGameMode {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 BalancedWaveCount;
     
-    UPROPERTY(EditAnywhere, Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     TArray<UTWDCraftingTableProgression*> CraftingTableProgressions;
     
     ATWDWaveModeGameMode();
     UFUNCTION(BlueprintCallable)
     void SetAllWavesCompleted(bool bSet);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnFiringWeapon(AController* Controller, APawn* Pawn, ASDIWeaponFirearm* Firearm, USDIWeaponFirearmFireModeComponent* Firemode, ASDIWeaponFirearmAmmo* Ammo, int32 ShotID);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool AllWavesCompleted() const;
     
 };

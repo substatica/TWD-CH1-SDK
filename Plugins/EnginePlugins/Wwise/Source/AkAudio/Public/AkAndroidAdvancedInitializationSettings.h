@@ -10,7 +10,7 @@ public:
     UPROPERTY(EditAnywhere)
     uint32 AudioAPI;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool RoundFrameSizeToHardwareSize;
     
     AKAUDIO_API FAkAndroidAdvancedInitializationSettings();

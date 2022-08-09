@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDPersonalityTargetInfo.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDPersonalityTargetInfo : uint8 {
     HoldingRequiredInventory,
     HoldingWeapon,

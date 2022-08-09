@@ -4,5 +4,5 @@
 
 class ATWDCharacter;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FTWDCharacter_OuterRingTokenDelegate, ATWDCharacter*, Character, int32, OuterRingSlotIndex);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FTWDCharacter_OuterRingTokenDelegate, ATWDCharacter*, Character, int32, OuterRingSlotIndex);
 

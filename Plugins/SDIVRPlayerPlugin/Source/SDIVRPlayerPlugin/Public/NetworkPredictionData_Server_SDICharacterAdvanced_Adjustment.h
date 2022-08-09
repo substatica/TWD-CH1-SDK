@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct SDIVRPLAYERPLUGIN_API FNetworkPredictionData_Server_SDICharacterAdvanced_Adjustment {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector MovementSpringPosition;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector MovementSpringVelocity;
     
     FNetworkPredictionData_Server_SDICharacterAdvanced_Adjustment();

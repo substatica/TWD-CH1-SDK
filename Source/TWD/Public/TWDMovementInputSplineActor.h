@@ -5,21 +5,21 @@
 
 class ASDIMovementTargetActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDMovementInputSplineActor : public ATWDInputSplineActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VisibleMovementTargetRadius;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bOnlyToMovementTargets;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bInputFacingOnlyWithMovementTargets;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TArray<TWeakObjectPtr<ASDIMovementTargetActor>> VisibleMovementTargets;
     
 public:

@@ -6,14 +6,14 @@
 
 class ASDIThrowInputSplineActor;
 class AActor;
-class USDIWeaponHitCapsuleComponent;
-class UActorComponent;
 class USceneComponent;
+class UActorComponent;
 class UPrimitiveComponent;
 class UObject;
 class ASDIPlayerHand;
 class APawn;
 class UHapticFeedbackEffect_Base;
+class USDIWeaponHitCapsuleComponent;
 
 bool ASDIHeldActor::WasThrown() const {
     return false;

@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SaRProjectileActorStimulusChangedSignatureDelegate.h"
-#include "GameplayTagAssetInterface.h"
 #include "SDICoreProjectileActor.h"
-#include "SDIStimAndResponseInterface.h"
-#include "SDIReplicatedStimAndResponseInterfaceDataContainer.h"
 #include "GameplayTagContainer.h"
+#include "SDIStimAndResponseInterface.h"
+#include "GameplayTagAssetInterface.h"
+#include "SaRProjectileActorStimulusChangedSignatureDelegate.h"
+#include "SDIReplicatedStimAndResponseInterfaceDataContainer.h"
 #include "SDIDynamicGameplayTagAssetInterface.h"
 #include "Engine/EngineTypes.h"
 #include "GameplayTagContainer.h"
@@ -14,37 +14,37 @@
 #include "GameplayTagContainer.h"
 #include "SDIStimAndResponseProjectileActor.generated.h"
 
+class UPrimitiveComponent;
 class AActor;
 class UDamageType;
 class AController;
-class UPrimitiveComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISTIMANDRESPONSEPLUGIN_API ASDIStimAndResponseProjectileActor : public ASDICoreProjectileActor, public ISDIStimAndResponseInterface, public IGameplayTagAssetInterface, public ISDIDynamicGameplayTagAssetInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGameplayTagContainer GameplayTagContainer;
     
-    UPROPERTY(EditAnywhere, ReplicatedUsing=OnRep_RepStimulusData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_RepStimulusData, meta=(AllowPrivateAccess=true))
     FSDIReplicatedStimAndResponseInterfaceDataContainer RepStimulusData;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIStimAndResponseInterfaceDataContainer StimulusData;
     
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSaRProjectileActorStimulusChangedSignature OnStimulusChangedDelegate;
     
     ASDIStimAndResponseProjectileActor();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void StimulusTick(const FGameplayTagContainer& Stimuli, float DeltaTime);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepStimulusData();
     
     

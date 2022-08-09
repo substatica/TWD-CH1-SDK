@@ -6,12 +6,12 @@
 #include "UObject/NoExportTypes.h"
 #include "SDIExportActor.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API ASDIExportActor : public AActor, public ISDIExportInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIExportData ExportData;
     
 public:

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETaskResult.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETaskResult : uint8 {
     Completed,
     Failed,

@@ -1,183 +1,183 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "TWDTimeDilationActorData.h"
 #include "SDIWeaponFirearm.h"
-#include "RIntExp.h"
 #include "TWDSeamlessTravelActorInterface.h"
 #include "TWDInventoryActorInterface.h"
 #include "TWDTimeDilationActorInterface.h"
 #include "TWDDurabilityInterface.h"
 #include "TWDInteractiveHighlightInterface.h"
 #include "TWDInventoryActorBlueprintInterface.h"
+#include "ETWDNonVREquipmentType.h"
+#include "SDICurveAnimation.h"
 #include "TWDInventoryActorInterfaceData.h"
-#include "SDICameraSwaySettings.h"
 #include "TWDReplicatedInventoryActorInterfaceData.h"
+#include "SDITuningAttribute_TWDWeaponGun.h"
 #include "TWDReplicatedDurabilityInterfaceData.h"
 #include "TWDDurabilityInterfaceData.h"
-#include "ETWDNonVREquipmentType.h"
-#include "SDITuningAttribute_TWDWeaponGun.h"
+#include "TWDTimeDilationActorData.h"
+#include "Engine/EngineTypes.h"
+#include "SDICameraSwaySettings.h"
 #include "RFloatExp.h"
 #include "Curves/CurveFloat.h"
-#include "SDICurveAnimation.h"
-#include "UObject/NoExportTypes.h"
+#include "RIntExp.h"
 #include "SDIComponentReplacement.h"
 #include "EWeaponAnimation.h"
+#include "UObject/NoExportTypes.h"
 #include "ESDIInteractiveInteractType.h"
-#include "Engine/EngineTypes.h"
 #include "ETWDLootType.h"
 #include "ETWDInventoryType.h"
 #include "TWDWeaponGun.generated.h"
 
-class UPrimitiveComponent;
 class UTWDAutoTickAkComponent;
 class UTWDWeaponShoveComponent;
 class USceneComponent;
 class UHapticFeedbackEffect_Base;
-class ATWDWeaponGun;
 class UCapsuleComponent;
 class USDIAsyncOverlapEventGeneratorComponent;
 class UArrowComponent;
+class ATWDWeaponActorAttachmentEditor;
 class UAkAudioEvent;
 class ASDIInventoryActor;
 class ATWDAmmoProp;
-class ATWDCharacter;
 class ATWDProp;
-class ATWDWeaponActorAttachmentEditor;
+class ATWDWeaponGun;
 class AActor;
 class ASDIWeaponFirearmAmmo;
+class UPrimitiveComponent;
+class ATWDCharacter;
 class ATWDBackpack;
 class ASDIInventorySlot;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDWeaponGun : public ASDIWeaponFirearm, public ITWDSeamlessTravelActorInterface, public ITWDInventoryActorInterface, public ITWDTimeDilationActorInterface, public ITWDInteractiveHighlightInterface, public ITWDDurabilityInterface, public ITWDInventoryActorBlueprintInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UTWDAutoTickAkComponent* AkAudioComponent;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UTWDWeaponShoveComponent* WeaponShoveComp;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDInventoryActorInterfaceData TWDInventoryData;
     
-    UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_RepTWDInventoryData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_RepTWDInventoryData, meta=(AllowPrivateAccess=true))
     FTWDReplicatedInventoryActorInterfaceData RepTWDInventoryData;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDDurabilityInterfaceData TWDDurabilityData;
     
-    UPROPERTY(ReplicatedUsing=OnRep_RepTWDDurabilityData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_RepTWDDurabilityData, meta=(AllowPrivateAccess=true))
     FTWDReplicatedDurabilityInterfaceData RepTWDDurabilityData;
     
-    UPROPERTY(EditAnywhere, Replicated)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FTWDTimeDilationActorData RepTimeDilationData;
     
-    UPROPERTY(EditAnywhere, Replicated)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FTWDTimeDilationActorData RepPlayerTimeDilationData;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FireNoiseRadius;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USceneComponent* ReloadClipLocation;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UHapticFeedbackEffect_Base* ReloadClipFeedback;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UCapsuleComponent* ReloadCollision;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USDIAsyncOverlapEventGeneratorComponent* ReloadCollisionOverlapGenerator;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UArrowComponent* ReloadDirection;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ReloadConeAngle;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* FiredRoundAudioEvent;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* DryFireAudioEvent;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* JammedFireAudioEvent;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICameraSwaySettings NonVRWindedGunAimSway;
     
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDAmmoProp> ReloadAmmoPropClass;
     
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TArray<TWeakObjectPtr<ATWDAmmoProp>> ActiveAmmoProps;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bReloadWithSingleRound;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloatExp DurabilityCostPerShot;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve DurabilityJamChance;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve DurabilityAdditionalSpreadDegrees;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRIntExp DurabilityUnJamActionCount;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDProp> BrokenReplacementPropClass;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICurveAnimation ADSAccuracyCurveAnim;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve FiringAccuracyCurve;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICurveAnimation WindedAccuracyModifierCurveAnim;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDWeaponActorAttachmentEditor* AttachmentEditor;
     
-    UPROPERTY(BlueprintReadOnly, Transient, ReplicatedUsing=OnRep_bRepGunJammed)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_bRepGunJammed, meta=(AllowPrivateAccess=true))
     bool bRepGunJammed;
     
-    UPROPERTY(BlueprintReadOnly, Replicated, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     int32 RepDurabilityUnJamActionCounter;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDIComponentReplacement ReloadClipLocationReplacement;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDIComponentReplacement ReloadDirectionReplacement;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<float> FiringAccuracyCurveTimes;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float CurrentAccuracy;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bAccuracyIsAnimating;
     
 public:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EWeaponAnimation WeaponAnimType;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIsRevolver;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bPlatformDoEjectClipOnDryFire;
     
     ATWDWeaponGun();
@@ -201,20 +201,20 @@ public:
     void SetAkAudioComponentRTPCValue(const FString& RTPC, float Value, int32 InterpolationTimeMs);
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetJammed(bool bJammed, int32 UnJamActionCounter);
     
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerSetInventorySlotIdx_IFC(uint8 InventorySlotIdx);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerDropAmmoProp(int32 AmmoToDrop, AActor* PropOwner, const FTransform& DropTransform);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ReloadSingleRound(TSubclassOf<ASDIWeaponFirearmAmmo> AmmoClass, int32 NewAmmoCount);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool PredictFireModeTransform(ESDIInteractiveInteractType Type, FTransform& OutTransform) const;
     
     UFUNCTION(BlueprintCallable)
@@ -224,16 +224,16 @@ public:
     bool PerformUnJamAction();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTWDInventoryData_Timer();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTWDInventoryData(const FTWDReplicatedInventoryActorInterfaceData& OldRepTWDInventoryData);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTWDDurabilityData(const FTWDReplicatedDurabilityInterfaceData& OldRepTWDDurabilityData);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnRep_bRepGunJammed(bool OldbRepGunJammed);
     
 public:
@@ -243,40 +243,40 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnReloadCollisionBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool NeedsReloading() const;
     
     UFUNCTION(BlueprintCallable)
     bool IsThreat(ATWDCharacter* Character);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsJammed() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsHipFiring() const;
     
     UFUNCTION(BlueprintCallable)
     bool IsHighThreat(ATWDCharacter* Character);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCompatibleAmmoProp(const ATWDAmmoProp* AmmoProp) const;
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     bool IsClipEjectedOrChamberOpen() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetReloadWithSingleRound() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetAmmoPropCurrencyCount() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<ASDIInventoryActor> GetAmmoPropCurrencyClass() const;
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     bool CanBeLoaded() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool AkAudioComponentHasActiveEvents() const;
     
     

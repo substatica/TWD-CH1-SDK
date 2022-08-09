@@ -8,5 +8,5 @@
 class AActor;
 class UObject;
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE_EightParams(FSDIStructuresTargetSearchBetterThanDynamicDelegate, const FSDITargetSearchEntry&, Entry, const FSDITargetSearchEntry&, Other, const AActor*, Searcher, const UObject*, SearchData, const FTransform&, SearchTransform, const FSDITransformCollisionShape&, InnerShape, const FSDITransformCollisionShape&, OuterShape, bool&, bRetVal);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE_EightParams(FSDIStructuresTargetSearchBetterThanDynamicDelegate, const FSDITargetSearchEntry&, Entry, const FSDITargetSearchEntry&, Other, const AActor*, Searcher, const UObject*, SearchData, const FTransform&, SearchTransform, const FSDITransformCollisionShape&, InnerShape, const FSDITransformCollisionShape&, OuterShape, bool&, bRetVal);
 

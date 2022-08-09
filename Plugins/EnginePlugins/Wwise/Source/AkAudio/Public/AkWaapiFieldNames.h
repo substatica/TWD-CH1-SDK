@@ -6,7 +6,7 @@ USTRUCT(BlueprintType)
 struct AKAUDIO_API FAkWaapiFieldNames {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString FieldName;
     
     FAkWaapiFieldNames();

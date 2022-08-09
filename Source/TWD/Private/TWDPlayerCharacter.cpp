@@ -1,16 +1,16 @@
 #include "TWDPlayerCharacter.h"
 #include "Net/UnrealNetwork.h"
-#include "PhysicsEngine/PhysicsConstraintComponent.h"
-#include "TWDWidgetComponent.h"
-#include "Components/SceneComponent.h"
 #include "Components/ChildActorComponent.h"
+#include "PhysicsEngine/PhysicsConstraintComponent.h"
+#include "Components/SceneComponent.h"
 #include "SDIPlayerVoiceAkComponent.h"
+#include "TWDWidgetComponent.h"
 
+class ASDIInteractiveActor;
 class ATWDPlayerCharacter;
 class ATWDWeaponActor;
 class ASDIInventoryActor;
 class UTWDSaveGame;
-class ASDIInteractiveActor;
 class AActor;
 class ATWDWeaponGun;
 

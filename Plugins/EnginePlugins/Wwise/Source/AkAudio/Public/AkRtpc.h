@@ -3,7 +3,7 @@
 #include "AkAudioType.h"
 #include "AkRtpc.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkRtpc : public UAkAudioType {
     GENERATED_BODY()
 public:

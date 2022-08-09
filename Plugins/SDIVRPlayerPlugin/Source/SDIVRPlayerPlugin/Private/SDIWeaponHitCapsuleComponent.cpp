@@ -1,9 +1,9 @@
 #include "SDIWeaponHitCapsuleComponent.h"
 
-class ASDIHeldActor;
+class UPrimitiveComponent;
 class USceneComponent;
 class UAkComponent;
-class UPrimitiveComponent;
+class ASDIHeldActor;
 class AActor;
 class ASDIPlayerHand;
 class USDIWeaponHitCapsuleComponent;

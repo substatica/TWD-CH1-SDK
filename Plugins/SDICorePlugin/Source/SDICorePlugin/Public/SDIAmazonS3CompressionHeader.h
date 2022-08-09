@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "SDIAmazonS3CompressionHeader.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FSDIAmazonS3CompressionHeader {
     GENERATED_BODY()
 public:

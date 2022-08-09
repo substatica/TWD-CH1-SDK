@@ -1,46 +1,46 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TWDDismemberDroppedLimb.h"
-#include "ETWDCharacterHitRegion.h"
 #include "TWDDismemberData.h"
+#include "TWDDismemberDroppedLimb.h"
 #include "SpawnableBouquetElement.h"
+#include "ETWDCharacterHitRegion.h"
 #include "TWDDismemberDroppedLimbAdvanced.generated.h"
 
 class ATWDCharacter;
 class UPhysicsConstraintComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDDismemberDroppedLimbAdvanced : public ATWDDismemberDroppedLimb {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<ETWDCharacterHitRegion, FTWDDismemberData> DismemberData;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     uint32 SeveredTorsoExtremityMask;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     TArray<UPhysicsConstraintComponent*> SplayConstraintComponents;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSpawnableBouquetElement> DeferredBouquetElements;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bShowAdvancedWoundDebugInfo;
     
 public:
     ATWDDismemberDroppedLimbAdvanced();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SpawnDeferredSeverBouquetElements(ATWDCharacter* SourceCharacter);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetShowAdvancedWoundDebugInfo(bool bShow);
     
     UFUNCTION(BlueprintCallable)
     void EndSplay(ATWDCharacter* SourceCharacter);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void DeferSeverBouquetElement(FSpawnableBouquetElement& E);
     
 };

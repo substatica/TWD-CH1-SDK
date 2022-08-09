@@ -3,7 +3,7 @@
 #include "Animation/AnimNotifies/AnimNotify.h"
 #include "TWDAnimNotify_EquipmentAction.generated.h"
 
-UCLASS(CollapseCategories)
+UCLASS(Blueprintable, CollapseCategories)
 class UTWDAnimNotify_EquipmentAction : public UAnimNotify {
     GENERATED_BODY()
 public:

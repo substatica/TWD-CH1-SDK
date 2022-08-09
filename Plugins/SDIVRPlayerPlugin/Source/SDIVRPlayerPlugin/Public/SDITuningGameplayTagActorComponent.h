@@ -2,17 +2,17 @@
 #include "CoreMinimal.h"
 #include "SDITuningActorComponent.h"
 #include "GameplayTagAssetInterface.h"
-#include "GameplayTagContainer.h"
 #include "SDIDynamicGameplayTagAssetInterface.h"
+#include "GameplayTagContainer.h"
 #include "GameplayTagContainer.h"
 #include "SDITuningGameplayTagActorComponent.generated.h"
 
-UCLASS(BlueprintType, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class SDIVRPLAYERPLUGIN_API USDITuningGameplayTagActorComponent : public USDITuningActorComponent, public IGameplayTagAssetInterface, public ISDIDynamicGameplayTagAssetInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGameplayTagContainer GameplayTagContainer;
     
 public:

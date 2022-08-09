@@ -2,36 +2,36 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "GameFramework/Pawn.h"
-#include "SDISkinReplicationData.h"
-#include "SDISkinnedActorBlueprintInterface.h"
 #include "SDISkinnedActorInterface.h"
+#include "SDISkinnedActorBlueprintInterface.h"
+#include "SDISkinReplicationData.h"
 #include "SDISkinDynamicData.h"
-#include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "Components/PrimitiveComponent.h"
+#include "UObject/NoExportTypes.h"
 #include "SDISkinnedPawn.generated.h"
 
-class USDISkinObject;
 class USceneComponent;
 class UObject;
+class USDISkinObject;
+class UPrimitiveComponent;
 class UTexture;
 class UMaterialInterface;
-class UPrimitiveComponent;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISKINPLUGIN_API ASDISkinnedPawn : public APawn, public ISDISkinnedActorInterface, public ISDISkinnedActorBlueprintInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_ReplicatedSkinData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_ReplicatedSkinData, meta=(AllowPrivateAccess=true))
     FSDISkinReplicationData ReplicatedSkinData;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDISkinDynamicData DynamicSkinData;
     
-    UPROPERTY(BlueprintReadWrite, Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USceneComponent* SkinComponent;
     
 public:
@@ -39,10 +39,10 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetSkin_IFC(TSubclassOf<USDISkinObject> SkinClass, bool bForceUpdate, bool bForceReInit);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ReplicatedSkinData(const FSDISkinReplicationData& OldReplicatedSkinData);
     
     

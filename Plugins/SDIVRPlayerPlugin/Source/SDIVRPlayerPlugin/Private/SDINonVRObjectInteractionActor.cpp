@@ -4,9 +4,9 @@
 class ASDIPlayerController;
 class ASDIInteractiveActor;
 class APlayerCameraManager;
-class AActor;
-class APawn;
 class ASDIHeldActor;
+class APawn;
+class AActor;
 class UCameraComponent;
 
 void ASDINonVRObjectInteractionActor::StopInteraction() {

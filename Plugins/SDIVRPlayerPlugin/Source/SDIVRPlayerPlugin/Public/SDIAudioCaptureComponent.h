@@ -5,16 +5,16 @@
 
 class USDIPlayerVoiceAkComponent;
 
-UCLASS(ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class SDIVRPLAYERPLUGIN_API USDIAudioCaptureComponent : public USynthComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 SampleRate;
     
 public:
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USDIPlayerVoiceAkComponent* PlayerVoiceAkComponent;
     
     USDIAudioCaptureComponent();

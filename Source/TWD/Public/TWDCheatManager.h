@@ -1,23 +1,23 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "EFaction.h"
 #include "SDICheatManager.h"
-#include "EMapTerritoryNodeType.h"
 #include "EGender.h"
 #include "EGlobalPerceptionSortSubject.h"
-#include "EFaction.h"
+#include "EMapTerritoryNodeType.h"
 #include "TWDCheatManager.generated.h"
 
 class ASDIInventoryActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class UTWDCheatManager : public USDICheatManager {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSoftClassPtr<ASDIInventoryActor>, int32> CheatTestInventoryItems;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSet<TSoftClassPtr<ASDIInventoryActor>> WeaponPileClasses;
     
 public:
@@ -34,16 +34,16 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SetDemiGod(bool bEnable);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool NoPlayerDeath();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool NoGrappling();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool NoDurabilityLoss();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void LoadEvents(const TArray<FString>& EventCodes, bool bClearCurrentEvents, bool bOverrideConflicts);
     
     UFUNCTION(BlueprintCallable)
@@ -58,286 +58,286 @@ public:
     UFUNCTION(BlueprintCallable)
     static bool IsDemiGod();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IgnorePlayer();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool FlashlightInfinite();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatUnlockAllMapNodes();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleStimulusSharing();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleRevivePlayer();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatTogglePhysicalCrouch();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatTogglePauseAlwaysAllowed();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatTogglePauseAI();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleNoteConsumption();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleLightDependentSightStim();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleInvisibleToAI();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleHMDCollisions();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleGPDSortOrder() const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleGoofyModeTurbo();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleGoofyModeLowGravity();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleGlobalPerceptionDisplay() const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleDisplayLightData();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleDisplayAIPerception();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleAISuspicionInfo();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatToggleAICombatRingDebugDraw() const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatTeleport(float X, float Y, float Z);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSuicide();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSpawnWeaponPile();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatShowNoiseEventSpheres(bool bEnabled, float Duration, bool bUseRandomColor);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetUserPlayMode(int32 Mode);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetSeedString(const FString& SeedString);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetSeed(int32 Seed);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetPlayerHasTraveledToday(bool bHasTraveled);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetPlayerGender(EGender Gender);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetPhysicalUnCrouchThreshold(float Threshold);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetPhysicalCrouchDistance(float Distance);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetNoDurabilityLoss(bool bNewNoDurabilityLoss);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetMaxGPD(int32 NumLines) const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetHealth(float Health);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetGripInputMode(int32 Mode);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetGPDSortSubject(EGlobalPerceptionSortSubject SortSubject) const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSetDay(int32 Day);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSaveGame();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatSaveCustomGame(const FString& CustomSaveName);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatRushBells(float NewDelay);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatResetHighScores();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatResetAchievements();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatReportNoiseEvent(float MaxRange, float Loudness, bool bUsePlayerLocation, float XWorldSpaceLoc, float YWorldSpaceLoc, float ZWorldSpaceLoc, FName Tag);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatRemoveCharacterContext(const FString& CharacterName, const FString& Key) const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatPrintFactionReputation(EFaction Faction);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatPrintCharacterContext(const FString& CharacterName) const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatPrintCharacterBarkHistory(const FString& CharacterName) const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatPrintBarkState() const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatPlayDialogue(const FString& CharacterName, const FString& DialogueName);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatPlayBark(const FString& CharacterName, const FString& EventName) const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatNoPlayerDeath();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatNoGrappling();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatNoDurabilityLoss();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatNoAI();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatMaxOutCraftingTables();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatLogNoiseEvents(bool bEnabled);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatLoadGame();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatLoadEvents(const FString& EventString, bool bClearCurrentEvents, bool bOverrideConflicts);
     
-    UFUNCTION(BlueprintImplementableEvent, Exec)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Exec)
     void CheatLoadDebugGame(const FString& EventKey);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatLoadCustomGame(const FString& CustomSaveName);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatInfiniteStamina();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatIgnorePlayer();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatGripLock();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatGodMode();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatFlashlightInfinite(bool bInfinite);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatFavorSync();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatFavorSetLocalForTerritory(float NewFavor, EMapTerritoryNodeType Territory);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatFavorSetLocal(float NewFavor);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatFavorSetGlobal(float NewFavor);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatFavorSetEnabled(bool bEnabled);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatFavorPrint();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatFavorClearLocal();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatFavorAlterLocalForTerritory(float FavorDelta, EMapTerritoryNodeType Territory);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatFavorAlterLocal(float FavorDelta);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatFavorAlterGlobal(float FavorDelta);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatEvaluateCriteria_Player(const FString& Criteria);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatEnableSpectatorScreenHUD(bool bEnable);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatEnableScreenMessage(bool enable);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatEnableNightTravel(bool bEnable);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatDisplaySightStimCalculations();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatDisplayFootstepSounds();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatDemiGod();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatDeleteGame();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatClearCharacterBarkHistory(const FString& CharacterName) const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatBreakGrapples();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatAllowAutoSaving(bool bEnable);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatAddTestInventory();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatAddPlayerContext_Bool(const FString& Key, bool bValue);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatAddFactionReputation(EFaction Faction, float Reputation);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatAddCharacterContextString(const FString& CharacterName, const FString& Key, const FString& Value) const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatAddCharacterContextInt(const FString& CharacterName, const FString& Key, int32 Value) const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatAddCharacterContextFloat(const FString& CharacterName, const FString& Key, float Value) const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatAddCharacterContextBool(const FString& CharacterName, const FString& Key, bool bValue) const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatActivateStealthMode();
     
 };

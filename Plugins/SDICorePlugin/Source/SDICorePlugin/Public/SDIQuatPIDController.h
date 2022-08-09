@@ -9,10 +9,10 @@ struct SDICOREPLUGIN_API FSDIQuatPIDController : public FSDIPIDControllerSetting
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FQuat Integral;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FQuat PreviousError;
     
 public:

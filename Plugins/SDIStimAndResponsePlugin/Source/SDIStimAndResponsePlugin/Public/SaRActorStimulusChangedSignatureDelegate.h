@@ -5,5 +5,5 @@
 
 class ASDIStimAndResponseActor;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams(FSaRActorStimulusChangedSignature, ASDIStimAndResponseActor*, Actor, const FGameplayTagContainer&, OldStimuli, const FGameplayTagContainer&, NewStimuli, const FGameplayTagContainer&, AddedStimuli, const FGameplayTagContainer&, RemovedStimuli);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams(FSaRActorStimulusChangedSignature, ASDIStimAndResponseActor*, Actor, const FGameplayTagContainer&, OldStimuli, const FGameplayTagContainer&, NewStimuli, const FGameplayTagContainer&, AddedStimuli, const FGameplayTagContainer&, RemovedStimuli);
 

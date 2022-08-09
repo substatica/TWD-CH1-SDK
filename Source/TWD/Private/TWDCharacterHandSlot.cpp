@@ -1,7 +1,7 @@
 #include "TWDCharacterHandSlot.h"
+#include "Components/StaticMeshComponent.h"
 #include "Components/SceneComponent.h"
 #include "Components/CapsuleComponent.h"
-#include "Components/StaticMeshComponent.h"
 
 ATWDCharacterHandSlot::ATWDCharacterHandSlot() {
     this->SlotRoot = CreateDefaultSubobject<USceneComponent>(TEXT("SlotRoot"));

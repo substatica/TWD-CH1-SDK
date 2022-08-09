@@ -5,8 +5,8 @@
 #include "Components/ArrowComponent.h"
 
 class ASDICharacter;
-class ASDIMovementTargetActor;
 class UPrimitiveComponent;
+class ASDIMovementTargetActor;
 
 void ASDIMovementTargetActor::UpdateMovementHighlightTransform_Implementation(ASDICharacter* Character, const FTransform& Transform) {
 }

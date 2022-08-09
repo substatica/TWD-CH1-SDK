@@ -3,7 +3,7 @@
 #include "Engine/GameEngine.h"
 #include "SDICoreGameEngine.generated.h"
 
-UCLASS(NonTransient)
+UCLASS(Blueprintable, NonTransient)
 class SDICOREPLUGIN_API USDICoreGameEngine : public UGameEngine {
     GENERATED_BODY()
 public:

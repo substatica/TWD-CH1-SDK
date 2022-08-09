@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ETWDInventoryType.h"
-#include "UObject/NoExportTypes.h"
 #include "SDIInventorySlot.h"
+#include "UObject/NoExportTypes.h"
+#include "ETWDInventoryType.h"
 #include "UObject/NoExportTypes.h"
 #include "ETWDPlayerCharacterTickInventory.h"
 #include "InventorySlotContentChangedDelegate.h"
@@ -11,109 +11,109 @@
 #include "InputCoreTypes.h"
 #include "TWDPlayerInventorySlot.generated.h"
 
+class ASDIInventoryActor;
 class UCapsuleComponent;
 class UStaticMeshComponent;
 class UMaterialInstanceDynamic;
 class ATWDBackpack;
 class ASDIPlayerHand;
-class ASDIInventoryActor;
 class ASDIHeldActor;
-class UMaterialInterface;
 class AActor;
+class UMaterialInterface;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDPlayerInventorySlot : public ASDIInventorySlot {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UCapsuleComponent* SlotCollision;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ETWDInventoryType InventoryType;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector InventoryReplacementDropOffset;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIgnoreSlotScale;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bUpdateVisualOnTick;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bPlayInvalidNotificationOnOverlap;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor UIIndicator_SlotFullColor;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor UIIndicator_DefaultColor;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UIIndicator_SlotFullOpacity;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UIIndicator_HighlightOpacity;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UIIndicator_DefaultOpacity;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ETWDPlayerCharacterTickInventory InventorySlotTickGroup;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDBackpack* BackpackOwner;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<ETWDInventoryType> LimitTheseTypes;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInstanceDynamic* UIIndicator;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<ASDIPlayerHand*> OverlappingHands;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ASDIInventoryActor* PendingInventory;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bSlotFull;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bInvalidItem;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bValidItem;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bHighlightValid;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bMeshHighlighted;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bInteractionHighlight;
     
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FInventorySlotContentChanged OnCurrentInventoryChanged;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ASDIHeldActor* LeftHeldActor;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ASDIHeldActor* RightHeldActor;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDIInventoryActor> PreviousInventory;
     
 protected:
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* SlotMesh;
     
 private:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ESlotType SlotType;
     
     UPROPERTY(EditAnywhere)
@@ -121,7 +121,7 @@ private:
     
 public:
     ATWDPlayerInventorySlot();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool WasSlotRecentlyRendered(float Tolerance) const;
     
     UFUNCTION(BlueprintCallable)
@@ -142,28 +142,28 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetSlotActive(bool bActive);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnUpdateValidState();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnMeshHighlightedChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnHeldActorGrabbed(ASDIHeldActor* HeldActor, AActor* GrabbedBy, EControllerHand hand, ASDIPlayerHand* PlayerHand);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnHeldActorDropped(ASDIHeldActor* HeldActor, AActor* GrabbedBy, EControllerHand hand, ASDIPlayerHand* PlayerHand);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnHeldActorChanged(bool bValidHeldActorExists, ASDIHeldActor* LeftHandHeldActor, ASDIHeldActor* RightHandHeldActor);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool IsValidInventory(ASDIInventoryActor* Inventory);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsActiveInventorySlot() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool InventoryTypeAllowed(ASDIInventoryActor* Inv) const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)

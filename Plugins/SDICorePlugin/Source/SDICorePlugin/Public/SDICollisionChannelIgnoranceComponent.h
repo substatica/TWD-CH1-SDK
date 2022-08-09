@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SDICollisionResponseRefCount.h"
-#include "Components/ActorComponent.h"
-#include "SDIPooledObjectData.h"
-#include "Engine/EngineTypes.h"
 #include "SDIPooledObjectInterface.h"
+#include "Components/ActorComponent.h"
 #include "Engine/EngineTypes.h"
+#include "SDICollisionResponseRefCount.h"
+#include "Engine/EngineTypes.h"
+#include "SDIPooledObjectData.h"
 #include "Engine/EngineTypes.h"
 #include "SDICollisionChannelIgnoranceComponent.generated.h"
 
@@ -14,31 +14,31 @@ class AActor;
 class USDICollisionChannelIgnoranceComponent;
 class ASDIObjectPool;
 
-UCLASS(BlueprintType, EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class SDICOREPLUGIN_API USDICollisionChannelIgnoranceComponent : public UActorComponent, public ISDIPooledObjectInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Export, Transient)
+    UPROPERTY(EditAnywhere, Export, Transient)
     TWeakObjectPtr<UPrimitiveComponent> WeakCollisionComponent;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bDynamicallyCreated;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<TEnumAsByte<ECollisionChannel>, FSDICollisionResponseRefCount> ChannelIgnoranceMap;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<TWeakObjectPtr<UPrimitiveComponent>, TEnumAsByte<ECollisionChannel>> ComponentIgnoranceMap;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<TEnumAsByte<ECollisionChannel>, TEnumAsByte<ECollisionResponse>> ClearanceMap;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTimerHandle StaleIgnoranceTimerHandle;
     
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDIPooledObjectData PooledObjectData;
     
 public:
@@ -61,7 +61,7 @@ public:
     UFUNCTION(BlueprintPure)
     bool K2IsIgnoringChannel(TEnumAsByte<ECollisionChannel> Channel, int32& OutRefCount) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsIgnoringComponent(UPrimitiveComponent* OtherComp) const;
     
     UFUNCTION(BlueprintCallable)
@@ -76,10 +76,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void IgnoreActorUntilClear(AActor* OtherActor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<UPrimitiveComponent*> GetIgnoredComponents() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UPrimitiveComponent* GetCollisionComponent() const;
     
     UFUNCTION(BlueprintCallable)
@@ -95,7 +95,7 @@ public:
     void ClearAllComponentIgnorances(bool bWaitForClearance);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void CleanupStaleIgnorancesCallback();
     
 public:

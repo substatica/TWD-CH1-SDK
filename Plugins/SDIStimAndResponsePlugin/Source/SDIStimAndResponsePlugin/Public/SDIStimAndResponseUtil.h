@@ -1,22 +1,22 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SDIUtil.h"
 #include "SDICollisionShape.h"
 #include "Engine/EngineTypes.h"
 #include "GameplayTagContainer.h"
+#include "SDIUtil.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "GameplayTagContainer.h"
 #include "SDIStimAndResponseUtil.generated.h"
 
-class USceneComponent;
-class UDamageType;
 class UObject;
 class ASDIGameplayTagActor;
+class USceneComponent;
 class AActor;
 class UPrimitiveComponent;
+class UDamageType;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISTIMANDRESPONSEPLUGIN_API USDIStimAndResponseUtil : public USDIUtil {
     GENERATED_BODY()
 public:
@@ -27,7 +27,7 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     static void UpdateOverlapStimuli(UObject* Object);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool SupportsGameplayTags(UObject* Object);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
@@ -45,10 +45,10 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     static bool OverlapStimuli(const UObject* WorldContextObject, const FGameplayTagContainer& Stimuli, const FTransform& Transform, FVector Extent, FName CollisionProfileName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static void K2GetOwnedGameplayTagsIncludingComponents(AActor* Actor, FGameplayTagContainer& TagContainer);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool K2GetOwnedGameplayTags(UObject* Object, FGameplayTagContainer& TagContainer);
     
     UFUNCTION(BlueprintCallable)

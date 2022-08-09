@@ -4,39 +4,39 @@
 #include "ESDIUtilityAIDifficulty.h"
 #include "SDICoreCheatManager.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API USDICoreCheatManager : public UCheatManager {
     GENERATED_BODY()
 public:
     USDICoreCheatManager();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool NoRecoil();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool NoAmmoDeduction();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool InfiniteAmmoCheatEnabled();
     
     UFUNCTION(Exec)
     void CheatSetMonkeyMode(uint8 NewMonkeyMode, ESDIUtilityAIDifficulty NewMonkeyDifficulty);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatNoRecoil();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatNoAmmoDeduction();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatInfiniteAmmo();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatForceServerCrash(float Delay);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatForceGarbageCollection(bool bFullPurge);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatForceCrash(float Delay);
     
 };

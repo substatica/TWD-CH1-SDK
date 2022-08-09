@@ -1,27 +1,27 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UObject/NoExportTypes.h"
 #include "SDICoreGameInstanceSubObject.h"
 #include "SDIObjectPoolManagerEntry.h"
+#include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "SDIObjectPoolManager.generated.h"
 
 class UObject;
 class ASDIObjectPool;
 
-UCLASS(Config=Game)
+UCLASS(Blueprintable, Config=Game)
 class SDICOREPLUGIN_API USDIObjectPoolManager : public USDICoreGameInstanceSubObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Config, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bEnablePooling;
     
-    UPROPERTY(Config, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDIObjectPoolManagerEntry> Pools;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<UClass*, ASDIObjectPool*> PoolMap;
     
 public:

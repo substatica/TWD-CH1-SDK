@@ -1,17 +1,17 @@
 #include "TWDWeaponGun.h"
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
-#include "Components/CapsuleComponent.h"
+#include "SDIAsyncOverlapEventGeneratorComponent.h"
 #include "TWDAutoTickAkComponent.h"
 #include "TWDWeaponShoveComponent.h"
 #include "Components/SceneComponent.h"
-#include "SDIAsyncOverlapEventGeneratorComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "Components/ArrowComponent.h"
 
 class ATWDWeaponGun;
-class UAkAudioEvent;
 class AActor;
 class ASDIWeaponFirearmAmmo;
+class UAkAudioEvent;
 class UPrimitiveComponent;
 class ATWDCharacter;
 class ASDIInventoryActor;

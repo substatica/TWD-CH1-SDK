@@ -12,7 +12,7 @@ class SDICOREPLUGIN_API USDIDamageTakenReplicationInterface : public UInterface 
 class SDICOREPLUGIN_API ISDIDamageTakenReplicationInterface : public IInterface {
     GENERATED_BODY()
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnDamageTaken(const FSDIReplicatedDamageData& DamageTakenData);
     
 };

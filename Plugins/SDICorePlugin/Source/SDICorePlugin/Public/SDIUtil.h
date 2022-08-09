@@ -1,75 +1,75 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UObject/NoExportTypes.h"
-#include "SDIUtilRandomActorWeightListDynamicDelegateDelegate.h"
-#include "Engine/EngineTypes.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "UObject/NoExportTypes.h"
+#include "SDICollisionCacheFilterDynamicDelegateDelegate.h"
+#include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
-#include "SDIStructuresTargetSearchLocationDynamicDelegateDelegate.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
+#include "SDIStructuresCurvedWedgeGeometryLocationDynamicDelegateDelegate.h"
+#include "ESDIGPU.h"
 #include "GameplayTagContainer.h"
 #include "Engine/EngineTypes.h"
-#include "SDIStructuresTargetSearchFilterDynamicDelegateDelegate.h"
-#include "Engine/Scene.h"
+#include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
-#include "SDICollisionCacheFilterDynamicDelegateDelegate.h"
-#include "Kismet/GameplayStaticsTypes.h"
 #include "SDICollisionShape.h"
 #include "UObject/NoExportTypes.h"
-#include "SDIStructuresTargetSearchBetterThanDynamicDelegateDelegate.h"
-#include "SDIUtilProjectileAimAssistTargetDynamicDelegateDelegate.h"
 #include "Curves/CurveFloat.h"
+#include "Engine/Scene.h"
+#include "SDIStructuresTargetSearchBetterThanDynamicDelegateDelegate.h"
 #include "SDITargetSearchEntry.h"
 #include "SDITransformCollisionShape.h"
+#include "SDIStructuresTargetSearchFilterDynamicDelegateDelegate.h"
+#include "SDIStructuresCurvedWedgeGeometryBetterThanDynamicDelegateDelegate.h"
 #include "AI/Navigation/NavigationTypes.h"
+#include "Kismet/GameplayStaticsTypes.h"
 #include "ESDIMathOperation.h"
-#include "SDIUtilRandomActorWeightDynamicDelegateDelegate.h"
-#include "SDIStructuresCurvedWedgeGeometryFilterDynamicDelegateDelegate.h"
-#include "Components/SceneComponent.h"
-#include "SDICurvedWedgeGeometry.h"
 #include "Kismet/GameplayStaticsTypes.h"
 #include "Animation/PoseSnapshot.h"
-#include "ESDIGPU.h"
-#include "SDIStructuresCurvedWedgeGeometryLocationDynamicDelegateDelegate.h"
-#include "SDIStructuresCurvedWedgeGeometryBetterThanDynamicDelegateDelegate.h"
+#include "SDIUtilProjectileAimAssistTargetDynamicDelegateDelegate.h"
+#include "Components/SceneComponent.h"
+#include "SDIStructuresTargetSearchLocationDynamicDelegateDelegate.h"
+#include "SDIUtilRandomActorWeightListDynamicDelegateDelegate.h"
+#include "SDIUtilRandomActorWeightDynamicDelegateDelegate.h"
+#include "SDICurvedWedgeGeometry.h"
+#include "SDIStructuresCurvedWedgeGeometryFilterDynamicDelegateDelegate.h"
 #include "SDIMotionHistory.h"
+#include "Engine/EngineTypes.h"
 #include "SDIUtil.generated.h"
 
 class APlayerState;
-class UPhysicsConstraintComponent;
-class UPrimitiveComponent;
-class AActor;
-class UCurveFloat;
-class USceneComponent;
-class USplineComponent;
-class UObject;
+class ULocalPlayer;
 class UGameInstance;
+class UPrimitiveComponent;
+class UPhysicsConstraintComponent;
+class AActor;
 class UChildActorComponent;
+class USplineComponent;
+class USceneComponent;
+class UObject;
+class UPhysicalMaterial;
 class UNavigationQueryFilter;
 class ULevel;
-class USDICoreAssetDatabase;
-class AGameMode;
+class APawn;
 class UWorld;
+class USDICoreAssetDatabase;
+class UCurveFloat;
+class AGameMode;
 class USkeletalMeshComponent;
-class UPhysicalMaterial;
 class APlayerController;
 class APlayerCameraManager;
-class APawn;
-class ULocalPlayer;
 class USDIGameSingleton;
 class AController;
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API USDIUtil : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     USDIUtil();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool WasComponentRecentlyRendered(const UPrimitiveComponent* PrimComp, float Tolerance);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector VRLerp(FVector A, FVector B, float Interp, FVector Pivot);
     
     UFUNCTION(BlueprintCallable)
@@ -99,7 +99,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static int32 ScanCollisionAxis(UObject* WorldContextObject, TEnumAsByte<ECollisionChannel> TraceChannel, TArray<FHitResult>& ArcImpactInfo, int32& NearestIndex, const TArray<AActor*>& ActorsToIgnore, const FVector& Origin, FVector BaseVector, FVector Axis, int32 NumChecks, float MaxDist, FVector Extent, bool bClipToNearest, bool bDebug, bool bSkipBaseVectors);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool RuntimeFloatCurveHasData(const FRuntimeFloatCurve& Curve);
     
     UFUNCTION(BlueprintCallable)
@@ -114,7 +114,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static bool RecreatePhysicsConstraint(UPhysicsConstraintComponent* Constraint);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool PointInsideCollisionShape(const FVector& Point, const FSDICollisionShape& Shape, const FTransform& ShapeTransform);
     
     UFUNCTION(BlueprintCallable)
@@ -129,31 +129,31 @@ public:
     UFUNCTION(BlueprintCallable)
     static bool OptimizeChildActorComponent(UChildActorComponent* Comp, bool bDestroyComponent);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool NotHasAnyTags(const FGameplayTagContainer& TagContainer, const FGameplayTagContainer& OtherContainer, bool bExactMatch);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool NotHasAllTags(const FGameplayTagContainer& TagContainer, const FGameplayTagContainer& OtherContainer, bool bExactMatch);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool NotEqual_ClassClassOrSubclass(UClass* A, UClass* B, bool bACanBeSubclassOfB);
     
     UFUNCTION(BlueprintCallable)
     static bool NavigationRaycast(UObject* WorldContextObject, const FVector& RayStart, const FVector& RayEnd, FVector& HitLocation, const FNavAgentProperties& AgentPropsToUse, TSubclassOf<UNavigationQueryFilter> FilterClass);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     static bool MoveActorToPersistentLevel(AActor* Act, bool bIncludeOwnedChildren);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     static bool MoveActorToLevel(AActor* Act, ULevel* Level, bool bIncludeOwnedChildren);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector LerpVectorArray(const TArray<FVector>& Array, float Alpha, bool bIntegralElements);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTransform LerpTransformArray(const TArray<FTransform>& Array, float Alpha, bool bIntegralElements);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FPredictProjectilePathPointData LerpProjectilePathPointArray(const TArray<FPredictProjectilePathPointData>& Array, float Alpha, bool bIntegralElements);
     
     UFUNCTION(BlueprintCallable)
@@ -162,13 +162,13 @@ public:
     UFUNCTION(BlueprintCallable)
     static void LerpPostProcessSettings(UPARAM(Ref) FPostProcessSettings& Dest, const FPostProcessSettings& A, const FPostProcessSettings& B, float Alpha, bool bSetOverrides, bool bClearOverrides);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float LerpIndexHelper(int32& OutIndex0, int32& OutIndex1, int32 Num, float Alpha, bool bIntegralElements);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float LerpFloatArray(const TArray<float>& Array, float Alpha, bool bIntegralElements);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool K2IsValidClass(UClass* SearchClass, const TArray<UClass*>& ValidClasses, const TArray<UClass*>& InvalidClasses);
     
     UFUNCTION(BlueprintCallable)
@@ -180,43 +180,43 @@ public:
     UFUNCTION(BlueprintCallable)
     static int32 K2GetRandomActorsWeightedByDistanceFromSelected(int32 NumActors, TArray<AActor*>& SelectedActors, const TArray<AActor*>& ActorPool, ESDIMathOperation DistanceWeightMathOp, bool bUse2DDistance, bool bInvertWeight);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static USDICoreAssetDatabase* K2GetAssetDatabase();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FHitResult K2ConvertHitResultToWorld(const FHitResult& HitResult);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FHitResult K2ConvertHitResultToLocal(const FHitResult& HitResult);
     
     UFUNCTION(BlueprintCallable)
     static FVector K2ComputeProjectileAimAssistance(UObject* WorldContextObject, const FSDIUtilProjectileAimAssistTargetDynamicDelegate& TargetDelegate, const FSDICollisionCacheFilterDynamicDelegate& FilterDelegate, const FVector& StartLocation, const FVector& InitialVelocity, const TArray<AActor*>& ActorsToIgnore, TEnumAsByte<ECollisionChannel> CollisionChannel, float PathCollisionRadius, float PathCollisionTime, float TargetRadius, const UCurveFloat* TargetRadiusCurve, float TargetZOffset, const UCurveFloat* TargetZOffsetCurve, float MinResultSpeed, bool bAdjustForTargetVelocity, float DebugRenderTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsValidGameMode(const UObject* WorldContextObject, const TArray<TSubclassOf<AGameMode>>& ValidGameModes, const TArray<TSubclassOf<AGameMode>>& InvalidGameModes);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPlayInEditor(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
     static bool IsPhysicsConstraintAttachedTo(UPhysicsConstraintComponent* Constraint, const UPrimitiveComponent* Component, FName BoneName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsObjectChildOf(const UObject* Object, const TArray<UClass*>& Classes, bool bExact);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsLocallyControlledActor(AActor* Actor, bool bAllowAutonomousRoles);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsInFieldOfView(const FTransform& CameraTransform, const FVector& Location, float MaxHorizontalAngleDeg, float MaxVerticalAngleDeg);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsClassChildOf(const UClass* Class, const TArray<UClass*>& Classes, bool bExact);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool InVRMode();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float InverseLerpIndexHelper(int32 Index0, int32 Num, float SubAlpha);
     
     UFUNCTION(BlueprintPure)
@@ -228,10 +228,10 @@ public:
     UFUNCTION(BlueprintPure)
     static bool HasLosPointToPoint(const FVector& EyePos, const FVector& TargetPos, const AActor* Eyes, const AActor* Target, TEnumAsByte<ECollisionChannel> Channel);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool HasAuthority(const UObject* Obj);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UWorld* GetWorldFromContextObject(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -240,22 +240,22 @@ public:
     UFUNCTION(BlueprintCallable)
     static int32 GetTransientID();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetServerTimestamp(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetRuntimeFloatCurveValue(const FRuntimeFloatCurve& Curve, float InTime);
     
     UFUNCTION(BlueprintPure)
     static bool GetRefPoseTransform(FTransform& OutTransform, USkeletalMeshComponent* SkelMeshComp, FName SocketName, TEnumAsByte<ERelativeTransformSpace> TransformSpace);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTransform GetRefPoseBoneTransform(USkeletalMeshComponent* SkelMesh, FName BoneName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UPhysicalMaterial* GetRefinedHitResultPhysMaterial(const FHitResult& HitResult);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetRealDeltaSeconds(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -270,46 +270,46 @@ public:
     UFUNCTION(BlueprintPure)
     static bool GetPoseSnapshotTransform(const FPoseSnapshot& Snapshot, const USkeletalMeshComponent* SkelMeshComp, FName SocketName, FTransform& OutTransform, TEnumAsByte<ERelativeTransformSpace> TransformSpace);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APlayerState* GetPlayerState(const UObject* Obj);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetPlatformMobileHiSpec();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetPingMs(const UObject* Obj);
     
     UFUNCTION(BlueprintCallable)
     static bool GetNearestSurface(UObject* WorldContextObject, FHitResult& OutSurface, TEnumAsByte<ECollisionChannel> TraceChannel, const TArray<AActor*>& ActorsToIgnore, const FVector& Origin, float Distance, FVector Extent, FVector BaseVector, FVector Axis, int32 NumChecks, int32 NumRings);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APlayerController* GetLocalPlayerController(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APlayerCameraManager* GetLocalPlayerCameraManager(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ULocalPlayer* GetLocalPlayer(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
     static bool GetGround(UObject* WorldContextObject, FHitResult& OutGround, TEnumAsByte<ECollisionChannel> TraceChannel, const TArray<AActor*>& ActorsToIgnore, const FVector& Origin, float Distance, FVector Extent);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ESDIGPU GetGPU();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetGoreLevel();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static USDIGameSingleton* GetGameSingleton();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetGameplayPlatformLevel();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UGameInstance* GetGameInstanceFromContextObject(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetAudioPlatformLevel();
     
     UFUNCTION(BlueprintCallable)
@@ -318,16 +318,16 @@ public:
     UFUNCTION(BlueprintCallable)
     static void ForceGarbageCollection(bool bFullPurge);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float FloatMath(ESDIMathOperation Op, float A, float B);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<float> FloatArrMathSingle(ESDIMathOperation Op, const TArray<float>& A, float B);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<float> FloatArrMathMulti(ESDIMathOperation Op, const TArray<float>& A, const TArray<float>& B, bool bIntegralElements);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float FloatArrMath(ESDIMathOperation Op, const TArray<float>& Floats, int32& OutIndex);
     
     UFUNCTION(BlueprintCallable)
@@ -366,31 +366,31 @@ public:
     UFUNCTION(BlueprintCallable)
     static int32 FindTargetsInPoolDualShape(TArray<FSDITargetSearchEntry>& OutTargets, const TArray<AActor*>& TargetPool, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDITransformCollisionShape& InnerShape, const FSDITransformCollisionShape& OuterShape, FSDIStructuresTargetSearchLocationDynamicDelegate LocationDelegate, FSDIStructuresTargetSearchFilterDynamicDelegate FilterDelegate, FSDIStructuresTargetSearchBetterThanDynamicDelegate BetterThanDelegate, bool bRelativeInnerShapeTransform, bool bRelativeOuterShapeTransform, FRotator HalfArcAngles, bool bRequireLOS, TEnumAsByte<ECollisionChannel> LOSChannel, bool bSort, bool bUseClosestLocation, float DebugRenderDuration);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FName FindRootmostBone(const USkeletalMeshComponent* Mesh, const TArray<FName>& BoneNames);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FName FindRigidBodyBone(const USkeletalMeshComponent* Mesh, FName SocketName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool FindInstigatorInfo(const UObject* Object, AController*& OutController, APawn*& OutPawn);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static AController* FindInstigatorController(const UObject* Object);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APawn* FindInstigator(const UObject* Object);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 FindClosestBoneMatch(FName BoneName, const USkeletalMeshComponent* Mesh, const TArray<FName>& BoneNames, bool bExact);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 FindClassMatch(UClass* SearchClass, const TArray<UClass*>& ClassArr, bool bExact);
     
     UFUNCTION(BlueprintCallable)
     static USceneComponent* FindChildComponent(const FName& ChildComponentName, USceneComponent* Parent);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool EqualEqual_ClassClassOrSubclass(UClass* A, UClass* B, bool bACanBeSubclassOfB);
     
     UFUNCTION(BlueprintCallable)
@@ -420,40 +420,40 @@ public:
     UFUNCTION(BlueprintCallable)
     static void DrawDebugBodies(UPrimitiveComponent* Component, bool bPersistent, float LifeTime, int32 SphereSegments);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float DotProductToLinear(float DotP);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float DotProductToExp(float DotP, float Exp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float DistanceToCollisionShape(const FVector& Point, const FSDICollisionShape& Shape, const FTransform& ShapeTransform);
     
     UFUNCTION(BlueprintCallable)
     static FTimerHandle DestroyActorNextFrame(AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector DefaultTargetSearchLocationDynamicDelegate(const AActor* Actor, const UPrimitiveComponent* PrimComp, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDITransformCollisionShape& InnerShape, const FSDITransformCollisionShape& OuterShape, bool bUseClosestLocation);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool DefaultTargetSearchFilterDynamicDelegate(const AActor* Actor, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDITransformCollisionShape& InnerShape, const FSDITransformCollisionShape& OuterShape);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool DefaultTargetSearchBetterThanDynamicDelegate(const FSDITargetSearchEntry& Entry, const FSDITargetSearchEntry& Other, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDITransformCollisionShape& InnerShape, const FSDITransformCollisionShape& OuterShape);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector DefaultCurvedWedgeGeometryLocationDynamicDelegate(const AActor* Actor, const UPrimitiveComponent* PrimComp, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDICurvedWedgeGeometry& SearchWedge, bool bUseClosestLocation);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool DefaultCurvedWedgeGeometryFilterDynamicDelegate(const AActor* Actor, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDICurvedWedgeGeometry& SearchWedge);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool DefaultCurvedWedgeGeometryBetterThanDynamicDelegate(const FSDITargetSearchEntry& Entry, const FSDITargetSearchEntry& Other, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDICurvedWedgeGeometry& SearchWedge);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool DebugCheatsAllowed();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FRotator CreateLookatRotation(FVector Direction, FRotator CurrentRotation, FVector UpHint, bool bForceUp);
     
     UFUNCTION(BlueprintCallable)
@@ -462,7 +462,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void CopyRenderSettingsToActor(AActor* DestActor, const UPrimitiveComponent* SrcComp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector ComputeNewVelocity(FVector CurrentVelocity, FVector DesiredVelocity, float DeltaTime, float Accel, float Decel, float RotationSpeedDeg);
     
     UFUNCTION(BlueprintCallable)
@@ -477,31 +477,31 @@ public:
     UFUNCTION(BlueprintCallable)
     static bool ComponentPhysicsActive(UPrimitiveComponent* Component, float MaxLinearVelocity, float MaxAngularVelocityDegrees);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector ClosestPointOnRay(const FVector& Point, const FVector& StartPoint, const FVector& Direction);
     
     UFUNCTION(BlueprintCallable)
     static bool ClosestPointOnPrimitiveCollision(UPrimitiveComponent* Comp, FVector SearchPoint, FVector& OutPoint, bool bClampToOutside);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector ClosestPointOnCollisionShape(const FVector& Point, const FSDICollisionShape& Shape, const FTransform& ShapeTransform, bool bClampToOutside);
     
     UFUNCTION(BlueprintCallable)
     static bool ClosestPointOnActorCollision(AActor* Target, FVector SearchPoint, FVector& OutPoint, UPrimitiveComponent*& OutComp, bool bClampToOutside);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector ClosestPointAndTimeOnSegment(const FVector& Point, const FVector& StartPoint, const FVector& EndPoint, float& Time);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector ClosestPointAndTimeOnRay(const FVector& Point, const FVector& StartPoint, const FVector& Direction, float& Time);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool ClampedSegmentPlaneIntersection(const FVector& StartPoint, const FVector& EndPoint, const FVector& PlaneOrigin, const FVector& PlaneNormal, FVector& OutClampedIntersection);
     
     UFUNCTION(BlueprintCallable)
     static FRotator CircularClampPitchYaw(FRotator Input, FRotator Min, FRotator Max, float ExtraRadius, float& OutTime, FRotator& OutCenter);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float CalculateInterpolationTime(const FTransform& StartTransform, const FTransform& EndTransform, float LocationInterpolationSpeed, float RotationInterpolationSpeedDeg);
     
     UFUNCTION(BlueprintCallable)

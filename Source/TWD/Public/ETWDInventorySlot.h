@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDInventorySlot.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 namespace ETWDInventorySlot {
     enum Type {
         None,

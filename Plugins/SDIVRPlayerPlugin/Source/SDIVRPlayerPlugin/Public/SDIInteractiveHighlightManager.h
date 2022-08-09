@@ -6,7 +6,7 @@
 class ASDIInteractiveHighlightManager;
 class UObject;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDIInteractiveHighlightManager : public AActor {
     GENERATED_BODY()
 public:

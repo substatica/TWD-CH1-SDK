@@ -4,18 +4,18 @@
 #include "SDIPlayerHandInteractComponentEntry.h"
 #include "SDIVRPlayerStructures.generated.h"
 
-class AActor;
 class ASDIPlayerHand;
+class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API USDIVRPlayerStructures : public USDIStructures {
     GENERATED_BODY()
 public:
     USDIVRPlayerStructures();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static AActor* GetEntryPlayerHandGripActor(const FSDIPlayerHandInteractComponentEntry& Entry);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ASDIPlayerHand* GetEntryPlayerHand(const FSDIPlayerHandInteractComponentEntry& Entry);
     
 };

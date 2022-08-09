@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDICoreUtilityAIChance {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ESDIUtilityAIDifficulty, float> Chances;
     
     FSDICoreUtilityAIChance();

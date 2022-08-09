@@ -3,21 +3,21 @@
 #include "TWDDismemberWoundInfo.h"
 #include "TWDDismemberedLimb.generated.h"
 
-class ATWDDismemberDroppedLimb;
 class ATWDDismemberLimbCap;
+class ATWDDismemberDroppedLimb;
 
 USTRUCT(BlueprintType)
 struct FTWDDismemberedLimb : public FTWDDismemberWoundInfo {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float Timestamp;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ATWDDismemberLimbCap> LimbCap;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ATWDDismemberDroppedLimb> DroppedLimb;
     
 public:

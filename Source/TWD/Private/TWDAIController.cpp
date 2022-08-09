@@ -2,9 +2,9 @@
 #include "Templates/SubclassOf.h"
 
 class ATWDCharacter;
+class AController;
 class AActor;
 class UTWDAIAssignment;
-class AController;
 class ATWDPlayerController;
 class ATWDAIController;
 class UTWDCharacterPersonality;

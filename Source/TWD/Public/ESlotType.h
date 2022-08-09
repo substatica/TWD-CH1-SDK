@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESlotType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESlotType : uint8 {
     Default,
     Character,

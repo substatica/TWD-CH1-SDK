@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EAkHololensAudioAPI.generated.h"
 
-UENUM()
-enum class EAkHololensAudioAPI {
+UENUM(BlueprintType)
+enum class EAkHololensAudioAPI : uint8 {
     Wasapi,
     XAudio2,
     DirectSound,

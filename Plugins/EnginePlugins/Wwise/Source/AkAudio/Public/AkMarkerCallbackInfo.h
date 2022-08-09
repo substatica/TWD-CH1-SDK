@@ -3,17 +3,17 @@
 #include "AkEventCallbackInfo.h"
 #include "AkMarkerCallbackInfo.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class UAkMarkerCallbackInfo : public UAkEventCallbackInfo {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Identifier;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Position;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString Label;
     
     UAkMarkerCallbackInfo();

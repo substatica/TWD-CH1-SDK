@@ -4,14 +4,14 @@
 #include "EWeaponAnimation.h"
 #include "GenderWeaponKey.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FGenderWeaponKey {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EGender Gender;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EWeaponAnimation Weapon;
     
     TWD_API FGenderWeaponKey();

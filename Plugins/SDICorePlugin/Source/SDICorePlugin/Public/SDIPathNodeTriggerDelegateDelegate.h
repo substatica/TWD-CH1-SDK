@@ -5,5 +5,5 @@
 
 class AActor;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FSDIPathNodeTriggerDelegate, const FString&, PathNodeName, FVector, PathNodeLoc, AActor*, AIActor);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FSDIPathNodeTriggerDelegate, const FString&, PathNodeName, FVector, PathNodeLoc, AActor*, AIActor);
 

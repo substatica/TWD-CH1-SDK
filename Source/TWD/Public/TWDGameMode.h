@@ -2,87 +2,87 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "SDICoreGameMode.h"
-#include "TWDQueuedExplosion.h"
-#include "Engine/EngineTypes.h"
 #include "PauseAIDelegateDelegate.h"
-#include "TWDQueuedRagdoll.h"
+#include "TWDQueuedExplosion.h"
 #include "TWDFactionInfo.h"
+#include "Engine/EngineTypes.h"
+#include "TWDQueuedRagdoll.h"
 #include "EFaction.h"
 #include "TWDQueuedExplosionDelegateDelegate.h"
 #include "TWDGameMode.generated.h"
 
 class APawn;
-class UBehaviorTree;
-class UTWDAIManager;
 class ATWDGameDirector;
+class UTWDAIManager;
 class UTWDAnimIdManager;
+class ATWDAIController;
+class UBehaviorTree;
 class AController;
 class ATWDCharacter;
 class UDamageType;
 class AActor;
-class ATWDAIController;
 
-UCLASS(NonTransient)
+UCLASS(Blueprintable, NonTransient)
 class TWD_API ATWDGameMode : public ASDICoreGameMode {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftClassPtr<APawn> DefaultNonVRPawnClass;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FName MatchSubState;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTimerHandle QueuedExplosionTimerHandle;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FTWDQueuedExplosion> QueuedExplosions;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bProcessingQueuedExplosions;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FTWDQueuedRagdoll> QueuedRagdolls;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTimerHandle QueuedRagdollTimerHandle;
     
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPauseAIDelegate PauseAIDelegate;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UTWDAIManager> AIManagerClass;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bEnableSleepingAISystem;
     
 private:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDGameDirector> GameDirectorBlueprint;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<EFaction, FTWDFactionInfo> FactionInfo;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bNotebookEnabled;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDGameDirector* GameDirector;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDAIManager* AIManager;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDAnimIdManager* AnimIdManager;
     
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UBehaviorTree*> PreloadBehaviorTree;
     
     ATWDGameMode();
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void StartBells();
     
     UFUNCTION(BlueprintCallable)
@@ -95,23 +95,23 @@ public:
     static void QueueExplosion(AController* EventInstigator, const FTWDQueuedExplosionDelegate& ExplosionDelegate);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ProcessQueuedRagdolls();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ProcessQueuedExplosions();
     
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnMatchSubStateSet();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnCharacterDeath(ATWDCharacter* Character, float PrevHealth, TSubclassOf<UDamageType> DamageTypeClass, AActor* DamageCauser);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsNotebookEnabled() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsExplosionQueued(const FTWDQueuedExplosionDelegate& ExplosionDelegate);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)

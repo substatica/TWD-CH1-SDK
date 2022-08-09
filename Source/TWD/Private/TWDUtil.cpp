@@ -1,24 +1,24 @@
 #include "TWDUtil.h"
 
-class UTWDGameEntitlements;
 class USkeletalMeshComponent;
-class UObject;
-class AActor;
-class UAkAudioEvent;
-class UBTNode;
-class UDataTable;
 class UTWDMapManager;
+class UObject;
+class ASDIHeldActor;
+class UTWDGameProgression;
+class UAkAudioEvent;
+class AActor;
+class UBTNode;
+class UAkComponent;
+class UTWDGameInstance;
+class UDataTable;
 class UCurveFloat;
-class ATWDPlayerCharacter;
 class ATWDCharacter;
 class UPrimitiveComponent;
-class UTWDGameProgression;
-class UTWDGameInstance;
+class UTWDGameEntitlements;
 class UTWDGameAchievements;
-class ASDIHeldActor;
+class ATWDPlayerCharacter;
 class UTWDPlayerBuffManager;
 class UBlendSpaceBase;
-class UAkComponent;
 
 void UTWDUtil::UpdateSkeletalMeshCollision(USkeletalMeshComponent* Mesh, const TArray<FName>& DisabledBones, const TArray<FName>& EnabledBones, TArray<int32>& EnabledBonesOut, bool bDisableStrictlyBelow) {
 }

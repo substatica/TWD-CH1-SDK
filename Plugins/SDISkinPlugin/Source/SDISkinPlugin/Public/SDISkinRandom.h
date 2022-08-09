@@ -5,11 +5,11 @@
 
 class USDISkinObject;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISKINPLUGIN_API USDISkinRandom : public USDISkinBasic {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSoftClassPtr<USDISkinObject>> Skins;
     
     USDISkinRandom();

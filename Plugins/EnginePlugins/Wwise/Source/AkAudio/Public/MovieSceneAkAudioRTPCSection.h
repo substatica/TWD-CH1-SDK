@@ -1,31 +1,31 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "MovieSceneSection.h"
+#include "Curves/RichCurve.h"
 #include "Channels/MovieSceneFloatChannel.h"
 #include "MovieSceneFloatChannelSerializationHelper.h"
-#include "Curves/RichCurve.h"
 #include "MovieSceneAkAudioRTPCSection.generated.h"
 
 class UAkRtpc;
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UMovieSceneAkAudioRTPCSection : public UMovieSceneSection {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkRtpc* RTPC;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString Name;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     FRichCurve FloatCurve;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMovieSceneFloatChannelSerializationHelper FloatChannelSerializationHelper;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMovieSceneFloatChannel RTPCChannel;
     
 public:

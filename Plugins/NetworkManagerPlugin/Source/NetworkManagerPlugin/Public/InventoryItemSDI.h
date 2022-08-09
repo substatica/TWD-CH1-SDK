@@ -8,16 +8,16 @@ USTRUCT(BlueprintType)
 struct NETWORKMANAGERPLUGIN_API FInventoryItemSDI {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGuid uid;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 quantity;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint8 slotIdx;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FInventoryItemMetadata MetaData;
     
     FInventoryItemSDI();

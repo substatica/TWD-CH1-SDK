@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FAkAdvancedInitializationSettingsWithMultiCoreRendering : public FAkAdvancedInitializationSettings {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool EnableMultiCoreRendering;
     
     AKAUDIO_API FAkAdvancedInitializationSettingsWithMultiCoreRendering();

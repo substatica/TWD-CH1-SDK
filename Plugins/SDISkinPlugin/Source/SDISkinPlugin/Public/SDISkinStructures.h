@@ -3,7 +3,7 @@
 #include "SDIStructures.h"
 #include "SDISkinStructures.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISKINPLUGIN_API USDISkinStructures : public USDIStructures {
     GENERATED_BODY()
 public:

@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDIReplicatedRagdollBone {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName BoneName;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FRigidBodyState RagdollState;
     
     FSDIReplicatedRagdollBone();

@@ -6,40 +6,40 @@
 #include "InputCoreTypes.h"
 #include "SDICoreGameInstance.generated.h"
 
-class USDICoreGameInstanceSubObject;
 class UTexture;
 class UObject;
+class USDICoreGameInstanceSubObject;
 
-UCLASS(NonTransient)
+UCLASS(Blueprintable, NonTransient)
 class SDICOREPLUGIN_API USDICoreGameInstance : public UGameInstance {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSoftClassPath> SubObjectClasses;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bInitialized;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<USDICoreGameInstanceSubObject*> SubObjects;
     
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FKey, TSoftObjectPtr<UTexture>> InputKeyTextures;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UTexture> MissingInputKeyTexture;
     
 public:
     USDICoreGameInstance();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static USDICoreGameInstanceSubObject* K2GetSubObject(const UObject* WorldContextObject, TSubclassOf<USDICoreGameInstanceSubObject> SubObjectClass);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsInitialized() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UTexture* GetInputKeyTexture(const FKey& Key) const;
     
 };

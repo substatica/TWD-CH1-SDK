@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EAkAudioSessionCategoryOptions.generated.h"
 
-UENUM()
-enum class EAkAudioSessionCategoryOptions {
+UENUM(BlueprintType)
+enum class EAkAudioSessionCategoryOptions : uint8 {
     MixWithOthers,
     DuckOthers,
     AllowBluetooth,

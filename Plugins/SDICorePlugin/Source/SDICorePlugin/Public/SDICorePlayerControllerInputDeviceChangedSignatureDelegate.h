@@ -4,5 +4,5 @@
 
 class ASDICorePlayerController;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSDICorePlayerControllerInputDeviceChangedSignature, ASDICorePlayerController*, PC, bool, bIsUsingGamePad);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSDICorePlayerControllerInputDeviceChangedSignature, ASDICorePlayerController*, PC, bool, bIsUsingGamePad);
 

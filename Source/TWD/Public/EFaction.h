@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EFaction.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EFaction : uint8 {
     None,
     Tower,

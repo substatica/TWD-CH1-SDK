@@ -3,14 +3,14 @@
 #include "EnvironmentQuery/EnvQueryTest.h"
 #include "TWDEnvQueryTest_GuardLeash.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDEnvQueryTest_GuardLeash : public UEnvQueryTest {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName GuardPointKeyName;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName LeashDistanceKeyName;
     
     UTWDEnvQueryTest_GuardLeash();

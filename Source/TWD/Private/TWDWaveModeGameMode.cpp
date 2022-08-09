@@ -1,10 +1,10 @@
 #include "TWDWaveModeGameMode.h"
 
-class ASDIWeaponFirearmAmmo;
 class AController;
 class APawn;
 class ASDIWeaponFirearm;
 class USDIWeaponFirearmFireModeComponent;
+class ASDIWeaponFirearmAmmo;
 
 void ATWDWaveModeGameMode::SetAllWavesCompleted(bool bSet) {
 }

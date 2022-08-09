@@ -7,20 +7,20 @@ class UAkGroupValue;
 class UAkMediaAsset;
 class UAkAssetDataSwitchContainerData;
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class AKAUDIO_API UAkAssetDataSwitchContainerData : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UAkGroupValue> GroupValue;
     
-    UPROPERTY(VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkGroupValue* DefaultGroupValue;
     
-    UPROPERTY(VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UAkMediaAsset*> MediaList;
     
-    UPROPERTY(VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UAkAssetDataSwitchContainerData*> Children;
     
     UAkAssetDataSwitchContainerData();

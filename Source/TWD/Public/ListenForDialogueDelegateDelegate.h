@@ -5,5 +5,5 @@
 
 class ATWDPlayerController;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FListenForDialogueDelegate, const FTWDDialogueOption&, DialogueOption, ATWDPlayerController*, Controller);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FListenForDialogueDelegate, const FTWDDialogueOption&, DialogueOption, ATWDPlayerController*, Controller);
 

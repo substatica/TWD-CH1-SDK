@@ -3,10 +3,10 @@
 #include "Templates/SubclassOf.h"
 
 class ASDIInventorySlot;
-class APawn;
-class AActor;
-class ASDIInventoryActor;
 class ASDIPlayerHand;
+class AActor;
+class APawn;
+class ASDIInventoryActor;
 class USceneComponent;
 
 bool ASDIInventoryActor::ShouldMergeOnAddToInventory() const {

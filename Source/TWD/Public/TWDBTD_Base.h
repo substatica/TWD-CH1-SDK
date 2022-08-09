@@ -3,7 +3,7 @@
 #include "BehaviorTree/BTDecorator.h"
 #include "TWDBTD_Base.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDBTD_Base : public UBTDecorator {
     GENERATED_BODY()
 public:

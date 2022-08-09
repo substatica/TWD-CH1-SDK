@@ -4,5 +4,5 @@
 
 class UTWDDialogue;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FDialogueFinishedEvent, UTWDDialogue*, FinishedDialogue, bool, bCompleted);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FDialogueFinishedEvent, UTWDDialogue*, FinishedDialogue, bool, bCompleted);
 

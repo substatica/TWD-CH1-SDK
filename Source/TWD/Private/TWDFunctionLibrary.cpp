@@ -1,19 +1,19 @@
 #include "TWDFunctionLibrary.h"
 #include "Templates/SubclassOf.h"
 
-class ATWDCharacter;
-class UObject;
 class UUserWidget;
-class ATWDSpawnManager;
 class UAkAudioEvent;
 class UTexture2D;
-class APlayerController;
+class ATWDCharacter;
+class UObject;
 class UTWDDialogue;
 class ATWDPlayerController;
+class ATWDSpawnManager;
 class ATWDGameDirector;
 class ATWDDialogueManager;
 class ATWDCorpseManager;
 class ATWDAIDirector;
+class APlayerController;
 
 UTexture2D* UTWDFunctionLibrary::WidgetToTexture(const UUserWidget* Widget, const FVector2D& DrawSize, UTexture2D* Target, float Scale) {
     return NULL;

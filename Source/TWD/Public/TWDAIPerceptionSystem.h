@@ -3,7 +3,7 @@
 #include "Perception/AIPerceptionSystem.h"
 #include "TWDAIPerceptionSystem.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDAIPerceptionSystem : public UAIPerceptionSystem {
     GENERATED_BODY()
 public:

@@ -13,47 +13,47 @@ struct SDICOREPLUGIN_API FSDICoreUtilityAITargetEntry {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     USDICoreUtilityAI* Owner;
     
 public:
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<AActor> Target;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float Timer;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float Priority;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDICoreUtilityAITargetEntryLocation Location;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDICoreUtilityAITargetEntryLocation LastKnownLocation;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDICoreUtilityAITargetEntryLocation GroundLocation;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDICoreUtilityAITargetEntryLocation LastKnownGroundLocation;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FGenericTeamId TeamID;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TEnumAsByte<ETeamAttitude::Type> AttitudeTowards;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TEnumAsByte<ETeamAttitude::Type> AttitudeFrom;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bTeamAttitudeUpdated;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bForced;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bLocationBased;
     
     FSDICoreUtilityAITargetEntry();

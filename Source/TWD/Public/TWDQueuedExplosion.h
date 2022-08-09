@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct FTWDQueuedExplosion {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<AController> EventInstigator;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTWDQueuedExplosionDelegate Delegate;
     
     TWD_API FTWDQueuedExplosion();

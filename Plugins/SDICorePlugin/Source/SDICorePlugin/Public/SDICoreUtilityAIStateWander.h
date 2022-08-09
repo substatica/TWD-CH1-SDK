@@ -1,32 +1,32 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "SDICoreUtilityAIState.h"
 #include "RFloatExp.h"
 #include "SDICoreUtilityAITimer.h"
-#include "SDICoreUtilityAIState.h"
 #include "SDICoreUtilityAIAimSettings.h"
 #include "SDICoreUtilityAIStateWander.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API USDICoreUtilityAIStateWander : public USDICoreUtilityAIState {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICoreUtilityAITimer DestResetTimer;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloatExp WanderDestDistance;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICoreUtilityAIAimSettings WanderAimSettings;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WanderAimPitchMul;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WanderAimTraceDistance;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WanderAimReflectionExp;
     
 public:

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDAITieBreaker.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDAITieBreaker : uint8 {
     Range,
     Age,

@@ -6,24 +6,24 @@
 
 class UPrimitiveComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDGripPhysicsActor : public ATWDInteractiveActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bForceHideHighlight;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bTickWhileAwake;
     
-    UPROPERTY(BlueprintReadWrite, Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* SimulatePhysicsComponent;
     
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_GripPhysicsRotator)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_GripPhysicsRotator, meta=(AllowPrivateAccess=true))
     FRotator RepGripPhysicsRotator;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRMaxInteractDistance;
     
 public:
@@ -33,16 +33,16 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetRepGripPhysicsRotator(FRotator NewRotator);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_GripPhysicsRotator(FRotator NewRotator);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPhysicsComponentWake(UPrimitiveComponent* WakingComponent, FName BoneName);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPhysicsComponentSleep(UPrimitiveComponent* SleepingComponent, FName BoneName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FRotator GetRepGripPhysicsRotator() const;
     
 };

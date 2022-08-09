@@ -3,7 +3,7 @@
 #include "Animation/AnimNotifies/AnimNotifyState.h"
 #include "TWDAnimNotifyState_MeleeAttackDamageWindow.generated.h"
 
-UCLASS(CollapseCategories, EditInlineNew)
+UCLASS(Blueprintable, CollapseCategories, EditInlineNew)
 class UTWDAnimNotifyState_MeleeAttackDamageWindow : public UAnimNotifyState {
     GENERATED_BODY()
 public:

@@ -1,7 +1,7 @@
 #include "SDIVRPlayerUtil.h"
 
-class ASDIPlayerHand;
 class UObject;
+class ASDIPlayerHand;
 class ASDIPlayerHandBase;
 
 bool USDIVRPlayerUtil::IsEnableOculusOnSteamVR() {

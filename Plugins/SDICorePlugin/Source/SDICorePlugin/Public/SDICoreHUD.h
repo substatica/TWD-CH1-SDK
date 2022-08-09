@@ -1,61 +1,61 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SDITransformCollisionShape.h"
 #include "GameFramework/HUD.h"
 #include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
+#include "SDITransformCollisionShape.h"
 #include "ESDICoordinatePivot.h"
+#include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "SDICoreHUD.generated.h"
 
-class APlayerState;
 class UTexture;
+class APlayerState;
 class APawn;
 class UFont;
 class UMaterialInterface;
 
-UCLASS(NonTransient)
+UCLASS(Blueprintable, NonTransient)
 class SDICOREPLUGIN_API ASDICoreHUD : public AHUD {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bDrawUtilityAI;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bDrawMonkey;
     
 public:
     ASDICoreHUD();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool WorldToScreenSize(FVector WorldLocation, float InWorldW, float InWorldH, float& OutScreenW, float& OutScreenH) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool WorldSphereToScreen(FVector Origin, float Radius, float& OutScreenX, float& OutScreenY, float& OutScreenW, float& OutScreenH) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool WorldBoxToScreen(FVector Origin, FVector BoxExtent, float& OutScreenX, float& OutScreenY, float& OutScreenW, float& OutScreenH) const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ToggleDrawUtilityAI();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ToggleDrawMonkey();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool ShapeToScreen(const FSDITransformCollisionShape& Shape, float& OutScreenX, float& OutScreenY, float& OutScreenW, float& OutScreenH) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsOnscreen(float ScreenX, float ScreenY, float ScreenW, float ScreenH) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APlayerState* GetViewPlayerState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APawn* GetViewPawn() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     void GetScreenSize(float& OutScreenW, float& OutScreenH) const;
     
     UFUNCTION(BlueprintCallable)
@@ -100,10 +100,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void DrawMaterialPivot(UMaterialInterface* Material, ESDICoordinatePivot Pivot, float ScreenX, float ScreenY, float ScreenW, float ScreenH, float MaterialU, float MaterialV, float MaterialUWidth, float MaterialVHeight, float Scale, float Rotation, FVector2D RotPivot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     void CalculateScreenPivot(ESDICoordinatePivot Pivot, float& OutScreenX, float& OutScreenY) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float CalculateScreenPercentage(float Percent) const;
     
     UFUNCTION(BlueprintCallable)

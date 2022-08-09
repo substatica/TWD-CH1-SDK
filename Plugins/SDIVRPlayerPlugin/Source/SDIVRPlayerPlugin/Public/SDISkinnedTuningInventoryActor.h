@@ -1,34 +1,34 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SDISkinnedActorInterface.h"
 #include "SDITuningInventoryActor.h"
-#include "SDISkinReplicationData.h"
+#include "SDISkinnedActorInterface.h"
 #include "SDISkinnedActorBlueprintInterface.h"
+#include "SDISkinReplicationData.h"
 #include "SDISkinDynamicData.h"
-#include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "Components/PrimitiveComponent.h"
+#include "UObject/NoExportTypes.h"
 #include "SDISkinnedTuningInventoryActor.generated.h"
 
-class USDISkinObject;
 class USceneComponent;
 class UObject;
+class USDISkinObject;
+class UPrimitiveComponent;
 class UTexture;
 class UMaterialInterface;
-class UPrimitiveComponent;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDISkinnedTuningInventoryActor : public ASDITuningInventoryActor, public ISDISkinnedActorInterface, public ISDISkinnedActorBlueprintInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_ReplicatedSkinData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_ReplicatedSkinData, meta=(AllowPrivateAccess=true))
     FSDISkinReplicationData ReplicatedSkinData;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDISkinDynamicData DynamicSkinData;
     
 public:
@@ -36,14 +36,14 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetSkin_IFC(TSubclassOf<USDISkinObject> SkinClass, bool bForceUpdate, bool bForceReInit);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ReplicatedSkinData(const FSDISkinReplicationData& OldReplicatedSkinData);
     
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     USceneComponent* GetSkinComponentBP() const;
     
     

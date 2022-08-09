@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct SDISKINPLUGIN_API FSDISkinSectionalVariantSkeletalMeshSet : public FSDISkinSkeletalMeshSet {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FName, FSDISkinSkeletalMeshSet> Variants;
     
     FSDISkinSectionalVariantSkeletalMeshSet();

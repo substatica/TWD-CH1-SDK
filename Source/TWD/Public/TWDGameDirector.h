@@ -4,42 +4,42 @@
 #include "GameFramework/Actor.h"
 #include "TWDGameDirector.generated.h"
 
+class ATWDAIDirector;
+class ATWDCorpseManager;
 class ATWDSpawnManager;
 class ATWDDialogueManager;
 class ATWDUtilityManager;
-class ATWDAIDirector;
-class ATWDCorpseManager;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDGameDirector : public AActor {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDDialogueManager> DialogueManagerBlueprint;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDSpawnManager> SpawnManagerBlueprint;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDUtilityManager> UtilityManagerBlueprint;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDCorpseManager> CorpseManagerBlueprint;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDDialogueManager* DialogueManager;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDSpawnManager* SpawnManager;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDAIDirector* AIDirector;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDUtilityManager* UtilityManager;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDCorpseManager* CorpseManager;
     
 public:

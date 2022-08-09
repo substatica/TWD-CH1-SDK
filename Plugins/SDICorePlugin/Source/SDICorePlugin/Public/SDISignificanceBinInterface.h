@@ -11,7 +11,7 @@ class SDICOREPLUGIN_API USDISignificanceBinInterface : public UInterface {
 class SDICOREPLUGIN_API ISDISignificanceBinInterface : public IInterface {
     GENERATED_BODY()
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnSignificanceBinChanged(int32 OldBin, int32 NewBin);
     
 };

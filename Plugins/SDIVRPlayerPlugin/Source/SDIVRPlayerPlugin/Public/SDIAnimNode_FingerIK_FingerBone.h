@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "RRotator.h"
 #include "BoneContainer.h"
+#include "RRotator.h"
 #include "UObject/NoExportTypes.h"
 #include "SDIAnimNode_FingerIK_FingerBone.generated.h"
 
@@ -12,13 +12,13 @@ public:
     UPROPERTY(EditAnywhere)
     FBoneReference Bone;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRRotator RotationRange;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFloatRK4SpringInterpolator Spring;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float TargetLerp;
     
     FSDIAnimNode_FingerIK_FingerBone();

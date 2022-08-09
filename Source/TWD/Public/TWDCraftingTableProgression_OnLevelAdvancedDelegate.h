@@ -4,5 +4,5 @@
 
 class AActor;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FTWDCraftingTableProgression_OnLevelAdvanced, TSoftClassPtr<AActor>, CraftingTableType, int32, NewLevel);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FTWDCraftingTableProgression_OnLevelAdvanced, TSoftClassPtr<AActor>, CraftingTableType, int32, NewLevel);
 

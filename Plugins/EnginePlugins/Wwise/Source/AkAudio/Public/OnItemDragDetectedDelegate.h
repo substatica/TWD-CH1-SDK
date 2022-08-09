@@ -3,5 +3,5 @@
 #include "UObject/NoExportTypes.h"
 #include "OnItemDragDetectedDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnItemDragDetected, FGuid, ItemDraggedID, const FString&, ItemDraggedName);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnItemDragDetected, FGuid, ItemDraggedID, const FString&, ItemDraggedName);
 

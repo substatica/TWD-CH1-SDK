@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FAnimBlendSpaceBounds : public FSDIComponentReplacement {
     GENERATED_BODY()
 public:
-    UPROPERTY(VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector RelCenter;
     
-    UPROPERTY(VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector Extents;
     
     TWD_API FAnimBlendSpaceBounds();

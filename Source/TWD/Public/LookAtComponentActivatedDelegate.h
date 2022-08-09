@@ -6,5 +6,5 @@ class ATWDPlayerController;
 class UCameraComponent;
 class UTWDLookAtComponent;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FLookAtComponentActivated, const ATWDPlayerController*, PlayerController, const UCameraComponent*, Camera, const UTWDLookAtComponent*, LookAtComponent);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FLookAtComponentActivated, const ATWDPlayerController*, PlayerController, const UCameraComponent*, Camera, const UTWDLookAtComponent*, LookAtComponent);
 

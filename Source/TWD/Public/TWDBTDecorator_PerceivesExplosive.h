@@ -3,11 +3,11 @@
 #include "TWDBTD_Base.h"
 #include "TWDBTDecorator_PerceivesExplosive.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class UTWDBTDecorator_PerceivesExplosive : public UTWDBTD_Base {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxDistanceToExplosive;
     
     UTWDBTDecorator_PerceivesExplosive();

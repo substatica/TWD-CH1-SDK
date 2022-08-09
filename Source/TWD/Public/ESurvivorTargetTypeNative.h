@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESurvivorTargetTypeNative.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESurvivorTargetTypeNative : uint8 {
     ReveredPlayer,
     FriendlyPlayer,

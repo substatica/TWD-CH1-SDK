@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "eGrappleState.generated.h"
 
-UENUM()
-enum class eGrappleState {
+UENUM(BlueprintType)
+enum class eGrappleState : uint8 {
     GS_Inactive,
     GS_GrappleAttempt,
     GS_ActiveGrapple,

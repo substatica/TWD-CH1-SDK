@@ -1,17 +1,17 @@
 #include "TWDBackpack.h"
-#include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/BoxComponent.h"
 #include "SDIPointGripComponent.h"
 #include "Components/ChildActorComponent.h"
 #include "Components/SceneComponent.h"
 
 class ATWDPlayerInventorySlot;
 class ASDIPlayerHand;
-class ASDIInventoryActor;
 class UPrimitiveComponent;
+class ASDIInventoryActor;
 class ATWDBackpackInventorySlot;
-class ASDIInventorySlot;
 class UTWDNonVRBackpackWidget;
+class ASDIInventorySlot;
 
 void ATWDBackpack::UpdateSlotIndexForCurrentPage() {
 }

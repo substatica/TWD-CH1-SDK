@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDITimestampTransform_NetQuantize : public FSDITransform_NetQuantize {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float Timestamp;
     
     FSDITimestampTransform_NetQuantize();

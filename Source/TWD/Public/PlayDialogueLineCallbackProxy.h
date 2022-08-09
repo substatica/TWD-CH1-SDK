@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
-#include "PlayDialogueLineDelegateDelegate.h"
 #include "Engine/DataTable.h"
+#include "PlayDialogueLineDelegateDelegate.h"
 #include "DialogueLine.h"
 #include "EDialogueOverlapHandlingMethod.h"
 #include "PlayDialogueLineCallbackProxy.generated.h"
@@ -11,27 +11,27 @@ class ATWDCharacter;
 class UTWDDialogue;
 class UPlayDialogueLineCallbackProxy;
 
-UCLASS(BlueprintType, MinimalAPI)
+UCLASS(Blueprintable, MinimalAPI)
 class UPlayDialogueLineCallbackProxy : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPlayDialogueLineDelegate LineCompleted;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPlayDialogueLineDelegate LineSkipped;
     
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FDataTableRowHandle DialogueLineHandle;
     
 public:
     UPlayDialogueLineCallbackProxy();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDialogueLineSkipped();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDialogueLineFinished(const FDialogueLine& DialogueLine, bool bCompleted);
     
 public:

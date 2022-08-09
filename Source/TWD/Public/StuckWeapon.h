@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct FStuckWeapon {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ATWDWeaponActor> StuckWeapon;
     
-    UPROPERTY(BlueprintReadWrite, Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UParticleSystemComponent* StabLoopPSComp;
     
     TWD_API FStuckWeapon();

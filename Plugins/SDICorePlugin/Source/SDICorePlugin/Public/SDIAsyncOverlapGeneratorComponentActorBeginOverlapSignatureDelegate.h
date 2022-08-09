@@ -4,5 +4,5 @@
 
 class AActor;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSDIAsyncOverlapGeneratorComponentActorBeginOverlapSignature, AActor*, OverlappedActor, AActor*, OtherActor);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSDIAsyncOverlapGeneratorComponentActorBeginOverlapSignature, AActor*, OverlappedActor, AActor*, OtherActor);
 

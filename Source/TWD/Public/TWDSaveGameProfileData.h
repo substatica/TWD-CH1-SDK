@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FTWDSaveGameProfileData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UTWDSaveGame*> LocalSaveGameCopies;
     
     TWD_API FTWDSaveGameProfileData();

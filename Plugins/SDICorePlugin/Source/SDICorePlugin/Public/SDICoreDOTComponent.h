@@ -1,60 +1,60 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SDIDamageData.h"
 #include "Components/ActorComponent.h"
+#include "RFloatExp.h"
 #include "SDIExportInterface.h"
 #include "SDIExportData.h"
-#include "RFloatExp.h"
+#include "SDIDamageData.h"
 #include "UObject/NoExportTypes.h"
 #include "SDICoreDOTComponent.generated.h"
 
-class AController;
-class AActor;
 class USDICoreDOTComponent;
+class AActor;
+class AController;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class SDICOREPLUGIN_API USDICoreDOTComponent : public UActorComponent, public ISDIExportInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIExportData ExportData;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIDamageData Damage;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloatExp Delay;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloatExp Duration;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloatExp Interval;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bAffectedByTimeDilation;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float IntervalTimer;
     
-    UPROPERTY(BlueprintReadOnly, Transient, ReplicatedUsing=OnRep_RepTotalDuration)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepTotalDuration, meta=(AllowPrivateAccess=true))
     float RepTotalDuration;
     
-    UPROPERTY(BlueprintReadOnly, Replicated, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     float RepDurationTimer;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float DelayTimer;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float AttachedTime;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AController* EventInstigator;
     
-    UPROPERTY(BlueprintReadOnly, Transient, ReplicatedUsing=OnRep_RepDamageCauser)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepDamageCauser, meta=(AllowPrivateAccess=true))
     AActor* RepDamageCauser;
     
 public:
@@ -68,36 +68,36 @@ protected:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ReApplyWith(const USDICoreDOTComponent* BaseDOT, AActor* Target, AController* inEventInstigator, AActor* inDamageCauser, const TMap<FName, float>& CustomData);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ProcessCustomData(bool bIsReApply, AActor* Target, AController* inEventInstigator, AActor* inDamageCauser, const TMap<FName, float>& CustomData);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTotalDuration(float OldRepTotalDuration);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepDamageCauser(AActor* OldRepDamageCauser);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnDurationUpdated(float OldRepTotalDuration, float NewRepTotalDuration);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnDamageCauserUpdated(AActor* OldRepDamageCauser, AActor* NewRepDamageCauser);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasAuthority() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetTimeLeft() const;
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     bool CanApplyTo(AActor* Target, AController* inEventInstigator, AActor* inDamageCauser, const TMap<FName, float>& CustomData) const;
     
     UFUNCTION(BlueprintCallable)
     static USDICoreDOTComponent* ApplyDOT(TSubclassOf<USDICoreDOTComponent> DOTClass, AActor* Target, AController* inEventInstigator, AActor* inDamageCauser, const TMap<FName, float>& CustomData);
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool AddCheckExistingDOT(USDICoreDOTComponent* DOTComp, AActor* Target, AController* inEventInstigator, AActor* inDamageCauser, const TMap<FName, float>& CustomData) const;
     
     

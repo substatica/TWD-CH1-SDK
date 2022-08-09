@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDICollisionResponseRefCount : public FSDIReferenceCounter {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TEnumAsByte<ECollisionResponse> CollisionResponse;
     
     FSDICollisionResponseRefCount();

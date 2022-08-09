@@ -3,7 +3,7 @@
 #include "AkPellegrinoPlatformInfo.h"
 #include "AkPS5PlatformInfo.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class UAkPS5PlatformInfo : public UAkPellegrinoPlatformInfo {
     GENERATED_BODY()
 public:

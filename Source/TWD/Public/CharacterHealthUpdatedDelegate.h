@@ -4,5 +4,5 @@
 
 class ATWDCharacter;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FCharacterHealthUpdated, ATWDCharacter*, Character, float, PrevHealth, float, NewHealth);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FCharacterHealthUpdated, ATWDCharacter*, Character, float, PrevHealth, float, NewHealth);
 

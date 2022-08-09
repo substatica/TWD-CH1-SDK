@@ -1,8 +1,8 @@
 #include "TWDNonVRObjectInteractionActor.h"
 
-class AActor;
 class ASDICorePlayerController;
 class ATWDPlayerCharacter;
+class AActor;
 
 
 

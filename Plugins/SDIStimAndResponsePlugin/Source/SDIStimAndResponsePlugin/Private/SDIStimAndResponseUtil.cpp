@@ -1,11 +1,11 @@
 #include "SDIStimAndResponseUtil.h"
 
-class UDamageType;
 class UObject;
-class ASDIGameplayTagActor;
 class USceneComponent;
+class ASDIGameplayTagActor;
 class AActor;
 class UPrimitiveComponent;
+class UDamageType;
 
 void USDIStimAndResponseUtil::UpdateStimuli(UObject* Object) {
 }

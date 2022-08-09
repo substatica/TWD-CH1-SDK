@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct TWD_API FTWDSavedInventoryItemData : public FTWDSavedItemData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint8 slotIdx;
     
     FTWDSavedInventoryItemData();

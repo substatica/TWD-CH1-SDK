@@ -1,8 +1,8 @@
 #include "SDIAsyncOverlapEventGeneratorComponent.h"
 
 class UPrimitiveComponent;
-class USDIAsyncOverlapEventGeneratorComponent;
 class AActor;
+class USDIAsyncOverlapEventGeneratorComponent;
 
 void USDIAsyncOverlapEventGeneratorComponent::SetRouteActorOverlapsToOwner(bool bRouteToOwner) {
 }

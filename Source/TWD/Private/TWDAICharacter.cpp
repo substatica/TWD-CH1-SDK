@@ -1,7 +1,7 @@
 #include "TWDAICharacter.h"
+#include "TWDAIPerceptionStimuliSource.h"
 #include "Components/MaterialBillboardComponent.h"
 #include "Components/TextRenderComponent.h"
-#include "TWDAIPerceptionStimuliSource.h"
 
 class AVolume;
 class UAnimSequence;

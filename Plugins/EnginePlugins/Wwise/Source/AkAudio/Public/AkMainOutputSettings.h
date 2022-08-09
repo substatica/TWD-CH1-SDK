@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FAkMainOutputSettings {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString AudioDeviceShareset;
     
     UPROPERTY(EditAnywhere)

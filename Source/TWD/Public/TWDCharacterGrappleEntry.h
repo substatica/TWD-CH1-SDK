@@ -9,13 +9,13 @@ USTRUCT(BlueprintType)
 struct FTWDCharacterGrappleEntry {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ATWDCharacter> Other;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ETWDCharacterGrappleLocation GrappleLocation;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float Timestamp;
     
     TWD_API FTWDCharacterGrappleEntry();

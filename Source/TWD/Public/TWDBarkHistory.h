@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct TWD_API FTWDBarkHistory {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTWDResponse Response;
     
     FTWDBarkHistory();

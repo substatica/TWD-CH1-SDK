@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ESurvivorTargetRelation.generated.h"
 
-UENUM()
-enum class ESurvivorTargetRelation {
+UENUM(BlueprintType)
+enum class ESurvivorTargetRelation : uint8 {
     Friendly,
     Neutral,
     Hostile,

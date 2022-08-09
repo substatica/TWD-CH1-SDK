@@ -1,217 +1,217 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "ReadyForPlayDelegate.h"
+#include "EDemoModeType.h"
 #include "SDICoreGameInstance.h"
 #include "TWDVRPlatformInfo.h"
 #include "TWDEstimatedLevelLoadingTime.h"
 #include "TWDLoadingScreenSettings.h"
 #include "PreReadyForPlayDelegate.h"
-#include "ETWDDifficultyMode.h"
-#include "EDemoModeType.h"
+#include "ReadyForPlayDelegate.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "TWDWarningErrorMessageCache.h"
+#include "ETWDDifficultyMode.h"
 #include "TWDSaveGameProfileData.h"
 #include "TWDPlayerCustomizationInfo.h"
 #include "UObject/NoExportTypes.h"
 #include "TWDGameInstance.generated.h"
 
-class UObject;
+class UTexture;
 class UDataTable;
-class UTWDGameEntitlements;
+class UObject;
 class UTWDGameProgression;
 class UTWDGameAchievements;
-class UTexture;
+class UTWDGameEntitlements;
 class UTWDGeneralSaveData;
 class UTWDSerializedProfile;
 class UTWDSaveGame;
 class UWorld;
 
-UCLASS(NonTransient)
+UCLASS(Blueprintable, NonTransient)
 class TWD_API UTWDGameInstance : public USDICoreGameInstance {
     GENERATED_BODY()
 public:
-    UPROPERTY(Config)
+    UPROPERTY(Config, EditAnywhere)
     uint32 GameSaveDataVersion;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bAllowAutoSaving;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 CurrentUserProfileIndex;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 CurrentSaveProfileIndex;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinimumPlayerWalkerDistanceToAutoSave;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bRevivePlayer;
     
-    UPROPERTY(BlueprintReadOnly, Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTWDVRPlatformInfo> VRPlatformInfoList;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bPerformedInitialVRReset;
     
-    UPROPERTY(BlueprintReadOnly, Config, VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTWDEstimatedLevelLoadingTime> EstimatedLevelLoadingTimes;
     
-    UPROPERTY(BlueprintReadOnly, Config, VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DefaultLevelLoadingTime;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bBootSequenceShown;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PreReadyForPlayTimerDefault;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float PreReadyForPlayTimer;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 LastLoadingBarSize;
     
 protected:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPreReadyForPlay PreReadyForPlay;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FReadyForPlay ReadyForPlay;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     EDemoModeType DemoModeType;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DemoTimerDuration;
     
-    UPROPERTY(Config, NoClear)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, NoClear, meta=(AllowPrivateAccess=true))
     FSoftClassPath GameSaveClass;
     
-    UPROPERTY(Config, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FramerateStabilizationMilliseconds;
     
-    UPROPERTY(Config, VisibleAnywhere)
+    UPROPERTY(Config, EditAnywhere)
     double MaxFramerateStabilizationTime;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDLoadingScreenSettings LoadingScreenSettings;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MapTransitionFadeOutDuration;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MapTransitionFadeInDuration;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MapTransitionFadeInDelay;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UDataTable*> PlatformAssetOverrideTables;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<FSoftObjectPath, UObject*> PlatformAssetOverrideCache;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bHasCachedPlatformAssetOverrides;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FString> ValidTipTagRoots;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FName MapTransitionTargetMap;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FTWDWarningErrorMessageCache> WarningCache;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FTWDWarningErrorMessageCache> ErrorCache;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDGameProgression* GameProgression;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDGameAchievements* GameAchievements;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDGameEntitlements* GameEntitlements;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UTWDGameProgression> GameProgressionClass;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bFlushStreamingDuringLoadingScreen;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FString> PS4_LowGoreCoutryCodes;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UObject* IntentRecognizer;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     FTWDSaveGameProfileData LocalUserProfileData[3];
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDGeneralSaveData* GeneralSaveData;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTWDSerializedProfile*> LocalUserProfileSerialized;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<bool> UserProfileCorruptStatus;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDSaveGame* LocalRecentAutoSave;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float LocalAutoSaveFrequency;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float AutoSaveFrequency;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TelemetryHeartbeatFrequency;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     double SkinCacheLoadingDelayStart;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     double FramerateStabilizationDelayStart;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bFlushStreaming;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bPreReadyForPlaySent;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTexture* SplashTexture;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     double LevelLoadingTime;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float EstimatedLevelLoadingTime;
     
 public:
     UTWDGameInstance();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void TurnOnSplashScreen();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void TravelForMapTransition();
     
 public:
     UFUNCTION(BlueprintCallable)
     void StartDemoTimer();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ShowLocalPlayerPosition();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ShowBuildVersion();
     
     UFUNCTION(BlueprintCallable)
@@ -231,7 +231,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetDemoMode(EDemoModeType DemoType);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool SaveGameExistsAtIndex(int32 Index) const;
     
     UFUNCTION(BlueprintCallable)
@@ -250,31 +250,31 @@ public:
     void RefreshSaveGames();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PreLoadMapCallback(const FString& MapName);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PostLoadMapCallback(UWorld* LoadedWorld);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PerformMapReadyTransition();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTelemetryHeartbeatTimerComplete();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLocalAutoSaveTimerComplete();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDemoTimerExpired();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAutoSavingDisabledTimerComplete();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAutoSaveTimerComplete();
     
     UFUNCTION(BlueprintCallable)
@@ -287,7 +287,7 @@ public:
     bool LoadSaveGame(UTWDSaveGame* SaveGame, bool bLoadIntoLevel);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void LoadLightScenario();
     
 public:
@@ -300,7 +300,7 @@ public:
     UFUNCTION(BlueprintCallable)
     TArray<int32> K2_GetSortedSaveGameIndices();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsUserProfileCorrupt(int32 Index) const;
     
     UFUNCTION(BlueprintCallable)
@@ -309,16 +309,16 @@ public:
     UFUNCTION(BlueprintCallable)
     bool IsTipValid(const FString& Tag);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsInMainMenuMap() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsDemoMode(EDemoModeType DemoType) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetTotalSaveIndices() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     TArray<int32> GetSortedSaveGameIndices(const TArray<UTWDSaveGame*>& SaveGames);
     
 protected:
@@ -332,38 +332,38 @@ public:
     UFUNCTION(BlueprintCallable)
     int32 GetOldestSaveIndex();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetMostRecentSaveIndex() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetLoadingScreenIndex(TArray<float> MinPercentages, TArray<float> MaxPercentages) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetLevelStartSaveIndex() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UTWDGeneralSaveData* GetGeneralSaveData() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UTWDGameProgression* GetGameProgression() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UTWDGameEntitlements* GetGameEntitlements() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UTWDGameAchievements* GetGameAchievements() const;
     
     UFUNCTION(BlueprintCallable)
     EDemoModeType GetDemoMode();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FString GetDefaultMap() const;
     
     UFUNCTION(BlueprintCallable)
     float GetColorMid();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void EndLoadingScreen();
     
 public:
@@ -386,14 +386,14 @@ public:
     void BeginMapTransition(FName TargetMapName);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BeginLoadingScreen(const FString& MapName);
     
 public:
     UFUNCTION(BlueprintCallable)
     bool AutoSaveCurrentGame();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AddPlayerContextTelemetryData(TMap<FString, FString>& TelemetryData);
     
 };

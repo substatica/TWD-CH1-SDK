@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDLockonType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDLockonType : uint8 {
     None,
     SpecialMelee,

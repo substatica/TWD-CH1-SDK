@@ -1,40 +1,40 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "NetworkManagerLoginSuccessfulDelegate.h"
-#include "UObject/Object.h"
 #include "NetworkManagerLoginFailedDelegate.h"
+#include "UObject/Object.h"
+#include "NetworkManagerLoginSuccessfulDelegate.h"
+#include "NetworkManagerInventoryAddedToBackpackDelegate.h"
 #include "NetworkManagerInventoryUpdatedDelegate.h"
 #include "NetworkManagerInventoryRemovedFromBackpackDelegate.h"
-#include "NetworkManagerInventoryAddedToBackpackDelegate.h"
 #include "NetworkManagerBackendStatusUpdatedDelegate.h"
-#include "NetworkManagerBackendVersionsUpdatedDelegate.h"
 #include "UObject/NoExportTypes.h"
+#include "NetworkManagerBackendVersionsUpdatedDelegate.h"
 #include "InventoryItemSDI.h"
 #include "NetworkManager.generated.h"
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class NETWORKMANAGERPLUGIN_API UNetworkManager : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FNetworkManagerLoginSuccessful NetworkManagerLoginSuccessful;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FNetworkManagerLoginFailed NetworkManagerLoginFailed;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FNetworkManagerInventoryUpdated NetworkManagerInventoryUpdated;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FNetworkManagerInventoryAddedToBackpack NetworkManagerInventoryAddedToBackpack;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FNetworkManagerInventoryRemovedFromBackpack NetworkManagerInventoryRemovedFromBackpack;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FNetworkManagerBackendStatusUpdated NetworkManagerBackendStatusUpdated;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FNetworkManagerBackendVersionsUpdated NetworkManagerBackendVersionsUpdated;
     
     UNetworkManager();
@@ -59,7 +59,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void GetItemsForLocalPlayerInventory();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FString GetClientVersion() const;
     
     UFUNCTION(BlueprintCallable)

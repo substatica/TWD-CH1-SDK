@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EUIDirection.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EUIDirection : uint8 {
     None,
     Up,

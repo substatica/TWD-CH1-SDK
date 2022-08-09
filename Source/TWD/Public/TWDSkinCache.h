@@ -1,31 +1,31 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "TWDSkinCacheLimits.h"
 #include "SDISkinCache.h"
+#include "TWDSkinCacheLimits.h"
 #include "TWDSkinCache.generated.h"
 
 class ATWDCharacter;
 class USDISkinObject;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDSkinCache : public USDISkinCache {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Config, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTWDSkinCacheLimits> SkinCacheLimits;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bSkinCacheLimitMapInitialized;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<TSoftClassPtr<USDISkinObject>, FTWDSkinCacheLimits> SkinCacheLimitMap;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSet<ATWDCharacter*> HandledCharacters;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSet<TSubclassOf<USDISkinObject>> HandledCharacterSkins;
     
 public:

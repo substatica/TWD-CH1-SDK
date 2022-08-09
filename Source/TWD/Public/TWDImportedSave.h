@@ -3,14 +3,14 @@
 #include "TWDSaveGame.h"
 #include "TWDImportedSave.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDImportedSave : public UTWDSaveGame {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText DebugMenuText;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString LiveSaveNameOverride;
     
     UTWDImportedSave();

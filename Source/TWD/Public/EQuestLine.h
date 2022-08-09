@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EQuestLine.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EQuestLine : uint8 {
     EQL_0,
     EQL_1,

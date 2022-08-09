@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EStatusIconState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EStatusIconState : uint8 {
     Threat,
     Dialogue,

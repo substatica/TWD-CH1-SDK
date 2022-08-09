@@ -20,16 +20,16 @@ public:
     UPROPERTY(EditAnywhere)
     uint32 SamplesPerFrame;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkMainOutputSettings MainOutputSettings;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float StreamingLookAheadRatio;
     
     UPROPERTY(EditAnywhere)
     uint16 NumberOfRefillsInVoice;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkSpatialAudioSettings SpatialAudioSettings;
     
     AKAUDIO_API FAkCommonInitializationSettings();

@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ESDIComparison.generated.h"
 
-UENUM()
-enum class ESDIComparison {
+UENUM(BlueprintType)
+enum class ESDIComparison : uint8 {
     Worse,
     Similar,
     Better,

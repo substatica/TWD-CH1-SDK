@@ -3,12 +3,12 @@
 #include "AkAudioInputComponent.h"
 #include "SDIPlayerVoiceAkComponent.generated.h"
 
-UCLASS(ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class SDIVRPLAYERPLUGIN_API USDIPlayerVoiceAkComponent : public UAkAudioInputComponent {
     GENERATED_BODY()
 public:
     USDIPlayerVoiceAkComponent();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasAGC() const;
     
 };

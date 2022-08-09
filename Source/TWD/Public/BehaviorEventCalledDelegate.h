@@ -4,5 +4,5 @@
 
 class ATWDCharacter;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FBehaviorEventCalled, ATWDCharacter*, Character, FName, EventName);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FBehaviorEventCalled, ATWDCharacter*, Character, FName, EventName);
 

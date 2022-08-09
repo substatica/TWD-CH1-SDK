@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TWDReplicatedInventoryActorInterfaceData.h"
 #include "SDIWeaponAttachment.h"
 #include "TWDInventoryActorInterface.h"
 #include "TWDInventoryActorBlueprintInterface.h"
 #include "TWDInventoryActorInterfaceData.h"
 #include "UObject/NoExportTypes.h"
+#include "TWDReplicatedInventoryActorInterfaceData.h"
 #include "ETWDNonVREquipmentType.h"
 #include "ETWDLootType.h"
 #include "ETWDInventoryType.h"
@@ -16,18 +16,18 @@ class ATWDWeaponActorAttachmentEditor;
 class ASDIInventorySlot;
 class ASDIInventoryActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDWeaponAttachment : public ASDIWeaponAttachment, public ITWDInventoryActorInterface, public ITWDInventoryActorBlueprintInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDInventoryActorInterfaceData TWDInventoryData;
     
-    UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_RepTWDInventoryData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_RepTWDInventoryData, meta=(AllowPrivateAccess=true))
     FTWDReplicatedInventoryActorInterfaceData RepTWDInventoryData;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDWeaponActorAttachmentEditor* AttachmentEditor;
     
 public:
@@ -38,10 +38,10 @@ protected:
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerSetInventorySlotIdx_IFC(uint8 InventorySlotIdx);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTWDInventoryData_Timer();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTWDInventoryData(const FTWDReplicatedInventoryActorInterfaceData& OldRepTWDInventoryData);
     
     

@@ -3,16 +3,16 @@
 #include "Engine/LevelScriptActor.h"
 #include "TWDHordeLevel.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDHordeLevel : public ALevelScriptActor {
     GENERATED_BODY()
 public:
     ATWDHordeLevel();
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnHordeTimerComplete();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HordeTimerComplete();
     
 };

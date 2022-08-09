@@ -11,25 +11,25 @@ class TWD_API UTWDBTS_DevOnlyCheckTest : public UObject {
     GENERATED_BODY()
 public:
     UTWDBTS_DevOnlyCheckTest();
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnTick(AAIController* OwnerController, AActor* OwnerActor, float DeltaSeconds);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSearchStart(AAIController* OwnerController, AActor* OwnerActor);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnDeactivation(AAIController* OwnerController, AActor* OwnerActor);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnActivation(AAIController* OwnerController, AActor* OwnerActor);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void GetRuntimeValues(AAIController* OwnerController, AActor* OwnerActor, TArray<FString>& Values);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     FString GetDescription() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FString GetDebugInfoString(AAIController* OwnerController, AActor* OwnerActor) const;
     
 };

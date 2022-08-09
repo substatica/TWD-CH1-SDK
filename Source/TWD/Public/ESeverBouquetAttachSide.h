@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ESeverBouquetAttachSide.generated.h"
 
-UENUM()
-enum class ESeverBouquetAttachSide {
+UENUM(BlueprintType)
+enum class ESeverBouquetAttachSide : uint8 {
     Left,
     Right,
     Front,

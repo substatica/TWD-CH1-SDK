@@ -10,16 +10,16 @@ USTRUCT(BlueprintType)
 struct SDISKINPLUGIN_API FSDIMeshMaterialParamMap {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<UObject*, FSDIMeshMaterialParamArray> ParamMap;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDIMeshMaterialParamArray> OriginalParams;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDIMeshMaterialParam> ChangedValues;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bFullReset;
     
     FSDIMeshMaterialParamMap();

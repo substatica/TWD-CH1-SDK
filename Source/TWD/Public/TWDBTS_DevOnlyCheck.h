@@ -4,22 +4,22 @@
 #include "BehaviorTree/BTService.h"
 #include "TWDBTS_DevOnlyCheck.generated.h"
 
+class AActor;
 class UTWDBTS_DevOnlyCheckTest;
 class AAIController;
-class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDBTS_DevOnlyCheck : public UBTService {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditInstanceOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UTWDBTS_DevOnlyCheckTest>> Tests;
     
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AAIController* AIOwner;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AActor* ActorOwner;
     
 public:

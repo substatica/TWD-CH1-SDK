@@ -9,18 +9,18 @@ class ASDICoreFXManager;
 class UCurveFloat;
 class UObject;
 
-UCLASS(Config=Game)
+UCLASS(Blueprintable, Config=Game)
 class SDICOREPLUGIN_API ASDICoreFXManager : public AActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 MaxLightFlickerUpdatesPerFrame;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 LightFlickerUpdateIndex;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDICoreFXLightFlickerEntry> LightFlickers;
     
 public:
@@ -28,7 +28,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void RemoveLightFlicker(ULightComponent* LightComponent);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ASDICoreFXManager* GetFXManager(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)

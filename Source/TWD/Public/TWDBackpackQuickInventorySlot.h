@@ -3,7 +3,7 @@
 #include "TWDPlayerInventorySlot.h"
 #include "TWDBackpackQuickInventorySlot.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDBackpackQuickInventorySlot : public ATWDPlayerInventorySlot {
     GENERATED_BODY()
 public:

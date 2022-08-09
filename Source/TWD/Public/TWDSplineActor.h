@@ -3,7 +3,7 @@
 #include "SDISplineMeshActor.h"
 #include "TWDSplineActor.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDSplineActor : public ASDISplineMeshActor {
     GENERATED_BODY()
 public:

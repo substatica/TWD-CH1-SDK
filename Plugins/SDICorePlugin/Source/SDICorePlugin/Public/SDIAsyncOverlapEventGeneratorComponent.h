@@ -1,71 +1,71 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SDIAsyncOverlapGeneratorComponentBeginOverlapSignatureDelegate.h"
 #include "Components/ActorComponent.h"
+#include "SDIAsyncOverlapGeneratorComponentActorBeginOverlapSignatureDelegate.h"
+#include "SDIAsyncOverlapGeneratorComponentBeginOverlapSignatureDelegate.h"
 #include "SDIAsyncOverlapGeneratorComponentActorEndOverlapSignatureDelegate.h"
 #include "SDIAsyncOverlapGeneratorComponentEndOverlapSignatureDelegate.h"
-#include "SDIAsyncOverlapGeneratorComponentActorBeginOverlapSignatureDelegate.h"
 #include "SDIAsyncOverlapEventGeneratorComponent.generated.h"
 
 class UPrimitiveComponent;
-class USDIAsyncOverlapEventGeneratorComponent;
 class AActor;
+class USDIAsyncOverlapEventGeneratorComponent;
 
-UCLASS(BlueprintType, EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class SDICOREPLUGIN_API USDIAsyncOverlapEventGeneratorComponent : public UActorComponent {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* PrimitiveComponent;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     TArray<UPrimitiveComponent*> OverlappedComponents;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TArray<TWeakObjectPtr<AActor>> OverlappedActors;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bDynamicallyCreated;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bIsUpdatingOverlaps;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bClearOverlapsRequested;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TArray<TWeakObjectPtr<AActor>> PendingActorsDestroyed;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bAsyncOverlapHandlePending;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSoftClassPtr<AActor>, bool> ActorClassOverlapFilter;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bCanOverlapOwner;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bRouteActorOverlapsToOwner;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bReciprocateComponentOverlapDelegates;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bReciprocateActorOverlapDelegates;
     
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIAsyncOverlapGeneratorComponentBeginOverlapSignature OnComponentBeginOverlap;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIAsyncOverlapGeneratorComponentEndOverlapSignature OnComponentEndOverlap;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIAsyncOverlapGeneratorComponentActorBeginOverlapSignature OnActorBeginOverlap;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIAsyncOverlapGeneratorComponentActorEndOverlapSignature OnActorEndOverlap;
     
     USDIAsyncOverlapEventGeneratorComponent();
@@ -85,20 +85,20 @@ public:
     void RemoveActorClassOverlapFilter(TSoftClassPtr<AActor> ActorClass);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnComponentCollisionSettingsChanged(UPrimitiveComponent* ChangedComponent);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnActorDestroyed(AActor* DestroyedActor);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsOverlappingComponent(const UPrimitiveComponent* OtherComp) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsOverlappingActor(const AActor* Other) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UPrimitiveComponent* GetComponent() const;
     
     UFUNCTION(BlueprintCallable)

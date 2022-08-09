@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FTWDBackpackPage {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<ATWDPlayerInventorySlot*> InventorySlots;
     
     TWD_API FTWDBackpackPage();

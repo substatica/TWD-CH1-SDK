@@ -3,7 +3,7 @@
 #include "Engine/LocalPlayer.h"
 #include "TWDLocalPlayer.generated.h"
 
-UCLASS(NonTransient)
+UCLASS(Blueprintable, NonTransient)
 class UTWDLocalPlayer : public ULocalPlayer {
     GENERATED_BODY()
 public:

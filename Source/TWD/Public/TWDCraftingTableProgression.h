@@ -1,47 +1,47 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "UObject/Object.h"
 #include "TWDCraftingTableLevel.h"
-#include "TWDCraftingTableProgression_OnSpecificUnlockDelegate.h"
 #include "TWDCraftingTableProgression_OnLevelAdvancedDelegate.h"
+#include "TWDCraftingTableProgression_OnSpecificUnlockDelegate.h"
+#include "UObject/NoExportTypes.h"
 #include "TWDCraftingTableProgression.generated.h"
 
 class ATWDCharacter;
 class AActor;
 class UTWDRecipe;
 
-UCLASS(BlueprintType, EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class TWD_API UTWDCraftingTableProgression : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftClassPtr<AActor> CraftingTableBlueprint;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTWDCraftingTableLevel> CraftingTableLevels;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSet<TSoftClassPtr<UTWDRecipe>> SpecificRecipesUnlockable;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 CurrentLevel;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSet<TSoftClassPtr<UTWDRecipe>> CurrentSpecificRecipesUnlocked;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSet<TSoftClassPtr<UTWDRecipe>> RecipesHaveNotBeenViewed;
     
-    UPROPERTY(BlueprintAssignable, Transient)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTWDCraftingTableProgression_OnLevelAdvanced OnLevelAdvancedDelegate;
     
-    UPROPERTY(BlueprintAssignable, Transient)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTWDCraftingTableProgression_OnSpecificUnlock OnSpecificUnlockDelegate;
     
     UTWDCraftingTableProgression();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UnlockBuffsAtLevel(int32 LevelIdx);
     
 public:
@@ -54,7 +54,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void MarkRecipeAsViewed(TSoftClassPtr<UTWDRecipe> Recipe, bool bViewed);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsRecipeUnlocked(TSoftClassPtr<UTWDRecipe> RecipeClass) const;
     
     UFUNCTION(BlueprintCallable)
@@ -63,13 +63,13 @@ public:
     UFUNCTION(BlueprintCallable)
     bool GetUpgradeInfo(TMap<FGuid, int32>& CostsMapOut, int32& NextLevelOut);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetLevelToUnlock(TSoftClassPtr<UTWDRecipe> RecipeClass) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSet<TSoftClassPtr<UTWDRecipe>> GetAllRecipes() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanAdvanceLevel(const ATWDCharacter* PC) const;
     
 };

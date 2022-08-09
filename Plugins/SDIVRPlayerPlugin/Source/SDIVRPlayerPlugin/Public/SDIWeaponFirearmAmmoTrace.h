@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SDIWeaponFirearmAmmoTraceShotInfo.h"
-#include "SDIWeaponFirearmFiredPelletInfo.h"
 #include "SDIWeaponFirearmAmmo.h"
-#include "SDIDamageData.h"
 #include "Engine/EngineTypes.h"
+#include "SDIDamageData.h"
 #include "Curves/CurveFloat.h"
 #include "SDIWeaponFirearmAmmoTracePendingPelletHitFX.h"
+#include "SDIWeaponFirearmAmmoTraceShotInfo.h"
 #include "Engine/EngineTypes.h"
 #include "SDITuningAttribute_SDIWeaponFirearmAmmoTrace.h"
+#include "SDIWeaponFirearmFiredPelletInfo.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
@@ -20,51 +20,51 @@
 class ASDIWeaponFirearmAmmoTrace;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDIWeaponFirearmAmmoTrace : public ASDIWeaponFirearmAmmo {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIDamageData Damage;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TraceRange;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TraceImpactVelocity;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TraceImpactMass;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HitReactImpulseMultiplier;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NearMissAlertRange;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 AsyncTracePlatformLevel;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 PassThroughAsyncTracePlatformLevel;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     TEnumAsByte<ECollisionChannel> TraceChannel;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve DirectDamageDistanceMultiplierCurve;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve RadialDamageDistanceMultiplierCurve;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDIWeaponFirearmAmmoTraceShotInfo> AsyncShotInfos;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDIWeaponFirearmAmmoTracePendingPelletHitFX> PendingPelletHitFX;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTimerHandle HandlePelletHitFXTimerHandle;
     
 public:
@@ -73,19 +73,19 @@ public:
     ASDIWeaponFirearmAmmoTrace* TuneSDIWeaponFirearmAmmoTrace(FSDITuningAttribute_SDIWeaponFirearmAmmoTrace Attr, float PreModifier, float Add, float PostModifier);
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SpawnTracerFX(const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform, const FTransform& SpreadShotTransform, const FVector& EndLocation);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool SpawnImpactFX(const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform, const FTransform& SpreadShotTransform, const FHitResult& Hit);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerHandleHitsAndNearMisses(const FSDIWeaponFirearmAmmoTraceShotInfo& TraceShotInfo);
     
-    UFUNCTION(NetMulticast, Unreliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
     void MulticastHandleHits(int32 ShotID, const FSDIWeaponFirearmFiredShotInfo& FiredShotInfo, const FTransform& ShotTransform, const TArray<FSDIWeaponFirearmAmmoTracePelletHit>& PelletHits);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePelletHitFXTimer();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
@@ -113,10 +113,10 @@ protected:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void GetDamageMultiplier(const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform, const FTransform& SpreadShotTransform, const FHitResult& Hit, const TArray<AActor*>& DamagedActors, float& OutDirectDamageMultiplier, float& OutRadialDamageMultiplier);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool AllowTracePassThrough(int32 PassThroughCount, const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform, const FTransform& SpreadShotTransform, const FVector& TraceStart, const FVector& TraceEnd, const FHitResult& LastHit, const TArray<FHitResult>& AllHits) const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool AllowHitPassThrough(int32 PassThroughCount, const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform, const FTransform& SpreadShotTransform, const FHitResult& LastHit, int32 LastHitIndex, const TArray<FHitResult>& AllHits, const TArray<AActor*>& DamagedActors) const;
     
 };

@@ -14,7 +14,7 @@ class SDISTIMANDRESPONSEPLUGIN_API USDIStimAndResponseReactionInterface : public
 class SDISTIMANDRESPONSEPLUGIN_API ISDIStimAndResponseReactionInterface : public IInterface {
     GENERATED_BODY()
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void StimulusChanged(UObject* StimuliOwner, const FGameplayTagContainer& OldStimuli, const FGameplayTagContainer& NewStimuli, const FGameplayTagContainer& AddedStimuli, const FGameplayTagContainer& RemovedStimuli);
     
 };

@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FBinSizeConfig {
     GENERATED_BODY()
 public:
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName TagToBin;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<int32> BinSizes;
     
     SDICOREPLUGIN_API FBinSizeConfig();

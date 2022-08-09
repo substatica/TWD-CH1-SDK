@@ -6,7 +6,7 @@ USTRUCT(BlueprintType)
 struct AKAUDIO_API FAkPropertyToControl {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ItemProperty;
     
     FAkPropertyToControl();

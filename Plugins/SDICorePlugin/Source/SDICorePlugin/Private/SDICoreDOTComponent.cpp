@@ -3,8 +3,8 @@
 #include "Templates/SubclassOf.h"
 
 class USDICoreDOTComponent;
-class AActor;
 class AController;
+class AActor;
 
 int32 USDICoreDOTComponent::RemoveDOT(TSubclassOf<USDICoreDOTComponent> DOTClass, AActor* Target, AController* inEventInstigator, AActor* inDamageCauser) {
     return 0;

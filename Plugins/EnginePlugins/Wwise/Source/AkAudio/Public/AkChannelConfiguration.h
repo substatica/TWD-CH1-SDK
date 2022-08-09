@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "AkChannelConfiguration.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class AkChannelConfiguration : uint8 {
     Ak_Parent,
     Ak_LFE,

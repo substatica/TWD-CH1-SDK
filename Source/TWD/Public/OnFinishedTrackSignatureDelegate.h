@@ -5,5 +5,5 @@
 class ATWDSplineTrackBase;
 class UTWDSplineMovementComponent;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnFinishedTrackSignature, ATWDSplineTrackBase*, Track, UTWDSplineMovementComponent*, Comp);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnFinishedTrackSignature, ATWDSplineTrackBase*, Track, UTWDSplineMovementComponent*, Comp);
 

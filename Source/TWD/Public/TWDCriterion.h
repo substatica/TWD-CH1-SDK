@@ -2,17 +2,17 @@
 #include "CoreMinimal.h"
 #include "TWDCriterion.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct TWD_API FTWDCriterion {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString Criterion;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bRequired;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Weight;
     
     FTWDCriterion();

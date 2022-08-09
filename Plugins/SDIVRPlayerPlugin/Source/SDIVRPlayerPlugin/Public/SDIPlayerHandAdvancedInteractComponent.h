@@ -3,12 +3,12 @@
 #include "SDIPlayerHandInteractComponent.h"
 #include "SDIPlayerHandAdvancedInteractComponent.generated.h"
 
-UCLASS(EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class SDIVRPLAYERPLUGIN_API USDIPlayerHandAdvancedInteractComponent : public USDIPlayerHandInteractComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float IgnoreNonClimbableRadius;
     
 public:

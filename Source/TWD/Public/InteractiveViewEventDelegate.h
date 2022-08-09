@@ -4,5 +4,5 @@
 
 class UInteractiveViewComponent;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FInteractiveViewEvent, UInteractiveViewComponent*, TWDInteractiveViewComponent);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FInteractiveViewEvent, UInteractiveViewComponent*, TWDInteractiveViewComponent);
 

@@ -3,7 +3,7 @@
 #include "Animation/AnimNotifies/AnimNotify.h"
 #include "TWDAnimNotify_MeleeAction.generated.h"
 
-UCLASS(CollapseCategories)
+UCLASS(Blueprintable, CollapseCategories)
 class UTWDAnimNotify_MeleeAction : public UAnimNotify {
     GENERATED_BODY()
 public:

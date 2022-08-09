@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AkMidiGeneric.h"
 #include "AkEventCallbackInfo.h"
 #include "AkMidiChannelAftertouch.h"
-#include "EAkMidiEventType.h"
-#include "AkMidiProgramChange.h"
 #include "AkMidiPitchBend.h"
 #include "AkMidiNoteAftertouch.h"
+#include "EAkMidiEventType.h"
+#include "AkMidiProgramChange.h"
 #include "AkMidiNoteOnOff.h"
+#include "AkMidiGeneric.h"
 #include "AkMidiCc.h"
 #include "AkMIDIEventCallbackInfo.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class UAkMIDIEventCallbackInfo : public UAkEventCallbackInfo {
     GENERATED_BODY()
 public:

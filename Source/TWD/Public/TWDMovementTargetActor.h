@@ -1,46 +1,46 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ECoverType.h"
-#include "EMovementTargetType.h"
 #include "SDIMovementTargetActor.h"
 #include "TWDInteractiveHighlightInterface.h"
-#include "UObject/NoExportTypes.h"
 #include "EPopoutLocation.h"
+#include "ECoverType.h"
+#include "EMovementTargetType.h"
+#include "UObject/NoExportTypes.h"
 #include "TWDMovementTargetActor.generated.h"
 
-class UArrowComponent;
 class AActor;
+class UArrowComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDMovementTargetActor : public ASDIMovementTargetActor, public ITWDInteractiveHighlightInterface {
     GENERATED_BODY()
 public:
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UArrowComponent* LeftArrowPopout;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UArrowComponent* RightArrowPopout;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EMovementTargetType MoveTargetType;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ECoverType CoverType;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CoverHeightCheck;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CoverWidthCheck;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CoverDistanceCheck;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool DisplayDebug;
     
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AActor* OccupingAgent;
     
 public:

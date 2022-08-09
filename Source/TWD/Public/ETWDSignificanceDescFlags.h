@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ETWDSignificanceDescFlags.generated.h"
 
-UENUM()
-enum class ETWDSignificanceDescFlags {
+UENUM(BlueprintType)
+enum class ETWDSignificanceDescFlags : uint8 {
     SC_Start,
     SC_AlwaysSignificanct = 0x0,
     SC_Visibility,

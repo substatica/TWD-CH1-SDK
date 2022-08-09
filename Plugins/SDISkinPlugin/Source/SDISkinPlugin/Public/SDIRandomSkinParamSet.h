@@ -11,10 +11,10 @@ struct SDISKINPLUGIN_API FSDIRandomSkinParamSet {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDIRandomSkinParamSetEntry> Entries;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<USDIRandomSkinParamSetShared> SharedParamSet;
     
 public:

@@ -2,8 +2,8 @@
 
 class ASDIHeldActor;
 class ATWDPlayerController;
-class AActor;
 class UCameraComponent;
+class AActor;
 
 bool UTWDLookAtComponent::TrySaveToNotebook() {
     return false;

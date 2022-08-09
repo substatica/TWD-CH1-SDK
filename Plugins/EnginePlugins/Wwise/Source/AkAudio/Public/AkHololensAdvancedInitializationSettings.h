@@ -10,10 +10,10 @@ public:
     UPROPERTY(EditAnywhere)
     uint32 AudioAPI;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool GlobalFocus;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool UseHeadMountedDisplayAudioDevice;
     
     AKAUDIO_API FAkHololensAdvancedInitializationSettings();

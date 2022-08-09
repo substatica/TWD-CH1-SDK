@@ -1,22 +1,22 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TWDHighScoreEntry.h"
 #include "TWDGeneralSaveDataChangedDelegate.h"
 #include "GameFramework/SaveGame.h"
+#include "TWDHighScoreEntry.h"
 #include "TWDGeneralSaveData.generated.h"
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class TWD_API UTWDGeneralSaveData : public USaveGame {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDGeneralSaveDataChanged OnSaveDataChanged;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTWDHighScoreEntry> WaveModeHighScores;
     
 protected:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bFinishedTutorial;
     
 public:
@@ -33,10 +33,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void ResetWaveModeHighScores();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasAnyPlayerFinishedTutorial() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FTWDHighScoreEntry> GetWaveModeHighScores() const;
     
 };

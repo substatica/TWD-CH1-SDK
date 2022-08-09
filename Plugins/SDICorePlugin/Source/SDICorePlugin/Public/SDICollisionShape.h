@@ -12,7 +12,7 @@ protected:
     UPROPERTY(EditAnywhere)
     TEnumAsByte<ECollisionShape> ShapeType;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector ShapeExtent;
     
 public:

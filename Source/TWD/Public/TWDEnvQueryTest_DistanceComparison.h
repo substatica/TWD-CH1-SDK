@@ -1,29 +1,29 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ETWDEnvTestDistance.h"
 #include "EnvironmentQuery/EnvQueryTest.h"
-#include "DistanceLine.h"
-#include "ETWDEnvTestOperation.h"
 #include "DataProviders/AIDataProvider.h"
+#include "ETWDEnvTestOperation.h"
+#include "ETWDEnvTestDistance.h"
+#include "DistanceLine.h"
 #include "TWDEnvQueryTest_DistanceComparison.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDEnvQueryTest_DistanceComparison : public UEnvQueryTest {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     TEnumAsByte<ETWDEnvTestDistance::Type> TestMode;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     TEnumAsByte<ETWDEnvTestOperation::Type> TestOperation;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDistanceLine LineA;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDistanceLine LineB;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAIDataProviderFloatValue FloatValueHysteresis;
     
     UTWDEnvQueryTest_DistanceComparison();

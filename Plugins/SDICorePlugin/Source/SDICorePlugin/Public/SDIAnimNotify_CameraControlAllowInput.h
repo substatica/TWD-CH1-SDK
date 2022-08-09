@@ -4,12 +4,12 @@
 #include "AlphaBlend.h"
 #include "SDIAnimNotify_CameraControlAllowInput.generated.h"
 
-UCLASS(CollapseCategories)
+UCLASS(Blueprintable, CollapseCategories)
 class USDIAnimNotify_CameraControlAllowInput : public UAnimNotify {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAlphaBlend CameraInputEaseIn;
     
 public:

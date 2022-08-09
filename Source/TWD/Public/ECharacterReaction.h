@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ECharacterReaction.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ECharacterReaction : uint8 {
     Flee,
     Combat,

@@ -3,7 +3,7 @@
 #include "SDIControllerInputAnimInstance.h"
 #include "TWDControllerInputAnimInstance.generated.h"
 
-UCLASS(NonTransient)
+UCLASS(Blueprintable, NonTransient)
 class TWD_API UTWDControllerInputAnimInstance : public USDIControllerInputAnimInstance {
     GENERATED_BODY()
 public:

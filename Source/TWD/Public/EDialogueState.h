@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EDialogueState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EDialogueState : uint8 {
     Playing,
     Suspended,

@@ -1,592 +1,592 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Engine/EngineTypes.h"
-#include "TWDCharacter.h"
-#include "SDITimestampInputButton.h"
-#include "InputCoreTypes.h"
-#include "SDITuningInterface.h"
-#include "UObject/NoExportTypes.h"
-#include "SDIBlendOption.h"
-#include "QFloatExp.h"
-#include "SDITuningAttribute_TWDCharacterMovementComponent.h"
-#include "Engine/EngineTypes.h"
-#include "ETWDNonVRGrappleMinigameState.h"
-#include "SDIDotLerpFloat.h"
-#include "UObject/NoExportTypes.h"
-#include "ETWDNonVREquipmentType.h"
 #include "RFloatExp.h"
 #include "RFloat.h"
+#include "TWDCharacter.h"
+#include "EGender.h"
+#include "SDITuningInterface.h"
+#include "SDITimestampInputButton.h"
+#include "SDIDotLerpFloat.h"
+#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
+#include "SDITuningAccumulator.h"
+#include "ETWDNonVRGrappleMinigameState.h"
+#include "Engine/EngineTypes.h"
+#include "Engine/EngineTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "QFloatExp.h"
+#include "TWDNonVREquipmentActionDetails.h"
 #include "SDIAkAudioEventPairDynamicLoop.h"
 #include "SDIReplicatedTuningModifier.h"
 #include "SDIPlayerHandInteractComponentEntry.h"
-#include "ETWDNonVREquipmentSlot.h"
-#include "ETWDNonVRGrappleAnimState.h"
-#include "ETWDNonVRMeleeAttackType.h"
-#include "SDIAnimNotifyStateData.h"
+#include "InputCoreTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "SDITuningAccumulator.h"
-#include "SDITuningAttribute_TWDPlayerCharacter.h"
-#include "TWDNonVRMeleeAttackDetails.h"
-#include "Engine/EngineTypes.h"
-#include "EGender.h"
+#include "ETWDNonVREquipmentSlot.h"
+#include "ETWDNonVRMeleeAttackType.h"
 #include "ETWDGunAction.h"
-#include "TWDNonVREquipmentActionDetails.h"
+#include "ETWDNonVRGrappleAnimState.h"
+#include "SDITuningAttribute_TWDPlayerCharacter.h"
+#include "SDIAnimNotifyStateData.h"
+#include "SDIBlendOption.h"
+#include "SDITuningAttribute_TWDCharacterMovementComponent.h"
+#include "TWDNonVRMeleeAttackDetails.h"
+#include "ETWDNonVREquipmentType.h"
 #include "TWDPlayerCharacter.generated.h"
 
-class ATWDPlayerLootDrop;
-class USDIPointGripComponent;
 class ATWDPlayerCharacter;
+class ASDIInteractiveActor;
+class USDIPointGripComponent;
 class UPhysicsConstraintComponent;
-class USceneComponent;
 class ASDIHeldActor;
-class UWidgetComponent;
+class USceneComponent;
 class UChildActorComponent;
+class ATWDPlayerLootDrop;
 class ATWDPlayerInventorySlot;
 class ATWDAmmoPouch;
 class ATWDBackpack;
 class ATWDNotebook;
+class ATWDWeaponActor;
 class ATWDFlashlight;
+class ASDIWeaponFirearm;
 class UMaterialParameterCollection;
 class UAkAudioEvent;
-class USDIPlayerVoiceAkComponent;
-class ASDIInteractiveActor;
-class ASDIInventoryActor;
-class ASDIWeaponFirearm;
-class ATWDWeaponActor;
-class UTWDAnimNotifyState_EquipmentAction;
-class UTWDAnimNotifyState_Grapple;
-class UTWDSaveGame;
 class AActor;
+class USDIPlayerVoiceAkComponent;
+class UTWDAnimNotifyState_Grapple;
+class ASDIInventoryActor;
+class UTWDAnimNotifyState_EquipmentAction;
+class UWidgetComponent;
+class UTWDSaveGame;
 class ATWDWeaponGun;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDPlayerCharacter : public ATWDCharacter, public ISDITuningInterface {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bInTutorial;
     
 protected:
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UPhysicsConstraintComponent* NonVRLeftHandPhysicsConstraint;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UPhysicsConstraintComponent* NonVRRightHandPhysicsConstraint;
     
 private:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton VirtualControlMoveButton;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton VirtualControlMoveReverseButton;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HybridMaxPitchAngleDeg;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HybridMaxUprightAngleDeg;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HybridMaxForwardAngleDeg;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bHybridEngageHMDDelta;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HybridEngageHMDDeltaZ;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HybridDisengageHMDRange;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bHybridEngageWhenHoldingItem;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<ASDIHeldActor>, bool> bHybridEngageClassMap;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float BeltInventoryRootOffset;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ChestInventoryRootOffset;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FString, FVector> InventoryRootsOffsetForHMD;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector InventoryRootsOffsetForHMDActive;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector ShoulderSlotOffset;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bAttachBackInventorySlotsToShoulders;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USceneComponent* BeltInventoryRoot;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USceneComponent* ChestInventoryRoot;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USDIPointGripComponent* BeltInventoryGripComponent;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USDIPointGripComponent* ChestInventoryGripComponent;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UChildActorComponent* BackInventoryComponent;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UChildActorComponent* BackpackInventoryComponent;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UChildActorComponent* LeftHipInventoryComponent;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UChildActorComponent* RightHipInventoryComponent;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UChildActorComponent* NotebookInventoryComponent;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UChildActorComponent* FlashlightInventoryComponent;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UChildActorComponent* AmmoPouchComponent;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDPlayerLootDrop> PlayerLootDropClass;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDPlayerInventorySlot* LeftHipInventorySlot;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDPlayerInventorySlot* RightHipInventorySlot;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDPlayerInventorySlot* BackInventorySlot;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDPlayerInventorySlot* BackpackInventorySlot;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDPlayerInventorySlot* NotebookInventorySlot;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDPlayerInventorySlot* FlashlightInventorySlot;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDAmmoPouch* AmmoPouch;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDBackpack* Backpack;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDNotebook* Notebook;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDFlashlight* Flashlight;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDIHeldActor> DeathLeftHandHeldActor;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDIHeldActor> DeathRightHandHeldActor;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialParameterCollection* PPMatCollection;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* AkePlayTinnitus;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* AkeStopTinnitus;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName NonVRCameraSocket;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bNonVRCameraClampToCapsule;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRCameraClampOffset;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bNonVRCameraCollideWithWorld;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     TEnumAsByte<ECollisionChannel> NonVRCameraCollisionChannel;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FCollisionResponseContainer NonVRCameraCollisionResponse;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRCameraCollisionRadius;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRMaxYawOffsetDeg;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFloatRK4SpringInterpolator NonVRYawOffsetSpring;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HipFireDelay;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HipFireHoldTime;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ADSMovementSpeedFactor;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRDryFireAutoHelperDelay;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AngleOfStrikeMovementSpeedFactor;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PrecisionStabMovementSpeedFactor;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFloatRK4SpringInterpolator AngleOfStrikeSpring;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bAngleOfStrikeForceReEngage;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AngleOfStrikeChargeEngageLevel;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AngleOfStrikeChargeDisengageLevel;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFloatRK4SpringInterpolator BasicMeleeAngleSpring;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIDotLerpFloat BasicMeleeAngles;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bBasicMeleeAnglesUseBothMoveAndLookInput;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bBasicMeleeAnglesUseLookInput;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bInvertBasicMeleeAngles;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MeleeFaceTargetPitchAngleMax;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WeaponStickSplayDuration;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WeaponStickSplaySpeed;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WeaponStickSplayRecoverySpeed;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WeaponStickSplayDelay;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WeaponStickEjectDuration;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WeaponStickWeakpointEjectDuration;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WeaponStickRemovalSpeed;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WeaponStickWeakpointRemovalSpeed;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WeaponStickRemovalRecoverySpeed;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WeaponStickRemovalDelay;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloat WeaponStickMaxInputAngle;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloat WeaponStickForceYawVelocityRange;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloat WeaponStickForcePitchVelocityRange;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloat WeaponStickForceDistanceRange;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloatExp WeaponStickYawForce;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloatExp WeaponStickPitchForce;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloatExp WeaponStickDistanceForce;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* AkePlayStabWeakpoint;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FQFloatExp NonVRGrappleMinigameDelay;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FQFloatExp NonVRGrappleMinigameTime;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRGrappleMinigamePressWindow;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FName, float> NonVRGrappleMinigameSuccessKillImpulses;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIAkAudioEventPairDynamicLoop NonVRAttackChargeSoundLoop;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString NonVRAttackChargeSoundLoopRTPC;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* AkeSpecialMeleeEngageFailure;
     
 protected:
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USDIPlayerVoiceAkComponent* PlayerVoiceLocalComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TinnitusDecayRate;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float TinnitusLevel;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bIsPlayingTinnitus;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float LastSetGutsAmount;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bHybridMovementEngaged;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     uint32 CachedNonVRCameraFrame;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector CachedNonVRCameraLocation;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector CachedNonVRPawnViewLocation;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDIInteractiveActor> CachedInteractionActor;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDIPlayerHandInteractComponentEntry CachedInteractionHighlight;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bCachedInteractionActorLongHeld;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<ETWDNonVREquipmentSlot, TWeakObjectPtr<ASDIInventoryActor>> NonVREquipment;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ETWDNonVREquipmentSlot DesiredNonVRSlotEquipped;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ETWDNonVREquipmentSlot CurrentNonVRSlotEquipped;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDIInventoryActor> NonVRPendingPickup;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ETWDNonVREquipmentSlot NonVRPendingPickupSlot;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bNonVRPendingPickupEquip;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDIWeaponFirearm> HipFireGun;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float HipFireRequestedTimestamp;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bHipFiring;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bNeedsRetune;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ETWDNonVRMeleeAttackType SpecialMeleeActive;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ETWDNonVRMeleeAttackType LastSpecialMeleeTargetMode;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bAngleOfStrikeWasSet;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float AngleOfStrike;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float AngleOfStrikeCharge;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bAngleOfStrikeIsCharged;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bBasicMeleeAngleWasSet;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float BasicMeleeAngle;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float WeaponStickAngle;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float WeaponStickInputAngle;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float WeaponStickRemoval;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float WeaponStickRemovalDelayTimer;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float WeaponStickEjectTimer;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ASDIInteractiveActor* ConsumingItem;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ATWDWeaponActor> ChargingWeapon;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float WeaponCharge;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bWeaponIsCharged;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float WeaponChargeHoldStartTime;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ETWDNonVRGrappleMinigameState NonVRGrappleMinigameState;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float NonVRGrappleMinigameTimer;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ETWDNonVRGrappleAnimState NonVRGrappleAnimState;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ATWDCharacter> NonVRGrappleAttacker;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<TWeakObjectPtr<UTWDAnimNotifyState_EquipmentAction>, FSDIAnimNotifyStateData> EquipmentActionNotifies;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<TWeakObjectPtr<UTWDAnimNotifyState_Grapple>, FSDIAnimNotifyStateData> GrappleNotifies;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString FemaleVoiceId;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString GenderSwitchGroup;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bIsOnTopOfBox;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector BoxMin;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector BoxMax;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTransform BoxXForm;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float ClosestSignificantWalkerDistance;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float LastPhysicalCrouchZDelta;
     
 private:
-    UPROPERTY(Export, Transient, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UWidgetComponent* SpectatorWidgetComponent;
     
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDITuningAccumulator TuningAccumulator;
     
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_RepTuningModifiers)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepTuningModifiers, meta=(AllowPrivateAccess=true))
     TArray<FSDIReplicatedTuningModifier> RepTuningModifiers;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputADSButton;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputPrimaryActionButton;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputSecondaryActionButton;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputReloadButton;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputInventoryBackpackButton;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputEquipLargeButton;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputEquipSmallButton;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputEquipConsumable1Button;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputEquipConsumable2Button;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputInventoryNotebookButton;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputInventoryFlashlightButton;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputInteractButton;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputGrabWorldButton;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MeleeButtonChargeTime;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIBlendOption MeleeButtonChargeBlend;
     
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<ASDIInventoryActor*> CurrentHeldActors;
     
     ATWDPlayerCharacter();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool UseNonVRMeleeButtonCharge() const;
     
     UFUNCTION(BlueprintCallable)
     void UpdateVoiceAndAppearance();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateQuickInventory(ETWDNonVREquipmentSlot EquipType);
     
     UFUNCTION(BlueprintCallable)
@@ -598,10 +598,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void StopSpecialMelee();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void StabStarted(ATWDWeaponActor* Weapon);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void StabEnding(ATWDWeaponActor* Weapon, bool bRemoveWeapon);
     
     UFUNCTION(BlueprintCallable)
@@ -635,7 +635,7 @@ public:
     void PutAwayHeldInventory(bool bLimitToKeyItems);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTuningModifiers();
     
 public:
@@ -645,187 +645,187 @@ public:
     UFUNCTION(BlueprintCallable)
     void NonVREquip(ETWDNonVREquipmentSlot Slot, bool bImmediate);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void NonVRConsumeEnd(ASDIInteractiveActor* ConsumableActor);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void NonVRConsumeBegin(ASDIInteractiveActor* ConsumableActor, bool bEquip);
     
     UFUNCTION(BlueprintCallable)
     void LoadDataFromGameProgression();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsWeaponStuckOrStabbed(ATWDWeaponActor*& OutWeapon, FHitResult& OutHitInfo, float& OutProgress, float& OutAngle, float& OutRemoval, float& OutInputAngle, float& OutDelay, bool& bOutCharged, bool& bOutWeakpoint, bool& bOutWeakpointIsDiseased, bool& bOutPlayerExtraction) const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool IsSpecialMeleeAllowed(ETWDNonVRMeleeAttackType Type) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSpecialMeleeActiveDetailed(FTWDNonVRMeleeAttackDetails& OutDetails) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSpecialMeleeActive(ETWDNonVRMeleeAttackType& OutType) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSpecialInventory(AActor* Actor) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPreparingMeleeAttackDetailed(FTWDNonVRMeleeAttackDetails& OutDetails, bool bFindTarget) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPreparingMeleeAttack() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPreciseThrowControlEngaged(EControllerHand hand) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayingMeleeAttackAnimDetailed(FTWDNonVRMeleeAttackDetails& OutDetails) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayingGunActionAnimWithInfo(ETWDGunAction Action, ATWDWeaponGun*& OutGun) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayingGrappleAnim() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayingEquipmentActionAnimDetailed(FTWDNonVREquipmentActionDetails& OutDetails) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayingEquipmentActionAnim() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsOnTopOfBox(FVector& Min, FVector& Max, FTransform& XForm) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool IsNonVRConsuming() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsHoldingSpecialInventory(EControllerHand hand) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsHoldingNotebook() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsHoldingInventory(EControllerHand hand) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsHoldingFlashlight() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsHoldingBackpack() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsHipFiring(ATWDWeaponGun*& OutGun) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputVirtualMoveControl(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputSecondaryActionReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputSecondaryActionPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReverseVirtualMoveControl(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReloadReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReloadPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPrimaryActionReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPrimaryActionPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputInventoryNotebookReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputInventoryNotebookPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputInventoryFlashlightReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputInventoryFlashlightPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputInventoryBackpackReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputInventoryBackpackPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputInteractReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputInteractPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputGrabWorldReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputGrabWorldPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputEquipSmallReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputEquipSmallPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputEquipLargeReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputEquipLargePressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputEquipConsumable2Released();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputEquipConsumable2Pressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputEquipConsumable1Released();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputEquipConsumable1Pressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputADSReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputADSPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool HasPendingNonVRLongHeldInteraction() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIInventoryActor* GetNonVRPendingPickup(ETWDNonVREquipmentSlot& OutSlot) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETWDNonVRGrappleMinigameState GetNonVRGrappleMinigameState(float& OutTimeRemaining, float& OutDuration, float& OutNextDuration) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETWDNonVRGrappleAnimState GetNonVRGrappleAnimState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETWDNonVREquipmentType GetNonVREquipmentType(ASDIInventoryActor* Item) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETWDNonVREquipmentSlot GetNonVREquipmentSlot(ASDIInventoryActor* Item) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIInventoryActor* GetNonVREquipment(ETWDNonVREquipmentSlot Slot) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETWDNonVREquipmentSlot GetDesiredNonVREquipmentSlot(ETWDNonVREquipmentType EquipmentType) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIInventoryActor* GetCurrentNonVREquipment(ETWDNonVREquipmentSlot& OutSlot) const;
     
     UFUNCTION(BlueprintCallable)
@@ -834,7 +834,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void ExitAllNonVRInteractionStates();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void CompleteNonVRPendingPickup();
     
     UFUNCTION(BlueprintCallable)

@@ -1,22 +1,22 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "OnAkPostEventCallbackDelegate.h"
 #include "Components/SceneComponent.h"
-#include "Engine/LatentActionManager.h"
+#include "OnAkPostEventCallbackDelegate.h"
 #include "AkExternalSourceInfo.h"
+#include "Engine/LatentActionManager.h"
 #include "AkGameObject.generated.h"
 
 class UAkAudioEvent;
 class UObject;
 
-UCLASS(BlueprintType, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class AKAUDIO_API UAkGameObject : public USceneComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* AkAudioEvent;
     
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString EventName;
     
     UAkGameObject();

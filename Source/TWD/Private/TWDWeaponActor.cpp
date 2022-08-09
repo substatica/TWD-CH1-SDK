@@ -10,10 +10,10 @@ class AActor;
 class UAkAudioEvent;
 class USDIWeaponHitCapsuleComponent;
 class UPrimitiveComponent;
-class UObject;
 class UDamageType;
 class ATWDCharacter;
 class ATWDDismemberDroppedLimb;
+class UObject;
 
 TArray<ATWDWeaponActor*> ATWDWeaponActor::UnstickAllWeaponsFromComponent(const USceneComponent* Comp, bool bSimulatePhysics, bool bRecurse, bool bRecurseIntoAttachedActors) {
     return TArray<ATWDWeaponActor*>();

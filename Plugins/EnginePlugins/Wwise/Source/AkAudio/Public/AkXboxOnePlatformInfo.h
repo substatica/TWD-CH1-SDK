@@ -3,7 +3,7 @@
 #include "AkPlatformInfo.h"
 #include "AkXboxOnePlatformInfo.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class UAkXboxOnePlatformInfo : public UAkPlatformInfo {
     GENERATED_BODY()
 public:

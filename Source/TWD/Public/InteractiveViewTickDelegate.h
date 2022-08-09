@@ -4,5 +4,5 @@
 
 class UInteractiveViewComponent;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FInteractiveViewTick, UInteractiveViewComponent*, TWDInteractiveViewComponent, const float, ViewQuantity);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FInteractiveViewTick, UInteractiveViewComponent*, TWDInteractiveViewComponent, const float, ViewQuantity);
 

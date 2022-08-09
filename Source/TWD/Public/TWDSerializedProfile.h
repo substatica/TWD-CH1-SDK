@@ -4,11 +4,11 @@
 #include "TWDSerializedSaveSlot.h"
 #include "TWDSerializedProfile.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDSerializedProfile : public USaveGame {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTWDSerializedSaveSlot> SlotData;
     
     UTWDSerializedProfile();

@@ -1,66 +1,66 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "TWDStashPage.h"
 #include "TWDInventoryHolderActor.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "TWDStashPage.h"
 #include "TWDStash.generated.h"
 
-class USceneComponent;
 class ATWDPlayerInventorySlot;
-class ASDIInventorySlot;
-class UBoxComponent;
+class USceneComponent;
 class ASDIInventoryActor;
+class UBoxComponent;
 class AActor;
+class ASDIInventorySlot;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDStash : public ATWDInventoryHolderActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDPlayerInventorySlot> InventorySlotBlueprint;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USceneComponent* InventorySlotRoot;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FIntVector InventorySlotCount;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector2D InventorySlotSpacing;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float InventorySlotRadius;
     
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTWDStashPage> InventoryPages;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<ATWDPlayerInventorySlot*> BlueprintCreatedSlots;
     
-    UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<ASDIInventoryActor>> SalvageMaterialClasses;
     
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 ActivePageIndex;
     
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 AvailablePages;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UBoxComponent* NextPageCollision;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UBoxComponent* PrevPageCollision;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USceneComponent* InventoryWallRoot;
     
 public:
     ATWDStash();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveStashToProgression();
     
     UFUNCTION(BlueprintCallable)
@@ -69,16 +69,16 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnStashContentChanged();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSalvageMaterialAdded(UClass* SalvageMatClass, const FText& SalvageMatName, int32 SalvageMatCount);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnPageFlip(int32 PrevPageIndex, int32 CurrentPageIndex);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnInventorySlotContentChanged(ATWDPlayerInventorySlot* InvSlot, ASDIInventoryActor* CurrentInventory);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void LoadStashFromProgression();
     
     UFUNCTION(BlueprintCallable)
@@ -96,13 +96,13 @@ public:
     UFUNCTION(BlueprintPure)
     ATWDPlayerInventorySlot* GetInventorySlotByIdx(uint8 slotIdx) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<ATWDPlayerInventorySlot*> GetAllStashInventory() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     ASDIInventorySlot* FindEmptyInventorySlot(ASDIInventoryActor* InventoryActor, int32& OutPage);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanSalvage(const AActor* Item) const;
     
     UFUNCTION(BlueprintCallable)

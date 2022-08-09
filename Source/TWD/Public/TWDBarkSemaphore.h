@@ -5,12 +5,12 @@
 
 class ATWDCharacter;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDBarkSemaphore : public UObject {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDCharacter* Speaker;
     
 public:

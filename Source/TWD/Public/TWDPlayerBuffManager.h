@@ -16,93 +16,93 @@ class TWD_API UTWDPlayerBuffManager : public UObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSet<FName> CurrentBuffs;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<UTWDDamageType>, float> DamageGivenFactors;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<UTWDDamageType>, float> DamageTakenFactors;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<ASDIInventoryActor>, float> InventoryCapacityFactors;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float NoiseFactor;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float SprintStaminaFactor;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float MeleeStaminaFactor;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float GlobalStaminaFactor;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float StaminaRegenFactor;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float WeaponDurabilityDeltaFactor;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float MeleeWeaponDurabilityDeltaFactor;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float CraftedGunDurabilityDeltaFactor;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float BowDurabilityDeltaFactor;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float ArrowBreakChanceFactor;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bNoReload;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSet<TSoftClassPtr<ATWDWeaponGun>> CraftedGuns;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float MaxHealthBoostAmount;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float MaxStaminaBoostAmount;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName HealthRegenBuffName;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HealthRegenDuration;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float HealthRegenRate;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float HealthRegenTimer;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FName, FTWDHealingBuffParams> HealBuffParams;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float HealingRate;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float HealingTimer;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float HealingAmountRemaining;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> TemporaryBuffs;
     
 public:
     UTWDPlayerBuffManager();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void TickHealthRegen(float DeltaTime);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void TickHealing(float DeltaTime);
     
     UFUNCTION(BlueprintCallable)
@@ -117,10 +117,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetMaxHealthBoostAmount(float NewMaxHealthBoostAmount);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveTemporaryBuffs(UTWDSaveGame* SaveGame);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ResetBuffs();
     
     UFUNCTION(BlueprintCallable)
@@ -130,77 +130,77 @@ public:
     void RemoveBuff(FName BuffName);
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnBuffsReset();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnBuffRemoved(FName BuffName);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnBuffAdded(FName BuffName);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void LoadTemporaryBuffs(UTWDSaveGame* SaveGame);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool IsNoReloadEnabled() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetWeaponDurabilityDeltaMultiplier() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetStaminaRegenMultiplier() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetSprintStaminaMultiplier() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetNoiseMultiplier() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetMeleeWeaponDurabilityDeltaMultiplier() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetMeleeStaminaMultiplier() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetMaxStaminaBoostAmount() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetMaxHealthBoostAmount() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetInventoryCapacityMultiplier(TSubclassOf<ASDIInventoryActor> InventoryType) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetHealthRegenTimeRemaining() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetHealthRegenRate() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetHealingTimeRemaining() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetHealingRate() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetGlobalStaminaMultiplier() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetDamageTakenMultiplier(TSubclassOf<UTWDDamageType> DamageType) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetDamageGivenMultiplier(TSubclassOf<UTWDDamageType> DamageType) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetCraftedGunDurabilityDeltaMultiplier(TSoftClassPtr<ATWDWeaponGun> GunClass) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetBowDurabilityDeltaMultiplier() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetArrowBreakChanceMultiplier() const;
     
     UFUNCTION(BlueprintCallable)

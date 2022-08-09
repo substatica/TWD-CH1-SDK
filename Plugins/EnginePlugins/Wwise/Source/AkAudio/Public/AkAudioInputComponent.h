@@ -3,7 +3,7 @@
 #include "AkComponent.h"
 #include "AkAudioInputComponent.generated.h"
 
-UCLASS(Abstract, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Abstract, Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class AKAUDIO_API UAkAudioInputComponent : public UAkComponent {
     GENERATED_BODY()
 public:

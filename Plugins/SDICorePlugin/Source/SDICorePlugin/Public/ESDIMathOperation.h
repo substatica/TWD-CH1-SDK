@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESDIMathOperation.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESDIMathOperation : uint8 {
     Max,
     Min,

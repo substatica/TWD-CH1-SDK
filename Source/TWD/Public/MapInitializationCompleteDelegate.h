@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "MapInitializationCompleteDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMapInitializationComplete);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMapInitializationComplete);
 

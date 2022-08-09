@@ -3,15 +3,15 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "TWDDismemberDroppedLimbAdvancedSkeletalMeshComponent.generated.h"
 
-UCLASS(EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class UTWDDismemberDroppedLimbAdvancedSkeletalMeshComponent : public USkeletalMeshComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Export, Transient)
+    UPROPERTY(EditAnywhere, Export, Transient)
     TWeakObjectPtr<USkeletalMeshComponent> PoseCopyMesh;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bBlendPhysicsNextTick;
     
 public:

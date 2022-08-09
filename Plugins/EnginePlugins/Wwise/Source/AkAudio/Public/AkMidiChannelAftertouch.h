@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FAkMidiChannelAftertouch : public FAkMidiEventBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     uint8 Value;
     
     AKAUDIO_API FAkMidiChannelAftertouch();

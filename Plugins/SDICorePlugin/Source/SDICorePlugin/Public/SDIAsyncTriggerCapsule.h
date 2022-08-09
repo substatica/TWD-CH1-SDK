@@ -5,12 +5,12 @@
 
 class USDIAsyncOverlapEventGeneratorComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API ASDIAsyncTriggerCapsule : public ATriggerCapsule {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USDIAsyncOverlapEventGeneratorComponent* OverlapGenerator;
     
 public:

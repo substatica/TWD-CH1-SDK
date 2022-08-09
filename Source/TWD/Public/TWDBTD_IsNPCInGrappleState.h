@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "BehaviorTree/BehaviorTreeTypes.h"
 #include "TWDBTD_Base.h"
+#include "BehaviorTree/BehaviorTreeTypes.h"
 #include "TWDBTD_IsNPCInGrappleState.generated.h"
 
 UCLASS(Blueprintable)
 class TWD_API UTWDBTD_IsNPCInGrappleState : public UTWDBTD_Base {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FBlackboardKeySelector GrappleStateKey;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FBlackboardKeySelector GrappleAttackerKey;
     
     UTWDBTD_IsNPCInGrappleState();

@@ -7,26 +7,26 @@
 class ASDIInventoryActor;
 class ATWDAmmoProp;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDWeaponBow : public ATWDWeaponActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDAmmoProp> ArrowPropClass;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bUseArrowProps;
     
 public:
     ATWDWeaponBow();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool ShouldUseArrowProps() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<ASDIInventoryActor> GetArrowPropCurrencyClass() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<ATWDAmmoProp> GetArrowPropClass() const;
     
 };

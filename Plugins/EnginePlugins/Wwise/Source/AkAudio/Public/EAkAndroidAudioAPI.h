@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EAkAndroidAudioAPI.generated.h"
 
-UENUM()
-enum class EAkAndroidAudioAPI {
+UENUM(BlueprintType)
+enum class EAkAndroidAudioAPI : uint8 {
     AAudio,
     OpenSL_ES,
 };

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EBackendUserRole.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum EBackendUserRole {
     BUR_DEVELOPER,
     BUR_USER,

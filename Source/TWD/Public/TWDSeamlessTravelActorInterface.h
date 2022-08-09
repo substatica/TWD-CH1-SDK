@@ -13,7 +13,7 @@ class UTWDSeamlessTravelActorInterface : public UInterface {
 class ITWDSeamlessTravelActorInterface : public IInterface {
     GENERATED_BODY()
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void GetSeamlessTravelActorList(bool bToEntry, TArray<AActor*>& ActorList);
     
 };

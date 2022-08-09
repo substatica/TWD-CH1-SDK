@@ -4,5 +4,5 @@
 
 class ATWDCharacter;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSpawnerCharacterSpawned, ATWDCharacter*, Character);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSpawnerCharacterSpawned, ATWDCharacter*, Character);
 

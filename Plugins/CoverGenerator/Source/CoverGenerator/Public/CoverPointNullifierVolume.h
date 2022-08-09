@@ -3,7 +3,7 @@
 #include "GameFramework/Volume.h"
 #include "CoverPointNullifierVolume.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class COVERGENERATOR_API ACoverPointNullifierVolume : public AVolume {
     GENERATED_BODY()
 public:

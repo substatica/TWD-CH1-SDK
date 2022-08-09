@@ -2,9 +2,9 @@
 #include "CoreMinimal.h"
 #include "SDIMovementTargetActor_OnMovementHighlightChangedDelegate.generated.h"
 
-class UPrimitiveComponent;
 class ASDIMovementTargetActor;
 class ASDICharacter;
+class UPrimitiveComponent;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams(FSDIMovementTargetActor_OnMovementHighlightChanged, ASDIMovementTargetActor*, MovementTarget, ASDICharacter*, Character, bool, bHighlighted, UPrimitiveComponent*, HighlightedComponent, UPrimitiveComponent*, PrevHighlightedComponent);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams(FSDIMovementTargetActor_OnMovementHighlightChanged, ASDIMovementTargetActor*, MovementTarget, ASDICharacter*, Character, bool, bHighlighted, UPrimitiveComponent*, HighlightedComponent, UPrimitiveComponent*, PrevHighlightedComponent);
 

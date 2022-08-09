@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FBinnedObjectInfo {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float LastBinChangeTime;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 CurrentBin;
     
     SDICOREPLUGIN_API FBinnedObjectInfo();

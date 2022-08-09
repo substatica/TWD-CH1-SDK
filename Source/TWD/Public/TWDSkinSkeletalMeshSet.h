@@ -8,13 +8,13 @@ USTRUCT(BlueprintType)
 struct FTWDSkinSkeletalMeshSet : public FSDISkinSectionalVariantSkeletalMeshSet {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 MinGoreLevelWaveMode;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDSkinSkeletalMeshSetArmor Armor;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDSkinSkeletalMeshSetArmor NonVRArmor;
     
     TWD_API FTWDSkinSkeletalMeshSet();

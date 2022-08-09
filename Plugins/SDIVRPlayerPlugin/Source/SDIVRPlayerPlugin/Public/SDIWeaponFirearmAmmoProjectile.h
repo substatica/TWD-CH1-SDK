@@ -1,29 +1,29 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SDIWeaponFirearmFiredPelletInfo.h"
 #include "SDIWeaponFirearmAmmo.h"
+#include "SDIWeaponFirearmFiredPelletInfo.h"
 #include "UObject/NoExportTypes.h"
 #include "SDIWeaponFirearmAmmoProjectile.generated.h"
 
 class ASDIProjectileActor;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDIWeaponFirearmAmmoProjectile : public ASDIWeaponFirearmAmmo {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIProjectileActor> ProjectileClass;
     
 public:
     ASDIWeaponFirearmAmmoProjectile();
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     ASDIProjectileActor* SpawnProjectile(const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform, const FTransform& SpreadShotTransform, TSubclassOf<ASDIProjectileActor> SpawnProjectileClass, AActor* ProjectileOwner);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSpawnProjectile(const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform, const FTransform& SpreadShotTransform, TSubclassOf<ASDIProjectileActor> SpawnProjectileClass, AActor* ProjectileOwner);
     
 public:

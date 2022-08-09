@@ -1,10 +1,10 @@
 #include "SDIStructures.h"
 
+class AActor;
+class APlayerController;
 class USceneComponent;
 class UObject;
 class UAkComponent;
-class AActor;
-class APlayerController;
 class AController;
 
 bool USDIStructures::UpdateSDICameraShakeSettingsInstScale(FSDICameraShakeSettingsInst& Shake, float InScale) {

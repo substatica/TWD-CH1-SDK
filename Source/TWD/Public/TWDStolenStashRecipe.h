@@ -4,18 +4,18 @@
 #include "UObject/NoExportTypes.h"
 #include "TWDStolenStashRecipe.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDStolenStashRecipe : public UTWDRecipe {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     uint8 StashItemBox;
     
     UTWDStolenStashRecipe();
     UFUNCTION(BlueprintCallable)
     void MarkItemsFound();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TMap<FGuid, int32> GetItemList() const;
     
 };

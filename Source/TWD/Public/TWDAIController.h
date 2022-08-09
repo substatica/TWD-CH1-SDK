@@ -1,344 +1,344 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Curves/CurveFloat.h"
+#include "ETWDSuspiciousStates.h"
 #include "SDIAIController.h"
-#include "QueuedSharedStimEvent.h"
+#include "Curves/CurveFloat.h"
 #include "SDIAIControllerInventoryInterface.h"
-#include "ESDIInteractiveInteractType.h"
+#include "QueuedSharedStimEvent.h"
 #include "ActorStimData.h"
-#include "BehaviorTree/BehaviorTreeTypes.h"
-#include "UObject/NoExportTypes.h"
 #include "OnReceivedSharedStimDelegate.h"
-#include "ETWDCharacterType.h"
-#include "EAIBaseGroundMovementSpeedType.h"
+#include "UObject/NoExportTypes.h"
 #include "EAssignmentCategory.h"
-#include "ETWDSurvivorTargetRankings.h"
 #include "RFloat.h"
 #include "UObject/NoExportTypes.h"
+#include "InputCoreTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "ESurvivorTargetTypeNative.h"
-#include "ETWDAITieBreaker.h"
-#include "ETWDSuspiciousStates.h"
 #include "ETWDAICommand.h"
-#include "UObject/NoExportTypes.h"
 #include "EAkCallbackType.h"
+#include "ETWDSurvivorTargetRankings.h"
+#include "ETWDAITieBreaker.h"
 #include "UObject/NoExportTypes.h"
+#include "ETWDCharacterType.h"
 #include "ETWDCombatStates.h"
-#include "InputCoreTypes.h"
+#include "BehaviorTree/BehaviorTreeTypes.h"
+#include "EAIBaseGroundMovementSpeedType.h"
+#include "ESDIInteractiveInteractType.h"
+#include "UObject/NoExportTypes.h"
 #include "TWDAIController.generated.h"
 
 class ATWDCharacter;
 class ATargetPoint;
-class AController;
-class UObject;
-class UTWDAIAssignment;
-class UAkCallbackInfo;
-class AActor;
-class UBehaviorTree;
-class ATWDPlayerController;
 class ATWDAIController;
-class UTWDCharacterPersonality;
-class UAISense;
-class ASDIInventoryActor;
-class ASDIHeldActor;
+class UBehaviorTree;
+class AController;
+class UTWDAIAssignment;
+class AActor;
+class ATWDPlayerController;
 class ASDIWeaponFirearm;
+class UAkCallbackInfo;
+class UTWDCharacterPersonality;
+class ASDIHeldActor;
+class UAISense;
+class UObject;
+class ASDIInventoryActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDAIController : public ASDIAIController, public ISDIAIControllerInventoryInterface {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FActorStimData CurrentTargetStimData;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 TeamNumber;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATargetPoint* ExitPoint;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CrowdFollowRange;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CrowdFollowExitRange;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CrowdFollowExitRangeForCombatCircle;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CrowdFollowEnterRangeForCombatCircle;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CrowdFollowRangeCheckTimer;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CrowdFollowRangeCheckTime;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxCorpseSuspicion;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UnperceivedSoundMaxAge;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AutoSenseCrouchingPlayerRadius;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AutoSenseCrouchingFrontPlayerRadius;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AutoSenseSprintingPlayerRadius;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AutoSenseRadiusAgainstWalkers;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AutoSenseRadiusAgainstHumans;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bDebugShowShotTransforms;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bDebugShowFocus;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bDebugDisableAimOffset;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bDebugShotFreeze;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxConeHalfAngle;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bCanBeTrickedByStealth;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NearbyCombatAlliesRangeInner;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NearbyCombatAlliesRangeOuter;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NearbyCombatEnemiesRange;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<ATWDCharacter*> StealthExceptionList;
     
-    UPROPERTY(BlueprintReadWrite)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ATWDCharacter*, float> PersonalReputationMap;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDCharacter* PossessedCharacter;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<ATWDCharacter*, float> PersonalDebtMap;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector2D AimOffset;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bUpdateAimOffset;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bForceMiss;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinAgeAimOffset;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SharedStimulusLocalAddedAge;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TargetRankCloseRange;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 AliveAlliesCount;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 AliveEnemiesCount;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 DeadAlliesCount;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 DeadEnemiesCount;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float NearbyCombatAlliesRangeOuterSq;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float NearbyCombatEnemiesRangeSq;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 CombatRingID;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnReceivedSharedStim OnReceivedSharedStim;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonSignificanceClearStimulusTime;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float NonSignficanceTimeStamp;
     
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIncludeCombatVolumesInNearbyAllies;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIncludeStimListsInNearbyAllies;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FQueuedSharedStimEvent> QueuedSharedStimEvents;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bSharedStimulusReceptionEnabled;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SharedStimulusIncomingMaxAge;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SharedStimulusIncomingStrengthScaleInner;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SharedStimulusIncomingStrengthScaleOuter;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SharedStimulusIncomingMaxStrengthInner;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SharedStimulusIncomingMaxStrengthOuter;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ShareDeathByPlayerMinAge;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ShareDeathByPlayerMaxAge;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ShareDeathByPlayerKillerStrength;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ShareDeathByPlayerKillerAge;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ShareDeathByPlayerUseBodyLocation;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ShareDeathByAIMinAge;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ShareDeathByAIMaxAge;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ShareDeathByAIKillerStrength;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ShareDeathByAIKillerAge;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ShareDeathByAIUseBodyLocation;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AController* AICommandPossessor;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<EAssignmentCategory, UTWDAIAssignment*> AssignmentMap;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UpdateStimulusListInterval;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloat SharedStimulusCheckInterval;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float SharedStimulusNextCheckTimestamp;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bDisableHearingStim;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bDisableSightStim;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bMustSeeAllyToSharePerception;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxAllyAgeStimForSharingPerception;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve SightAgingDecayStimuliScalar;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve SightNonAgingDecayStimuliScalar;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve SoundDecayStimuliScalar;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SoundCumulativeStimulusCap;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NormalSightStrengthMultiplier;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SightStrengthMultiplierAgainstAI;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SightStrengthMultiplierPlayerInCombatMode;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HearingRadiusFromPlayer;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HearingRadiusModifier;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloat StartingSharedPerceptionStrength;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TurnThreshold;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FacingThreshold;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ExplosiveDangerAggravationRadius;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FActorStimData> CumulativeStimulusList;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector CachedSoundStimLocation;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AActor* CachedSoundTarget;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CachedSuspicionThreshold;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSet<ESurvivorTargetTypeNative> AllowedTargetTypesNative;
     
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<ESurvivorTargetTypeNative, ETWDSuspiciousStates> AllowedTargetTypesSuspicion;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bUseReactionSystem;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ETWDSuspiciousStates RequestedSuspicionState;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ETWDSuspiciousStates PreviousSuspicionState;
     
 private:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UBehaviorTree* BehaviorTree;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TArray<TWeakObjectPtr<ATWDCharacter>> NearbyCombatAllyList;
     
 public:
@@ -349,10 +349,10 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void StopLogic(const FString& reason);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SetSuspicionState(ETWDSuspiciousStates State);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetInCombatWithPlayer(bool bInCombat);
     
     UFUNCTION(BlueprintCallable)
@@ -379,72 +379,72 @@ public:
     UFUNCTION(BlueprintCallable)
     void PerformRequestedSuspicionState();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void PawnReturnedToPool();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void PawnAcquiredFromPool();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void PauseLogic(const FString& reason);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPawnKilledByPlayer(ATWDPlayerController* PlayerController);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPawnKilledByAI(ATWDAIController* AIController);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnCharacterSpeechAudioEventFinished(EAkCallbackType CallbackType, UAkCallbackInfo* CallbackInfo);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void K2_SetCurrentTarget(const FActorStimData& StimData);
     
     UFUNCTION(BlueprintCallable)
     bool K2_IsFollowingAPath();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void K2_ClearCurrentTarget();
     
 protected:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTargetTypeLimited(const FActorStimData& StimData, UPARAM(Ref) float& Stimulus, float& StimulusOut) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTargetTypeIgnored(const FActorStimData& StimData) const;
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool IsTargetRankES(ETWDSurvivorTargetRankings TargetType, AActor* TargetActor, UTWDCharacterPersonality* PersonalityIn, const FActorStimData& StimData, ETWDAITieBreaker& TieBreaker);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTargetInSight(FBox TargetBox) const;
     
     UFUNCTION(BlueprintCallable)
     bool IsRunningLogic();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsReadyToFire() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsFacingTarget(FVector TargetLocation, float AngleTolerance) const;
     
     UFUNCTION(BlueprintCallable)
     void IsCurrentTargetAging(bool& bIsTargetAging, bool& bIsTargetValid, bool& bIsTargeHostile, float MinAge);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsAssignedTargetConsideredHostile() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsAICommandPossessed() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool InCombatWithPlayer() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetTurnThreshold() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     int32 GetTargetRankES(AActor* TargetActor, int32 CurrentRank, UTWDCharacterPersonality* Personality, const FActorStimData& StimData, ETWDAITieBreaker& TieBreaker);
     
     UFUNCTION(BlueprintCallable)
@@ -456,16 +456,16 @@ public:
     UFUNCTION()
     TArray<TWeakObjectPtr<ATWDCharacter>> GetNearbyCombatAllyList();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetLastEnterCombatWithPlayerTime() const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     AActor* GetLastAttackerES() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     void GetIsNearOuterRing(bool& bNearOuterRing) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     void GetIsNearFeedingRing(bool& NearFeedingRing) const;
     
     UFUNCTION(BlueprintCallable)
@@ -477,37 +477,37 @@ public:
     UFUNCTION(BlueprintCallable)
     TArray<FActorStimData> GetHostileActorHearingStimulusList();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetHearingRadiusModifier() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetHearingRadiusFromPlayer() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetGameplayFocusActor() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetGameplayFocalPoint(bool& IsValid) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetFacingThreshold() const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     ETWDCombatStates GetCombatStateES() const;
     
     UFUNCTION(BlueprintCallable)
     FVector GetBlackboardLocation(const FBlackboardKeySelector& Key, bool& bIsValid);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDCharacter* GetAssignedTarget() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetAssignedMoveTarget() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EAIBaseGroundMovementSpeedType GetAssignedMoveSpeedType() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AController* GetAICommandPossessor() const;
     
     UFUNCTION(BlueprintCallable)
@@ -532,17 +532,17 @@ public:
     void ForgetCurrentTarget();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     TArray<ATWDCharacter*> FindNearbyCombatEnemies() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     TArray<ATWDCharacter*> FindNearbyCombatAllies() const;
     
 public:
     UFUNCTION(BlueprintCallable)
     float FindCurrentPathLengthToDest();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FActorStimData FindAnyStimulusData(bool& bFound, const AActor* StimTarget, ETWDCharacterType CharacterTypeFilter, bool bHostileStimOnly) const;
     
     UFUNCTION(BlueprintCallable)
@@ -565,7 +565,7 @@ public:
     UFUNCTION(BlueprintCallable)
     bool CanSeeTargetThroughStealth(ATWDCharacter* Target);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanProcessAICommand(AController* Sender) const;
     
 protected:

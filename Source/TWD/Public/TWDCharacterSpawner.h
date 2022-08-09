@@ -2,26 +2,26 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "Engine/NavigationObjectBase.h"
-#include "SpawnerCharacterDiedDelegate.h"
 #include "SpawnerCharacterSpawnedDelegate.h"
+#include "SpawnerCharacterDiedDelegate.h"
 #include "TWDCharacterSpawner.generated.h"
 
-class AActor;
 class UDamageType;
 class ATWDCharacter;
+class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDCharacterSpawner : public ANavigationObjectBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSpawnerCharacterSpawned SpawnerCharacterSpawned;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSpawnerCharacterDied SpawnerCharacterDied;
     
 private:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDCharacter> CharacterBlueprint;
     
 public:
@@ -33,7 +33,7 @@ public:
     void SpawnSingle();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCharacterDied(ATWDCharacter* Character, float PrevHealth, TSubclassOf<UDamageType> DamageTypeClass, AActor* DamageCauser);
     
 };

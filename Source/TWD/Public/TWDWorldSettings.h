@@ -10,15 +10,15 @@
 class UObject;
 class UFXSystemAsset;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDWorldSettings : public ASDIWorldSettings {
     GENERATED_BODY()
 public:
     ATWDWorldSettings();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SpawnVFXAttached(FSpawnVFXAttachedParams Params);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SpawnVFXAtLocation(const UObject* WorldContextObject, UFXSystemAsset* EmitterTemplate, FVector Location, FRotator Rotation, FVector Scale, bool bAutoDestroy, EPSCPoolMethod PoolingMethod, bool bAutoActivateSystem);
     
 };

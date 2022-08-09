@@ -4,5 +4,5 @@
 
 class UTWDDialogue;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDialogueStartedEvent, UTWDDialogue*, Dialogue);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDialogueStartedEvent, UTWDDialogue*, Dialogue);
 

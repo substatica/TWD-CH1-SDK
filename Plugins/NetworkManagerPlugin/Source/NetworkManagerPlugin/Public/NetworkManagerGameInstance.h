@@ -5,23 +5,23 @@
 
 class UNetworkManager;
 
-UCLASS(NonTransient, Config=Engine)
+UCLASS(Blueprintable, NonTransient, Config=Engine)
 class NETWORKMANAGERPLUGIN_API UNetworkManagerGameInstance : public UGameInstance {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FString BuildInfo;
     
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UNetworkManager* NetworkManagerInst;
     
 public:
     UNetworkManagerGameInstance();
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ShowBuildVersion();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UNetworkManager* GetNetworkManager() const;
     
 };

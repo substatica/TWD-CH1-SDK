@@ -1,45 +1,45 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SDITuningInventoryActor.h"
 #include "ESDIWeaponAttachmentType.h"
+#include "SDITuningInventoryActor.h"
 #include "UObject/NoExportTypes.h"
 #include "SDIWeaponAttachment.generated.h"
 
 class ASDIWeaponActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDIWeaponAttachment : public ASDITuningInventoryActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ESDIWeaponAttachmentType AttachmentType;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName AttachComponentName;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName AttachSocketName;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTransform AttachRelativeTransform;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bAllowRemoval;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AttachDistance;
     
-    UPROPERTY(BlueprintReadOnly, Transient, ReplicatedUsing=OnRep_RepWeaponOwner)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepWeaponOwner, meta=(AllowPrivateAccess=true))
     ASDIWeaponActor* RepWeaponOwner;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ASDIWeaponActor* LocalWeaponOwner;
     
-    UPROPERTY(BlueprintReadOnly, Transient, ReplicatedUsing=OnRep_bRepAttached)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_bRepAttached, meta=(AllowPrivateAccess=true))
     bool bRepAttached;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bLocalAttached;
     
 public:
@@ -47,32 +47,32 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void WeaponOwnerUpdated();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SetWeaponOwner(ASDIWeaponActor* NewOwner);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetWeaponOwner(ASDIWeaponActor* NewOwner);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerDetachFromWeapon();
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerAttachToWeapon();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepWeaponOwner(ASDIWeaponActor* OldRepWeaponOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_bRepAttached(bool OldbRepAttached);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsAttached() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIWeaponActor* GetWeaponOwner() const;
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
@@ -81,7 +81,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool AttachToWeapon(bool bForce, bool bReplicate);
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     bool AllowRemoval() const;
     
 };

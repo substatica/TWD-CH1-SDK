@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "SDITuningAccumulator.h"
 #include "GameFramework/Actor.h"
 #include "SDITuningInterface.h"
-#include "SDITuningAccumulator.h"
 #include "SDIReplicatedTuningModifier.h"
 #include "SDITuningActor.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDITUNINGPLUGIN_API ASDITuningActor : public AActor, public ISDITuningInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDITuningAccumulator TuningAccumulator;
     
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_RepTuningModifiers)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepTuningModifiers, meta=(AllowPrivateAccess=true))
     TArray<FSDIReplicatedTuningModifier> RepTuningModifiers;
     
 public:
@@ -22,7 +22,7 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTuningModifiers();
     
     

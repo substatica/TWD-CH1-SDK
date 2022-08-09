@@ -9,30 +9,30 @@
 class ATWDCharacter;
 class UTWDCharacterArchetype;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDCorpseManager : public AActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CorpseCleanupDesiredSpawnWalkerDelay;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CorpseCleanupSpawnWalkerOffscreenTime;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloat SpawnWalkerCheckInterval;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<TWeakObjectPtr<ATWDCharacter>, float> Corpses;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<ATWDCharacter*> DeathPool;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTransform DeathPoolTransform;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float LowPerfTime;
     
 public:
@@ -40,7 +40,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetDeathPoolTransform(FTransform Transform);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCharacterInDeathPool(ATWDCharacter* Character) const;
     
     UFUNCTION(BlueprintCallable)

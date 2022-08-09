@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EReserveSlotResult.generated.h"
 
-UENUM()
-enum class EReserveSlotResult {
+UENUM(BlueprintType)
+enum class EReserveSlotResult : uint8 {
     ReserveSlot_Failed,
     ReserveSlot_Reserved,
     ReserveSlot_SameSlot,

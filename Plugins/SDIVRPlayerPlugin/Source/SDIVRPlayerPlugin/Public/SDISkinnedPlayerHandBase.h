@@ -1,33 +1,33 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SDISkinDynamicData.h"
 #include "SDIPlayerHandBase.h"
 #include "SDISkinnedActorInterface.h"
-#include "SDISkinReplicationData.h"
 #include "SDISkinnedActorBlueprintInterface.h"
-#include "UObject/NoExportTypes.h"
+#include "SDISkinReplicationData.h"
+#include "SDISkinDynamicData.h"
 #include "Engine/EngineTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "Components/PrimitiveComponent.h"
+#include "UObject/NoExportTypes.h"
 #include "SDISkinnedPlayerHandBase.generated.h"
 
-class USDISkinObject;
 class UMaterialInterface;
+class UPrimitiveComponent;
 class UTexture;
 class UObject;
-class UPrimitiveComponent;
+class USDISkinObject;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDISkinnedPlayerHandBase : public ASDIPlayerHandBase, public ISDISkinnedActorInterface, public ISDISkinnedActorBlueprintInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDISkinReplicationData ReplicatedSkinData;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDISkinDynamicData DynamicSkinData;
     
 public:

@@ -10,10 +10,10 @@ struct SDICOREPLUGIN_API FSDICachedRigidBodyState {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Export, Transient)
+    UPROPERTY(EditAnywhere, Export, Transient)
     TWeakObjectPtr<UPrimitiveComponent> PrimComp;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<FName, FRigidBodyState> RigidBodyStates;
     
 public:

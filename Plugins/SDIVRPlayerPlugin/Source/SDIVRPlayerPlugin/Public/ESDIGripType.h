@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESDIGripType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESDIGripType : uint8 {
     Any,
     Primary,

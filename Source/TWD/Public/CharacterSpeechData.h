@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "Articulation.h"
+#include "UObject/Object.h"
 #include "CharacterSpeechData.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UCharacterSpeechData : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FArticulation> Articulations;
     
-    UPROPERTY(VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString AnnoData;
     
     UCharacterSpeechData();

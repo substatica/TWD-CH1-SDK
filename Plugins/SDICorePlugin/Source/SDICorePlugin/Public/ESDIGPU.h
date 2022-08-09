@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESDIGPU.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESDIGPU : uint8 {
     GPU_Unknown,
     GPU_AMD,

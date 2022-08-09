@@ -3,7 +3,7 @@
 #include "SDICoreHUD.h"
 #include "TWDHUD.generated.h"
 
-UCLASS(NonTransient)
+UCLASS(Blueprintable, NonTransient)
 class ATWDHUD : public ASDICoreHUD {
     GENERATED_BODY()
 public:

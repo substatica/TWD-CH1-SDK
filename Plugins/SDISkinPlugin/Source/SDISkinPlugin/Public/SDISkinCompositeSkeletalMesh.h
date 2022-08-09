@@ -4,15 +4,15 @@
 #include "SDISkinCompositeSkeletalMeshMaterialMapping.h"
 #include "SDISkinCompositeSkeletalMesh.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISKINPLUGIN_API USDISkinCompositeSkeletalMesh : public USkeletalMesh {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSet<TSoftObjectPtr<USkeletalMesh>> SourceMeshes;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<TSoftObjectPtr<USkeletalMesh>, FSDISkinCompositeSkeletalMeshMaterialMapping> MeshComponentMaterialMapping;
     
 public:

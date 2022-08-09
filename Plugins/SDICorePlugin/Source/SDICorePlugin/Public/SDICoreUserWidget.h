@@ -8,21 +8,21 @@ class APlayerState;
 class USDICoreWidgetComponent;
 class APawn;
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class SDICOREPLUGIN_API USDICoreUserWidget : public UUserWidget {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bWidgetComponentAutoVisibility;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bWidgetComponentAutoAttachment;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bWidgetComponentAutoTickControl;
     
-    UPROPERTY(Export)
+    UPROPERTY(EditAnywhere, Export)
     TWeakObjectPtr<USDICoreWidgetComponent> WidgetComponentPointer;
     
 public:
@@ -33,31 +33,31 @@ public:
     UFUNCTION(BlueprintCallable)
     void ResetComponentLastWidgetRenderTime();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSynchronizeProperties();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APlayerState* GetWidgetViewPlayerState(const UUserWidget* Widget);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APawn* GetWidgetViewPawn(const UUserWidget* Widget);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     USDICoreWidgetComponent* GetWidgetComponent() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APlayerState* GetViewPlayerState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APawn* GetViewPawn() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetDistanceToViewPawn(float& OutDistance, bool bXYOnly, bool bUseWidgetComponentLocation) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetDeltaToViewPawn(FVector& OutDelta, bool bUseWidgetComponentLocation) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetComponentManuallyRedraw() const;
     
     UFUNCTION(BlueprintCallable)

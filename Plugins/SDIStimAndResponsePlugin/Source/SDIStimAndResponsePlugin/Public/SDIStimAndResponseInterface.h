@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "UObject/Interface.h"
-#include "Engine/EngineTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "GameplayTagContainer.h"
+#include "Engine/EngineTypes.h"
 #include "GameplayTagContainer.h"
 #include "SDIStimAndResponseInterface.generated.h"
 
+class AController;
 class AActor;
 class UDamageType;
-class AController;
 class UPrimitiveComponent;
 
 UINTERFACE(BlueprintType, meta=(CannotImplementInterfaceInBlueprint))

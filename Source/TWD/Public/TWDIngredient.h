@@ -3,7 +3,7 @@
 #include "SDIInventoryActor.h"
 #include "TWDIngredient.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDIngredient : public ASDIInventoryActor {
     GENERATED_BODY()
 public:

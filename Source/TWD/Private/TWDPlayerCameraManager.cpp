@@ -1,8 +1,8 @@
 #include "TWDPlayerCameraManager.h"
 
+class UCameraComponent;
 class ATWDHMDCameraActor;
 class ATWDPlayerCage;
-class UCameraComponent;
 
 void ATWDPlayerCameraManager::UnFreezeHMDCamera(float FadeOutTime, float FadeInTime, bool bApplyRotation, float Yaw, bool bLerpInsteadOfFade) {
 }

@@ -1,28 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "ETWDCharacterGrappleLocation.h"
 #include "Components/ActorComponent.h"
 #include "UObject/NoExportTypes.h"
-#include "ETWDCharacterGrappleLocation.h"
 #include "GrappleTokenSystem.generated.h"
 
-class UGrappleToken;
+class ATWDCharacter;
 class UTokenSystem;
 class UOuterRingToken;
-class ATWDCharacter;
+class UGrappleToken;
 class UFeedingToken;
 
-UCLASS(BlueprintType, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class TWD_API UGrappleTokenSystem : public UActorComponent {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UTokenSystem* GrappleTokens;
     
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UTokenSystem* FeedingTokens;
     
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UTokenSystem* OuterRingTokens;
     
 public:
@@ -60,85 +60,85 @@ public:
     UFUNCTION(BlueprintCallable)
     void ReleaseFeedingToken(int32 Index, const ATWDCharacter* Character);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTokenValid(ETWDCharacterGrappleLocation Location) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTokenHeldByGrappleCooldown(ETWDCharacterGrappleLocation Location) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTokenAvailable(ETWDCharacterGrappleLocation Location) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsOuterRingTokenValid(int32 Index) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsOuterRingTokenAvailable(int32 Index) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsFeedingTokenValid(int32 Index) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsFeedingTokenAvailable(int32 Index) const;
     
     UFUNCTION(BlueprintCallable)
     ATWDCharacter* GetTokenHolder(ETWDCharacterGrappleLocation Location);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetOuterRingTokensInUse(TArray<int32>& OutValidOuterRingIndexes) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetOuterRingTokenLocation(int32 Index, float OuterRingMoveLocationOffset) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDCharacter* GetOuterRingTokenHolder(int32 Index) const;
     
     UFUNCTION(BlueprintCallable)
     UOuterRingToken* GetOuterRingToken(int32 Index);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetNumOuterRingTokensInUse() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetNumOuterRingTokens() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetNumGrappleTokensInUse() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetNumFeedingTokensInUse() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetNumFeedingTokens() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetMaximumTokensAvailable() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetMaximumOuterRingTokensAvailable() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetMaximumFeedingTokensAvailable() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetFeedingTokensInUse(TArray<int32>& OutValidFeedingIndexes) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetFeedingTokenLocation(int32 Index, float FeedingMoveLocationOffset) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDCharacter* GetFeedingTokenHolder(int32 Index) const;
     
     UFUNCTION(BlueprintCallable)
     UFeedingToken* GetFeedingToken(int32 Index);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool DoesCharacterHoldToken(ETWDCharacterGrappleLocation Location, const ATWDCharacter* Character) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool DoesCharacterHoldOuterRingToken(const ATWDCharacter* Character) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool DoesCharacterHoldFeedingToken(const ATWDCharacter* Character) const;
     
     UFUNCTION(BlueprintCallable)

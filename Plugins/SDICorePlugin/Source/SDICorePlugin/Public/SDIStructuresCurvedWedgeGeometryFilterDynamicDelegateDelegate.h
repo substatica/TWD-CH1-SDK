@@ -7,5 +7,5 @@
 class AActor;
 class UObject;
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE_SixParams(FSDIStructuresCurvedWedgeGeometryFilterDynamicDelegate, const AActor*, Actor, const AActor*, Searcher, const UObject*, SearchData, const FTransform&, SearchTransform, const FSDICurvedWedgeGeometry&, SearchWedge, bool&, bRetVal);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE_SixParams(FSDIStructuresCurvedWedgeGeometryFilterDynamicDelegate, const AActor*, Actor, const AActor*, Searcher, const UObject*, SearchData, const FTransform&, SearchTransform, const FSDICurvedWedgeGeometry&, SearchWedge, bool&, bRetVal);
 

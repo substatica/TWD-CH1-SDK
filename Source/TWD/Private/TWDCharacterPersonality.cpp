@@ -1,9 +1,9 @@
 #include "TWDCharacterPersonality.h"
 
-class ATWDAICharacter;
-class AActor;
-class ATWDCharacter;
 class ATWDPlayerCharacter;
+class ATWDCharacter;
+class AActor;
+class ATWDAICharacter;
 class ATWDAIController;
 
 bool UTWDCharacterPersonality::WasTargetFlagSeenSet(ETWDPersonalityTargetInfo Info) const {

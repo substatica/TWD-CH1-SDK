@@ -8,8 +8,8 @@
 #include "ETWDInventoryType.h"
 #include "TWDInventoryActorInterface.generated.h"
 
-class ATWDBackpack;
 class ASDIInventorySlot;
+class ATWDBackpack;
 class ASDIInventoryActor;
 
 UINTERFACE(BlueprintType, meta=(CannotImplementInterfaceInBlueprint))

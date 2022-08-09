@@ -3,18 +3,18 @@
 #include "SDIDamageHistoryEntry.h"
 #include "SDIDamageHistory.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDIDamageHistory {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxDuration;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDIDamageHistoryEntry> HistoryArray;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bInflictedHistory;
     
 public:

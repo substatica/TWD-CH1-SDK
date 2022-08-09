@@ -2,15 +2,15 @@
 #include "Templates/SubclassOf.h"
 
 class UTWDRecipe;
+class UTWDPlayerBuffManager;
+class UTWDFavorManager;
 class ATWDPlayerState;
 class UTWDTask;
 class ASDIInventoryActor;
 class UTWDSaveGame;
-class UTWDMapManager;
 class AActor;
 class UTWDScenarioManager;
-class UTWDPlayerBuffManager;
-class UTWDFavorManager;
+class UTWDMapManager;
 class UTWDCraftingTableProgression;
 class UTWDWorldEvent;
 

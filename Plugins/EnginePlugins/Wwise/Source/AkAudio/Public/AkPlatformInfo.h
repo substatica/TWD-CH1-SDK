@@ -3,7 +3,7 @@
 #include "UObject/Object.h"
 #include "AkPlatformInfo.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkPlatformInfo : public UObject {
     GENERATED_BODY()
 public:

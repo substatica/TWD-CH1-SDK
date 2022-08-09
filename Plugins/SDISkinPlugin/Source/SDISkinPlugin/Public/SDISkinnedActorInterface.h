@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "UObject/Interface.h"
 #include "Components/PrimitiveComponent.h"
 #include "UObject/NoExportTypes.h"
-#include "UObject/Interface.h"
-#include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "SDISkinnedActorInterface.generated.h"
 
 class UObject;
-class UMaterialInterface;
 class UTexture;
 class UPrimitiveComponent;
+class UMaterialInterface;
 class USDISkinObject;
 class AActor;
 

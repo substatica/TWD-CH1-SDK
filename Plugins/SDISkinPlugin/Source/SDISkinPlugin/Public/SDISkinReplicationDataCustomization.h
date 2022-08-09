@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct SDISKINPLUGIN_API FSDISkinReplicationDataCustomization {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<USDISkinObject> SkinRef;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(EditAnywhere)
     TArray<uint8> Data;
     
     FSDISkinReplicationDataCustomization();

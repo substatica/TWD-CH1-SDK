@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDDifficultyMode.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDDifficultyMode : uint8 {
     ETWDDifficulty_Low,
     ETWDDifficulty_Med,

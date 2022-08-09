@@ -6,7 +6,7 @@ USTRUCT(BlueprintType)
 struct FSDISocketReference {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName SocketName;
     
     SDICOREPLUGIN_API FSDISocketReference();

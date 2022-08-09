@@ -7,13 +7,13 @@
 class AActor;
 class UPrimitiveComponent;
 class UActorComponent;
-class UObject;
 class UDamageType;
-class USceneComponent;
+class UObject;
+class ASDIInventorySlot;
 class USDIPlayerHandPhysicalInteractComponent;
 class ASDIPlayerHand;
 class ASDIInventoryActor;
-class ASDIInventorySlot;
+class USceneComponent;
 
 void ASDIPlayerHand::UpdatePhysicsHandle() {
 }

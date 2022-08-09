@@ -1,9 +1,9 @@
 #include "SDIGameSingleton.h"
 
+class USDICoreAssetDatabase;
 class UTexture2D;
 class UTexture;
 class UObject;
-class USDICoreAssetDatabase;
 
 void USDIGameSingleton::UpdateAsyncLoadingReferences() {
 }

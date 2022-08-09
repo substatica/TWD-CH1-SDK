@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct SDISKINPLUGIN_API FSDIRandomSkinScalarParam {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName Param;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<float> Values;
     
     FSDIRandomSkinScalarParam();

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EndGameReason.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 namespace EndGameReason {
     enum Type {
         None,

@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct SDISTIMANDRESPONSEPLUGIN_API FSDIReplicatedStimAndResponseInterfaceDataContainer {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FGameplayTagContainer Stimuli;
     
     FSDIReplicatedStimAndResponseInterfaceDataContainer();

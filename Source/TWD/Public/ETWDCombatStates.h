@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDCombatStates.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDCombatStates : uint8 {
     None,
     Started,

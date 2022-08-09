@@ -8,5 +8,5 @@ class ATWDPlayerController;
 class ATWDCharacter;
 class AActor;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_SevenParams(FTWDPlayerController_OnSendAICommand, ATWDPlayerController*, PC, bool, bSuccess, int32, MultiCmdIndex, ATWDCharacter*, Char, ETWDAICommand, Command, const FTransform&, Transform, AActor*, Target);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_SevenParams(FTWDPlayerController_OnSendAICommand, ATWDPlayerController*, PC, bool, bSuccess, int32, MultiCmdIndex, ATWDCharacter*, Char, ETWDAICommand, Command, const FTransform&, Transform, AActor*, Target);
 

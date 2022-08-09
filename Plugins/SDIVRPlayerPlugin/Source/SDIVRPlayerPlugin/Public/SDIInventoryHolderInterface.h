@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UObject/Interface.h"
 #include "SDIInventoryHolderInterfaceInventoryList.h"
+#include "UObject/Interface.h"
 #include "UObject/NoExportTypes.h"
 #include "SDIInventoryHolderInterfaceInventoryListEntry.h"
 #include "SDIInventoryHolderInterface.generated.h"
@@ -18,7 +18,7 @@ class SDIVRPLAYERPLUGIN_API USDIInventoryHolderInterface : public UInterface {
 class SDIVRPLAYERPLUGIN_API ISDIInventoryHolderInterface : public IInterface {
     GENERATED_BODY()
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ServerGiveTo(ASDIInventoryActor* Inventory, AActor* NewOwner);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
@@ -27,13 +27,13 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     int32 RemoveInventoryItems(TSubclassOf<ASDIInventoryActor> InvClass, TArray<ASDIInventoryActor*>& RemovedInventory, bool bExact, bool bDestroy);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnInventoryRemoved(ASDIInventoryActor* Inv);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnInventoryCountChanged(ASDIInventoryActor* Inv, int32 OldCount, int32 NewCount);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnInventoryAdded(ASDIInventoryActor* Inv);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
@@ -45,10 +45,10 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     int32 GetInventoryByGuid(const FGuid& InvGuid, TArray<ASDIInventoryActor*>& OutInventory, bool bExact) const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool AllowStore(ASDIInventoryActor* Inventory, AActor* CurrentInvOwner) const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool AllowGrab(ASDIInventoryActor* Inventory, AActor* Grabber) const;
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintNativeEvent)

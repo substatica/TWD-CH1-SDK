@@ -3,7 +3,7 @@
 #include "GameFramework/WorldSettings.h"
 #include "SDIWorldSettings.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API ASDIWorldSettings : public AWorldSettings {
     GENERATED_BODY()
 public:

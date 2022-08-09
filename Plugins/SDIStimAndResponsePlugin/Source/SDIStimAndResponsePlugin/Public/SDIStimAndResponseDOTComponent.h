@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameplayTagAssetInterface.h"
-#include "SDICoreDOTComponent.h"
 #include "GameplayTagContainer.h"
+#include "SDICoreDOTComponent.h"
+#include "GameplayTagAssetInterface.h"
 #include "SDIDynamicGameplayTagAssetInterface.h"
 #include "SDIStimAndResponseApplicationInterface.h"
-#include "SDIStimAndResponseReactionInterface.h"
 #include "GameplayTagContainer.h"
+#include "SDIStimAndResponseReactionInterface.h"
 #include "SDIStimAndResponseDOTComponent.generated.h"
 
-UCLASS(ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class SDISTIMANDRESPONSEPLUGIN_API USDIStimAndResponseDOTComponent : public USDICoreDOTComponent, public IGameplayTagAssetInterface, public ISDIDynamicGameplayTagAssetInterface, public ISDIStimAndResponseApplicationInterface, public ISDIStimAndResponseReactionInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGameplayTagContainer GameplayTagContainer;
     
 public:

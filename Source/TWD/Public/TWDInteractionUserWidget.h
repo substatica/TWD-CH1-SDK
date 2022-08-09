@@ -4,20 +4,20 @@
 #include "SDIInteractionDescription.h"
 #include "TWDInteractionUserWidget.generated.h"
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class UTWDInteractionUserWidget : public UTWDUserWidget {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDIInteractionDescription> Descriptions;
     
 public:
     UTWDInteractionUserWidget();
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SetDescriptions(const TArray<FSDIInteractionDescription>& InDescriptions);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ClearDescriptions();
     
 };

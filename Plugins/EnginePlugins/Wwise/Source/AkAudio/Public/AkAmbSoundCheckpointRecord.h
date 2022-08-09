@@ -2,11 +2,11 @@
 #include "CoreMinimal.h"
 #include "AkAmbSoundCheckpointRecord.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FAkAmbSoundCheckpointRecord {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bCurrentlyPlaying;
     
     AKAUDIO_API FAkAmbSoundCheckpointRecord();

@@ -1,7 +1,7 @@
 #include "SDICoreHUD.h"
 
-class APlayerState;
 class UTexture;
+class APlayerState;
 class APawn;
 class UFont;
 class UMaterialInterface;

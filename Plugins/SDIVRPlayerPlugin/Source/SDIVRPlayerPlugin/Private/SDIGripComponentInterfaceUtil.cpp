@@ -1,10 +1,10 @@
 #include "SDIGripComponentInterfaceUtil.h"
 
-class USceneComponent;
 class UActorComponent;
+class USceneComponent;
 class UPrimitiveComponent;
-class AActor;
 class ASDIPlayerHand;
+class AActor;
 class UPhysicsConstraintComponent;
 
 bool USDIGripComponentInterfaceUtil::UpdateGripEveryFrame(const UActorComponent* Grip, const UPrimitiveComponent* SimulatePhysicsComponent) {

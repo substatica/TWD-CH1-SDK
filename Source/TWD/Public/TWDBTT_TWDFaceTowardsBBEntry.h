@@ -3,12 +3,12 @@
 #include "TWDBTT_FocusableBase.h"
 #include "TWDBTT_TWDFaceTowardsBBEntry.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDBTT_TWDFaceTowardsBBEntry : public UTWDBTT_FocusableBase {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bAllowAnimToTurn;
     
 public:

@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
+#include "SDIExportData.h"
 #include "Engine/AssetUserData.h"
 #include "SDIExportInterface.h"
-#include "SDIExportData.h"
+#include "UObject/NoExportTypes.h"
 #include "SDIExportAsset.generated.h"
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class SDICOREPLUGIN_API USDIExportAsset : public UAssetUserData, public ISDIExportInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIExportData ExportData;
     
 public:

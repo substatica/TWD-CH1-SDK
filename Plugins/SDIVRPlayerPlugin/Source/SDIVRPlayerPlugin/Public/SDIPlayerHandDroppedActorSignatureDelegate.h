@@ -4,8 +4,8 @@
 #include "SDIPlayerHandDroppedActorSignatureDelegate.generated.h"
 
 class ASDIHeldActor;
-class AActor;
 class ASDIPlayerHand;
+class AActor;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FSDIPlayerHandDroppedActorSignature, ASDIHeldActor*, HeldActor, AActor*, DroppedBy, EControllerHand, hand, ASDIPlayerHand*, HandPtr);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FSDIPlayerHandDroppedActorSignature, ASDIHeldActor*, HeldActor, AActor*, DroppedBy, EControllerHand, hand, ASDIPlayerHand*, HandPtr);
 

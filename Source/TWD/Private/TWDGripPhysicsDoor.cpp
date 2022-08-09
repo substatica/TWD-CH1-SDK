@@ -2,8 +2,8 @@
 
 class ATWDCharacter;
 class ATWDPlayerCharacter;
-class UPrimitiveComponent;
 class UAkAudioEvent;
+class UPrimitiveComponent;
 class AActor;
 class UAkComponent;
 

@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "EDialogueFinishedState.h"
-#include "EPreSuspendPreResumeState.h"
 #include "EDialogueState.h"
+#include "EPreSuspendPreResumeState.h"
 #include "TWDDialogue.generated.h"
 
 class ATWDCharacter;
@@ -15,20 +15,20 @@ class TWD_API UTWDDialogue : public UObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EPreSuspendPreResumeState PreSuspendPreResumeState;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bCompleteOnStop;
     
 private:
-    UPROPERTY(VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UDataTable*> DialogueLineDataTableReferences;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<ATWDCharacter*> Characters;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ATWDPlayerController* Instigator;
     
 public:
@@ -55,44 +55,44 @@ public:
     void Restart();
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void PreSuspend();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void PreResume();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnDialogueFinished(bool bCompleted, EDialogueFinishedState DialogueFinishedState);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCharacterExitedDialogueRange(ATWDCharacter* Character);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCharacterEnteredDialogueRange(ATWDCharacter* Character);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void K2_Start();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlaying() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDCharacter* GetInstigatorCharacter() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDPlayerController* GetInstigator() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EDialogueState GetDialogueState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<ATWDCharacter*> GetCharacters() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDCharacter* GetCharacter(int32 CharacterIndex) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FString GetBookmark() const;
     
 protected:

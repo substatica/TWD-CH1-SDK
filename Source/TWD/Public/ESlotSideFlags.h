@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ESlotSideFlags.generated.h"
 
-UENUM()
-enum class ESlotSideFlags {
+UENUM(BlueprintType)
+enum class ESlotSideFlags : uint8 {
     SlotFront,
     SlotBack,
     SlotRight,

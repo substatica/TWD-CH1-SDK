@@ -1,493 +1,493 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "TWDPlayerController_OnGameUserSettingsAppliedDelegate.h"
-#include "SDIPlayerControllerAdvanced.h"
 #include "RRotatorExp.h"
+#include "SDIPlayerControllerAdvanced.h"
+#include "AlphaBlend.h"
 #include "RFloat.h"
 #include "SDICurvedWedgeGeometry.h"
 #include "DialogueLine.h"
-#include "TWDHeadSetRecenteredDelegate.h"
 #include "UObject/NoExportTypes.h"
 #include "SDIBlendOption.h"
-#include "UObject/NoExportTypes.h"
-#include "TWDPlayerController_OnNonVRGrappleMinigameStateChangedDelegate.h"
 #include "RRotator.h"
-#include "SDICameraShakeSettingsInst.h"
+#include "TWDPlayerController_OnTaskModifiedDelegate.h"
 #include "SDICameraSettings.h"
-#include "TWDTopic.h"
 #include "ETWDLockonType.h"
-#include "ETWDNonVRGrappleMinigameState.h"
+#include "SDICameraShakeSettingsInst.h"
 #include "UObject/NoExportTypes.h"
+#include "ETWDNonVRMeleeAttackType.h"
 #include "TWDPutHeadSetOnHeadDelegate.h"
-#include "InputCoreTypes.h"
+#include "TWDHeadSetRecenteredDelegate.h"
+#include "TWDPlayerController_OnGameUserSettingsAppliedDelegate.h"
+#include "TWDPlayerController_OnNonVRGrappleMinigameStateChangedDelegate.h"
 #include "Engine/EngineTypes.h"
+#include "EAlertEventSeverity.h"
 #include "TWDPlayerControllerTimeDilation.h"
-#include "SubtitleSplit.h"
-#include "SDITransformCollisionShape.h"
-#include "SDITargetSearchEntry.h"
-#include "TWDNonVRMeleeAttackDetails.h"
+#include "TWDPlayerController_OnFactionAlertedDelegate.h"
 #include "Engine/EngineTypes.h"
 #include "TWDPlayerController_OnHeldActorPlacedDelegate.h"
 #include "TWDPlayerController_OnPreEnterCrouchDelegate.h"
-#include "TWDPlayerController_OnTaskModifiedDelegate.h"
-#include "TWDPlayerController_OnFactionAlertedDelegate.h"
-#include "SuspiciousNPC.h"
 #include "EFaction.h"
 #include "TWDWeaponDismemberSettings.h"
-#include "ETWDCharacterHitRegion.h"
+#include "SuspiciousNPC.h"
 #include "SingleCombatVolumeEntry.h"
-#include "ETWDNonVRMeleeAttackType.h"
-#include "AlphaBlend.h"
-#include "EFactionReaction.h"
+#include "SDITransformCollisionShape.h"
+#include "SDITargetSearchEntry.h"
+#include "TWDTopic.h"
 #include "UObject/NoExportTypes.h"
+#include "InputCoreTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "ETWDCharacterHitRegion.h"
 #include "ETWDCharacterType.h"
-#include "EAlertEventSeverity.h"
+#include "ETWDNonVRGrappleMinigameState.h"
+#include "TWDNonVRMeleeAttackDetails.h"
+#include "EFactionReaction.h"
+#include "SubtitleSplit.h"
 #include "EGender.h"
 #include "TWDPlayerController.generated.h"
 
-class UTWDDialogue;
 class UTWDSubtask;
-class UAkAudioEvent;
+class ATWDMovementTargetActor;
 class AActor;
+class UAkAudioEvent;
 class ASDIInventoryActor;
+class ATWDPlayerCharacter;
 class UCurveFloat;
-class UObject;
-class UPrimitiveComponent;
+class AVolume;
 class ASDIInventoryHolderActor;
 class ATWDWeaponGun;
 class ATWDCharacter;
-class ATWDPlayerCharacter;
+class ASDIPlayerHand;
 class ASDIHeldActor;
-class AVolume;
 class UTWDTask;
 class ATWDWeaponActor;
-class ATWDMovementTargetActor;
-class ASDIPlayerHand;
+class UTWDDialogue;
+class UPrimitiveComponent;
 class ATWDDismemberDroppedLimb;
+class UObject;
 class ATWDPlayerHand;
 class ATWDHMDCameraActor;
 class UCameraComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDPlayerController : public ASDIPlayerControllerAdvanced {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LinearMovementSpeedMultiplier;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LinearTurnSpeedMultiplier;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRLookUpRate;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRLookRightRate;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HoldTimeForPauseButton;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bEnableSuspicionUpdate;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<AActor> GamePausedUIClass;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float GamePausedUIFailsafeDistance;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* GamePausedAudioStartEvent;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* GamePausedAudioStopEvent;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float GoofyModeLowGravityZ;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float GoofyModeTurboArmScale;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIInventoryActor> GoofyModeTurboKarateChopWeaponClass;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIInventoryActor> GoofyModeTurboFingerPokeWeaponClass;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIInventoryActor> GoofyModeTurboClosedFistWeaponClass;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICurvedWedgeGeometry LockonSearchGeoAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LockonDisengageExtraDistance;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRFloat LockonWeakpointDistanceAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName LockonCameraBoneNameAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRotator LockonCameraInputScaleAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRRotatorExp LockonCameraRotationRateAccelerationAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRotator LockonCameraRotationRateDecelerationAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIBlendOption LockonCameraInputSpringStrengthBlendAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRRotator LockonCameraLimitsAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRRotator LockonCameraLimitsFarAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIBlendOption LockonCameraLimitsBlendAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName LockonCameraBoneNameAOSCrouched;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRRotator LockonCameraLimitsAOSCrouched;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRRotator LockonCameraLimitsFarAOSCrouched;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIBlendOption LockonCameraLimitsBlendAOSCrouched;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UCurveFloat* LockonCameraLimitVelocityScaleCurveAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LockonCameraLimitChargeAngleAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UCurveFloat* LockonCameraLimitReturnSpeedCurveAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UCurveFloat* LockonCameraLimitNoTargetInputCurveAOS;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICameraSettings LockonCameraSettingsAOS;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICameraSettings LockonCameraSettingsNoTargetAOS;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICameraShakeSettingsInst LockonCameraShakeAOS;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRotator LockonCameraInputScalePrecisionStab;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRRotatorExp LockonCameraRotationRateAccelerationPrecisionStab;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRotator LockonCameraRotationRateDecelerationPrecisionStab;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRRotator LockonCameraLimitsWeaponStick;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UCurveFloat* LockonCameraLimitVelocityScaleCurveWeaponStick;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LockonCameraLimitPullAngleWeaponStick;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UCurveFloat* LockonCameraLimitReturnSpeedCurveWeaponStick;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICameraSettings LockonCameraSettingsWeaponStick;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICameraShakeSettingsInst LockonCameraShakeWeaponStick;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LockonCameraOffsetReturnSpeed;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ETWDLockonType, FRotator> LockonCameraMaxOffsetOverrides;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ETWDLockonType, FRotator> MaxLockonVelocityOverrides;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ETWDLockonType, FFloatRK4SpringInterpolator> LockonYawSpringOverrides;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ETWDLockonType, FFloatRK4SpringInterpolator> LockonPitchSpringOverrides;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LockonCameraDismemberDuration;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LockonCameraDismemberEaseOutDuration;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIBlendOption LockonCameraDismemberEaseOutBlend;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICurvedWedgeGeometry MeleeTargetSearchGeo;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MeleeTargetSearchGeoZOffset;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName MeleeTargetBoneName;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICameraSettings ADSCameraSettings;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 FarFromPauseUICounter;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bFreezeHMDCameraHideHands;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AActor* GamePausedUIActor;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AActor* GamePausedViewTarget;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDPutHeadSetOnHead OnVRHeadSetPutOnHead;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDHeadSetRecentered OnHMDRecentered;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDPlayerController_OnGameUserSettingsApplied OnGameUserSettingsApplied;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDPlayerController_OnNonVRGrappleMinigameStateChanged OnNonVRGrappleMinigameStateChanged;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTimerHandle TimeDilationTimerHandle;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float TimeDilationTimer;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float TimeDilationStart;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTWDPlayerControllerTimeDilation ActiveTimeDilation;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<int32, FTWDPlayerControllerTimeDilation> PendingTimeDilations;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ViveControllerFullMovementSpeed;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDIInventoryHolderActor> GoofyModeInventoryHolder;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDIInventoryActor> GoofyModeTurboKarateChopWeapon[2];
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDIInventoryActor> GoofyModeTurboFingerPokeWeapon[2];
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ASDIInventoryActor> GoofyModeTurboClosedFistWeapon[2];
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bControlsMirrored;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bAltControlMapping;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bLostVRFocus;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float LookatAccumulatedDeltaSeconds;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float LastWeaponFiredTimestamp;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 NonVRWindedGunAimSwayID;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ATWDWeaponGun> NonVRWindedGun;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bLockonWeakpointInRange;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bDebugRenderingAOSLockon;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<TWeakObjectPtr<AActor>, FHitResult> DismemberedActors;
     
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDPlayerController_OnHeldActorPlaced HeldActorPlacedDelegate;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDPlayerController_OnPreEnterCrouch PreEnterCrouch;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDPlayerController_OnTaskModified OnTaskAdded;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDPlayerController_OnTaskModified OnTaskRemoved;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDPlayerController_OnFactionAlerted OnFactionAlerted;
     
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<ASDIHeldActor*> HeldActorsPlacedThisFrame;
     
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bUseSmoothTurning;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bGameAudioIsPaused;
     
-    UPROPERTY(BlueprintReadWrite, Replicated, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSuspiciousNPC> SuspiciousNPCs;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<bool> AlertedFactionList;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxTimeBetweenDamageInstancesForAlert;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<EFaction, UAkAudioEvent*> FactionAlertedAkEvents;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* TrespassingAudioStingEvent;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* TrespassingAudioPlayLoopEvent;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* TrespassingAudioStopLoopEvent;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bTrespassingMusicPlaying;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NPCCombatModeHostilityRange;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NPCCombatModeMinSuspicion;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* NPCCombatAudioStartEvent;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* NPCCombatAudioStopEvent;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NPCCombatAudioStopDelay;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bNPCCombatAudioStarted;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bNPCCombatAudioEnabled;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float NPCCombatAudioStartTimestamp;
     
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LowReputationThreshold;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HighReputationThreshold;
     
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float StingCooldown;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ObliviousToForgivenessStingThreshold;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* ObliviousToForgivenessSting;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SuspiciousToFoundTargetStingThreshold;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* SuspiciousToFoundTargetSting;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* FoundTargetMusicLoop;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* EndFoundTargetAKEvent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxAgeForUnagedStim;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<AVolume*, FSingleCombatVolumeEntry> CombatVolumeRegistry;
     
     ATWDPlayerController();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ViveRightTurnReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ViveRightTurnPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ViveLeftTurnReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ViveLeftTurnPressed();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool UseNonVRMeleeButtonCharge() const;
     
     UFUNCTION(BlueprintCallable)
     void UpdateTask(TSubclassOf<UTWDTask> Task);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateDynamicMusic();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateCombatMode();
     
     UFUNCTION(BlueprintCallable)
     void UnFreezeHMDCamera(float FadeOutTime, float FadeInTime, bool bApplyRotation, float Yaw, bool bLerpInsteadOfFade);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ToggleSuspicionInfoPanel();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ToggleInvertAngleOfStrike();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ToggleControlMirroring();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ToggleControlMapping();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void StabStarted(ATWDPlayerCharacter* Char, ATWDWeaponActor* Weapon);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void StabEnding(ATWDPlayerCharacter* Char, ATWDWeaponActor* Weapon, bool bRemoveWeapon);
     
     UFUNCTION(BlueprintCallable)
@@ -504,10 +504,10 @@ public:
     UFUNCTION(BlueprintCallable)
     int32 SetTimeDilation(float TimeDilation, float Duration, UCurveFloat* TimeDilationOverrideCurve, EAlphaBlendOption BlendIn, UCurveFloat* BlendInCurve, float BlendInDuration, EAlphaBlendOption BlendOut, UCurveFloat* BlendOutCurve, float BlendOutDuration, float Delay);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void SetQuickTurnIncrementDeg(float IncrementDeg);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void SetPSVRBackwardsMovementMode(int32 Mode);
     
     UFUNCTION(BlueprintCallable)
@@ -519,24 +519,24 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetFactionAlerted(EFaction Faction, bool Alert, bool WasHeadshot);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void SetAutoUpdateCachedUserHeight(bool bUpdate);
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerCheatTogglePauseAI();
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerCheatSetInvisibleToAI(bool bInvisibleToAI);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerCheatSetHealth(float Health);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerCheatRushBells(float NewDelay);
     
 public:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void Server_TWDDurabilityInterface_AlterDurability(AActor* Actor, float DurabilityDelta, bool bCanBreak, bool bCanFix);
     
     UFUNCTION(BlueprintCallable)
@@ -563,7 +563,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     void RemoveDialogueBookmark(TSubclassOf<UTWDDialogue> Dialogue) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RegisterCombatVolumes(ATWDCharacter* OwningCharacter);
     
     UFUNCTION(BlueprintCallable)
@@ -572,128 +572,128 @@ public:
     UFUNCTION(BlueprintCallable)
     int32 PostEventToCharacterAkAudioComponent(UAkAudioEvent* Event, const FString& EventName);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnUnFreezeHMDStart(float FadeOutTime, float FadeInTime, bool bApplyRotation, float Yaw, bool bLerpInsteadOfFade);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnUnFreezeHMDEnd();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnUnCrouch();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnTrespassExit();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnTrespassEnter();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnSuspicionUpdate();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnMovementTargetHighlightChanged(ATWDMovementTargetActor* Target, UPrimitiveComponent* Component, ATWDMovementTargetActor* PrevTarget, UPrimitiveComponent* PrevComponent);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnKilledCharacter(ATWDCharacter* Killed);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnHandHeldActorChange(ASDIHeldActor* HeldActor, AActor* GrabbedBy, EControllerHand hand, ASDIPlayerHand* HandPtr);
     
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnFreezeHMDCamera();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnDismemberedLimb(ATWDWeaponActor* Weapon, const FTWDWeaponDismemberSettings& Settings, const FHitResult& HitInfo, bool bThrown, const FTransform& CapsuleTransform, const FVector& DismemberAxis, const FVector& DismemberFlatAxis, const FVector& ImpactVelocity, bool bKillingBlow, bool bWeakpoint, ATWDCharacter* Target, ETWDCharacterHitRegion Region, ATWDDismemberDroppedLimb* DroppedLimb);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnCrouch();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnApplyCheatModes();
     
     UFUNCTION(BlueprintCallable)
     void NotifySuspicionUpdate(ATWDCharacter* NPC, float SuspicionLevel);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void NonVRGrappleMinigameStateChanged(ATWDPlayerCharacter* Char, ETWDNonVRGrappleMinigameState PrevState, ETWDNonVRGrappleMinigameState NewState, float Duration, float NextDuration);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MeleeTargetLocation(const AActor* Actor, const UPrimitiveComponent* PrimComp, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDICurvedWedgeGeometry& SearchWedge, bool bUseClosestLocation, FVector& RetVal);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MeleeTargetIsBetterThan(const FSDITargetSearchEntry& Entry, const FSDITargetSearchEntry& Other, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDICurvedWedgeGeometry& SearchWedge, bool& bRetVal);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MeleeTargetFilter(const AActor* Actor, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDICurvedWedgeGeometry& SearchWedge, bool& bRetVal);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     void K2_GetPlayerViewPoint(FVector& out_Location, FRotator& out_Rotation) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsWeaponStuckOrStabbed(ATWDWeaponActor*& OutWeapon, FHitResult& OutHitInfo, float& OutProgress, float& OutAngle, float& OutRemoval, float& OutInputAngle, float& OutDelay, bool& bOutCharged, bool& bOutWeakpoint, bool& bOutWeakpointIsDiseased, bool& bOutPlayerExtraction) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsUnfreezingHMDCamera() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsUnfreezeLerpingHMDCamera() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSpecialMeleeActiveDetailed(FTWDNonVRMeleeAttackDetails& OutDetails) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSpecialMeleeActive(ETWDNonVRMeleeAttackType& OutType) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPreparingMeleeAttackDetailed(FTWDNonVRMeleeAttackDetails& OutDetails, bool bFindTarget) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPreparingMeleeAttack() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayingMeleeAttackAnimDetailed(FTWDNonVRMeleeAttackDetails& OutDetails) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayingMeleeAttackAnim() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool IsPauseAllowed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool IsInActiveCombatVolume();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsHMDCameraFrozen() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsHipFiring(ATWDWeaponGun*& OutGun) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputStatsTogglePressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputStartButtonResetHMD();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputStartButtonReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputStartButtonPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputSloMoTogglePressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPauseReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPausePressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputConfigurableTurnAxis(float Value);
     
     UFUNCTION(BlueprintCallable)
@@ -703,11 +703,11 @@ public:
     bool InCombatMode();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HeldActorPlacedTimerCallback();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasAlertedFaction(EFaction Faction) const;
     
     UFUNCTION(BlueprintCallable)
@@ -716,59 +716,59 @@ public:
     UFUNCTION(BlueprintCallable)
     void HandlePause();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleCrouch();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetUnfreezeLerpingHMDCameraTransforms(FTransform& Start, FTransform& End, float& Lerp) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDPlayerHand* GetTWDPlayerHand(EControllerHand hand) const;
     
     UFUNCTION(BlueprintCallable)
     TArray<FTWDTopic> GetTopics();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetTimeSinceLastWeaponFired() const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void GetSeamlessTravelActorListBP(bool bToEntry, TArray<AActor*>& ActorList);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDPlayerHand* GetOtherTWDPlayerHand(EControllerHand hand) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETWDNonVRGrappleMinigameState GetNonVRGrappleMinigameState(float& OutTimeRemaining, float& OutDuration, float& OutNextDuration) const;
     
     UFUNCTION(BlueprintCallable)
     float GetMaxSuspicion(ETWDCharacterType& CharacterType, float& StimAge);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetLinearTurnSpeedMultiplier() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetLinearMovementSpeedMultiplier() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDHMDCameraActor* GetHMDCamera(bool bCreate) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetFactionReputation(EFaction Faction) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EFactionReaction GetFactionReaction(EFaction Faction) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UCameraComponent* GetCameraComponent() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetAngleOfStrikeWeakpoint(bool& bOutInRange, FVector& OutLocation, FVector& OutNormal, float& OutAngle, FSDITransformCollisionShape& OutShape, bool& bOutIsDiseased) const;
     
     UFUNCTION(BlueprintCallable)
     void FreezeHMDCamera(bool bHideHands);
     
 protected:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTransform FindPausedUILocation() const;
     
 public:
@@ -781,35 +781,35 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     void EnableSpectatorScreenHUD(bool bEnable) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void DeRegisterCombatVolumes(ATWDCharacter* OwningCharacter);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 CountTotalInventory(TSubclassOf<ASDIInventoryActor> ClassToCount, bool bIncludeHands, bool bIncludeInventory) const;
     
     UFUNCTION(BlueprintCallable)
     void CompleteSubtask(TSubclassOf<UTWDTask> Task, TSubclassOf<UTWDSubtask> Subtask);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CheatIsDemiGod() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CheatInvisibleToAI() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CheatInfiniteStamina() const;
     
     UFUNCTION(BlueprintCallable)
     void BeginSeamlessTravel(const FString& URL);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AOSLockonTargetLocation(const AActor* Actor, const UPrimitiveComponent* PrimComp, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDICurvedWedgeGeometry& SearchWedge, bool bUseClosestLocation, FVector& RetVal);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AOSLockonTargetIsBetterThan(const FSDITargetSearchEntry& Entry, const FSDITargetSearchEntry& Other, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDICurvedWedgeGeometry& SearchWedge, bool& bRetVal);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AOSLockonTargetFilter(const AActor* Actor, const AActor* Searcher, const UObject* SearchData, const FTransform& SearchTransform, const FSDICurvedWedgeGeometry& SearchWedge, bool& bRetVal);
     
 public:

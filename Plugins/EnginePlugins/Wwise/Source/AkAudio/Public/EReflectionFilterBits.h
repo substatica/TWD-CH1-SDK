@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EReflectionFilterBits.generated.h"
 
-UENUM()
-enum class EReflectionFilterBits {
+UENUM(BlueprintType)
+enum class EReflectionFilterBits : uint8 {
     Wall,
     Ceiling,
     Floor,

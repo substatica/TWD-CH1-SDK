@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESDIVRControllerType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESDIVRControllerType : uint8 {
     VRController_Any,
     VRController_Rift,

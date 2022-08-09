@@ -4,12 +4,12 @@
 #include "SDICameraShakeSettings.h"
 #include "SDIAnimNotify_CameraShake.generated.h"
 
-UCLASS(CollapseCategories)
+UCLASS(Blueprintable, CollapseCategories)
 class USDIAnimNotify_CameraShake : public UAnimNotify {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICameraShakeSettings CameraShake;
     
 public:

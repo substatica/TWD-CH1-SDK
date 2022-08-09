@@ -1,9 +1,9 @@
 #include "SDIPlayerHandInteractComponent.h"
 
 class USDIPlayerHandInteractComponent;
+class APawn;
 class APlayerController;
 class ASDIPlayerHand;
-class APawn;
 
 void USDIPlayerHandInteractComponent::SetPriorityInteractComp(USDIPlayerHandInteractComponent* Comp) {
 }

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EBarkCooldownType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EBarkCooldownType : uint8 {
     None,
     Default,

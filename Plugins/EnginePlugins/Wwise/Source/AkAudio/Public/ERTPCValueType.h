@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ERTPCValueType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ERTPCValueType : uint8 {
     Default,
     Global,

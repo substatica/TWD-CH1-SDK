@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "InventoryExchangedDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE(FInventoryExchanged);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE(FInventoryExchanged);
 

@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-#include "ESDITransformSpace.h"
-#include "UObject/NoExportTypes.h"
 #include "InputCoreTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "ESDITransformSpace.h"
 #include "SDIPlayerHandPawnInterface.generated.h"
 
 UINTERFACE(BlueprintType, meta=(CannotImplementInterfaceInBlueprint))

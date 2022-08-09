@@ -6,15 +6,15 @@
 #include "UObject/NoExportTypes.h"
 #include "PostEventAtLocationAsync.generated.h"
 
+class UAkAudioEvent;
 class UPostEventAtLocationAsync;
 class UObject;
-class UAkAudioEvent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UPostEventAtLocationAsync : public UBlueprintAsyncActionBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPostEventAtLocationAsyncOutputPin Completed;
     
     UPostEventAtLocationAsync();
@@ -22,7 +22,7 @@ public:
     static UPostEventAtLocationAsync* PostEventAtLocationAsync(const UObject* WorldContextObject, UAkAudioEvent* AKEvent, FVector Location, FRotator Orientation);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PollPostEventFuture();
     
 };

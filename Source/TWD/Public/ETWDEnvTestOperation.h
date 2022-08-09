@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDEnvTestOperation.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 namespace ETWDEnvTestOperation {
     enum Type {
         Difference,

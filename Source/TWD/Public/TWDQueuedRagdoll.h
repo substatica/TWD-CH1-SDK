@@ -10,13 +10,13 @@ USTRUCT(BlueprintType)
 struct FTWDQueuedRagdoll {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<ATWDCharacter> Character;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDIRigidBodyImpulse> Impulses;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDIRigidBodyRadialImpulse> RadialImpulses;
     
     TWD_API FTWDQueuedRagdoll();

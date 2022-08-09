@@ -3,12 +3,12 @@
 #include "SDIActiveRagdollComponent.h"
 #include "TWDActiveRagdollComponent.generated.h"
 
-UCLASS(ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class UTWDActiveRagdollComponent : public USDIActiveRagdollComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bWasGrappling;
     
 public:

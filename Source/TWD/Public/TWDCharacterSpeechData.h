@@ -8,11 +8,11 @@ USTRUCT(BlueprintType)
 struct TWD_API FTWDCharacterSpeechData {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FString, TSoftObjectPtr<UCharacterSpeechData>> LocalizedSpeechData;
     
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UCharacterSpeechData* CachedSpeechData;
     
 public:

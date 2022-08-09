@@ -5,17 +5,17 @@
 
 class UTWDSubtitleWidget;
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class TWD_API UTWDSpectatorWidget : public UTWDUserWidget {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UTWDSubtitleWidget* SubtitleWidget;
     
 public:
     UTWDSpectatorWidget();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FText GetSubtitleText() const;
     
 };

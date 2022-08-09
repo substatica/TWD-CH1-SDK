@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "SDISkinChildComponentSkeletalMesh.h"
+#include "SDISkinChildComponentMaterial.h"
 #include "SDISkinObject.h"
 #include "SDISkinChildComponentStaticMesh.h"
 #include "SDISkinStitchedSkeletalMesh.h"
 #include "SDISkinStitchedStaticMesh.h"
-#include "SDISkinChildComponentSkeletalMesh.h"
-#include "SDISkinChildComponentMaterial.h"
 #include "SDISkinAttachment.h"
 #include "SDIRandomSkinScalarParam.h"
 #include "SDIRandomSkinTextureParam.h"
@@ -13,38 +13,38 @@
 #include "SDIRandomSkinParamSet.h"
 #include "SDISkinBasic.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISKINPLUGIN_API USDISkinBasic : public USDISkinObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDISkinStitchedSkeletalMesh> StitchedSkeletalMeshes;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDISkinStitchedStaticMesh> StitchedStaticMeshes;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDISkinChildComponentSkeletalMesh> ChildComponentSkeletalMeshes;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDISkinChildComponentStaticMesh> ChildComponentStaticMeshes;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDISkinChildComponentMaterial> ChildComponentMaterials;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDISkinAttachment> Attachments;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDIRandomSkinScalarParam> ScalarParams;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDIRandomSkinColorParam> ColorParams;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDIRandomSkinTextureParam> TextureParams;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FName, FSDIRandomSkinParamSet> ParamSetMap;
     
     USDISkinBasic();

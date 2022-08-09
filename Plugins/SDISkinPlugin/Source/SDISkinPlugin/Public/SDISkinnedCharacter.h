@@ -1,33 +1,33 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "SDISkinReplicationData.h"
 #include "SDICoreCharacter.h"
 #include "SDISkinnedActorInterface.h"
-#include "SDISkinReplicationData.h"
 #include "SDISkinnedActorBlueprintInterface.h"
 #include "SDISkinDynamicData.h"
-#include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "Components/PrimitiveComponent.h"
+#include "UObject/NoExportTypes.h"
 #include "SDISkinnedCharacter.generated.h"
 
-class UTexture;
-class USDISkinObject;
-class UObject;
-class UMaterialInterface;
 class UPrimitiveComponent;
+class UTexture;
+class UObject;
+class USDISkinObject;
+class UMaterialInterface;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISKINPLUGIN_API ASDISkinnedCharacter : public ASDICoreCharacter, public ISDISkinnedActorInterface, public ISDISkinnedActorBlueprintInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_ReplicatedSkinData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_ReplicatedSkinData, meta=(AllowPrivateAccess=true))
     FSDISkinReplicationData ReplicatedSkinData;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDISkinDynamicData DynamicSkinData;
     
 public:
@@ -35,10 +35,10 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetSkin_IFC(TSubclassOf<USDISkinObject> SkinClass, bool bForceUpdate, bool bForceReInit);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ReplicatedSkinData(const FSDISkinReplicationData& OldReplicatedSkinData);
     
     

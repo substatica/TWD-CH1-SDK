@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct TWD_API FTWDPersistentLevelItemData : public FTWDSavedItemData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTransform ItemTransform;
     
     FTWDPersistentLevelItemData();

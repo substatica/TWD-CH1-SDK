@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EDemoModeType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EDemoModeType : uint8 {
     DemoMode_None,
     DemoMode_Regular,

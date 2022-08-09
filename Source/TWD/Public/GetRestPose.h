@@ -6,7 +6,7 @@
 
 class USkeletalMeshComponent;
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class UGetRestPose : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:

@@ -3,7 +3,7 @@
 #include "AkMediaAsset.h"
 #include "AkExternalMediaAsset.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkExternalMediaAsset : public UAkMediaAsset {
     GENERATED_BODY()
 public:

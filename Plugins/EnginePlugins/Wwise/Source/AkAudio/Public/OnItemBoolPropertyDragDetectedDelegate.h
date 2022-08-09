@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "OnItemBoolPropertyDragDetectedDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnItemBoolPropertyDragDetected, const FString&, PropertyDragged);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnItemBoolPropertyDragDetected, const FString&, PropertyDragged);
 

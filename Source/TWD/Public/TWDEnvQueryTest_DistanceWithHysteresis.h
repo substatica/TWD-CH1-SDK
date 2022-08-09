@@ -1,24 +1,24 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "ETWDEnvTestDistance.h"
 #include "EnvironmentQuery/EnvQueryTest.h"
 #include "DataProviders/AIDataProvider.h"
+#include "ETWDEnvTestDistance.h"
 #include "TWDEnvQueryTest_DistanceWithHysteresis.generated.h"
 
 class UEnvQueryContext;
 
-UCLASS()
+UCLASS(Blueprintable)
 class UTWDEnvQueryTest_DistanceWithHysteresis : public UEnvQueryTest {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     TEnumAsByte<ETWDEnvTestDistance::Type> TestMode;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UEnvQueryContext> DistanceTo;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAIDataProviderFloatValue FloatValueHysteresis;
     
     UTWDEnvQueryTest_DistanceWithHysteresis();

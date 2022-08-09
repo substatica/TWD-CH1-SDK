@@ -9,7 +9,7 @@ USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDIAttachmentSettings : public FSDIAttachmentSettingsEntry {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSoftClassPtr<AActor>, FSDIAttachmentSettingsEntry> Overrides;
     
     FSDIAttachmentSettings();

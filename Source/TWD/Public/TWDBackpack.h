@@ -1,183 +1,183 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "TWDWeaponActor.h"
 #include "Engine/EngineTypes.h"
+#include "Engine/EngineTypes.h"
+#include "TWDWeaponActor.h"
+#include "TWDBackpackPage.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "TWDBackpackUIMeshElement.h"
 #include "UObject/NoExportTypes.h"
-#include "TWDBackpackPage.h"
-#include "ESDIInteractRangeType.h"
-#include "Engine/EngineTypes.h"
 #include "ESDIInteractiveInteractType.h"
+#include "ESDIInteractRangeType.h"
 #include "EUIDirection.h"
 #include "TWDBackpack.generated.h"
 
-class ASDIInventorySlot;
 class UBoxComponent;
+class ATWDStash;
 class UAkAudioEvent;
 class UMaterialInstanceDynamic;
 class UStaticMeshComponent;
 class USDIPointGripComponent;
 class ATWDPlayerInventorySlot;
 class UChildActorComponent;
+class ASDIInventorySlot;
 class UTWDNonVRBackpackWidget;
 class ASDIInventoryActor;
 class USceneComponent;
 class UPrimitiveComponent;
-class ATWDStash;
 class ASDIPlayerHand;
 class ATWDBackpackInventorySlot;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDBackpack : public ATWDWeaponActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* BackpackMeshComponent;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* UIMeshComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SlotCollisionRadius;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bDuringGrabAction;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bIsGrabDelayed;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTimerHandle RepInsideInventoryDelayTimer;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bDelayOldRepInsideInventory;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* AudioBagOpen;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* AudioBagClose;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* AudioItemRemove;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* AudioItemPlace;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* AudioItemRemoveSpecial;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* AudioItemPlaceSpecial;
     
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 AvailablePages;
     
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 ActivePageIndex;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UBoxComponent* NextPageCollision;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UBoxComponent* PrevPageCollision;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USDIPointGripComponent* PointGripLeft;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USDIPointGripComponent* PointGripRight;
     
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<ATWDPlayerInventorySlot*> InventorySlots;
     
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<ATWDPlayerInventorySlot*> LargeSlots;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UChildActorComponent* QuickSlotComponent;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDPlayerInventorySlot> InventorySlotBlueprint;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ATWDPlayerInventorySlot> SpecialInventorySlotBlueprint;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UTWDNonVRBackpackWidget> NonVRBackpackWidgetClass;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSoftClassPtr<ASDIInventoryActor>> LowPriorityKeyItemClasses;
     
-    UPROPERTY(Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USceneComponent* InventorySlotRoot;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FIntVector InventorySlotCount;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FTWDBackpackUIMeshElement> UIMeshElements;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInstanceDynamic* UIMeshMaterialInstance;
     
-    UPROPERTY(BlueprintReadOnly, VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 LeftArrowMeshElementIndex;
     
-    UPROPERTY(BlueprintReadOnly, VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 RightArrowMeshElementIndex;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor ArrowMeshElementBaseColor;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor ArrowMeshElementHighlightedColor;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bNonVRInputActive;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 ActiveNonVRSlotIndex;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 PrevNonVRSlotIndex;
     
 private:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector2D InventorySlotSpacing;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTWDBackpackPage> InventoryPages;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDBackpackPage SpecialInventoryPage;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDPlayerInventorySlot* QuickInventorySlot;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bInsideOnRep_bRepInsideInventory;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<UPrimitiveComponent*, bool> PreviousVisibility;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<UPrimitiveComponent*, TEnumAsByte<ECollisionEnabled::Type>> PreviousCollision;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UTWDNonVRBackpackWidget* NonVRBackpackWidget;
     
 public:
-    UPROPERTY(BlueprintReadWrite, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<ATWDStash> StashActor;
     
     ATWDBackpack();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateSlotIndexForCurrentPage();
     
 public:
@@ -187,7 +187,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void StartNonVRInteraction();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool ShouldGrabInventoryInsteadOfInteract(ESDIInteractiveInteractType Type, ASDIPlayerHand* hand, ESDIInteractRangeType RangeType, UPrimitiveComponent* Component) const;
     
     UFUNCTION(BlueprintCallable)
@@ -206,17 +206,17 @@ public:
     void RefreshBackpackSlots();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void QuickInventorySlotChanged(ATWDPlayerInventorySlot* InventorySlot, ASDIInventoryActor* CurrentInventory);
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnShow();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnPageFlip(int32 PrevPageIndex, int32 CurrentPageIndex);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnInventorySlotContentChanged(ATWDPlayerInventorySlot* InvSlot, ASDIInventoryActor* CurrentInventory);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
@@ -229,52 +229,52 @@ public:
     void OnAutoPlaceAmmo(ASDIInventoryActor* InventoryActor);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void NonVRNavigate(EUIDirection Direction);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsUIMeshElementVisible(int32 MeshElementIndex) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsScrapEnabled() const;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputNonVRScrap();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputNonVRPageRight();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputNonVRPageLeft();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputNonVRNavUp();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputNonVRNavRight();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputNonVRNavLeft();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputNonVRNavDown();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputNonVRInteract();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputNonVRDrop();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputNonVRCancel();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputNonVRBackpackButton();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasUIMesh() const;
     
     UFUNCTION(BlueprintCallable)
@@ -286,10 +286,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void GoToNextPage();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FLinearColor GetUIMeshElementColor(int32 MeshElementIndex) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ATWDPlayerInventorySlot* GetQuickSlot() const;
     
     UFUNCTION(BlueprintCallable)
@@ -298,10 +298,10 @@ public:
     UFUNCTION(BlueprintPure)
     ATWDPlayerInventorySlot* GetInventorySlotByIdx(uint8 slotIdx) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<ASDIInventoryActor*> GetBackpackInventoryActors() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     ASDIInventorySlot* FindEmptyInventorySlot(ASDIInventoryActor* InventoryActor, int32& OutPage);
     
     UFUNCTION(BlueprintCallable)

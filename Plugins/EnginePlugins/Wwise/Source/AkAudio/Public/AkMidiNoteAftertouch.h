@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FAkMidiNoteAftertouch : public FAkMidiEventBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     uint8 Note;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     uint8 Value;
     
     AKAUDIO_API FAkMidiNoteAftertouch();

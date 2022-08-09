@@ -3,7 +3,7 @@
 #include "AkGroupValue.h"
 #include "AkSwitchValue.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkSwitchValue : public UAkGroupValue {
     GENERATED_BODY()
 public:

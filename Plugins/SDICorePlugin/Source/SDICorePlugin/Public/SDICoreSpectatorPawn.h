@@ -6,23 +6,23 @@
 class APlayerState;
 class APawn;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API ASDICoreSpectatorPawn : public ASpectatorPawn {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ReplaySkipTime;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ReplayRewindTime;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 ReplaySpeedStep;
     
 public:
     ASDICoreSpectatorPawn();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSpectatingReplay(float& OutTime, float& OutDuration, float& OutSpeed, int32& OutSpeedStep) const;
     
     UFUNCTION(BlueprintCallable)
@@ -43,34 +43,34 @@ public:
     UFUNCTION(BlueprintCallable)
     void InputReleasePrevPlayer();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReleasePlayer_9();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReleasePlayer_8();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReleasePlayer_7();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReleasePlayer_6();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReleasePlayer_5();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReleasePlayer_4();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReleasePlayer_3();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReleasePlayer_2();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReleasePlayer_1();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputReleasePlayer_0();
     
     UFUNCTION(BlueprintCallable)
@@ -97,34 +97,34 @@ public:
     UFUNCTION(BlueprintCallable)
     void InputPressPrevPlayer();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPressPlayer_9();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPressPlayer_8();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPressPlayer_7();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPressPlayer_6();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPressPlayer_5();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPressPlayer_4();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPressPlayer_3();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPressPlayer_2();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPressPlayer_1();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputPressPlayer_0();
     
     UFUNCTION(BlueprintCallable)
@@ -133,10 +133,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void InputPressNextPlayer();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APlayerState* GetViewPlayerState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APawn* GetViewPawn() const;
     
 };

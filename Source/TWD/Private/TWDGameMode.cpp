@@ -1,13 +1,13 @@
 #include "TWDGameMode.h"
 #include "Templates/SubclassOf.h"
 
-class ATWDAIController;
-class UTWDAIManager;
+class AActor;
 class AController;
 class UDamageType;
 class ATWDCharacter;
-class AActor;
+class ATWDAIController;
 class UTWDAnimIdManager;
+class UTWDAIManager;
 
 void ATWDGameMode::StartBells_Implementation() {
 }

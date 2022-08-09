@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SDISkinSkeletalMeshRandomPiecesSet.h"
 #include "SDISkeletalMeshSkin.h"
+#include "SDISkinSkeletalMeshRandomPiecesSet.h"
 #include "SDISkeletalMeshSkinRandomPieces.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISKINPLUGIN_API USDISkeletalMeshSkinRandomPieces : public USDISkeletalMeshSkin {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDISkinSkeletalMeshRandomPiecesSet> Randomizers;
     
     USDISkeletalMeshSkinRandomPieces();

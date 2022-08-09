@@ -6,15 +6,15 @@
 class ATargetPoint;
 class ATWDAutomationSplineActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDAutomationCoordinator : public AActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditInstanceOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSoftObjectPtr<ATargetPoint>> ObservationPoints;
     
-    UPROPERTY(BlueprintReadOnly, EditInstanceOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<ATWDAutomationSplineActor> WalkThroughSplineActor;
     
 public:

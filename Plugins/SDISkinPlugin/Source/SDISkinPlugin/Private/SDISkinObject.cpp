@@ -1,9 +1,9 @@
 #include "SDISkinObject.h"
 
+class UObject;
 class USceneComponent;
 class UStaticMeshComponent;
 class USkeletalMeshComponent;
-class UObject;
 class UPrimitiveComponent;
 class AActor;
 

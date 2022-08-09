@@ -3,7 +3,7 @@
 #include "Engine/GameViewportClient.h"
 #include "TWDGameViewportClient.generated.h"
 
-UCLASS(NonTransient)
+UCLASS(Blueprintable, NonTransient)
 class TWD_API UTWDGameViewportClient : public UGameViewportClient {
     GENERATED_BODY()
 public:

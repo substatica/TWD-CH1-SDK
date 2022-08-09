@@ -5,15 +5,15 @@
 #include "SDICoreUtilityAIStateButtonMasherAxisDef.h"
 #include "SDICoreUtilityAIStateButtonMasher.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API USDICoreUtilityAIStateButtonMasher : public USDICoreUtilityAIState {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDICoreUtilityAIStateButtonMasherActionDef> ActionDefs;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDICoreUtilityAIStateButtonMasherAxisDef> AxisDefs;
     
 public:

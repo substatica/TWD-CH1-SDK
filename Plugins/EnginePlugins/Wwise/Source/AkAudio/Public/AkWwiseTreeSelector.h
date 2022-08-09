@@ -5,14 +5,14 @@
 #include "OnItemDragDetectedDelegate.h"
 #include "AkWwiseTreeSelector.generated.h"
 
-UCLASS(DefaultConfig, Config=Editor)
+UCLASS(Blueprintable, DefaultConfig, Config=Editor)
 class AKAUDIO_API UAkWwiseTreeSelector : public UWidget {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemSelectionChanged OnSelectionChanged;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemDragDetected OnItemDragged;
     
     UAkWwiseTreeSelector();

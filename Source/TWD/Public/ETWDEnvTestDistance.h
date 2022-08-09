@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDEnvTestDistance.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 namespace ETWDEnvTestDistance {
     enum Type {
         Distance3D,

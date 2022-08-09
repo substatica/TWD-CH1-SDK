@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESDISkinCacheScope.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESDISkinCacheScope : uint8 {
     Global,
     Player,

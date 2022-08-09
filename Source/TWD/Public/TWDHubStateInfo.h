@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FTWDHubStateInfo {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTWDHubStateInfo_BoolData> BoolValues;
     
-    UPROPERTY(BlueprintReadWrite)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTWDHubStateInfo_IntData> IntValues;
     
     TWD_API FTWDHubStateInfo();

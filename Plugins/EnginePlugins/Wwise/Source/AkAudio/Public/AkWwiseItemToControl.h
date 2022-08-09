@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct AKAUDIO_API FAkWwiseItemToControl {
     GENERATED_BODY()
 public:
-    UPROPERTY(VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkWwiseObjectDetails ItemPicked;
     
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ItemPath;
     
     FAkWwiseItemToControl();

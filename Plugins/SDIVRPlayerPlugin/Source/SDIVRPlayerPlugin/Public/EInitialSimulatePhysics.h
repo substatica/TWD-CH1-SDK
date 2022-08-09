@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EInitialSimulatePhysics.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EInitialSimulatePhysics : uint8 {
     Default,
     ForceOn,

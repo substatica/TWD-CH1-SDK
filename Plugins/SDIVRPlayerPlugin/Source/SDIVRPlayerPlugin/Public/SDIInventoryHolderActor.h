@@ -7,15 +7,15 @@
 
 class ASDIInventoryActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDIInventoryHolderActor : public ASDIInteractiveActor, public ISDIInventoryHolderInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIInventoryHolderInterfaceInventoryList InitialInventory;
     
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_RepInventoryList)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_RepInventoryList, meta=(AllowPrivateAccess=true))
     TArray<ASDIInventoryActor*> RepInventoryList;
     
 public:
@@ -23,7 +23,7 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepInventoryList(const TArray<ASDIInventoryActor*>& OldRepInventoryList);
     
     

@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ESDIUtilityAIDifficulty.h"
 #include "GameFramework/PlayerState.h"
+#include "ESDIUtilityAIDifficulty.h"
 #include "SDICorePlayerState.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API ASDICorePlayerState : public APlayerState {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, Replicated, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     ESDIUtilityAIDifficulty RepMonkeyDifficulty;
     
-    UPROPERTY(BlueprintReadOnly, Replicated, Transient)
+    UPROPERTY(EditAnywhere, Replicated, Transient)
     uint8 RepMonkeyMode;
     
 public:
@@ -22,19 +22,19 @@ public:
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerSetMonkeyMode(uint8 NewMonkeyMode, ESDIUtilityAIDifficulty NewMonkeyDifficulty);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSmartMonkey() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsMonkey() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetServerTimestamp() const;
     
     UFUNCTION(BlueprintPure)
     uint8 GetMonkeyMode() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ESDIUtilityAIDifficulty GetMonkeyDifficulty() const;
     
 };

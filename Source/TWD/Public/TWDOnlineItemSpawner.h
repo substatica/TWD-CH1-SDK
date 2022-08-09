@@ -7,21 +7,21 @@
 
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDOnlineItemSpawner : public ASDIActorSpawner {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDUniqueEntitlementItemID OnlineItemID;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<AActor> ItemToSpawn;
     
 public:
     ATWDOnlineItemSpawner();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SpawnActor();
     
 };

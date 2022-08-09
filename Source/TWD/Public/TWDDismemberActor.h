@@ -1,63 +1,63 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UObject/NoExportTypes.h"
 #include "TWDProp.h"
 #include "TWDDismemberInterface.h"
-#include "SDIPooledObjectInterface.h"
 #include "SDISkinnedActorInterface.h"
-#include "SDIPooledObjectBlueprintInterface.h"
 #include "SDISkinnedActorBlueprintInterface.h"
+#include "SDIPooledObjectInterface.h"
+#include "SDIPooledObjectBlueprintInterface.h"
 #include "ETWDCharacterHitRegion.h"
 #include "EGender.h"
 #include "SDISkinReplicationData.h"
 #include "SDISkinDynamicData.h"
 #include "SDIPooledObjectData.h"
-#include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "Components/PrimitiveComponent.h"
+#include "UObject/NoExportTypes.h"
 #include "TWDDismemberActor.generated.h"
 
 class UTWDCharacterSkin;
 class USDISkinObject;
 class AActor;
 class UObject;
+class UPrimitiveComponent;
 class UTexture;
 class UMaterialInterface;
-class UPrimitiveComponent;
 class ASDIObjectPool;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDDismemberActor : public ATWDProp, public ISDISkinnedActorInterface, public ISDISkinnedActorBlueprintInterface, public ISDIPooledObjectInterface, public ISDIPooledObjectBlueprintInterface, public ITWDDismemberInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSoftClassPtr<USDISkinObject>, TSubclassOf<UTWDCharacterSkin>> DismemberSkinMap;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ETWDCharacterHitRegion DismemberRegion;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     EGender Gender;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bDead;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bIsEliteWalker;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bIsHumanSkelMesh;
     
-    UPROPERTY(Transient, ReplicatedUsing=OnRep_ReplicatedSkinData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_ReplicatedSkinData, meta=(AllowPrivateAccess=true))
     FSDISkinReplicationData ReplicatedSkinData;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDISkinDynamicData DynamicSkinData;
     
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDIPooledObjectData PooledObjectData;
     
 public:
@@ -65,23 +65,23 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetSkin_IFC(TSubclassOf<USDISkinObject> SkinClass, bool bForceUpdate, bool bForceReInit);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ReplicatedSkinData(const FSDISkinReplicationData& OldReplicatedSkinData);
     
 public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool Kill();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsDead() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETWDCharacterHitRegion GetDismemberRegion() const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void CopyAppearance(AActor* Actor, ETWDCharacterHitRegion Region);
     
     

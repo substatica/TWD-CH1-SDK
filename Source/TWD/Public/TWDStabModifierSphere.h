@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FTWDStabModifierSphere : public FSDIComponentReplacementSphere {
     GENERATED_BODY()
 public:
-    UPROPERTY(VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float StabPushMotionMultiplier;
     
-    UPROPERTY(VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float StabPullMotionMultiplier;
     
     TWD_API FTWDStabModifierSphere();

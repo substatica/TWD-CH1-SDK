@@ -3,43 +3,43 @@
 #include "SDIInteractiveHighlightManager.h"
 #include "ETWDInteractionType.h"
 #include "TWDInteractiveHighlightActorPool.h"
-#include "TWDInteractiveHighlightManagerEntry.h"
 #include "Engine/EngineTypes.h"
+#include "TWDInteractiveHighlightManagerEntry.h"
 #include "TWDInteractiveHighlightManager.generated.h"
 
-class AActor;
 class USceneComponent;
+class AActor;
 
-UCLASS(Config=Game)
+UCLASS(Blueprintable, Config=Game)
 class ATWDInteractiveHighlightManager : public ASDIInteractiveHighlightManager {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ETWDInteractionType, FTWDInteractiveHighlightActorPool> HighlightActorPools;
     
-    UPROPERTY(BlueprintReadOnly, Config, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NearbyRadius;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     TEnumAsByte<ECollisionChannel> NearbyOverlapChannel;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     TEnumAsByte<ECollisionChannel> NearbyLOSChannel;
     
-    UPROPERTY(Config, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bNearbyDistributeLOSChecks;
     
-    UPROPERTY(Config, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bNearbyDistributeUpdates;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FTWDInteractiveHighlightManagerEntry> Entries;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FTWDInteractiveHighlightManagerEntry> NearbyEntries;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     uint32 NearbyDistributionCounter;
     
 public:

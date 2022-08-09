@@ -3,7 +3,7 @@
 #include "AkXboxOneGDKInitializationSettings.h"
 #include "AkXboxOneAnvilInitializationSettings.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkXboxOneAnvilInitializationSettings : public UAkXboxOneGDKInitializationSettings {
     GENERATED_BODY()
 public:

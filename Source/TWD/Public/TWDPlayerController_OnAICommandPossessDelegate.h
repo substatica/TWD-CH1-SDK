@@ -5,5 +5,5 @@
 class ATWDPlayerController;
 class ATWDCharacter;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams(FTWDPlayerController_OnAICommandPossess, ATWDPlayerController*, PC, bool, bSuccess, ATWDCharacter*, Char, float, TimeRemaining, float, Duration);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams(FTWDPlayerController_OnAICommandPossess, ATWDPlayerController*, PC, bool, bSuccess, ATWDCharacter*, Char, float, TimeRemaining, float, Duration);
 

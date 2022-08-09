@@ -5,5 +5,5 @@
 
 class ATWDAIController;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FOnReceivedSharedStim, ATWDAIController*, AIControllerSharee, ATWDAIController*, AIControllerSharer, FActorStimData, StimData, bool, bExisting);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FOnReceivedSharedStim, ATWDAIController*, AIControllerSharee, ATWDAIController*, AIControllerSharer, FActorStimData, StimData, bool, bExisting);
 

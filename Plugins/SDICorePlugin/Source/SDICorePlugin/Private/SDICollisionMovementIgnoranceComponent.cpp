@@ -1,8 +1,8 @@
 #include "SDICollisionMovementIgnoranceComponent.h"
 
 class UPrimitiveComponent;
-class AActor;
 class USDICollisionMovementIgnoranceComponent;
+class AActor;
 
 int32 USDICollisionMovementIgnoranceComponent::SetComponentIgnorances(const TArray<UPrimitiveComponent*>& OtherComps, bool bReciprocate) {
     return 0;

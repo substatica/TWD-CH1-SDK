@@ -4,5 +4,5 @@
 
 class UObject;
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE_ThreeParams(FSDIInputButtonPressedSignature, UObject*, Owner, float, ReleasedTime, bool, bDoubleTap);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE_ThreeParams(FSDIInputButtonPressedSignature, UObject*, Owner, float, ReleasedTime, bool, bDoubleTap);
 

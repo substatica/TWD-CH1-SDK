@@ -1,21 +1,21 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "Navigation/PathFollowingComponent.h"
+#include "Navigation/PathFollowingComponent.h"
 #include "AIController.h"
 #include "AI/Navigation/NavigationTypes.h"
 #include "AITypes.h"
-#include "Navigation/PathFollowingComponent.h"
-#include "Navigation/PathFollowingComponent.h"
 #include "UObject/NoExportTypes.h"
 #include "SDIAIController.generated.h"
 
 class UNavigationQueryFilter;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDIAIController : public AAIController {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FString, FNavAgentProperties> NavAgentPropsList;
     
     ASDIAIController();

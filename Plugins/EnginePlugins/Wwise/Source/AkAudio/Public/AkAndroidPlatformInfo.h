@@ -3,7 +3,7 @@
 #include "AkPlatformInfo.h"
 #include "AkAndroidPlatformInfo.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class UAkAndroidPlatformInfo : public UAkPlatformInfo {
     GENERATED_BODY()
 public:

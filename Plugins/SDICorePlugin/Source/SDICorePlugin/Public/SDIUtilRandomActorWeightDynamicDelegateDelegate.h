@@ -4,5 +4,5 @@
 
 class AActor;
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE_TwoParams(FSDIUtilRandomActorWeightDynamicDelegate, AActor*, Actor, float&, Weight);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE_TwoParams(FSDIUtilRandomActorWeightDynamicDelegate, AActor*, Actor, float&, Weight);
 

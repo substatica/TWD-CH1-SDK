@@ -7,7 +7,7 @@
 class UObject;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDAISense_Hearing : public UAISense_Hearing {
     GENERATED_BODY()
 public:

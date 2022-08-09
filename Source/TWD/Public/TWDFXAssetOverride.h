@@ -6,17 +6,17 @@
 
 class UFXSystemAsset;
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct TWD_API FTWDFXAssetOverride : public FTableRowBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 PlatformLevel;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSoftObjectPath BaseSystem;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UFXSystemAsset> OverrideSystem;
     
     FTWDFXAssetOverride();

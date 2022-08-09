@@ -4,5 +4,5 @@
 
 class ATWDCharacter;
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE_TwoParams(FPlayAnimationResultCallback, ATWDCharacter*, Owner, bool, bSucceeded);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE_TwoParams(FPlayAnimationResultCallback, ATWDCharacter*, Owner, bool, bSucceeded);
 

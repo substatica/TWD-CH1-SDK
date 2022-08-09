@@ -8,7 +8,7 @@ struct SDICOREPLUGIN_API FSDIObjectReferences {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDIObjectReference> References;
     
 public:

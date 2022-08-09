@@ -4,5 +4,5 @@
 
 class ATWDCharacter;
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE_OneParam(FCharacterExitedDialogueRange, ATWDCharacter*, Character);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE_OneParam(FCharacterExitedDialogueRange, ATWDCharacter*, Character);
 

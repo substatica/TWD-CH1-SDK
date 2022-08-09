@@ -3,7 +3,7 @@
 #include "AkChinookPlatformInfo.h"
 #include "AkMPXPlatformInfo.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class UAkMPXPlatformInfo : public UAkChinookPlatformInfo {
     GENERATED_BODY()
 public:

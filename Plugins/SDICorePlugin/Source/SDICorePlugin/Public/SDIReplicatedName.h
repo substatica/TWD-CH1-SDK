@@ -7,10 +7,10 @@ struct SDICOREPLUGIN_API FSDIReplicatedName {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName Name;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     uint8 ReplicatedIndex;
     
 public:

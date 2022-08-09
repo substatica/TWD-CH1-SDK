@@ -4,15 +4,15 @@
 #include "AkPropertyToControl.h"
 #include "AkItemPropertiesConv.generated.h"
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkItemPropertiesConv : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UAkItemPropertiesConv();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FText Conv_FAkPropertyToControlToText(const FAkPropertyToControl& INAkPropertyToControl);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString Conv_FAkPropertyToControlToString(const FAkPropertyToControl& INAkPropertyToControl);
     
 };

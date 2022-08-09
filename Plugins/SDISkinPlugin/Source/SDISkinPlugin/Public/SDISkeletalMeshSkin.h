@@ -4,14 +4,14 @@
 #include "SDISkinSkeletalMesh.h"
 #include "SDISkeletalMeshSkin.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISKINPLUGIN_API USDISkeletalMeshSkin : public USDISkinBasic {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDISkinSkeletalMesh BaseSkeletalMesh;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIgnoreBaseSkeletalMeshForMerging;
     
     USDISkeletalMeshSkin();

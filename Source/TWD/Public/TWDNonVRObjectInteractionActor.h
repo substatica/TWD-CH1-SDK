@@ -1,104 +1,104 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "SDINonVRObjectInteractionActor.h"
-#include "ETWDNonVRInteraction.h"
 #include "SDITimestampInputButton.h"
-#include "TWDNonVRInteractionPrompt.h"
 #include "ETWDInventoryType.h"
-#include "UObject/NoExportTypes.h"
 #include "ETWDNonVREquipmentSlot.h"
+#include "UObject/NoExportTypes.h"
+#include "ETWDNonVRInteraction.h"
+#include "TWDNonVRInteractionPrompt.h"
 #include "TWDNonVRObjectInteractionActor.generated.h"
 
-class ASDICorePlayerController;
 class ATWDPlayerCharacter;
+class ASDICorePlayerController;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDNonVRObjectInteractionActor : public ASDINonVRObjectInteractionActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputInteractButton;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputConsumeButton;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputStoreButton;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDITimestampInputButton InputDropButton;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ETWDInventoryType, FTransform> TransformOffsetByType;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTransform FinalTransformOffset;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bInBackpackMode;
     
 public:
     ATWDNonVRObjectInteractionActor();
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateInteractionHeld(ETWDNonVRInteraction InteractionType, float Duration, float Time);
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnInteractionPromptsChanged(const TArray<FTWDNonVRInteractionPrompt>& NewPrompts);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDeviceChanged(ASDICorePlayerController* PC, bool bIsUsingGamePad);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputStoreReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputStorePressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputInteractReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputInteractPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputDropReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputDropPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputConsumeReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputConsumePressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool HandleEquipInput(ATWDPlayerCharacter* Char, const FSDITimestampInputButton& ButtonInput, ETWDNonVREquipmentSlot Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSDITimestampInputButton GetInputStoreButton() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSDITimestampInputButton GetInputInteractButton() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSDITimestampInputButton GetInputDropButton() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSDITimestampInputButton GetInputConsumeButton() const;
     
 protected:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FTWDNonVRInteractionPrompt> GatherInteractionPrompts(AActor* InteractionActor) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void EndConsumeAction();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BeginConsumeAction();
     
 };

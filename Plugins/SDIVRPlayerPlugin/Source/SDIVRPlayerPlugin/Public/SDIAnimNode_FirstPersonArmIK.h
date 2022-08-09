@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "SDIAnimNode_ArmIK.h"
+#include "UObject/NoExportTypes.h"
 #include "SDIAnimNode_FirstPersonArmIK.generated.h"
 
 USTRUCT(BlueprintType)
@@ -9,13 +9,13 @@ struct SDIVRPLAYERPLUGIN_API FSDIAnimNode_FirstPersonArmIK : public FSDIAnimNode
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bMirroredBoneAxes;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTransform ShoulderTransform;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float LastForeArmTwistDelta;
     
 public:

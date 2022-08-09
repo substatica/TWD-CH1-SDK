@@ -1,70 +1,70 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AkGeometrySurfacePropertiesToMap.h"
 #include "UObject/Object.h"
 #include "Engine/EngineTypes.h"
 #include "Engine/EngineTypes.h"
 #include "Engine/EngineTypes.h"
+#include "AkGeometrySurfacePropertiesToMap.h"
 #include "AkSettings.generated.h"
 
 class UPhysicalMaterial;
 
-UCLASS(DefaultConfig, Config=Game)
+UCLASS(Blueprintable, DefaultConfig, Config=Game)
 class AKAUDIO_API UAkSettings : public UObject {
     GENERATED_BODY()
 public:
     UPROPERTY(Config, EditAnywhere)
     uint8 MaxSimultaneousReverbVolumes;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFilePath WwiseProjectPath;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDirectoryPath WwiseSoundDataFolder;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bAutoConnectToWAAPI;
     
     UPROPERTY(Config, EditAnywhere)
     TEnumAsByte<ECollisionChannel> DefaultOcclusionCollisionChannel;
     
-    UPROPERTY(Config, EditAnywhere, EditFixedSize)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, EditFixedSize, meta=(AllowPrivateAccess=true))
     TMap<TSoftObjectPtr<UPhysicalMaterial>, FAkGeometrySurfacePropertiesToMap> AkGeometryMap;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool SplitSwitchContainerMedia;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool SplitMediaPerFolder;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool UseEventBasedPackaging;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool EnableAutomaticAssetSynchronization;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString CommandletCommitMessage;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FString, FString> UnrealCultureToWwiseCulture;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool AskedToUseNewAssetManagement;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bEnableMultiCoreRendering;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool MigratedEnableMultiCoreRendering;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool FixupRedirectorsDuringMigration;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDirectoryPath WwiseWindowsInstallationPath;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFilePath WwiseMacInstallationPath;
     
     UAkSettings();

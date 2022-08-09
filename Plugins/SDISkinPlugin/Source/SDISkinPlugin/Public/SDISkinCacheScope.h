@@ -4,8 +4,8 @@
 #include "UObject/NoExportTypes.h"
 #include "SDISkinCacheScope.generated.h"
 
-class USDISkinCompositeSkeletalMesh;
 class UObject;
+class USDISkinCompositeSkeletalMesh;
 class USDISkinObject;
 
 USTRUCT(BlueprintType)
@@ -13,22 +13,22 @@ struct SDISKINPLUGIN_API FSDISkinCacheScope {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSoftObjectPath> LoadingReferences;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<FSoftObjectPath, UObject*> References;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSet<USDISkinCompositeSkeletalMesh*> CompositeMeshes;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSet<TSubclassOf<USDISkinObject>> Skins;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bCaching;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 LoadingCounter;
     
 public:

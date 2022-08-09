@@ -8,12 +8,12 @@
 class UMatineeCameraShake;
 class UObject;
 
-UCLASS(NonTransient)
+UCLASS(Blueprintable, NonTransient)
 class SDICOREPLUGIN_API ASDICorePlayerCameraManager : public APlayerCameraManager {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSDICameraSettings> CameraSettings;
     
 public:
@@ -57,22 +57,22 @@ public:
     UFUNCTION(BlueprintCallable)
     bool ReactivateCameraSettings(int32 ID, UObject* InOwner);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCameraShakeActive(UMatineeCameraShake* ShakeInst) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCameraSettingsWeight(int32 ID, float& OutWeight) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCameraSettingsInterpolatedAlpha(int32 ID, float& OutAlpha, bool bFinalAlpha) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCameraSettingsFieldOfView(int32 ID, float& OutFieldOfView) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCameraPostProcessSettings(int32 ID, FPostProcessSettings& OutPostProcessSettings) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CameraSettingsActive(int32 ID, bool bAllowBlendingOut) const;
     
     UFUNCTION(BlueprintCallable)

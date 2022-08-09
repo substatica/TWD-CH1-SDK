@@ -3,11 +3,11 @@
 #include "TWDWorldEvent.h"
 #include "TWDHordeEvent.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDHordeEvent : public UTWDWorldEvent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HordeTimerMultiplier;
     
     UTWDHordeEvent();

@@ -8,53 +8,53 @@
 
 class ASDICorePlayerController;
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class TWD_API UTWDNonVRInteractionWidget : public UTWDUserWidget {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICameraSettings CameraSettings;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bUseNonVRCameraRotation;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRotator NonVRCameraRotation;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRCameraRotationTime;
     
 public:
     UTWDNonVRInteractionWidget();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateInteraction();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void StopInteraction();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void StartInteraction();
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnUpdateInteraction();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnStopInteraction();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnStartInteraction();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnInteractionPromptsChanged(const TArray<FTWDNonVRInteractionPrompt>& NewPrompts);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDeviceChanged(ASDICorePlayerController* PC, bool bIsUsingGamePad);
     
 protected:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FTWDNonVRInteractionPrompt> GatherInteractionPrompts() const;
     
 };

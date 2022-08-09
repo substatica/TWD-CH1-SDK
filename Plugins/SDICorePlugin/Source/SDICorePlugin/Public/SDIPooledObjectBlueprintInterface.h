@@ -11,10 +11,10 @@ class SDICOREPLUGIN_API USDIPooledObjectBlueprintInterface : public UInterface {
 class SDICOREPLUGIN_API ISDIPooledObjectBlueprintInterface : public IInterface {
     GENERATED_BODY()
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnReturnedToPool();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnAcquiredFromPool();
     
 };

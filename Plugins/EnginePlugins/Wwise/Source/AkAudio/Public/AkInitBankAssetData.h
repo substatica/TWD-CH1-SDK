@@ -4,11 +4,11 @@
 #include "AkPluginInfo.h"
 #include "AkInitBankAssetData.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkInitBankAssetData : public UAkAssetDataWithMedia {
     GENERATED_BODY()
 public:
-    UPROPERTY(VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FAkPluginInfo> PluginInfos;
     
     UAkInitBankAssetData();

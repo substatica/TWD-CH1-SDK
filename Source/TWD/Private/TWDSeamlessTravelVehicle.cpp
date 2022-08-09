@@ -3,8 +3,8 @@
 
 class UPrimitiveComponent;
 class AActor;
-class ATWDSeamlessTravelVehicle;
 class APlayerController;
+class ATWDSeamlessTravelVehicle;
 
 void ATWDSeamlessTravelVehicle::SetTravelling_Implementation(bool bTravelling) {
 }

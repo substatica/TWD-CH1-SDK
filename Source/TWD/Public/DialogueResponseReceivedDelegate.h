@@ -5,5 +5,5 @@
 
 class ATWDCharacter;
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE_TwoParams(FDialogueResponseReceived, const FTWDDialogueOption&, DialogueOption, ATWDCharacter*, Responder);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE_TwoParams(FDialogueResponseReceived, const FTWDDialogueOption&, DialogueOption, ATWDCharacter*, Responder);
 

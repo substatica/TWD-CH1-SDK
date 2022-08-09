@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct SDIVRPLAYERPLUGIN_API FSDIInventoryHolderInterfaceInventoryList {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSDIInventoryHolderInterfaceInventoryListEntry> Inventory;
     
     FSDIInventoryHolderInterfaceInventoryList();

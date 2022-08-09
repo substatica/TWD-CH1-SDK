@@ -15,16 +15,16 @@ class SDISKINPLUGIN_API ISDISkinnedActorBlueprintInterface : public IInterface {
     GENERATED_BODY()
 public:
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void UpdateSkinReplicationData(TSubclassOf<USDISkinObject> NewSkin);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void PreApplySkin(TSubclassOf<USDISkinObject> NewSkin);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void PostApplySkin(TSubclassOf<USDISkinObject> AppliedSkin);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     TArray<TSubclassOf<USDISkinObject>> GetPossibleSkins() const;
     
 };

@@ -1,7 +1,7 @@
 #include "TWDWorldSettings.h"
 
-class UObject;
 class UFXSystemAsset;
+class UObject;
 
 void ATWDWorldSettings::SpawnVFXAttached(FSpawnVFXAttachedParams Params) {
 }

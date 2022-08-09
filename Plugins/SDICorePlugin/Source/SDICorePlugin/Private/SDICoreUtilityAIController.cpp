@@ -1,9 +1,9 @@
 #include "SDICoreUtilityAIController.h"
 
 class UBehaviorTree;
+class UBlackboardComponent;
 class USDICoreUtilityAI;
 class ACharacter;
-class UBlackboardComponent;
 
 bool ASDICoreUtilityAIController::UtilityAIEnabled() const {
     return false;

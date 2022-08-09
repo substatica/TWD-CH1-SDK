@@ -4,5 +4,5 @@
 
 class AController;
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE_OneParam(FTWDQueuedExplosionDelegate, AController*, EventInstigator);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE_OneParam(FTWDQueuedExplosionDelegate, AController*, EventInstigator);
 

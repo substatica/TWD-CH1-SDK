@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FLookAtCameraInfo {
     GENERATED_BODY()
 public:
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UCameraComponent* Camera;
     
     TWD_API FLookAtCameraInfo();

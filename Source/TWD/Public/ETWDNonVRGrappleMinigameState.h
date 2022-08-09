@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDNonVRGrappleMinigameState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDNonVRGrappleMinigameState : uint8 {
     None,
     Delay,

@@ -5,11 +5,11 @@
 
 class UAkMediaAsset;
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkAssetDataWithMedia : public UAkAssetData {
     GENERATED_BODY()
 public:
-    UPROPERTY(VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UAkMediaAsset*> MediaList;
     
     UAkAssetDataWithMedia();

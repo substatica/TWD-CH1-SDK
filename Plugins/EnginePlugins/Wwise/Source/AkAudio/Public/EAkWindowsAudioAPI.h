@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EAkWindowsAudioAPI.generated.h"
 
-UENUM()
-enum class EAkWindowsAudioAPI {
+UENUM(BlueprintType)
+enum class EAkWindowsAudioAPI : uint8 {
     Wasapi,
     XAudio2,
     DirectSound,

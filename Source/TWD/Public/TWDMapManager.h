@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "MapNodeClickedDelegate.h"
 #include "UObject/Object.h"
-#include "MapNodeAttributesUpdatedDelegate.h"
 #include "MapInitializationCompleteDelegate.h"
-#include "MapNodeExplorationStatusUpdatedDelegate.h"
 #include "MapTerritoryNode.h"
+#include "MapNodeAttributesUpdatedDelegate.h"
+#include "MapNodeExplorationStatusUpdatedDelegate.h"
+#include "MapNodeClickedDelegate.h"
 #include "EMapTerritoryNodeType.h"
 #include "ETWDWorldEventType.h"
 #include "EMapBiomeType.h"
@@ -15,57 +15,57 @@
 #include "TWDMapManager.generated.h"
 
 class UMapTerritoryDataAsset;
-class UMapAttributeDataAsset;
 class UTWDSaveGame;
+class UMapAttributeDataAsset;
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class TWD_API UTWDMapManager : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMapInitializationComplete OnMapInitializationComplete;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMapNodeAttributesUpdated OnMapNodeAttributesUpdated;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMapNodeExplorationStatusUpdated OnMapNodeExplorationStatusUpdated;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMapNodeClicked OnMapNodeClicked;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 CurrentNode;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 PreviousNode;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool HasPlayerTraveledToday;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool IsMapInitialized;
     
 protected:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FMapTerritoryNode> MapNodes;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMapTerritoryDataAsset* HubDataAsset;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMapTerritoryDataAsset* PrologueDataAsset;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMapTerritoryDataAsset* TutorialDataAsset;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<EMapTerritoryNodeType, UMapTerritoryDataAsset*> TerritoryNodeDataMapping;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ETWDWorldEventType, UMapAttributeDataAsset*> AttributeDataMapping;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<EMapBiomeType, FMapBiomeTerritorySet> TerritoriesPerBiomeMapping;
     
 public:
@@ -79,7 +79,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void TravelToMap(FName MapName);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetupInitialSaveGameData(UTWDSaveGame* NewSaveGame);
     
     UFUNCTION(BlueprintCallable)
@@ -88,7 +88,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetCurrentNode(int32 NewNodeIndex);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveMapDataToGameProgression(UTWDSaveGame* SaveGame);
     
     UFUNCTION(BlueprintCallable)
@@ -97,16 +97,16 @@ public:
     UFUNCTION(BlueprintCallable)
     void RemoveAttributeOnNode(int32 NodeIndex, ETWDWorldEventType AttributeType);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void LoadFromSaveData(UTWDSaveGame* SaveGame);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsNightLevelSkiffTravelAllowed() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsNightLevel() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsInHubLevel() const;
     
     UFUNCTION(BlueprintCallable)
@@ -115,34 +115,34 @@ public:
     UFUNCTION(BlueprintCallable)
     bool HandleHubClickedEvent();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FName GetUMAPName(EMapTerritoryNodeType MapEnum) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EMapTerritoryNodeType GetTerritoryTypeByName(FName MapName) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EMapTerritoryNodeType GetTerritoryTypeByIndex(int32 NodeIndex);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetTerritoryIndexByType(EMapTerritoryNodeType NodeType);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EMapTerritoryNodeStatus GetNodeExplorationStatus(int32 NodeIndex);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FText GetMapDisplayName(FName LevelName) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     FName GetLightScenarioName() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EMapTerritoryNodeType GetCurrentMapTerritoryType() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FMapTerritoryAttribute> GetAttributesOfNode(int32 NodeIndex);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AdvanceMapValuesByOneDay();
     
     UFUNCTION(BlueprintCallable)

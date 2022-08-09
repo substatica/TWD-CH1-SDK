@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDICurveAnimation : public FSDIExternalCurveAnimation {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve Curve;
     
     FSDICurveAnimation();

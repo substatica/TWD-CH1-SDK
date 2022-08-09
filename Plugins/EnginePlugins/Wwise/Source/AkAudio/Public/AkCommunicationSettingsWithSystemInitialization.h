@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FAkCommunicationSettingsWithSystemInitialization : public FAkCommunicationSettings {
     GENERATED_BODY()
 public:
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool InitializeSystemComms;
     
     AKAUDIO_API FAkCommunicationSettingsWithSystemInitialization();

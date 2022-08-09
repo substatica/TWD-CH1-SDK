@@ -1,23 +1,23 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
+#include "SavedLookatNotebookData.h"
 #include "UObject/Object.h"
+#include "TWDSavedInventoryItemData.h"
+#include "TWDPersistentLevelSaveData.h"
 #include "EMapTerritoryNodeType.h"
+#include "UObject/NoExportTypes.h"
 #include "EProgressionMode.h"
 #include "TWDPlayerSicknessInfo.h"
-#include "TWDUniqueEntitlementItemID.h"
 #include "TWDGameProgression_OnPlayerGainedSicknessDelegateDelegate.h"
-#include "SavedLookatNotebookData.h"
 #include "TWDGameProgression_SuspendedLoadDelegate.h"
 #include "ETWDDifficultyMode.h"
 #include "TWDDifficultyMods.h"
-#include "TWDSavedInventoryItemData.h"
-#include "TWDPersistentLevelSaveData.h"
 #include "TWDAchievementData.h"
 #include "TWDPlayerCustomizationInfo.h"
 #include "EQuestLine.h"
+#include "UObject/NoExportTypes.h"
+#include "TWDUniqueEntitlementItemID.h"
 #include "ESicknessSourceType.h"
 #include "TWDGameProgression.generated.h"
 
@@ -26,7 +26,6 @@ class UTWDSaveGame;
 class UTWDFavorManager;
 class UTWDTask;
 class UTWDScenarioManager;
-class ASDIInventoryActor;
 class UTWDPlayerBuffManager;
 class ATWDPersistentLevel;
 class ATWDSuspendableLevel;
@@ -34,6 +33,7 @@ class UTWDCraftingTableProgression;
 class UTWDWorldEvent;
 class UTWDRecipe;
 class ATWDPlayerState;
+class ASDIInventoryActor;
 class AActor;
 
 UCLASS(Blueprintable)
@@ -41,103 +41,103 @@ class TWD_API UTWDGameProgression : public UObject {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDSaveGame* SaveGame;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 WaveModeRulesIndex;
     
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDMapManager* MapManager;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UTWDMapManager> MapManagerClass;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDFavorManager* FavorManager;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UTWDFavorManager> FavorManagerClass;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDScenarioManager* ScenarioManager;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UTWDScenarioManager> ScenarioManagerClass;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<UTWDTask>, TSubclassOf<UTWDTask>> TaskDependencies;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRandomStream RandomStream;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRandomStream MapInitStream;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EMapTerritoryNodeType MapInitStreamLastMap;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EProgressionMode ProgressionMode;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float InitialSaveGamePlayTime;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDPlayerBuffManager* PlayerBuffManager;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UTWDPlayerBuffManager> PlayerBuffManagerClass;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTWDPlayerSicknessInfo PlayerSicknessInfo;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDGameProgression_OnPlayerGainedSicknessDelegate OnPlayerGainedSickness;
     
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDPersistentLevel* ActivePersistentLevel;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDSuspendableLevel* ActiveSuspendableLevel;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDGameProgression_SuspendedLoad SuspendedGameLoaded;
     
-    UPROPERTY(EditAnywhere, Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     TArray<UTWDCraftingTableProgression*> CraftingTableProgressions;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UTWDWorldEvent>> NewGameWorldEvents;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 BalancedGameLength;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 TotalStoryEvents;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float StoryEventWeight;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ETWDDifficultyMode, FTWDDifficultyMods> DifficultyMods;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     FString QuestLineContextKeys[4];
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDAchievementData AchievementRequirements;
     
     UTWDGameProgression();
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void ValidateGameProgression();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdatePlayerSicknessContext();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateInitialSaveGamePlayTime();
     
     UFUNCTION(BlueprintCallable)
@@ -188,7 +188,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetSavedNightMode(bool bNight, bool bUpdateMapManager);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetRandomSeed(int32 InitialSeed);
     
     UFUNCTION(BlueprintCallable)
@@ -203,7 +203,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetPlayerCustomizationInfo(const FTWDPlayerCustomizationInfo PlayerInfo);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetPersistentLevelData(const FString& SaveKey, FTWDPersistentLevelSaveData& LevelData);
     
     UFUNCTION(BlueprintCallable)
@@ -250,7 +250,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SaveStashItems(const TArray<FTWDSavedInventoryItemData> inStashItems);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SavePlayerState(ATWDPlayerState* PlayerState);
     
     UFUNCTION(BlueprintCallable)
@@ -270,37 +270,37 @@ protected:
     void PrintValidationLog(const TArray<FString>& StringsToPrint);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     UTWDSaveGame* PrepareSaveGame(bool bCreateUniqueSaveObject);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void NativeValidateGameProgression();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void LogStacks(const FString& DescriptionMessage) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FTWDSavedInventoryItemData> LoadStashItems() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FTWDSavedInventoryItemData> LoadInventoryItems() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void LoadFromSaveGame(UTWDSaveGame* NewSaveGame);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTrackingMaterial(FGuid MaterialGuid, TSubclassOf<UTWDRecipe>& OutWhichRecipe) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTrackingInventory(const ASDIInventoryActor* InvActor, TSubclassOf<UTWDRecipe>& OutWhichRecipe) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSaveGameValidForAchievements() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsNightTravelEnabled() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InitializePlayerState(ATWDPlayerState* PlayerState);
     
     UFUNCTION(BlueprintCallable)
@@ -366,114 +366,114 @@ public:
     UFUNCTION(BlueprintCallable)
     bool HasTask(TSubclassOf<UTWDTask> Task);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasPlayerTraveledToday() const;
     
     UFUNCTION(BlueprintCallable)
     bool HasPlayerResolvedTask(TSubclassOf<UTWDTask> TaskToCheck);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasPlayerCompletedTutorial() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasNoteInNotebook(const TSubclassOf<ASDIInventoryActor> Note) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetWaveModeRulesIndex() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<TSoftClassPtr<UTWDRecipe>> GetTrackedRecipes() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<UTWDTask*> GetTasks() const;
     
     UFUNCTION(BlueprintCallable)
     UTWDTask* GetTask(TSubclassOf<UTWDTask> Task);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetStoryProgressionValue() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UTWDScenarioManager* GetScenarioManager() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     UTWDSaveGame* GetSaveGame();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EProgressionMode GetProgressionMode();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetPlayerSicknessStaminaMultiplier() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetPlayerSickness() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTWDPlayerCustomizationInfo GetPlayerCustomizationInfo() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UTWDPlayerBuffManager* GetPlayerBuffManager() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool GetPersistentLevelData(const FString& SaveKey, FTWDPersistentLevelSaveData& LevelData);
     
     UFUNCTION()
     uint8 GetNotebookSection();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UTWDMapManager* GetMapManager() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FName GetMapLocationIdentifier() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     FRandomStream GetMapInitStream(EMapTerritoryNodeType MapEnum);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UTWDFavorManager* GetFavorManager() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETWDDifficultyMode GetDifficultyMode() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FName GetCurrentMapName() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetCurrentDayPercentage() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetCurrentDay() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UTWDCraftingTableProgression* GetCraftingTableProgression(TSoftClassPtr<AActor> CraftingTableBlueprint) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetConversationProgress(EQuestLine Questline) const;
     
 protected:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FString GetContextString(const FString& ContextKey) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetContextInt(const FString& ContextKey) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetContextFloat(const FString& ContextKey) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetContextBool(const FString& ContextKey) const;
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<TSoftClassPtr<UTWDWorldEvent>> GetCompletedStoryEvents() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FSavedLookatNotebookData> GetAllSavedNotebookNoteData() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     FRandomStream GetActiveStream();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     UTWDSaveGame* CreateNewSaveGameObject();
     
     UFUNCTION(BlueprintCallable)
@@ -482,10 +482,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void CheckPoint(bool bBeforeThisMoment);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool CheckOnlineItemAlreadyAwarded(const FTWDUniqueEntitlementItemID& ItemId) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AwardOnlineItem(const FTWDUniqueEntitlementItemID& ItemId);
     
     UFUNCTION(BlueprintCallable)

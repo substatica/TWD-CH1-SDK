@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct TWD_API FTWDVariableDialogueData {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FString, FTWDDialogueData> DialogueData;
     
     FTWDVariableDialogueData();

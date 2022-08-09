@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "DialogueListenExpiredDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE(FDialogueListenExpired);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE(FDialogueListenExpired);
 

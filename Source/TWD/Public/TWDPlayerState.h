@@ -2,34 +2,34 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "GameFramework/PlayerState.h"
-#include "TWDTopic.h"
+#include "EFaction.h"
 #include "TWDHubStateInfo.h"
+#include "TWDTopic.h"
 #include "TWDPlayerStateInfo.h"
 #include "EFactionReaction.h"
-#include "EFaction.h"
 #include "TWDPlayerState.generated.h"
 
-class UTWDTask;
 class UTWDDialogue;
+class UTWDTask;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDPlayerState : public APlayerState {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTWDTask*> Tasks;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FTWDTopic> Topics;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<UTWDDialogue>, FString> DialogueBookmarks;
     
-    UPROPERTY(Replicated, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     FTWDHubStateInfo RepHubState;
     
-    UPROPERTY(Replicated, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     FTWDPlayerStateInfo RepPlayerState;
     
 public:
@@ -39,7 +39,7 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetHubStateInfo(const FTWDHubStateInfo& NewHubState);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTWDHubStateInfo GetHubStateInfo() const;
     
     UFUNCTION(BlueprintCallable)

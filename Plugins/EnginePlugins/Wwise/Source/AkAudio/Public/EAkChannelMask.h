@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EAkChannelMask.generated.h"
 
-UENUM()
-enum class EAkChannelMask {
+UENUM(BlueprintType)
+enum class EAkChannelMask : uint8 {
     FrontLeft,
     FrontRight,
     FrontCenter,

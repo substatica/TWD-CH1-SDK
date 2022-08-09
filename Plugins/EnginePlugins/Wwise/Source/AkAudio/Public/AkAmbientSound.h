@@ -6,20 +6,20 @@
 class UAkAudioEvent;
 class UAkComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API AAkAmbientSound : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioEvent* AkAudioEvent;
     
-    UPROPERTY(BlueprintReadOnly, Export, VisibleAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UAkComponent* AkComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, SimpleDisplay)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SimpleDisplay, meta=(AllowPrivateAccess=true))
     bool StopWhenOwnerIsDestroyed;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, SimpleDisplay)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SimpleDisplay, meta=(AllowPrivateAccess=true))
     bool AutoPost;
     
     AAkAmbientSound();

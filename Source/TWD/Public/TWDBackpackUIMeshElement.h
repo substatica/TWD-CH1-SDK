@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FTWDBackpackUIMeshElement {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bVisible;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FLinearColor Color;
     
     TWD_API FTWDBackpackUIMeshElement();

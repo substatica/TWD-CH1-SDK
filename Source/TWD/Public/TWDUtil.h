@@ -2,42 +2,42 @@
 #include "CoreMinimal.h"
 #include "SDIVRPlayerUtil.h"
 #include "UObject/NoExportTypes.h"
-#include "EFactionReaction.h"
 #include "EFaction.h"
-#include "Chaos/ChaosEngineInterface.h"
+#include "EFactionReaction.h"
+#include "UObject/NoExportTypes.h"
+#include "EDemoModeType.h"
 #include "DialogueLine.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "BehaviorTree/BehaviorTreeTypes.h"
 #include "Engine/EngineTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "EDemoModeType.h"
+#include "Chaos/ChaosEngineInterface.h"
 #include "ETWDCharacterHitRegion.h"
+#include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "TWDUtil.generated.h"
 
-class UTWDGameEntitlements;
 class USkeletalMeshComponent;
-class UObject;
-class AActor;
-class UAkAudioEvent;
-class UDataTable;
-class UBTNode;
 class UTWDMapManager;
+class UObject;
+class ASDIHeldActor;
+class UTWDGameProgression;
+class UAkAudioEvent;
+class AActor;
+class UBTNode;
+class UAkComponent;
+class UTWDGameInstance;
+class UDataTable;
 class UCurveFloat;
-class ATWDPlayerCharacter;
 class ATWDCharacter;
 class UPrimitiveComponent;
-class UTWDGameProgression;
-class UTWDGameInstance;
+class UTWDGameEntitlements;
 class UTWDGameAchievements;
+class ATWDPlayerCharacter;
 class UTWDPlayerBuffManager;
-class ASDIHeldActor;
 class UBlendSpaceBase;
-class UAkComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class UTWDUtil : public USDIVRPlayerUtil {
     GENERATED_BODY()
 public:
@@ -48,7 +48,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SwitchOnFactionReactionToPlayer(const UObject* WorldContextObject, EFaction Faction, EFactionReaction& Reactions);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool PublicCheatsAllowed();
     
     UFUNCTION(BlueprintCallable)
@@ -63,52 +63,52 @@ public:
     UFUNCTION(BlueprintPure)
     static FRotator OrientToNormal(const FVector& Normal, TEnumAsByte<EAxis::Type> OrientAxis, FRotator InRotation);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FBlackboardKeySelector MakeBlackboardKeySelector(UBTNode* NodeOwner, FName KeyName);
     
     UFUNCTION(BlueprintCallable)
     static void LoadDialogueLine(UPARAM(Ref) FDialogueLine& DialogueLine);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     static void LoadDataTablesAsDialogueLines(const TArray<UDataTable*>& DataTables);
     
     UFUNCTION(BlueprintCallable)
     static FVector K2ComputeProjectileAimAssistanceTargetHead(UObject* WorldContextObject, const FVector& StartLocation, const FVector& InitialVelocity, const TArray<AActor*>& ActorsToIgnore, TEnumAsByte<ECollisionChannel> CollisionChannel, float PathCollisionRadius, float PathCollisionTime, float TargetRadius, const UCurveFloat* TargetRadiusCurve, float TargetZOffset, const UCurveFloat* TargetZOffsetCurve, float MinResultSpeed, bool bAdjustForTargetVelocity, float DebugRenderTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsFriendlyInLOF(ATWDCharacter* Shooter, ATWDCharacter* Target);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsCombatEnemy(const ATWDCharacter* RelationSubject, const ATWDCharacter* RelationObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsCombatAlly(const ATWDCharacter* RelationSubject, const ATWDCharacter* RelationObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool HasLOS(ATWDCharacter* Character, UPrimitiveComponent* ComponentToTest);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool HasActiveAkEvents(AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UTWDMapManager* GetTWDMapManager(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UTWDGameProgression* GetTWDGameProgression(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UTWDGameInstance* GetTWDGameInstance(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UTWDGameEntitlements* GetTWDGameEntitlements(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UTWDGameAchievements* GetTWDGameAchievements(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FBox GetTargetBounds(const USkeletalMeshComponent* Target, FName TargetSocketName);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     static TArray<UDataTable*> GetReferencedDataTables(const FName PackageName);
     
     UFUNCTION(BlueprintCallable)
@@ -117,25 +117,25 @@ public:
     UFUNCTION(BlueprintCallable)
     static UTWDPlayerBuffManager* GetHoldingPlayerBuffManager(const ASDIHeldActor* HeldActor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static EDemoModeType GetDemoMode(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static void GetCombatRelation(const ATWDCharacter* RelationSubject, const ATWDCharacter* RelationObject, bool& bIsAlly, bool& bIsEnemy);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ETWDCharacterHitRegion GetCharacterHitRegion(USkeletalMeshComponent* Mesh, FName BoneName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static void GetBuildConfiguration(FString& outConfiguration);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetAnimationLength(UBlendSpaceBase* BlendSpace, FVector BlendInput);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static void GetActiveStream(const UObject* WorldContextObject, bool& bValidStream, FRandomStream& ActiveStream);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FText FormatTextForGender(const UObject* WorldContextObject, FText InText);
     
     UFUNCTION(BlueprintCallable)
@@ -147,13 +147,13 @@ public:
     UFUNCTION(BlueprintCallable)
     static void DisableAutoSaving(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool DebugMenuAllowed();
     
     UFUNCTION(BlueprintCallable)
     static void CreateNoise(AActor* Instigator, const FVector& Location, float Radius, float VolumeMultiplier, UAkAudioEvent* AudioEvent, UAkComponent* InAkComponent, FName Tag);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector ClampPointToCapsule(const FVector& Point, const FTransform& CapsuleTransform, float CapsuleHalfHeight, float CapsuleRadius, float FudgeFactor);
     
     UFUNCTION(BlueprintCallable)
@@ -165,7 +165,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void AddSuspendedLevelSaveContext(const UObject* WorldContextObject, const FString& SaveContext);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FBox Add(FBox A, FBox B);
     
 };

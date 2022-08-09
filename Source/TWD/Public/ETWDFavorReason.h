@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDFavorReason.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDFavorReason : uint8 {
     None,
     OrderComplete,

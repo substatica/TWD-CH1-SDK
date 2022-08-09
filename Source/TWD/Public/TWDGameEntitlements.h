@@ -4,17 +4,17 @@
 #include "TWDUniqueEntitlementItemID.h"
 #include "TWDGameEntitlements.generated.h"
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class TWD_API UTWDGameEntitlements : public UObject {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bEntitlementSystemReady;
     
 public:
     UTWDGameEntitlements();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsEntitlementSystemReady() const;
     
     UFUNCTION(BlueprintCallable)

@@ -3,9 +3,9 @@
 #include "Components/StaticMeshComponent.h"
 
 class ASDIHeldActor;
+class ASDIPlayerHand;
 class AActor;
 class ASDIInventoryActor;
-class ASDIPlayerHand;
 
 bool ATWDPlayerInventorySlot::WasSlotRecentlyRendered(float Tolerance) const {
     return false;

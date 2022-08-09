@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct NETWORKMANAGERPLUGIN_API FInventoryItemMetadata {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Durability;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString SerializationString;
     
     FInventoryItemMetadata();

@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FAkMidiProgramChange : public FAkMidiEventBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     uint8 ProgramNum;
     
     AKAUDIO_API FAkMidiProgramChange();

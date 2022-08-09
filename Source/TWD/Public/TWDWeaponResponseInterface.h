@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "UObject/Interface.h"
+#include "UObject/NoExportTypes.h"
 #include "TWDWeaponResponseInterface.generated.h"
 
+class USceneComponent;
 class UDamageType;
 class AActor;
-class USceneComponent;
 
 UINTERFACE(BlueprintType, meta=(CannotImplementInterfaceInBlueprint))
 class UTWDWeaponResponseInterface : public UInterface {

@@ -1,35 +1,35 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "SDIObjectReferences.h"
 #include "UObject/NoExportTypes.h"
+#include "UObject/Object.h"
 #include "SDIGameSingleton.generated.h"
 
-class USDICoreAssetDatabase;
 class UTexture2D;
 class UTexture;
+class USDICoreAssetDatabase;
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API USDIGameSingleton : public UObject {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(GlobalConfig)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, GlobalConfig, meta=(AllowPrivateAccess=true))
     FSoftClassPath AssetDatabaseClass;
     
-    UPROPERTY(GlobalConfig)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, GlobalConfig, meta=(AllowPrivateAccess=true))
     TArray<FName> ReplicatedNames;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     USDICoreAssetDatabase* AssetDatabase;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSDIObjectReferences References;
     
 public:
     USDIGameSingleton();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateAsyncLoadingReferences();
     
 public:
@@ -48,10 +48,10 @@ public:
     UFUNCTION(BlueprintCallable)
     bool RemoveReference(UObject* Object);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     USDICoreAssetDatabase* K2GetAssetDatabase() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasReference(UObject* Object) const;
     
     UFUNCTION(BlueprintCallable)

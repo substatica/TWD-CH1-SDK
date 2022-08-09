@@ -3,7 +3,7 @@
 #include "GameFramework/GameSession.h"
 #include "SDICoreGameSession.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API ASDICoreGameSession : public AGameSession {
     GENERATED_BODY()
 public:

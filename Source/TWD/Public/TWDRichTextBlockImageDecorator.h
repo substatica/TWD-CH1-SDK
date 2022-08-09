@@ -3,7 +3,7 @@
 #include "Components/RichTextBlockImageDecorator.h"
 #include "TWDRichTextBlockImageDecorator.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class UTWDRichTextBlockImageDecorator : public URichTextBlockImageDecorator {
     GENERATED_BODY()
 public:

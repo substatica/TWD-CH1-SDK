@@ -3,7 +3,7 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "TWDUtilityLibrary.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDUtilityLibrary : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:

@@ -3,7 +3,7 @@
 #include "SDISkeletalMeshSkin.h"
 #include "SDISkinSectionalVariant.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDISKINPLUGIN_API USDISkinSectionalVariant : public USDISkeletalMeshSkin {
     GENERATED_BODY()
 public:

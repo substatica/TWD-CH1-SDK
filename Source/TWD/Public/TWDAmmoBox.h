@@ -6,18 +6,18 @@
 #include "TWDDurabilityInterfaceData.h"
 #include "TWDAmmoBox.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDAmmoBox : public ATWDProp, public ITWDDurabilityInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bMergeBasedOnDurability;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDDurabilityInterfaceData TWDDurabilityData;
     
-    UPROPERTY(ReplicatedUsing=OnRep_RepTWDDurabilityData)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_RepTWDDurabilityData, meta=(AllowPrivateAccess=true))
     FTWDReplicatedDurabilityInterfaceData RepTWDDurabilityData;
     
 public:
@@ -25,7 +25,7 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RepTWDDurabilityData(const FTWDReplicatedDurabilityInterfaceData& OldRepTWDDurabilityData);
     
     

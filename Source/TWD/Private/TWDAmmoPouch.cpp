@@ -1,7 +1,7 @@
 #include "TWDAmmoPouch.h"
-#include "Components/SceneComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/SceneComponent.h"
 
 class UObject;
 class ATWDWeaponBow;

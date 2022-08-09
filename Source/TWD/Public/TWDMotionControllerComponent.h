@@ -3,7 +3,7 @@
 #include "SDIMotionControllerComponent.h"
 #include "TWDMotionControllerComponent.generated.h"
 
-UCLASS(ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class UTWDMotionControllerComponent : public USDIMotionControllerComponent {
     GENERATED_BODY()
 public:

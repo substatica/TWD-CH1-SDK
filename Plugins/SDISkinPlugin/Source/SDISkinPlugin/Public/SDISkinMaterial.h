@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct SDISKINPLUGIN_API FSDISkinMaterial {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSoftObjectPtr<UMaterialInterface>> Materials;
     
     FSDISkinMaterial();

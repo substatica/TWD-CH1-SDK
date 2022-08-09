@@ -5,12 +5,12 @@
 #include "TWDAnimGroup.h"
 #include "TWDAnimIdManager.generated.h"
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class TWD_API UTWDAnimIdManager : public UObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<FName, FTWDAnimGroup> GroupList;
     
 public:

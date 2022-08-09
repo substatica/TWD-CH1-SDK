@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FAttachmentset {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FDefaultAttachment> Attachments;
     
     TWD_API FAttachmentset();

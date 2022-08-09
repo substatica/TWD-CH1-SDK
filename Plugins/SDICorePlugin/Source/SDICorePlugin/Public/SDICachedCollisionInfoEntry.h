@@ -2,14 +2,14 @@
 #include "CoreMinimal.h"
 #include "SDICachedCollisionInfoEntry.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct SDICOREPLUGIN_API FSDICachedCollisionInfoEntry {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FName> BodyNames;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bIsSkeletalMeshComponent;
     
     FSDICachedCollisionInfoEntry();

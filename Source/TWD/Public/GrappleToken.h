@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Token.h"
 #include "ETWDCharacterGrappleLocation.h"
+#include "Token.h"
 #include "GrappleToken.generated.h"
 
-UCLASS(ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class TWD_API UGrappleToken : public UToken {
     GENERATED_BODY()
 public:
@@ -12,7 +12,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetLocation(ETWDCharacterGrappleLocation NewLocation);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETWDCharacterGrappleLocation GetLocation() const;
     
 };

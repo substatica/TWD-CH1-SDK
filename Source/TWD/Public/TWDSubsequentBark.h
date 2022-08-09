@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct TWD_API FTWDSubsequentBark {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString Target;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString Event;
     
     FTWDSubsequentBark();

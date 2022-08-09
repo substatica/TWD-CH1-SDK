@@ -7,39 +7,39 @@
 
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDPersistentLevel : public ALevelScriptActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bPersistenceHandled;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDItemPersistenceHandled OnItemPersistenceHandled;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSoftObjectPtr<AActor>> PersistenceExcludedActors;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<AActor>> PersistenceExcludedClasses;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> SublevelsToWaitFor;
     
 public:
     ATWDPersistentLevel();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void WaitForLevelsToBeLoaded();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void PrePersistenceHandling();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void PostPersistenceHandling();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePersistence();
     
 public:

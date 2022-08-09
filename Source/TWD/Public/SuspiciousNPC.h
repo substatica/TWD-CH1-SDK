@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FSuspiciousNPC {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATWDCharacter* NPC;
     
-    UPROPERTY(BlueprintReadWrite)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SuspicionLevel;
     
     TWD_API FSuspiciousNPC();

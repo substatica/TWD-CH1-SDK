@@ -5,35 +5,35 @@
 #include "Engine/EngineTypes.h"
 #include "AkSettingsPerUser.generated.h"
 
-UCLASS(Config=EditorPerProjectUserSettings)
+UCLASS(Blueprintable, Config=EditorPerProjectUserSettings)
 class AKAUDIO_API UAkSettingsPerUser : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDirectoryPath WwiseWindowsInstallationPath;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFilePath WwiseMacInstallationPath;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool EnableAutomaticAssetSynchronization;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString WaapiIPAddress;
     
     UPROPERTY(Config, EditAnywhere)
     uint32 WaapiPort;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bAutoConnectToWAAPI;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool AutoSyncSelection;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool SuppressWwiseProjectPathWarnings;
     
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool SoundDataGenerationSkipLanguage;
     
     UAkSettingsPerUser();

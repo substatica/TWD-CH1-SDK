@@ -4,20 +4,20 @@
 
 class UHapticFeedbackEffect_Base;
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct SDIVRPLAYERPLUGIN_API FSDIActiveHapticFeedbackEffect {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UHapticFeedbackEffect_Base* HapticEffect;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bLoop;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float PlayTime;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float Scale;
     
     FSDIActiveHapticFeedbackEffect();

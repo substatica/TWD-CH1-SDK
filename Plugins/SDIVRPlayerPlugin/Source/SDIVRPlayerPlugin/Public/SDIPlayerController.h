@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SDICorePlayerController.h"
-#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
 #include "ESDIInteractRangeType.h"
+#include "SDICorePlayerController.h"
 #include "SDIHapticFeedbackManager.h"
 #include "AlphaBlend.h"
-#include "Engine/EngineTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "InputCoreTypes.h"
 #include "ESDIGripType.h"
 #include "SDIPlayerHandInteractComponentEntrySet.h"
-#include "SDIInteractAsyncLOSResults.h"
 #include "SDIWeaponFirearm_FiringWeaponDelegate.h"
+#include "SDIInteractAsyncLOSResults.h"
 #include "UObject/NoExportTypes.h"
 #include "SDIPlayerController.generated.h"
 
@@ -25,227 +25,227 @@ class UHapticFeedbackEffect_Base;
 class ASDIInventoryActor;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDIPlayerController : public ASDICorePlayerController {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIInteractiveHighlightManager> DefaultInteractiveHighlightManagerClass;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDINonVRObjectInteractionActor> DefaultNonVRObjectInteractionActorClass;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIPlayerHand> DefaultPlayerHandBlueprint;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIPlayerHand> DefaultPlayerLeftHandBlueprint;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIHapticFeedbackManager LeftHandHapticFeedbackManager;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIHapticFeedbackManager RightHandHapticFeedbackManager;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIHapticFeedbackManager GunHapticFeedbackManager;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float OnScreenMaxHorizontalDegrees;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float OnScreenMaxVerticalDegrees;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     TMap<ESDIInteractRangeType, TEnumAsByte<ECollisionChannel>> NonVROverlapChannels;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     TEnumAsByte<ECollisionChannel> InteractLOSChannel;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRInteractCapsuleHalfHeightInner;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRInteractCapsuleRadiusInner;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRInteractCapsuleHalfHeightOuter;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRInteractCapsuleRadiusOuter;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bFilterInteractionsToCylinder;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bFilterInteractionsCylinderUseCameraXY;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FilterInteractionsCylinderHeightAbove;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FilterInteractionsCylinderHeightBelow;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FilterInteractionsCylinderDistance;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bNonVRFilterInteractionsToCylinder;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bNonVRFilterInteractionsCylinderUseCameraXY;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRFilterInteractionsCylinderHeightAbove;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRFilterInteractionsCylinderHeightBelow;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRFilterInteractionsCylinderInnerDistance;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NonVRFilterInteractionsCylinderOuterDistance;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ASDIInteractiveHighlightManager* HighlightManager;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ASDINonVRObjectInteractionActor* NonVRObjectInteractionActor;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ASDIPlayerHand* PlayerHandLeft;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ASDIPlayerHand* PlayerHandRight;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float QuickTurnIncrement;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float QuickTurnTime;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAlphaBlendOption QuickTurnBlend;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UCurveFloat* QuickTurnBlendCustomCurve;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float QuickTurnInputThreshold;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float QuickTurn180Time;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAlphaBlendOption QuickTurn180Blend;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UCurveFloat* QuickTurn180BlendCustomCurve;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float QuickTurn180MinPressTime;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float QuickTurn180InputThreshold;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bQuickTurn180FadeScreen;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float QuickTurnRepeatTime;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float QuickTurnTimer;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float QuickTurnDuration;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float QuickTurnStart;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float QuickTurnTarget;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     EAlphaBlendOption QuickTurnCurrentBlend;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UCurveFloat* QuickTurnCurrentBlendCustomCurve;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bQuickTurn180Pressed;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bQuickTurn180LockedOut;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float QuickTurn180PressedTime;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bQuickTurnLeftPressed;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bQuickTurnRightPressed;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FRotator QuickTurnRotationInput;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bEditingHandControllerOffset;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bEditingGripOffset;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float EditOffsetLocIncrement;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float EditOffsetRotIncrement;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     EControllerHand EditHandEnum;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bEditMirrorLeftHand;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ESDIGripType EditGripType;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bEditSingleHandedGrips;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bEditTwoHandedGrips;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float OnScreenMinHorizontalCos;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float OnScreenMinVerticalCos;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<EControllerHand, FSDIPlayerHandInteractComponentEntrySet> InteractEntryMap;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<EControllerHand, FSDIInteractAsyncLOSResults> InteractAsyncLOSResults;
     
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIWeaponFirearm_FiringWeapon OnFiringWeapon;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bDisableMusic;
     
     ASDIPlayerController();
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ToggleMusic();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ToggleMotionControllerTrackingAdjustment();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ToggleDebugRenderMotionControllerTracking();
     
     UFUNCTION(BlueprintCallable)
@@ -260,7 +260,7 @@ public:
     UFUNCTION(BlueprintCallable)
     bool StopHapticEffectId(int32 ID);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void StopEditing();
     
     UFUNCTION(BlueprintCallable)
@@ -269,38 +269,38 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetVignetteSettings(float StrengthMultiplier, float OpacityMultiplier, float Comfort);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void SetTwoHandedSecondaryGripOffset(const FString& hand, const FString& Axis, float Value);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void SetTwoHandedPrimaryGripOffset(const FString& hand, const FString& Axis, float Value);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void SetSingleHandedSecondaryGripOffset(const FString& hand, const FString& Axis, float Value);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void SetSingleHandedPrimaryGripOffset(const FString& hand, const FString& Axis, float Value);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void SetSecondaryGripOffset(const FString& hand, const FString& Axis, float Value);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void SetPrimaryGripOffset(const FString& hand, const FString& Axis, float Value);
     
     UFUNCTION(BlueprintCallable)
     void SetHapticsByValueSDI(const float Frequency, const float Amplitude, EControllerHand hand, UObject* EffectOwner);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void SetHandControllerOffset(const FString& hand, const FString& Axis, float Value);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void SetGripOffset(const FString& hand, const FString& Axis, float Value);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerGiveItemTo(ASDIInventoryActor* Inventory, AActor* NewOwner);
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerCheatServerCommand(const FString& Cmd);
     
 public:
@@ -310,28 +310,28 @@ public:
     UFUNCTION(BlueprintCallable)
     void ResetVRToHMD();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ResetTwoHandedSecondaryGripOffset(const FString& hand);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ResetTwoHandedPrimaryGripOffset(const FString& hand);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ResetSingleHandedSecondaryGripOffset(const FString& hand);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ResetSingleHandedPrimaryGripOffset(const FString& hand);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ResetSecondaryGripOffset(const FString& hand);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ResetPrimaryGripOffset(const FString& hand);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ResetHandControllerOffset(const FString& hand);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ResetGripOffset(const FString& hand);
     
     UFUNCTION(BlueprintCallable)
@@ -349,166 +349,166 @@ public:
     UFUNCTION(BlueprintCallable)
     int32 PlayHapticEffectSDI(UHapticFeedbackEffect_Base* HapticEffect, EControllerHand hand, float Scale, bool bLoop, int32 Priority, UObject* EffectOwner);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsQuickTurning() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayingHapticsByValue(EControllerHand hand, UObject* EffectOwner) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayingHapticEffectId(int32 ID) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayingHapticEffect(UHapticFeedbackEffect_Base* HapticEffect, EControllerHand hand, UObject* EffectOwner) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsNonVRObjectInteracting() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsEditingOffsets() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputResetHMD();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputQuickTurnRight(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputQuickTurnLeft(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputQuickTurnAxis(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputQuickTurn180(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputIncEditOffsetZ();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputIncEditOffsetYaw();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputIncEditOffsetY();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputIncEditOffsetX();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputIncEditOffsetRoll();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputIncEditOffsetPitch();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputDecEditOffsetZ();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputDecEditOffsetYaw();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputDecEditOffsetY();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputDecEditOffsetX();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputDecEditOffsetRoll();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputDecEditOffsetPitch();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputAxisEditOffsetZ(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputAxisEditOffsetYaw(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputAxisEditOffsetY(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputAxisEditOffsetX(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputAxisEditOffsetRoll(float Value);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InputAxisEditOffsetPitch(float Value);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     void GetVignetteSettings(float& StrengthMultiplier, float& OpacityMultiplier, float& Comfort) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<ASDIPlayerHand> GetPlayerHandBlueprint(EControllerHand hand) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIPlayerHand* GetPlayerHand(EControllerHand hand) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIPlayerHand* GetOtherPlayerHand(EControllerHand hand) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<ASDINonVRObjectInteractionActor> GetNonVRObjectInteractionActorClass() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDINonVRObjectInteractionActor* GetNonVRObjectInteractionActor() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<ASDIInteractiveHighlightManager> GetInteractiveHighlightManagerClass() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIInteractiveHighlightManager* GetHighlightManager() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASDIPlayerHand* GetHapticFeedbackPlayerHand(int32 ID) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EControllerHand GetHapticFeedbackHand(int32 ID) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UHapticFeedbackEffect_Base* GetHapticFeedbackEffect(int32 ID) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTransform GetCameraTransform() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetCameraRight2D() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetCameraForward2D() const;
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void EditTwoHandedSecondaryGripOffset(const FString& hand, float LocIncrement, float RotIncrement);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void EditTwoHandedPrimaryGripOffset(const FString& hand, float LocIncrement, float RotIncrement);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void EditSingleHandedSecondaryGripOffset(const FString& hand, float LocIncrement, float RotIncrement);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void EditSingleHandedPrimaryGripOffset(const FString& hand, float LocIncrement, float RotIncrement);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void EditSecondaryGripOffset(const FString& hand, float LocIncrement, float RotIncrement);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void EditPrimaryGripOffset(const FString& hand, float LocIncrement, float RotIncrement);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void EditHandControllerOffset(const FString& hand, float LocIncrement, float RotIncrement);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void EditGripOffset(const FString& hand, float LocIncrement, float RotIncrement);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DisplayCurrentEdit();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float ComputeQuickTurnTime(float DegIncrement) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     void ComputeQuickTurnTargetAngle(float& Start, float& Target, float DegIncrement, float ClampToIncrement) const;
     
     UFUNCTION(BlueprintCallable)

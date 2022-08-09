@@ -4,11 +4,11 @@
 #include "SpawnScenarioCommand.h"
 #include "TWDScenarioEvent.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDScenarioEvent : public UTWDWorldEvent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSpawnScenarioCommand ScenarioCommand;
     
     UTWDScenarioEvent();

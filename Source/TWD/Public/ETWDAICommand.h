@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDAICommand.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDAICommand : uint8 {
     None,
     Stop,

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDSurvivorTargetRankings.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDSurvivorTargetRankings : uint8 {
     Suspicious,
     FoundTargetNoThreatAge,

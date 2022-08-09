@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ETWDBookPageIndex.generated.h"
 
-UENUM()
-enum class ETWDBookPageIndex {
+UENUM(BlueprintType)
+enum class ETWDBookPageIndex : uint8 {
     Left,
     Right,
     END,

@@ -6,7 +6,7 @@ USTRUCT(BlueprintType)
 struct FTWDPlayerStateInfo {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<float> FactionReputations;
     
     TWD_API FTWDPlayerStateInfo();

@@ -1,8 +1,8 @@
 #include "SDIActorSpawner.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
 class ASDIObjectPool;
+class AActor;
 
 AActor* ASDIActorSpawner::SpawnSpecificClass(TSubclassOf<AActor> ClassType, ASDIObjectPool* Pool) {
     return NULL;

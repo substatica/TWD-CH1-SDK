@@ -5,24 +5,24 @@
 #include "OnItemPropertyDragDetectedDelegate.h"
 #include "AkItemProperties.generated.h"
 
-UCLASS(DefaultConfig, Config=Editor)
+UCLASS(Blueprintable, DefaultConfig, Config=Editor)
 class AKAUDIO_API UAkItemProperties : public UWidget {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemPropertySelectionChanged OnSelectionChanged;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemPropertyDragDetected OnPropertyDragged;
     
     UAkItemProperties();
     UFUNCTION(BlueprintCallable, BlueprintCosmetic)
     void SetSearchText(const FString& newText);
     
-    UFUNCTION(BlueprintCosmetic, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintCosmetic, BlueprintPure)
     FString GetSelectedProperty() const;
     
-    UFUNCTION(BlueprintCosmetic, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintCosmetic, BlueprintPure)
     FString GetSearchText() const;
     
 };

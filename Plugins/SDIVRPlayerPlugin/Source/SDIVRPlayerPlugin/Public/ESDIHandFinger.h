@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESDIHandFinger.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESDIHandFinger : uint8 {
     Unknown,
     Thumb,

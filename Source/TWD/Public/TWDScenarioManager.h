@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EventDeckContentsEntry.h"
 #include "UObject/Object.h"
 #include "EMapTerritoryNodeType.h"
 #include "TWDSerializedWorldEvent.h"
 #include "LevelScenerioData.h"
+#include "EventDeckContentsEntry.h"
 #include "Curves/CurveFloat.h"
 #include "ETWDWorldEventType.h"
 #include "TWDScenarioManager.generated.h"
@@ -15,50 +15,50 @@ class UTWDWorldEvent;
 class UDataTable;
 class UTWDSaveGame;
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class TWD_API UTWDScenarioManager : public UObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTWDMapManager* MapManager;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<EMapTerritoryNodeType, FLevelScenerioData> MapData;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTWDWorldEvent*> ActiveEvents;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FTWDSerializedWorldEvent> ExpendedEvents;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FEventDeckContentsEntry> EventDeck;
     
-    UPROPERTY(EditDefaultsOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UDataTable* EventDeckContents;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bEventDeckUnlocked;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 MaximumEventsPerMap;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve MinEventsPerDayCurve;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve MaxEventsPerDayCurve;
     
-    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ETWDWorldEventType, FRuntimeFloatCurve> EventTypeValueIncrement;
     
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FName> ScenarioTagsToForceLoad;
     
     UTWDScenarioManager();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ValidateScenarioProgression();
     
     UFUNCTION(BlueprintCallable)
@@ -79,10 +79,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetEventDeckEntryEnabled(TSubclassOf<UTWDWorldEvent> EventClass, bool bEnabled);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveToSaveData(UTWDSaveGame* SaveGame);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RemoveCompletedActiveEvents();
     
     UFUNCTION(BlueprintCallable)
@@ -94,37 +94,37 @@ public:
     UFUNCTION(BlueprintCallable)
     void RemoveActiveEvent(UTWDWorldEvent* EventToRemove);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void LoadFromSaveData(UTWDSaveGame* SaveGame);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool HandleNewWorldEvent(TSubclassOf<UTWDWorldEvent> NewEventClass);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleNewDay();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     UDataTable* GetScenarioCommands(EMapTerritoryNodeType MapSpecifier) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetCurrentHerdTimerMultiplier() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     TArray<UTWDWorldEvent*> GetConflictingEvents(const UTWDWorldEvent* TestEvent) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<UTWDWorldEvent*> GetActiveEventsPendingNotification() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<UTWDWorldEvent*> GetActiveEventsOfType(const ETWDWorldEventType EventType) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<UTWDWorldEvent*> GetActiveEventsForMap(const EMapTerritoryNodeType Map, const bool bNightEvents) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<UTWDWorldEvent*> GetActiveEventsDetailed(const EMapTerritoryNodeType Map, const ETWDWorldEventType EventType) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<UTWDWorldEvent*> GetActiveEvents() const;
     
     UFUNCTION(BlueprintCallable)

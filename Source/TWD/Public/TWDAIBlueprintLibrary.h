@@ -7,7 +7,7 @@
 class APawn;
 class ATWDCharacter;
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class TWD_API UTWDAIBlueprintLibrary : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:

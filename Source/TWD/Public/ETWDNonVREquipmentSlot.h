@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDNonVREquipmentSlot.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDNonVREquipmentSlot : uint8 {
     Any,
     None,

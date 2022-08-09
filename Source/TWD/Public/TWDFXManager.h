@@ -4,19 +4,19 @@
 #include "SDICoreFXCurveAnimation.h"
 #include "TWDFXManager.generated.h"
 
+class UObject;
 class UMaterialInstanceDynamic;
 class ATWDFXManager;
-class UObject;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDFXManager : public ASDICoreFXManager {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDICoreFXCurveAnimation RecipeHighlightAnim;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TArray<TWeakObjectPtr<UMaterialInstanceDynamic>> RecipeHighlights;
     
 public:
@@ -24,7 +24,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void RemoveRecipeHighlight(UMaterialInstanceDynamic* MatInst);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ATWDFXManager* GetTWDFXManager(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)

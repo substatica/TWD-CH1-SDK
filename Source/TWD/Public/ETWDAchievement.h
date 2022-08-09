@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETWDAchievement.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETWDAchievement : uint8 {
     TWDSS_OverEncumbered,
     TWDSS_YouWearIntestinesWell,

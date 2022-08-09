@@ -1,24 +1,24 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameplayTagContainer.h"
-#include "PhysicalMaterials/PhysicalMaterial.h"
-#include "GameplayTagAssetInterface.h"
-#include "Chaos/ChaosEngineInterface.h"
-#include "SDIExportInterface.h"
-#include "SDIExportData.h"
-#include "GameplayTagContainer.h"
 #include "UObject/NoExportTypes.h"
+#include "PhysicalMaterials/PhysicalMaterial.h"
+#include "SDIExportData.h"
+#include "GameplayTagAssetInterface.h"
+#include "SDIExportInterface.h"
+#include "GameplayTagContainer.h"
+#include "Chaos/ChaosEngineInterface.h"
+#include "GameplayTagContainer.h"
 #include "SDIPhysicalMaterial.generated.h"
 
-UCLASS(CollapseCategories)
+UCLASS(Blueprintable, CollapseCategories)
 class SDISTIMANDRESPONSEPLUGIN_API USDIPhysicalMaterial : public UPhysicalMaterial, public IGameplayTagAssetInterface, public ISDIExportInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSDIExportData ExportData;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGameplayTagContainer GameplayTagContainer;
     
 public:
@@ -29,10 +29,10 @@ public:
     UFUNCTION(BlueprintCallable)
     static FName GetSurfaceNameForEnum(TEnumAsByte<EPhysicalSurface> Surface);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FName GetSurfaceName() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FGameplayTagContainer GetGameplayTagContainer() const;
     
     

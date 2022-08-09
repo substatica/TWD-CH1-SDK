@@ -3,7 +3,7 @@
 #include "Perception/AISense_Sight.h"
 #include "TWDAISense_Sight.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API UTWDAISense_Sight : public UAISense_Sight {
     GENERATED_BODY()
 public:

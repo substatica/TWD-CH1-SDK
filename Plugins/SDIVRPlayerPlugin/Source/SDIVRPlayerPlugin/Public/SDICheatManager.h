@@ -3,21 +3,21 @@
 #include "SDICoreCheatManager.h"
 #include "SDICheatManager.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API USDICheatManager : public USDICoreCheatManager {
     GENERATED_BODY()
 public:
     USDICheatManager();
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatServerCommand(const FString& Cmd);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatForcePhysicsHandsReset();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatForcePhysicsHandsOn();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void CheatForcePhysicsHandsOff();
     
 };

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Interface.h"
 #include "ETWDConsumableQuality.h"
+#include "UObject/Interface.h"
 #include "TWDConsumableInterface.generated.h"
 
 class ATWDCharacter;

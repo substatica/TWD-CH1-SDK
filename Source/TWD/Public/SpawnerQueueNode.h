@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FSpawnerQueueNode {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ASDIActorSpawner* Spawner;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName SpawnTag;
     
     TWD_API FSpawnerQueueNode();

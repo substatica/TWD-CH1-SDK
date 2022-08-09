@@ -1,30 +1,30 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TWDUserWidget.h"
 #include "TWDDialogueOption.h"
+#include "TWDUserWidget.h"
 #include "UObject/NoExportTypes.h"
 #include "TWDDialogueSelectionWidget.generated.h"
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class TWD_API UTWDDialogueSelectionWidget : public UTWDUserWidget {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SelectionThreshold;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 SelectedIndex;
     
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIsInHidingProcess;
     
 public:
     UTWDDialogueSelectionWidget();
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void StartHiding();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void Show(const TArray<FTWDDialogueOption>& InOptions);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
@@ -33,16 +33,16 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SelectOption(int32 Index);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SelectDirection(FVector2D Input);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool Select();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetTimeRemainingPercent() const;
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     FVector2D GetOptionPosition(int32 Index) const;
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)

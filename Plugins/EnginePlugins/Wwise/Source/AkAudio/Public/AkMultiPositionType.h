@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "AkMultiPositionType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class AkMultiPositionType : uint8 {
     SingleSource,
     MultiSources,

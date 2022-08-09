@@ -5,11 +5,11 @@
 
 class UAkAudioBank;
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkAuxBus : public UAkAssetBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAkAudioBank* RequiredBank;
     
     UAkAuxBus();

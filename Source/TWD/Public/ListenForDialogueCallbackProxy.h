@@ -1,36 +1,36 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
-#include "TWDDialogueOption.h"
 #include "ListenForDialogueDelegateDelegate.h"
 #include "Engine/DataTable.h"
+#include "TWDDialogueOption.h"
 #include "ListenForDialogueCallbackProxy.generated.h"
 
 class ATWDCharacter;
 class UListenForDialogueCallbackProxy;
 class UTWDDialogue;
 
-UCLASS(BlueprintType, MinimalAPI)
+UCLASS(Blueprintable, MinimalAPI)
 class UListenForDialogueCallbackProxy : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FListenForDialogueDelegate DialogueReceived;
     
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FListenForDialogueDelegate ListenExpired;
     
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FDataTableRowHandle> OptionHandles;
     
 public:
     UListenForDialogueCallbackProxy();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnListenExpired();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDialogueReceived(const FTWDDialogueOption& DialogueOption, ATWDCharacter* Instigator);
     
 public:

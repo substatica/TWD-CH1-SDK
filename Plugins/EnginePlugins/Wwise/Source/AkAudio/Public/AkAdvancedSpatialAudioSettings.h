@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FAkAdvancedSpatialAudioSettings {
     GENERATED_BODY()
 public:
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DiffractionShadowAttenuationFactor;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DiffractionShadowDegrees;
     
     AKAUDIO_API FAkAdvancedSpatialAudioSettings();

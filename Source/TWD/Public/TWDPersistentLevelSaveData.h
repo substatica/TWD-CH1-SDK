@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct TWD_API FTWDPersistentLevelSaveData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bValid;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTWDPersistentLevelItemData> PersistentInventory;
     
     FTWDPersistentLevelSaveData();

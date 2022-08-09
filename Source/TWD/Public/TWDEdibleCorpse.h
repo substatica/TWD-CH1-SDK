@@ -4,7 +4,7 @@
 #include "Perception/AISightTargetInterface.h"
 #include "TWDEdibleCorpse.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TWD_API ATWDEdibleCorpse : public AActor, public IAISightTargetInterface {
     GENERATED_BODY()
 public:

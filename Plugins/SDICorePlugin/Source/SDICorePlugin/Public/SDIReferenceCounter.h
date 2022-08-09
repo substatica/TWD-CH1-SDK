@@ -7,7 +7,7 @@ struct SDICOREPLUGIN_API FSDIReferenceCounter {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 RefCount;
     
 public:

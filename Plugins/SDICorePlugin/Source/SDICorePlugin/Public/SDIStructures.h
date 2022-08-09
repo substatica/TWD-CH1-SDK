@@ -1,65 +1,65 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SDIDotLerpFloat.h"
+#include "SDIInputButtonPressedSignatureDelegate.h"
+#include "SDIRubberBandVector.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "RInt.h"
 #include "SDIReplicatedName.h"
 #include "SDICameraShakeSettingsInst.h"
-#include "SDIDoubleRubberBandVector.h"
-#include "RRotator.h"
+#include "SDIDotLerpFloat.h"
 #include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "SDIRubberBandVector.h"
 #include "SDIComponentReplacement.h"
 #include "SDIRubberBandFloat.h"
-#include "SpringFloat.h"
-#include "SDIDoubleRubberBandFloat.h"
-#include "SDITimestampInputButton.h"
-#include "FloatRandomOscillator.h"
-#include "SDIInputButtonReleasedSignatureDelegate.h"
 #include "QFloatExp.h"
-#include "SDIInputButtonPressedSignatureDelegate.h"
-#include "SDIReferenceCounter.h"
+#include "SDIDoubleRubberBandVector.h"
+#include "SDITimestampInputButton.h"
+#include "SDIDoubleRubberBandFloat.h"
+#include "UObject/NoExportTypes.h"
+#include "SDIInputButtonReleasedSignatureDelegate.h"
 #include "SDIInputButton.h"
+#include "SpringFloat.h"
+#include "UObject/NoExportTypes.h"
 #include "SphericalOscillator.h"
 #include "SDICurveAnimation.h"
+#include "SDIFloatPIDController.h"
+#include "FloatRandomOscillator.h"
 #include "QInt.h"
-#include "SDIAkAudioEventPair.h"
+#include "SDIAttachmentInfo.h"
 #include "FloatOscillator.h"
 #include "SDIAkAudioEventPairDynamicLoop.h"
 #include "SDIVectorPIDController.h"
-#include "SDIDamageData.h"
-#include "SDIEnumTypeHandle.h"
-#include "ESDIAxis.h"
+#include "QIntExp.h"
+#include "QVector2D.h"
 #include "SDIQuatPIDController.h"
-#include "SDIFloatPIDController.h"
-#include "SDIAttachmentInfo.h"
-#include "UObject/NoExportTypes.h"
 #include "QVectorExp.h"
 #include "QVector2DExp.h"
-#include "QVector2D.h"
-#include "RInt.h"
 #include "QVector.h"
 #include "QRotator.h"
-#include "RFloatExp.h"
-#include "RFloat.h"
 #include "QRotatorExp.h"
-#include "SDIReplicatedMap_FName_Float.h"
-#include "QIntExp.h"
 #include "QFloat.h"
 #include "SDIMotionHistory.h"
+#include "SDIReplicatedMap_FName_Float.h"
+#include "SDIReferenceCounter.h"
 #include "SDITargetSearchEntry.h"
 #include "SDITransformCollisionShape.h"
+#include "SDIAkAudioEventPair.h"
+#include "ESDIAxis.h"
 #include "SDITimestampTransform_NetQuantize.h"
 #include "SDITransform_NetQuantize.h"
 #include "UObject/NoExportTypes.h"
 #include "SDICollisionShape.h"
+#include "SDIEnumTypeHandle.h"
+#include "SDIDamageData.h"
 #include "RVector.h"
 #include "RVectorExp.h"
-#include "UObject/NoExportTypes.h"
 #include "RVector2D.h"
 #include "RVector2DExp.h"
 #include "RRotatorExp.h"
+#include "RRotator.h"
 #include "RIntExp.h"
+#include "RFloatExp.h"
+#include "RFloat.h"
+#include "UObject/NoExportTypes.h"
 #include "SDIMotionHistoryEntry.h"
 #include "UObject/NoExportTypes.h"
 #include "SDICurvedWedgeGeometry.h"
@@ -70,14 +70,14 @@
 #include "Engine/EngineTypes.h"
 #include "SDIStructures.generated.h"
 
+class AActor;
+class APlayerController;
 class USceneComponent;
 class UObject;
 class UAkComponent;
-class AActor;
-class APlayerController;
 class AController;
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class SDICOREPLUGIN_API USDIStructures : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
@@ -127,40 +127,40 @@ public:
     UFUNCTION(BlueprintCallable)
     static void UnbindInputButtonOnPressed(UPARAM(Ref) FSDIInputButton& Button, FSDIInputButtonPressedSignature OnPressed);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool TimestampInputButtonReleased(const FSDITimestampInputButton& Button, float& OutPressedTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool TimestampInputButtonPressed(const FSDITimestampInputButton& Button, float& OutReleasedTime, bool& bOutDoubleTap);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float TimestampInputButtonLongHeldPercent(const FSDITimestampInputButton& Button);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool TimestampInputButtonLongHeld(const FSDITimestampInputButton& Button, float& OutTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool TimestampInputButtonHeldFor(const FSDITimestampInputButton& Button, float HoldTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool TimestampInputButtonHeld(const FSDITimestampInputButton& Button, float& OutTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool TimestampInputButtonDoubleTapPossible(const FSDITimestampInputButton& Button);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool TimestampInputButtonDoubleTapped(const FSDITimestampInputButton& Button);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float TimestampInputButtonDoubleTapLongHeldPercent(const FSDITimestampInputButton& Button);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool TimestampInputButtonDoubleTapLongHeld(const FSDITimestampInputButton& Button, float& OutTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool TimestampInputButtonDoubleTapHeldFor(const FSDITimestampInputButton& Button, float HoldTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool TimestampInputButtonDoubleTapHeld(const FSDITimestampInputButton& Button, float& OutTime);
     
     UFUNCTION(BlueprintCallable)
@@ -256,7 +256,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SetAttachmentInfo(UPARAM(Ref) FSDIAttachmentInfo& AttachmentInfo, USceneComponent* Parent, const FName& SocketName, const FTransform& RelTransform);
     
-    UFUNCTION(BlueprintCosmetic, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintCosmetic, BlueprintPure)
     static bool SDICameraShakeSettingsInstIsPlaying(const FSDICameraShakeSettingsInst& Shake);
     
     UFUNCTION(BlueprintCallable)
@@ -337,7 +337,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void ReplicatedMap_FName_Float_FromMap(UPARAM(Ref) FSDIReplicatedMap_FName_Float& Map, const TMap<FName, float>& InMap);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool ReplicatedMap_FName_Float_Find(const FSDIReplicatedMap_FName_Float& Map, FName Key, float& OutValue);
     
     UFUNCTION(BlueprintCallable)
@@ -367,7 +367,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void PressInputButton(UPARAM(Ref) FSDIInputButton& Button);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool PointInsideTransformCollisionShape(const FVector& Point, const FSDITransformCollisionShape& Shape);
     
     UFUNCTION(BlueprintCallable, BlueprintCosmetic)
@@ -388,196 +388,196 @@ public:
     UFUNCTION(BlueprintCallable)
     static bool MotionHistoryHasContinuousVelocity(const FSDIMotionHistory& History, float Timespan, float MinVelocity, FVector Direction);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSDITransform_NetQuantize MakeTransformNetQuantize(const FTransform& InTransform);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSDITimestampTransform_NetQuantize MakeTimestampTransformNetQuantize(const FTransform& InTransform, float InTimestamp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSDITransformCollisionShape MakeSphereTransformCollisionShape(float SphereRadius, FVector ShapeLocation, FRotator ShapeRotation);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSDICollisionShape MakeSphereCollisionShape(float SphereRadius);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSDIReplicatedName MakeReplicatedName(FName InName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSDITransformCollisionShape MakeCapsuleTransformCollisionShape(float CapsuleRadius, float CapsuleHalfHeight, FVector ShapeLocation, FRotator ShapeRotation);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSDICollisionShape MakeCapsuleCollisionShape(float CapsuleRadius, float CapsuleHalfHeight);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSDITransformCollisionShape MakeBoxTransformCollisionShape(FVector BoxHalfExtent, FVector ShapeLocation, FRotator ShapeRotation);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSDICollisionShape MakeBoxCollisionShape(FVector BoxHalfExtent);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSDIDotLerpFloat LerpDotLerpFloat(const FSDIDotLerpFloat& A, const FSDIDotLerpFloat& B, float Alpha);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsValidFSDIEnumTypeHandle(const FSDIEnumTypeHandle& A);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsTargetBetterThan(const FSDITargetSearchEntry& Entry, const FSDITargetSearchEntry& Other, const FSDITransformCollisionShape& InnerShape, const FSDITransformCollisionShape& OuterShape);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsSDIAkAudioEventPairDynamicLoopPlaying(const FSDIAkAudioEventPairDynamicLoop& Loop);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsNotEqualFSDIEnumTypeHandle(const FSDIEnumTypeHandle& A, const FSDIEnumTypeHandle& B);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsEqualEqualFSDIEnumTypeHandle(const FSDIEnumTypeHandle& A, const FSDIEnumTypeHandle& B);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsEmptyFSDIEnumTypeHandle(const FSDIEnumTypeHandle& A);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool InputButtonReleased(const FSDIInputButton& Button, float& OutPressedTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool InputButtonPressed(const FSDIInputButton& Button, float& OutReleasedTime, bool& bOutDoubleTap);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float InputButtonLongHeldPercent(const FSDIInputButton& Button);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool InputButtonLongHeld(const FSDIInputButton& Button, float& OutTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool InputButtonHeldFor(const FSDIInputButton& Button, float HoldTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool InputButtonHeld(const FSDIInputButton& Button, float& OutTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool InputButtonDoubleTapPossible(const FSDIInputButton& Button);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool InputButtonDoubleTapped(const FSDIInputButton& Button);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float InputButtonDoubleTapLongHeldPercent(const FSDIInputButton& Button);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool InputButtonDoubleTapLongHeld(const FSDIInputButton& Button, float& OutTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool InputButtonDoubleTapHeldFor(const FSDIInputButton& Button, float HoldTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool InputButtonDoubleTapHeld(const FSDIInputButton& Button, float& OutTime);
     
     UFUNCTION(BlueprintCallable)
     static void InitFloatRandomOscillator(UPARAM(Ref) FFloatRandomOscillator& Oscillator, float DesiredDirection);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool HasDamageValues(const FSDIDamageData& Damage);
     
     UFUNCTION(BlueprintCallable)
     static FVector GetVectorPIDManipulatedValue(UPARAM(Ref) FSDIVectorPIDController& VectorPID, FVector SetPoint, FVector ProcessValue, float DeltaTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetSphericalOscillator(const FSphericalOscillator& Oscillator);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetSDICurveAnimationTime(const FSDICurveAnimation& Anim);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetSDICurveAnimationPercent(const FSDICurveAnimation& Anim);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetSDICurveAnimationDuration(const FSDICurveAnimation& Anim);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetRVectorExpAt(const FRVectorExp& RVectorExp, float Interp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetRVectorExp(const FRVectorExp& RVectorExp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetRVectorAt(const FRVector& RVector, float Interp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector2D GetRVector2DExpAt(const FRVector2DExp& RVector2DExp, float Interp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector2D GetRVector2DExp(const FRVector2DExp& RVector2DExp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector2D GetRVector2DAt(const FRVector2D& RVector2D, float Interp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector2D GetRVector2D(const FRVector2D& RVector2D);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetRVector(const FRVector& RVector);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetRubberBandVectorVelocity(UPARAM(Ref) FSDIRubberBandVector& RubberBand);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetRubberBandVectorPosition(UPARAM(Ref) FSDIRubberBandVector& RubberBand);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetRubberBandFloatVelocity(UPARAM(Ref) FSDIRubberBandFloat& RubberBand);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetRubberBandFloatPosition(UPARAM(Ref) FSDIRubberBandFloat& RubberBand);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FRotator GetRRotatorExpAt(const FRRotatorExp& RRotatorExp, float Interp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FRotator GetRRotatorExp(const FRRotatorExp& RRotatorExp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FRotator GetRRotatorAt(const FRRotator& RRotator, float Interp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FRotator GetRRotator(const FRRotator& RRotator);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetRIntPct(const FRInt& RInt, int32 Value);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetRIntExpPct(const FRIntExp& RIntExp, int32 Value);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetRIntExpAt(const FRIntExp& RIntExp, float Interp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetRIntExp(const FRIntExp& RIntExp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetRIntAt(const FRInt& RInt, float Interp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetRInt(const FRInt& RInt);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetRFloatPct(const FRFloat& RFloat, float Value);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetRFloatExpPct(const FRFloatExp& RFloatExp, float Value);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetRFloatExpAt(const FRFloatExp& RFloatExp, float Interp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetRFloatExp(const FRFloatExp& RFloatExp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetRFloatAt(const FRFloat& RFloat, float Interp);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetRFloat(const FRFloat& RFloat);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FName GetReplicatedName(const FSDIReplicatedName& Name);
     
     UFUNCTION(BlueprintCallable)
@@ -673,31 +673,31 @@ public:
     UFUNCTION(BlueprintCallable)
     static void GetMotionHistoryAccelerationInfo(const FSDIMotionHistory& History, float Timespan, FVector& MinAcc, FVector& AvgAcc, FVector& MaxAcc, float& ScalarMinAcc, float& ScalarAvgAcc, float& ScalarMaxAcc);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetFSDIEnumTypeHandleNumericalValue(const FSDIEnumTypeHandle& A);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetFloatRandomOscillator(const FFloatRandomOscillator& Oscillator);
     
     UFUNCTION(BlueprintCallable)
     static float GetFloatPIDManipulatedValue(UPARAM(Ref) FSDIFloatPIDController& FloatPID, float SetPoint, float ProcessValue, float DeltaTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetFloatOscillator(const FFloatOscillator& Oscillator);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetDoubleRubberBandVectorVelocity(UPARAM(Ref) FSDIDoubleRubberBandVector& RubberBand);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetDoubleRubberBandVectorPosition(UPARAM(Ref) FSDIDoubleRubberBandVector& RubberBand);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetDoubleRubberBandFloatVelocity(UPARAM(Ref) FSDIDoubleRubberBandFloat& RubberBand);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetDoubleRubberBandFloatPosition(UPARAM(Ref) FSDIDoubleRubberBandFloat& RubberBand);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTransform GetComponentReplacementWorldTransform(const FSDIComponentReplacement& Replacement);
     
     UFUNCTION(BlueprintCallable)
@@ -709,25 +709,25 @@ public:
     UFUNCTION(BlueprintCallable)
     static void DrawDebugCurvedWedgeGeometry(const UObject* WorldContextObject, const FSDICurvedWedgeGeometry& Wedge, const FTransform& Transform, FLinearColor Color, float Step, bool bDrawCenterLine, bool bPersistent, float LifeTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float DotLerpFloat(const FSDIDotLerpFloat& DotLerp, float DotP);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float DistanceToTransformCollisionShape(const FVector& Point, const FSDITransformCollisionShape& Shape);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool CurvedWedgeGeometryIsShapeInside(const FSDICurvedWedgeGeometry& Wedge, const FTransform& Transform, const FSDITransformCollisionShape& CollisionShape, bool bUseClosestPoint, FVector& OutPoint);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool CurvedWedgeGeometryIsPointInside(const FSDICurvedWedgeGeometry& Wedge, const FTransform& Transform, const FVector& Point);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool CurvedWedgeGeometryIsComponentInside(const FSDICurvedWedgeGeometry& Wedge, const FTransform& Transform, const USceneComponent* Component, bool bUseClosestPoint, FVector& OutPoint);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool CurvedWedgeGeometryIsActorInside(const FSDICurvedWedgeGeometry& Wedge, const FTransform& Transform, const AActor* Actor, bool bUseClosestPoint, FVector& OutPoint, USceneComponent*& OutComponent);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float ComputeSpreadSettingsDegrees(const FSDISpreadSettings& Settings, int32 NumRoundsFired, int32 Shot, int32 NumShots, float AdditionalSpread);
     
     UFUNCTION(BlueprintCallable)
@@ -754,7 +754,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static bool ComponentReplacementAttachChildActorRelative(const FSDIComponentReplacement& Replacement, AActor* InChild);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector ClosestPointOnTransformCollisionShape(const FVector& Point, const FSDITransformCollisionShape& Shape, bool bClampToOutside);
     
     UFUNCTION(BlueprintCallable)
@@ -778,10 +778,10 @@ public:
     UFUNCTION(BlueprintCallable)
     static void AttachUsingSDIAttachmentSettings(const FSDIAttachmentSettings& Settings, AActor* Child, AActor* Parent);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTransform ApplySpreadSettingsDegrees(const FSDISpreadSettings& Settings, float SpreadDegrees, const FTransform& ShotTransform, int32 NumRoundsFired, int32 Shot, int32 NumShots);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTransform ApplySpreadSettings(const FSDISpreadSettings& Settings, const FTransform& ShotTransform, int32 NumRoundsFired, int32 Shot, int32 NumShots, float AdditionalSpread);
     
     UFUNCTION(BlueprintCallable)
@@ -799,10 +799,10 @@ public:
     UFUNCTION(BlueprintCallable)
     static int32 ApplyDamageData(const FSDIDamageData& Damage, const FHitResult& InHitInfo, const FVector& InShotDirection, TArray<AActor*>& DamagedActors, AController* EventInstigator, AActor* DamageCauser, const TArray<AActor*>& IgnoreActors, const FVector& InImpactVelocity, float InImpactMass, float HitReactImpulseMultiplier, float InHitReactMinSpeed, float DirectDamageCurveInput, float DirectDamageMultiplier, float RadialDamageMultiplier, bool bApplyDirectDamageCurveInputToNonCurve, int32 DamageID);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTransform ApplyBlendedSpreadSettingsArr(const TArray<FSDISpreadSettings>& Arr, float Alpha, const FTransform& ShotTransform, int32 NumRoundsFired, int32 Shot, int32 NumShots, float AdditionalSpread);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTransform ApplyBlendedSpreadSettings(const FSDISpreadSettings& A, const FSDISpreadSettings& B, float Alpha, const FTransform& ShotTransform, int32 NumRoundsFired, int32 Shot, int32 NumShots, float AdditionalSpread);
     
     UFUNCTION(BlueprintCallable)

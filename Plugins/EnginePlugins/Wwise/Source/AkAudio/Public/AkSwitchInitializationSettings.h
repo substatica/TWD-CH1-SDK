@@ -1,26 +1,26 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "AkCommonInitializationSettingsWithSampleRate.h"
+#include "UObject/Object.h"
 #include "AkCommunicationSettingsWithCommSelection.h"
 #include "AkAdvancedInitializationSettingsWithMultiCoreRendering.h"
 #include "AkSwitchInitializationSettings.generated.h"
 
-UCLASS(DefaultConfig, Config=Game)
+UCLASS(Blueprintable, DefaultConfig, Config=Game)
 class AKAUDIO_API UAkSwitchInitializationSettings : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkCommonInitializationSettingsWithSampleRate CommonSettings;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkCommunicationSettingsWithCommSelection CommunicationSettings;
     
-    UPROPERTY(AdvancedDisplay, Config, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAkAdvancedInitializationSettingsWithMultiCoreRendering AdvancedSettings;
     
     UAkSwitchInitializationSettings();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MigrateMultiCoreRendering(bool NewValue);
     
 };

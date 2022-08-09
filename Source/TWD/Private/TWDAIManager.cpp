@@ -1,10 +1,10 @@
 #include "TWDAIManager.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
 class ATWDWalkerAICharacter;
 class UDamageType;
 class ATWDCharacter;
+class AActor;
 class ATWDAICharacter;
 
 void UTWDAIManager::ToggleGPSortOrder() {

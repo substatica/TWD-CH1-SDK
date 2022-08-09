@@ -3,7 +3,7 @@
 #include "AkAudioType.h"
 #include "AkTrigger.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class AKAUDIO_API UAkTrigger : public UAkAudioType {
     GENERATED_BODY()
 public:

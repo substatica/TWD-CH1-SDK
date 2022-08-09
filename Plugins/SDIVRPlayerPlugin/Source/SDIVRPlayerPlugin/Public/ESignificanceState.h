@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESignificanceState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESignificanceState : uint8 {
     NoSignificance,
     MinSignificance,

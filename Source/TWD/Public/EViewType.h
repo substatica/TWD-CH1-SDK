@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EViewType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EViewType : uint8 {
     EventBased,
     ContinuousCheck,

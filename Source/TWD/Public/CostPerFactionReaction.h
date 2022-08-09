@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FCostPerFactionReaction {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<EFactionReaction, float> Costs;
     
     TWD_API FCostPerFactionReaction();

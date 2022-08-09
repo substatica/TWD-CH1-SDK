@@ -2,68 +2,68 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "SDISkinnedActorSkeletalMesh.h"
-#include "TWDStabBone.h"
 #include "TWDWoundInterface.h"
-#include "StuckWeapon.h"
-#include "TWDWoundInterfaceData.h"
 #include "TWDDismemberInterface.h"
 #include "TWDStabInterface.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
+#include "StuckWeapon.h"
+#include "TWDWoundInterfaceData.h"
+#include "TWDStabBone.h"
 #include "ETWDCharacterSkinSection.h"
 #include "UObject/NoExportTypes.h"
 #include "SDISkinSkeletalMeshSet.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "EWoundType.h"
 #include "TWDDeadBody.generated.h"
 
 class UTexture2D;
-class UParticleSystem;
 class UTexture;
+class UParticleSystem;
 class AActor;
 
-UCLASS()
+UCLASS(Blueprintable)
 class ATWDDeadBody : public ASDISkinnedActorSkeletalMesh, public ITWDWoundInterface, public ITWDStabInterface, public ITWDDismemberInterface {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTWDWoundInterfaceData TWDWoundData;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UTexture2D* SplashColorTexture;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UTexture2D* SplashNormalTexture;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UTexture2D* MeatColorTexture;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UTexture2D* MeatNormalTexture;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UTexture2D* CapColorTexture;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UTexture2D* CapNormalTexture;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WoundSeverityScale;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTWDStabBone> StabBones;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UParticleSystem* StabLoopParticleSystem;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UParticleSystem* StabMovementParticleSystem;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float StabMeleeDurabilityModifier;
     
-    UPROPERTY(BlueprintReadOnly, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FStuckWeapon> StuckWeapons;
     
 public:
@@ -74,13 +74,13 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     bool SetSkinSectionVariant(ETWDCharacterSkinSection Section, FName Variant);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MeshOnPhysicsStateChange();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FName GetSkinSectionVariant(ETWDCharacterSkinSection Section) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     void GetSkinSectionInfo(ETWDCharacterSkinSection Section, int32& OutIndex, FName& OutVariant, TMap<FName, float>& OutScalarParams, TMap<FName, FLinearColor>& OutColorParams, TMap<FName, TSoftObjectPtr<UTexture>>& OutTextureParams, FSDISkinSkeletalMeshSet& OutSkinMeshSet) const;
     
     
