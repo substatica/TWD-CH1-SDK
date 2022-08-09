@@ -1,0 +1,5 @@
+#include "SDITuningAttribute_SDIWeaponFirearmAmmoProjectile.h"
+
+FSDITuningAttribute_SDIWeaponFirearmAmmoProjectile::FSDITuningAttribute_SDIWeaponFirearmAmmoProjectile() {
+}
+

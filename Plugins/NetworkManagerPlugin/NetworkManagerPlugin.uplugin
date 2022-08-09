@@ -1,0 +1,30 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Network Manager Plugin",
+	"Description": "Network Manager plugin for communication between the client and the platform.",
+	"Category": "Other",
+	"CreatedBy": "Skydance Interactive",
+	"CreatedByURL": "http://skydance.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "NetworkManagerPlugin",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "SDICorePlugin",
+			"Enabled": true
+		}
+	]
+}

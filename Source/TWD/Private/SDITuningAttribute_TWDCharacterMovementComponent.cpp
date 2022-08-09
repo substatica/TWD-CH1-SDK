@@ -1,0 +1,5 @@
+#include "SDITuningAttribute_TWDCharacterMovementComponent.h"
+
+FSDITuningAttribute_TWDCharacterMovementComponent::FSDITuningAttribute_TWDCharacterMovementComponent() {
+}
+

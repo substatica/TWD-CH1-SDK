@@ -1,0 +1,5 @@
+#include "NetworkPredictionData_Server_SDICharacterAdvanced_Adjustment.h"
+
+FNetworkPredictionData_Server_SDICharacterAdvanced_Adjustment::FNetworkPredictionData_Server_SDICharacterAdvanced_Adjustment() {
+}
+

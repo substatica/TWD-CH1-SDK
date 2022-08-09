@@ -1,0 +1,5 @@
+#include "SDIReplicatedStimAndResponseInterfaceDataContainer.h"
+
+FSDIReplicatedStimAndResponseInterfaceDataContainer::FSDIReplicatedStimAndResponseInterfaceDataContainer() {
+}
+

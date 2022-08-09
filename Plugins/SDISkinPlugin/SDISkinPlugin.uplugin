@@ -1,0 +1,31 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "SDI Skin Plugin",
+	"Description": "Includes base classes used for skinning actors.",
+	"Category": "Runtime",
+	"CreatedBy": "Jason Bare, Skydance Interactive",
+	"CreatedByURL": "https://www.skydanceinteractive.com/",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": false,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SDISkinPlugin",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "SDICorePlugin",
+			"Enabled": true
+		}
+	]
+}

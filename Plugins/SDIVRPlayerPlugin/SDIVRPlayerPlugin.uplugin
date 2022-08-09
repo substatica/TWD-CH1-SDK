@@ -1,0 +1,66 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "SDI VR Player Plugin",
+	"Description": "Includes base classes for VR player, arms, and interactive items.",
+	"Category": "Runtime",
+	"CreatedBy": "Jason Bare, Skydance Interactive",
+	"CreatedByURL": "https://www.skydanceinteractive.com/",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": false,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SDIVRPlayerPlugin",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "WWise",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystem",
+			"Enabled": true
+		},
+		{
+			"Name": "AudioCapture",
+			"Enabled": true
+		},
+		{
+			"Name": "AndroidPermission",
+			"Enabled": true
+		},
+		{
+			"Name": "SteamVR",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "SDICorePlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "SDISkinPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "SDIStimAndResponsePlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "SDITuningPlugin",
+			"Enabled": true
+		}
+	]
+}

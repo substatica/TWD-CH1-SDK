@@ -1,0 +1,42 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "SDI Core Plugin",
+	"Description": "Includes base classes used by other SDI plugins.",
+	"Category": "Runtime",
+	"CreatedBy": "Jason Bare, Skydance Interactive",
+	"CreatedByURL": "https://www.skydanceinteractive.com/",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": false,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SDICorePlugin",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"AdditionalDependencies": [
+				"SignificanceManager"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "WWise",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystem",
+			"Enabled": true
+		},
+		{
+			"Name": "SignificanceManager",
+			"Enabled": true
+		}
+	]
+}

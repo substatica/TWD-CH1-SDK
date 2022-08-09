@@ -1,0 +1,29 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "SDI Telemetry Plugin",
+	"Description": "Plugin for sending events to the SDI Telemetry Service.",
+	"Category": "Other",
+	"CreatedBy": "Skydance Interactive",
+	"CreatedByURL": "https://www.skydanceinteractive.com/",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": true,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"SupportedTargetPlatforms": [
+		"Android",
+		"PS4",
+		"Win64"
+	],
+	"Plugins": [
+		{
+			"Name": "SDICorePlugin",
+			"Enabled": true
+		}
+	]
+}

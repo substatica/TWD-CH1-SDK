@@ -1,0 +1,5 @@
+#include "SDITuningAttribute_SDICharacterAdvancedMovementComponent.h"
+
+FSDITuningAttribute_SDICharacterAdvancedMovementComponent::FSDITuningAttribute_SDICharacterAdvancedMovementComponent() {
+}
+

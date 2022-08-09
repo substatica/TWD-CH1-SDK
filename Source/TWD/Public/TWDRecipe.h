@@ -1,0 +1,48 @@
+#pragma once
+#include "CoreMinimal.h"
+#include "SDIExportObject.h"
+#include "TWDUniqueEntitlementItemID.h"
+#include "TWDRecipeInfo.h"
+#include "UObject/NoExportTypes.h"
+#include "TWDRecipe.generated.h"
+
+class UTexture2D;
+class UMaterialInstance;
+
+UCLASS(BlueprintType)
+class TWD_API UTWDRecipe : public USDIExportObject {
+    GENERATED_BODY()
+public:
+    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    FText RecipeName;
+    
+    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    FTWDUniqueEntitlementItemID OnlineItemID;
+    
+    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UTexture2D* RecipeUIImage;
+    
+    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    FText RecipeUIDescription;
+    
+    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+    UMaterialInstance* RecipeBuildMaterial;
+    
+    UPROPERTY(BlueprintReadOnly)
+    TArray<FTWDRecipeInfo> InputInfo;
+    
+    UPROPERTY(BlueprintReadOnly)
+    TArray<FTWDRecipeInfo> OutputInfo;
+    
+    UPROPERTY(BlueprintReadOnly)
+    FTWDRecipeInfo PrerequisiteItemInfo;
+    
+    UTWDRecipe();
+    UFUNCTION(BlueprintCallable)
+    static TMap<FGuid, int32> GetOutputsAsMap(const FGuid& RecipeGuid);
+    
+    UFUNCTION(BlueprintCallable)
+    static TMap<FGuid, int32> GetInputsAsMap(const FGuid& RecipeGuid);
+    
+};
+
