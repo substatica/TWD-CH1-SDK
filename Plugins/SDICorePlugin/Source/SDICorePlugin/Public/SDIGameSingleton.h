@@ -9,7 +9,7 @@ class UTexture2D;
 class UTexture;
 class USDICoreAssetDatabase;
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, DefaultConfig, Config=Game)
 class SDICOREPLUGIN_API USDIGameSingleton : public UObject {
     GENERATED_BODY()
 public:

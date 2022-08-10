@@ -4,7 +4,8 @@
 
 UENUM(BlueprintType)
 enum class AkSpeakerConfiguration : uint8 {
-    Ak_Speaker_Front_Left/*0x1*/,
+    None = 0x0,
+    Ak_Speaker_Front_Left = 0x1,
     Ak_Speaker_Front_Right,
     Ak_Speaker_Front_Center = 0x4,
     Ak_Speaker_Low_Frequency = 0x8,
@@ -21,5 +22,6 @@ enum class AkSpeakerConfiguration : uint8 {
     Ak_Speaker_Height_Back_Center = 0x10000,
     Ak_Speaker_Height_Back_Right = 0x20000,
     Ak_Speaker_MAX UMETA(Hidden),
+
 };
 
