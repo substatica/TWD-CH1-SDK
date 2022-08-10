@@ -40,6 +40,6 @@ public:
     UPROPERTY()
     bool bAutoActivateSystem;
     
-    ENGINE_API FSpawnVFXAttachedParams();
+    FSpawnVFXAttachedParams();
 };
 
