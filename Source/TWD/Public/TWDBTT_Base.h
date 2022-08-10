@@ -6,24 +6,24 @@
 
 class AAIController;
 
-UCLASS(Blueprintable)
+UCLASS()
 class TWD_API UTWDBTT_Base : public UBTTaskNode {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY()
     uint8 bShowPropertyDetails: 1;
     
     UTWDBTT_Base();
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION()
     TEnumAsByte<EBTNodeResult::Type> OnTick(AAIController* Controller, float DeltaSeconds);
     
-    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    UFUNCTION()
     void OnDeactivate(AAIController* Controller);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION()
     TEnumAsByte<EBTNodeResult::Type> OnActivate(AAIController* Controller);
     
-    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    UFUNCTION()
     void OnAbort(AAIController* Controller);
-    
+
 };

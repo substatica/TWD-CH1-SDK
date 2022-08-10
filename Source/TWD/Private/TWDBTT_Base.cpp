@@ -2,18 +2,18 @@
 
 class AAIController;
 
-TEnumAsByte<EBTNodeResult::Type> OnTick_Implementation(AAIController* Controller, float DeltaSeconds) {
+void OnAbort(AAIController* Controller) {
+}
+
+TEnumAsByte<EBTNodeResult::Type> OnTick(AAIController* Controller, float DeltaSeconds) {
     return EBTNodeResult::Succeeded;
 }
 
-void UTWDBTT_Base::OnDeactivate_Implementation(AAIController* Controller) {
+void OnDeactivate(AAIController* Controller) {
 }
 
-TEnumAsByte<EBTNodeResult::Type> OnActivate_Implementation(AAIController* Controller) {
+TEnumAsByte<EBTNodeResult::Type> OnActivate(AAIController* Controller) {
     return EBTNodeResult::Succeeded;
-}
-
-void UTWDBTT_Base::OnAbort_Implementation(AAIController* Controller) {
 }
 
 UTWDBTT_Base::UTWDBTT_Base() {
