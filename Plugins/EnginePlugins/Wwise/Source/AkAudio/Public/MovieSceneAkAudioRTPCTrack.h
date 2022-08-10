@@ -4,7 +4,7 @@
 #include "Compilation/IMovieSceneTrackTemplateProducer.h"
 #include "MovieSceneAkAudioRTPCTrack.generated.h"
 
-UCLASS(Blueprintable, MinimalAPI)
+UCLASS(MinimalAPI)
 class UMovieSceneAkAudioRTPCTrack : public UMovieSceneAkTrack, public IMovieSceneTrackTemplateProducer {
     GENERATED_BODY()
 public:

@@ -10,3 +10,11 @@ public:
     FSDIAuxTickFunction();
 };
 
+template<>
+struct TStructOpsTypeTraits<FSDIAuxTickFunction> : public TStructOpsTypeTraitsBase2<FSDIAuxTickFunction>
+{
+    enum
+    {
+        WithCopy = false
+    };
+};

@@ -38,7 +38,7 @@ bool ASDIInputSplineActor::HasValidArc() const {
     return false;
 }
 
-TEnumAsByte<ECollisionChannel> ASDIInputSplineActor::GetTraceChannel_Implementation() const {
+TEnumAsByte<ECollisionChannel> ASDIInputSplineActor::GetTraceChannel_Implementation() {
     return ECC_WorldStatic;
 }
 

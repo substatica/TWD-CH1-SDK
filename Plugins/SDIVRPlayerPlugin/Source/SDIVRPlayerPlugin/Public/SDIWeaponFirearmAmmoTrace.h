@@ -50,6 +50,7 @@ protected:
     int32 PassThroughAsyncTracePlatformLevel;
     
     UPROPERTY(EditAnywhere)
+
     TEnumAsByte<ECollisionChannel> TraceChannel;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -106,8 +107,8 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     TArray<AActor*> GetTraceIgnoreActors(const FSDIWeaponFirearmFiredShotInfo& FiredShotInfo, const FTransform& ShotTransform);
     
-    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    ECollisionChannel GetTraceChannel(const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform);
+//    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+//    TEnumAsByte<ECollisionChannel> GetTraceChannel(const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform);
 
 protected:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)

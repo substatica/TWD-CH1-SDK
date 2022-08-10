@@ -3,8 +3,7 @@
 #include "SDIWorldSettings.h"
 #include "Particles/WorldPSCPool.h"
 #include "UObject/NoExportTypes.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SpawnVFXAttachedParams -FallbackName=SpawnVFXAttachedParams
-#include "UObject/NoExportTypes.h"
+#include "Engine/SpawnVFXAttachedParams.h"
 #include "TWDWorldSettings.generated.h"
 
 class UObject;

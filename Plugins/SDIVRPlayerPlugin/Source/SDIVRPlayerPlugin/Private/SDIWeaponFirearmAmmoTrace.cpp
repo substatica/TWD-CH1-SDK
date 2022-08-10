@@ -44,9 +44,9 @@ TArray<AActor*> ASDIWeaponFirearmAmmoTrace::GetTraceIgnoreActors_Implementation(
     return TArray<AActor*>();
 }
 
-TEnumAsByte<ECollisionChannel> ASDIWeaponFirearmAmmoTrace::GetTraceChannel_Implementation(const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform) {
-    return ECC_WorldStatic;
-}
+// TEnumAsByte<ECollisionChannel> ASDIWeaponFirearmAmmoTrace::GetTraceChannel_Implementation(const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform) {
+//    return ECC_WorldStatic;
+// }
 
 void ASDIWeaponFirearmAmmoTrace::GetDamageMultiplier_Implementation(const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform, const FTransform& SpreadShotTransform, const FHitResult& Hit, const TArray<AActor*>& DamagedActors, float& OutDirectDamageMultiplier, float& OutRadialDamageMultiplier) {
 }
