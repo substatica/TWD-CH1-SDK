@@ -107,7 +107,7 @@ ATWDAICharacter::ATWDAICharacter() {
     this->bDebugShowSignificance = false;
     this->bDebugShowLOD = false;
     this->AliveAvoidanceGroupMask = 0;
-    this->DeadAvoidanceGroupMask = -2147483648;
+//    this->DeadAvoidanceGroupMask = -2147483648;
     this->PathObject = NULL;
     this->CurrentPathId = -1;
     this->PreviousPathID = -1;

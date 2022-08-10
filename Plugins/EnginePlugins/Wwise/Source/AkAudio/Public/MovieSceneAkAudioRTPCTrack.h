@@ -8,7 +8,6 @@ UCLASS(MinimalAPI)
 class UMovieSceneAkAudioRTPCTrack : public UMovieSceneAkTrack, public IMovieSceneTrackTemplateProducer {
     GENERATED_BODY()
 public:
-    // UMovieSceneAkAudioRTPCTrack();
-    // Fix for true pure virtual functions not being implemented
+    FMovieSceneEvalTemplatePtr CreateTemplateForSection(const UMovieSceneSection& InSection) const override;
 };
 
