@@ -1,5 +1,17 @@
 #include "MovieSceneAkAudioRTPCTrack.h"
 
-// UMovieSceneAkAudioRTPCTrack::UMovieSceneAkAudioRTPCTrack() {
-// }
 
+
+UMovieSceneAkAudioRTPCTrack::UMovieSceneAkAudioRTPCTrack() {
+}
+
+
+void UMovieSceneAkAudioRTPCTrack::GenerateTemplate(const FMovieSceneTrackCompilerArgs& Args) const
+{
+	IMovieSceneTrackTemplateProducer::GenerateTemplate(Args);
+}
+
+FMovieSceneEvalTemplatePtr UMovieSceneAkAudioRTPCTrack::CreateTemplateForSection(const UMovieSceneSection& InSection) const
+{
+	return FMovieSceneEvalTemplatePtr();
+}
