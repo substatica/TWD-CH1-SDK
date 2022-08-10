@@ -6,6 +6,7 @@ void UTWDGauntletController::OnTestsRefreshed() {
 void UTWDGauntletController::OnTestsComplete() {
 }
 
-UTWDGauntletController::UTWDGauntletController() {
+UTWDGauntletController::UTWDGauntletController(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+
 }
 

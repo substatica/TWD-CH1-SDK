@@ -7,7 +7,7 @@ UCLASS(Blueprintable)
 class UTWDGauntletController : public UGauntletTestController {
     GENERATED_BODY()
 public:
-    UTWDGauntletController();
+    UTWDGauntletController(const FObjectInitializer& ObjectInitializer);
 private:
     UFUNCTION(BlueprintCallable)
     void OnTestsRefreshed();
