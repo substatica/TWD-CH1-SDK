@@ -114,6 +114,7 @@
 #include "ESicknessSourceType.h"
 #include "Chaos/ChaosEngineInterface.h"
 #include "TWDResponse.h"
+#include "Engine/SpringInterpolator.h"
 #include "TWDCharacter.generated.h"
 
 class ATWDCharacterHandSlot;

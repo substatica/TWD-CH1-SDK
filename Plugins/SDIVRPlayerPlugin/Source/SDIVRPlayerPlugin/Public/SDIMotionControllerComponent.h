@@ -8,6 +8,7 @@
 #include "UObject/NoExportTypes.h"
 #include "IMotionController.h"
 #include "UObject/NoExportTypes.h"
+#include "Engine/SpringInterpolator.h"
 #include "SDIMotionControllerComponent.generated.h"
 
 class UMaterialInstanceDynamic;

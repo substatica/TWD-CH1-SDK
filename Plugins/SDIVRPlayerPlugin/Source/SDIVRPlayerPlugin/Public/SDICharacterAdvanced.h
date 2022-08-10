@@ -6,6 +6,7 @@
 #include "Engine/EngineTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
+#include "Engine/SpringInterpolator.h"
 #include "SDICharacterAdvanced.generated.h"
 
 UCLASS(Blueprintable)

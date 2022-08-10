@@ -1,9 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "EAttachLocation.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-#include "EPSCPoolMethod.h"
+#include "Engine/EngineTypes.h"
 #include "SpawnVFXAttachedParams.generated.h"
 
 class UFXSystemAsset;

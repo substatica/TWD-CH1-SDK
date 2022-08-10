@@ -8,8 +8,7 @@ UCLASS(Blueprintable, MinimalAPI)
 class UMovieSceneAkAudioRTPCTrack : public UMovieSceneAkTrack, public IMovieSceneTrackTemplateProducer {
     GENERATED_BODY()
 public:
-    UMovieSceneAkAudioRTPCTrack();
-    
+    // UMovieSceneAkAudioRTPCTrack();
     // Fix for true pure virtual functions not being implemented
 };
 

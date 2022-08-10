@@ -16,6 +16,7 @@
 #include "Engine/NetSerialization.h"
 #include "GameFramework/RootMotionSource.h"
 #include "Engine/NetSerialization.h"
+#include "Engine/SpringInterpolator.h"
 #include "SDICharacterAdvancedMovementComponent.generated.h"
 
 class UPrimitiveComponent;

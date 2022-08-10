@@ -19,6 +19,7 @@
 #include "ETWDCharacterHitDirection.h"
 #include "ECharacterPose.h"
 #include "ECharacterEmotion.h"
+#include "Engine/SpringInterpolator.h"
 #include "TWDAnimInstanceCharacter.generated.h"
 
 class USceneComponent;

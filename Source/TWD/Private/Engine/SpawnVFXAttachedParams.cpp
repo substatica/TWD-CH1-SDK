@@ -1,4 +1,4 @@
-#include "SpawnVFXAttachedParams.h"
+#include "Engine/SpawnVFXAttachedParams.h"
 
 FSpawnVFXAttachedParams::FSpawnVFXAttachedParams() {
     this->EmitterTemplate = NULL;

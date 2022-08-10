@@ -7,6 +7,7 @@
 #include "RFloatExp.h"
 #include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
+#include "Engine/SpringInterpolator.h"
 #include "TWDCharacterMovementComponent.generated.h"
 
 class AActor;

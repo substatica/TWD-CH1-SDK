@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "BoneContainer.h"
 #include "UObject/NoExportTypes.h"
+#include "Engine/SpringInterpolator.h"
 #include "SDIAnimNode_ArmIK_TwistBone.generated.h"
 
 USTRUCT(BlueprintType)

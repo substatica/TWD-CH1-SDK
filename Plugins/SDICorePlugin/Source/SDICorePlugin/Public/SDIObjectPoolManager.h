@@ -30,7 +30,7 @@ public:
     static void AddPoolStatic(const UObject* WorldContextObject, UClass* InObjectClass, int32 InStartingPoolSize, int32 InMaxPoolSize, TSubclassOf<ASDIObjectPool> InPoolClass);
     
     UFUNCTION(BlueprintCallable)
-    static UObject* AcquireFromPoolStatic(const UObject* WorldContextObject, const UClass*& ObjectClass, FVector Location, FRotator Rotation, FVector Scale3D, bool bCreateIfNecessary);
+    static UObject* AcquireFromPoolStatic(const UObject* WorldContextObject, UClass * ObjectClass, FVector Location, FRotator Rotation, FVector Scale3D, bool bCreateIfNecessary);
     
 };
 

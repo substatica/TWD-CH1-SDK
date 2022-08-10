@@ -8,6 +8,7 @@
 #include "Animation/InputScaleBias.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
+#include "Engine/SpringInterpolator.h"
 #include "SDIAnimNode_ArmIK.generated.h"
 
 USTRUCT(BlueprintType)

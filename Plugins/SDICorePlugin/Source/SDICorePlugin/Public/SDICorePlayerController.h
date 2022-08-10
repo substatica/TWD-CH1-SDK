@@ -36,6 +36,7 @@
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "SDICameraRecoilSettings.h"
+#include "Engine/SpringInterpolator.h"
 #include "SDICorePlayerController.generated.h"
 
 class ASDICoreCharacter;

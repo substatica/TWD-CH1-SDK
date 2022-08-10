@@ -2,7 +2,7 @@
 
 class USDIDamageType;
 
-USDIDamageType* USDIDamageType::GetSDIDamageType(UClass* DamageTypeClass, bool& bValid) const {
+USDIDamageType* USDIDamageType::GetSDIDamageType(UClass* DamageTypeClass, bool& bValid) {
     return NULL;
 }
 
