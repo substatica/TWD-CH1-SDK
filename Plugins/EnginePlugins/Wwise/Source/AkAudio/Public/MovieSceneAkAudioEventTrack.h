@@ -8,6 +8,11 @@ UCLASS(Blueprintable, MinimalAPI)
 class UMovieSceneAkAudioEventTrack : public UMovieSceneAkTrack, public IMovieSceneTrackTemplateProducer {
     GENERATED_BODY()
 public:
-    FMovieSceneEvalTemplatePtr CreateTemplateForSection(const UMovieSceneSection& InSection) const override;
+    UMovieSceneAkAudioEventTrack();
+    
+    // Fix for true pure virtual functions not being implemented
+
+    virtual void GenerateTemplate(const FMovieSceneTrackCompilerArgs& Args) const;
+    
 };
 

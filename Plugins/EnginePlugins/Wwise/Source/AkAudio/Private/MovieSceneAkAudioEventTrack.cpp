@@ -1,5 +1,11 @@
 #include "MovieSceneAkAudioEventTrack.h"
 
-// UMovieSceneAkAudioEventTrack::UMovieSceneAkAudioEventTrack() {
-// }
+UMovieSceneAkAudioEventTrack::UMovieSceneAkAudioEventTrack() {
+}
+
+void IMovieSceneTrackTemplateProducer::GenerateTemplate(const FMovieSceneTrackCompilerArgs& Args) const
+{
+
+}
+
 
