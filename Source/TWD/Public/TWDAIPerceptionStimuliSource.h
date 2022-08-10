@@ -7,6 +7,6 @@ UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class TWD_API UTWDAIPerceptionStimuliSource : public UAIPerceptionStimuliSourceComponent {
     GENERATED_BODY()
 public:
-    UTWDAIPerceptionStimuliSource();
+    UTWDAIPerceptionStimuliSource(const FObjectInitializer & ObjectInitializer);
 };
 

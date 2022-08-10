@@ -1,5 +1,6 @@
 #include "TWDAIPerceptionStimuliSource.h"
+#include "UObject/UObjectGlobals.h"
 
-UTWDAIPerceptionStimuliSource::UTWDAIPerceptionStimuliSource() {
+UTWDAIPerceptionStimuliSource::UTWDAIPerceptionStimuliSource(const FObjectInitializer& ObjectInitializer) : UAIPerceptionStimuliSourceComponent(ObjectInitializer) {
 }
 
