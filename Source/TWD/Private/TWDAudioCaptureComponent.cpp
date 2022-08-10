@@ -9,7 +9,7 @@ void UTWDAudioCaptureComponent::EndPTTEventCapture() {
 void UTWDAudioCaptureComponent::BeginPTTEventCapture() {
 }
 
-UTWDAudioCaptureComponent::UTWDAudioCaptureComponent() {
+UTWDAudioCaptureComponent::UTWDAudioCaptureComponent(const FObjectInitializer & ObjectInitializer) : Super(ObjectInitializer) {
     this->BeginSoundEventThreshold = 0.02f;
     this->EndSoundEventPct = 0.20f;
     this->EnvelopeEventRangeScale = 40000.00f;

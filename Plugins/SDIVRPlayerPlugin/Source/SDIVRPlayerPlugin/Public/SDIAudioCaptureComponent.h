@@ -17,6 +17,6 @@ public:
     UPROPERTY(EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USDIPlayerVoiceAkComponent* PlayerVoiceAkComponent;
     
-    USDIAudioCaptureComponent();
+    USDIAudioCaptureComponent(const FObjectInitializer & ObjectInitializer);
 };
 

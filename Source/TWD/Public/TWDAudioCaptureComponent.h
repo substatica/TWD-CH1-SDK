@@ -78,7 +78,7 @@ public:
     UPROPERTY(EditAnywhere, Export, Transient)
     TWeakObjectPtr<USceneComponent> AttachedParent;
     
-    UTWDAudioCaptureComponent();
+    UTWDAudioCaptureComponent(const FObjectInitializer & ObjectInitializer);
 private:
     UFUNCTION(BlueprintCallable)
     void OnAudioEnvelopeValueCb(const float EnvelopeValue);

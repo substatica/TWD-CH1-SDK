@@ -1,6 +1,6 @@
 #include "SDIAudioCaptureComponent.h"
 
-USDIAudioCaptureComponent::U(const FObjectInitializer & ObjectInitializer) : USynthComponent(ObjectInitializer) {
-    this->SampleRate = -1;SDIAudioCaptureComponent
+USDIAudioCaptureComponent::USDIAudioCaptureComponent(const FObjectInitializer & ObjectInitializer) : Super(ObjectInitializer) {
+    this->SampleRate = -1;
     this->PlayerVoiceAkComponent = NULL;
 }
