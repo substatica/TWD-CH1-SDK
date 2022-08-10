@@ -6,6 +6,6 @@ void UTWDGauntletController::OnTestsRefreshed() {
 void UTWDGauntletController::OnTestsComplete() {
 }
 
-// UTWDGauntletController::UTWDGauntletController() {
-// }
+UTWDGauntletController::UTWDGauntletController() {
+}
 
