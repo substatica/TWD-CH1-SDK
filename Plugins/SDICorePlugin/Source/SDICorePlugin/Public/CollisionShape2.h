@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 
-#include "CollisionShape.generated.h"
+#include "CollisionShape2.generated.h"
 
 UENUM()
 enum ECollisionShape2 {
