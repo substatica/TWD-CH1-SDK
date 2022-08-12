@@ -9,7 +9,7 @@ UCLASS(Blueprintable)
 class AKAUDIO_API UAkCallbackInfo : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAkComponent* AkComponent;
     
     UAkCallbackInfo();

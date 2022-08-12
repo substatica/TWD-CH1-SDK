@@ -14,7 +14,7 @@ protected:
     int32 SampleRate;
     
 public:
-    UPROPERTY(EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USDIPlayerVoiceAkComponent* PlayerVoiceAkComponent;
     
     USDIAudioCaptureComponent(const FObjectInitializer & ObjectInitializer);
