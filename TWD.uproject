@@ -31,27 +31,7 @@
 			"Enabled": true
 		},
 		{
-			"Name": "SignificanceManager",
-			"Enabled": true
-		},
-		{
 			"Name": "SDICorePlugin",
-			"Enabled": true
-		},
-		{
-			"Name": "SDICorePlugin",
-			"Enabled": true
-		},
-		{
-			"Name": "SDICorePlugin",
-			"Enabled": true
-		},
-		{
-			"Name": "WWise",
-			"Enabled": true
-		},
-		{
-			"Name": "OnlineSubsystem",
 			"Enabled": true
 		},
 		{
@@ -72,10 +52,6 @@
 			]
 		},
 		{
-			"Name": "SDICorePlugin",
-			"Enabled": true
-		},
-		{
 			"Name": "SDISkinPlugin",
 			"Enabled": true
 		},
@@ -92,10 +68,6 @@
 			"Enabled": true
 		},
 		{
-			"Name": "OnlineSubsystem",
-			"Enabled": true
-		},
-		{
 			"Name": "OnlineSubsystemUtils",
 			"Enabled": true
 		},
@@ -104,37 +76,9 @@
 			"Enabled": true
 		},
 		{
-			"Name": "OnlineSubsystem",
-			"Enabled": true
-		},
-		{
-			"Name": "Wwise",
-			"Enabled": true
-		},
-		{
-			"Name": "OnlineSubsystem",
-			"Enabled": true
-		},
-		{
-			"Name": "OnlineSubsystemUtils",
-			"Enabled": true
-		},
-		{
-			"Name": "OnlineSubsystem",
-			"Enabled": true
-		},
-		{
-			"Name": "OnlineSubsystemUtils",
-			"Enabled": true
-		},
-		{
 			"Name": "OnlineTracing",
 			"Enabled": true,
 			"Optional": true
-		},
-		{
-			"Name": "SDICorePlugin",
-			"Enabled": true
 		},
 		{
 			"Name": "AudioSynesthesia",
@@ -157,26 +101,6 @@
 			"Enabled": true
 		},
 		{
-			"Name": "SDICorePlugin",
-			"Enabled": true
-		},
-		{
-			"Name": "SDISkinPlugin",
-			"Enabled": true
-		},
-		{
-			"Name": "Wwise",
-			"Enabled": true
-		},
-		{
-			"Name": "SDITuningPlugin",
-			"Enabled": true
-		},
-		{
-			"Name": "SDIStimAndResponsePlugin",
-			"Enabled": true
-		},
-		{
 			"Name": "Annosoft",
 			"Enabled": true
 		},
@@ -185,15 +109,7 @@
 			"Enabled": true
 		},
 		{
-			"Name": "SDICorePlugin",
-			"Enabled": true
-		},
-		{
 			"Name": "AISupport",
-			"Enabled": true
-		},
-		{
-			"Name": "SignificanceManager",
 			"Enabled": true
 		},
 		{
@@ -233,21 +149,9 @@
 			"Enabled": true
 		},
 		{
-			"Name": "ProceduralMeshComponent",
-			"Enabled": true
-		},
-		{
 			"Name": "ChaosSolverPlugin",
 			"Enabled": true
-		},
-		{
-			"Name": "Niagara",
-			"Enabled": true
-		},
-		{
-			"Name": "ChaosSolverPlugin",
-			"Enabled": true
-		},
+		},
 		{
 			"Name": "MLSDK",
 			"Enabled": true
@@ -271,10 +175,6 @@
 			]
 		},
 		{
-			"Name": "MLSDK",
-			"Enabled": true
-		},
-		{
 			"Name": "ImgMedia",
 			"Enabled": true,
 			"WhitelistTargets": [
@@ -282,39 +182,7 @@
 			]
 		},
 		{
-			"Name": "GeometryProcessing",
-			"Enabled": true
-		},
-		{
 			"Name": "TemplateSequence",
-			"Enabled": true
-		},
-		{
-			"Name": "OnlineSubsystem",
-			"Enabled": true
-		},
-		{
-			"Name": "OnlineSubsystemUtils",
-			"Enabled": true
-		},
-		{
-			"Name": "ProceduralMeshComponent",
-			"Enabled": true
-		},
-		{
-			"Name": "ApexDestruction",
-			"Enabled": true
-		},
-		{
-			"Name": "SDICorePlugin",
-			"Enabled": true
-		},
-		{
-			"Name": "SDISkinPlugin",
-			"Enabled": true
-		},
-		{
-			"Name": "SDIStimAndResponsePlugin",
 			"Enabled": true
 		},
 		{
@@ -327,26 +195,6 @@
 			]
 		},
 		{
-			"Name": "SDITuningPlugin",
-			"Enabled": true
-		},
-		{
-			"Name": "SDIVRPlayerPlugin",
-			"Enabled": true
-		},
-		{
-			"Name": "Annosoft",
-			"Enabled": true
-		},
-		{
-			"Name": "OnlineSubsystemSteam",
-			"Enabled": true
-		},
-		{
-			"Name": "OnlineSubsystemOculus",
-			"Enabled": true
-		},
-		{
 			"Name": "OnlineFramework",
 			"Enabled": true
 		},
@@ -357,14 +205,6 @@
 		{
 			"Name": "WebMMoviePlayer",
 			"Enabled": false
-		},
-		{
-			"Name": "EditorScriptingUtilities",
-			"Enabled": true
-		},
-		{
-			"Name": "PythonScriptPlugin",
-			"Enabled": true
 		},
 		{
 			"Name": "Synthesis",
@@ -380,10 +220,6 @@
 		},
 		{
 			"Name": "FunctionalTestingEditor",
-			"Enabled": true
-		},
-		{
-			"Name": "CascadeToNiagaraConverter",
 			"Enabled": true
 		}
 	],
