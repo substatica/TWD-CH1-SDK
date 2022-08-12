@@ -18,277 +18,289 @@
 		}
 	],
 	"Plugins": [
-					{
-						"Name": "WWise",
-						"Enabled": true
-					},
-					{
-						"Name": "OnlineSubsystem",
-						"Enabled": true
-					},
-					{
-						"Name": "SignificanceManager",
-						"Enabled": true
-					},
-					{
-						"Name": "SignificanceManager",
-						"Enabled": true
-					},
-					{
-						"Name": "SDICorePlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "SDICorePlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "SDICorePlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "WWise",
-						"Enabled": true
-					},
-					{
-						"Name": "OnlineSubsystem",
-						"Enabled": true
-					},
-					{
-						"Name": "AudioCapture",
-						"Enabled": true
-					},
-					{
-						"Name": "AndroidPermission",
-						"Enabled": true
-					},
-					{
-						"Name": "SteamVR",
-						"Enabled": true,
-						"SupportedTargetPlatforms": [
-							"Win64"
-						]
-					},
-					{
-						"Name": "SDICorePlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "SDISkinPlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "SDIStimAndResponsePlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "SDITuningPlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "ProceduralMeshComponent",
-						"Enabled": true
-					},
-					{
-						"Name": "OnlineSubsystem",
-						"Enabled": true
-					},
-					{
-						"Name": "OnlineSubsystemUtils",
-						"Enabled": true
-					},
-					{
-						"Name": "SteamShared",
-						"Enabled": true
-					},
-					{
-						"Name": "OnlineSubsystem",
-						"Enabled": true
-					},
-					{
-						"Name": "Wwise",
-						"Enabled": true
-					},
-					{
-						"Name": "OnlineSubsystem",
-						"Enabled": true
-					},
-					{
-						"Name": "OnlineSubsystemUtils",
-						"Enabled": true
-					},
-					{
-						"Name": "OnlineSubsystem",
-						"Enabled": true
-					},
-					{
-						"Name": "OnlineSubsystemUtils",
-						"Enabled": true
-					},
-					{
-						"Name": "OnlineTracing",
-						"Enabled": true,
-						"Optional": true
-					},
-					{
-						"Name": "SDICorePlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "AudioSynesthesia",
-						"Enabled": true
-					},
-					{
-						"Name": "Niagara",
-						"Enabled": true
-					},
-					{
-						"Name": "PythonScriptPlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "EditorScriptingUtilities",
-						"Enabled": true
-					},
-					{
-						"Name": "SDIVRPlayerPlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "SDICorePlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "SDISkinPlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "Wwise",
-						"Enabled": true
-					},
-					{
-						"Name": "SDITuningPlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "SDIStimAndResponsePlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "Annosoft",
-						"Enabled": true
-					},
-					{
-						"Name": "ApexDestruction",
-						"Enabled": true
-					},
-					{
-						"Name": "SDICorePlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "AISupport",
-						"Enabled": true
-					},
-					{
-						"Name": "SignificanceManager",
-						"Enabled": true
-					},
-					{
-						"Name": "VariantManagerContent",
-						"Enabled": true
-					},
-					{
-						"Name": "GeometryCache",
-						"Enabled": true
-					},
-					{
-						"Name": "ScreenshotTools",
-						"Enabled": true
-					},
-					{
-					    "Name": "ChaosEditor",
-					    "Enabled": false
-					},
-					{
-						"Name": "ChaosCloth",
-						"Enabled": true
-					},
-					{
-						"Name": "PlanarCut",
-						"Enabled": true
-					},
-					{
-						"Name": "EditableMesh",
-						"Enabled": true
-					},
-					{
-						"Name": "GeometryCollectionPlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "GeometryProcessing",
-						"Enabled": true
-					},
-					{
-						"Name": "ProceduralMeshComponent",
-						"Enabled": true
-					},
-					{
-						"Name": "ChaosSolverPlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "Niagara",
-						"Enabled": true
-					},
-					{
-						"Name": "ChaosSolverPlugin",
-						"Enabled": true
-					},
-					{
-						"Name": "MLSDK",
-						"Enabled": true
-					},
-					{
-						"Name": "MagicLeapPassableWorld",
-						"Enabled": true
-					},
-					{
-						"Name": "MagicLeapLightEstimation",
-						"Enabled": true
-					},
-					{
-						"Name": "MLSDK",
-						"Enabled": true
-					},
-					{
-						"Name": "ImgMedia",
-						"Enabled": true,
-						"WhitelistTargets": [
-							"Editor"
-						]
-					},
-					{
-						"Name": "GeometryProcessing",
-						"Enabled": true
-					},
-					{
-						"Name": "TemplateSequence",
-						"Enabled": true
-					},
-					{
-						"Name": "OnlineSubsystem",
-						"Enabled": true
-					},
-					{
-						"Name": "OnlineSubsystemUtils",
-						"Enabled": true
-					},
-					{
-						"Name": "ProceduralMeshComponent",
-						"Enabled": true
-					},
+		{
+			"Name": "WWise",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystem",
+			"Enabled": true
+		},
+		{
+			"Name": "SignificanceManager",
+			"Enabled": true
+		},
+		{
+			"Name": "SignificanceManager",
+			"Enabled": true
+		},
+		{
+			"Name": "SDICorePlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "SDICorePlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "SDICorePlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "WWise",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystem",
+			"Enabled": true
+		},
+		{
+			"Name": "AudioCapture",
+			"Enabled": true
+		},
+		{
+			"Name": "AndroidPermission",
+			"Enabled": true
+		},
+		{
+			"Name": "SteamVR",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win32",
+				"Win64",
+				"Linux"
+			]
+		},
+		{
+			"Name": "SDICorePlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "SDISkinPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "SDIStimAndResponsePlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "SDITuningPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "ProceduralMeshComponent",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystem",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystemUtils",
+			"Enabled": true
+		},
+		{
+			"Name": "SteamShared",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystem",
+			"Enabled": true
+		},
+		{
+			"Name": "Wwise",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystem",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystemUtils",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystem",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystemUtils",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineTracing",
+			"Enabled": true,
+			"Optional": true
+		},
+		{
+			"Name": "SDICorePlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "AudioSynesthesia",
+			"Enabled": true
+		},
+		{
+			"Name": "Niagara",
+			"Enabled": true
+		},
+		{
+			"Name": "PythonScriptPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "EditorScriptingUtilities",
+			"Enabled": true
+		},
+		{
+			"Name": "SDIVRPlayerPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "SDICorePlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "SDISkinPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "Wwise",
+			"Enabled": true
+		},
+		{
+			"Name": "SDITuningPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "SDIStimAndResponsePlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "Annosoft",
+			"Enabled": true
+		},
+		{
+			"Name": "ApexDestruction",
+			"Enabled": true
+		},
+		{
+			"Name": "SDICorePlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "AISupport",
+			"Enabled": true
+		},
+		{
+			"Name": "SignificanceManager",
+			"Enabled": true
+		},
+		{
+			"Name": "VariantManagerContent",
+			"Enabled": true
+		},
+		{
+			"Name": "GeometryCache",
+			"Enabled": true
+		},
+		{
+			"Name": "ScreenshotTools",
+			"Enabled": true
+		},
+		{
+			"Name": "ChaosEditor",
+			"Enabled": false
+		},
+		{
+			"Name": "ChaosCloth",
+			"Enabled": true
+		},
+		{
+			"Name": "PlanarCut",
+			"Enabled": true
+		},
+		{
+			"Name": "EditableMesh",
+			"Enabled": true
+		},
+		{
+			"Name": "GeometryCollectionPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "GeometryProcessing",
+			"Enabled": true
+		},
+		{
+			"Name": "ProceduralMeshComponent",
+			"Enabled": true
+		},
+		{
+			"Name": "ChaosSolverPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "Niagara",
+			"Enabled": true
+		},
+		{
+			"Name": "ChaosSolverPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "MLSDK",
+			"Enabled": true
+		},
+		{
+			"Name": "MagicLeapPassableWorld",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Lumin",
+				"Mac",
+				"Win64"
+			]
+		},
+		{
+			"Name": "MagicLeapLightEstimation",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Lumin",
+				"Win64",
+				"Mac"
+			]
+		},
+		{
+			"Name": "MLSDK",
+			"Enabled": true
+		},
+		{
+			"Name": "ImgMedia",
+			"Enabled": true,
+			"WhitelistTargets": [
+				"Editor"
+			]
+		},
+		{
+			"Name": "GeometryProcessing",
+			"Enabled": true
+		},
+		{
+			"Name": "TemplateSequence",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystem",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystemUtils",
+			"Enabled": true
+		},
+		{
+			"Name": "ProceduralMeshComponent",
+			"Enabled": true
+		},
 		{
 			"Name": "ApexDestruction",
 			"Enabled": true
