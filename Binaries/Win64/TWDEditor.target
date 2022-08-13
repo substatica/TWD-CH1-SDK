@@ -36,11 +36,19 @@
 			"Type": "SymbolFile"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Runtime/SignificanceManager/Binaries/Win64/UE4Editor-SignificanceManager.dll",
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/Binaries/Win64/UE4Editor-AudiokineticTools.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/Binaries/Win64/UE4Editor-AudiokineticTools.pdb",
+			"Type": "SymbolFile"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Online/OnlineSubsystem/Binaries/Win64/UE4Editor-OnlineSubsystem.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/SignificanceManager/Binaries/Win64/UE4Editor-SignificanceManager.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
@@ -2376,11 +2384,11 @@
 			"Type": "RequiredResource"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Runtime/SignificanceManager/Binaries/Win64/UE4Editor.modules",
+			"Path": "$(EngineDir)/Plugins/Online/OnlineSubsystem/Binaries/Win64/UE4Editor.modules",
 			"Type": "RequiredResource"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Online/OnlineSubsystem/Binaries/Win64/UE4Editor.modules",
+			"Path": "$(EngineDir)/Plugins/Runtime/SignificanceManager/Binaries/Win64/UE4Editor.modules",
 			"Type": "RequiredResource"
 		},
 		{
@@ -2866,11 +2874,11 @@
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Runtime/SignificanceManager/SignificanceManager.uplugin",
+			"Path": "$(EngineDir)/Plugins/Online/OnlineSubsystem/OnlineSubsystem.uplugin",
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Online/OnlineSubsystem/OnlineSubsystem.uplugin",
+			"Path": "$(EngineDir)/Plugins/Runtime/SignificanceManager/SignificanceManager.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3348,6 +3356,190 @@
 		{
 			"Path": "$(EngineDir)/Plugins/XGEController/XGEController.uplugin",
 			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkAudioInput.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkCompressor.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkDelay.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkExpander.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkFlanger.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkGain.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkGuitarDistortion.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkHarmonizer.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkMatrixReverb.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkMotion.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkParametricEQ.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkPeakLimiter.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkPitchShifter.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkRecorder.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkReflect.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkRoomVerb.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkSilenceGenerator.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkSineTone.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkSoundEngineDLL.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkSoundSeedAir.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkSoundSeedImpact.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkStereoDelay.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkSynthOne.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkTimeStretch.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkToneGen.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/AkTremolo.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/Auro.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/iZotope.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/MasteringSuite.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/EnginePlugins/Wwise/ThirdParty/x64_vc160/Profile/bin/McDSP.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PxFoundationPROFILE_x64.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PxFoundationPROFILE_x64.pdb",
+			"Type": "DebugNonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PxPvdSDKPROFILE_x64.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PxPvdSDKPROFILE_x64.pdb",
+			"Type": "DebugNonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3PROFILE_x64.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3PROFILE_x64.pdb",
+			"Type": "DebugNonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3CookingPROFILE_x64.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3CookingPROFILE_x64.pdb",
+			"Type": "DebugNonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3CommonPROFILE_x64.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3CommonPROFILE_x64.pdb",
+			"Type": "DebugNonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/APEX_ClothingPROFILE_x64.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/APEX_ClothingPROFILE_x64.pdb",
+			"Type": "DebugNonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/APEX_LegacyPROFILE_x64.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/APEX_LegacyPROFILE_x64.pdb",
+			"Type": "DebugNonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/ApexFrameworkPROFILE_x64.dll",
+			"Type": "NonUFS"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/ApexFrameworkPROFILE_x64.pdb",
+			"Type": "DebugNonUFS"
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/ThirdParty/OpenVR/OpenVRv1_5_17/Win64/openvr_api.dll",
@@ -19104,70 +19296,6 @@
 		{
 			"Path": "$(EngineDir)/Binaries/ThirdParty/Python3/Win64/Tools/scripts/win_add2path.py",
 			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PxFoundationPROFILE_x64.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PxFoundationPROFILE_x64.pdb",
-			"Type": "DebugNonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PxPvdSDKPROFILE_x64.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PxPvdSDKPROFILE_x64.pdb",
-			"Type": "DebugNonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3PROFILE_x64.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3PROFILE_x64.pdb",
-			"Type": "DebugNonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3CookingPROFILE_x64.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3CookingPROFILE_x64.pdb",
-			"Type": "DebugNonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3CommonPROFILE_x64.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3CommonPROFILE_x64.pdb",
-			"Type": "DebugNonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/APEX_ClothingPROFILE_x64.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/APEX_ClothingPROFILE_x64.pdb",
-			"Type": "DebugNonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/APEX_LegacyPROFILE_x64.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/APEX_LegacyPROFILE_x64.pdb",
-			"Type": "DebugNonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/ApexFrameworkPROFILE_x64.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/ApexFrameworkPROFILE_x64.pdb",
-			"Type": "DebugNonUFS"
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/ThirdParty/PhysX3/Win64/VS2015/APEX_DestructiblePROFILE_x64.dll",

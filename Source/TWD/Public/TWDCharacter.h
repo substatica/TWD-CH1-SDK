@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "AkGameplayTypes.h"
 #include "Templates/SubclassOf.h"
 #include "SDICharacterAdvanced.h"
 #include "TWDCharacterPhysicsAssetLOD.h"
@@ -102,7 +103,6 @@
 #include "InventoryExchangedDelegate.h"
 #include "DialogueFinishedDelegate.h"
 #include "PlayBarkResultCallbackDelegate.h"
-#include "EAkCallbackType.h"
 #include "EHitReactType.h"
 #include "Engine/NetSerialization.h"
 #include "ETWDGunAction.h"
