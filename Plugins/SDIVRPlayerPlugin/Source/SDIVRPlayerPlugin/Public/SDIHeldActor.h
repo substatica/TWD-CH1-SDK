@@ -10,7 +10,6 @@
 #include "ESDIAxis.h"
 #include "SDIMotionHistory.h"
 #include "SDIAuxTickFunction.h"
-#include "UObject/NoExportTypes.h"
 #include "SDIReplicatedGripInfo.h"
 #include "SDIGripInfo.h"
 #include "SDIHeldActorDroppedSignatureDelegate.h"

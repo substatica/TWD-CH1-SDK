@@ -20,7 +20,7 @@ protected:
     UPROPERTY(EditAnywhere, Transient)
     uint32 SeveredTorsoExtremityMask;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UPhysicsConstraintComponent*> SplayConstraintComponents;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))

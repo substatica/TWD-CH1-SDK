@@ -4,13 +4,9 @@
 #include "ETWDNonVRGrappleAnimState.h"
 #include "SDIAnimInstance.h"
 #include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
 #include "RRotator.h"
 #include "SDIDoubleRubberBandVector.h"
 #include "RVector.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
 #include "ECharacterBehavior.h"
 #include "SDIEnumTypeHandle.h"
 #include "ECharacterGesture.h"
@@ -46,7 +42,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float LookAtAlpha;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USceneComponent* LookAtTargetComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))

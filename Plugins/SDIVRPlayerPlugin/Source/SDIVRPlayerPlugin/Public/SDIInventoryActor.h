@@ -5,7 +5,6 @@
 #include "RIntExp.h"
 #include "UObject/NoExportTypes.h"
 #include "SDIAttachmentInfo.h"
-#include "UObject/NoExportTypes.h"
 #include "InputCoreTypes.h"
 #include "SDIInventoryActor.generated.h"
 
@@ -93,7 +92,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector PreInventorySlotScale;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<USceneComponent*> NonDetachableComponents;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))

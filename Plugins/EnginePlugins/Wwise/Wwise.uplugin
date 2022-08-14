@@ -1,35 +1,30 @@
 {
-	"FileVersion": 3,
-	"Version": 201921949,
-	"VersionName": "2019.2.11.7512.1949",
-	"FriendlyName": "Wwise Unreal Engine 4 Integration",
-	"Description": "Wwise integration for Unreal Engine 4",
-	"Category": "Audio",
-	"CreatedBy": "Audiokinetic, Inc.",
-	"CreatedByURL": "http://audiokinetic.com",
-	"DocsURL": "",
-	"MarketplaceURL": "",
-	"SupportURL": "",
-	"EngineVersion": "4.26.2",
-	"EnabledByDefault": true,
-	"CanContainContent": true,
-	"IsBetaVersion": false,
-	"IsExperimentalVersion": false,
-	"Installed": false,
-	"Modules": [
+	"FileVersion" : 1,
+	
+	"FriendlyName" : "Wwise Unreal Engine 4 Integration",
+	"Version" : 201921949,
+	"VersionName" : "2019.2.11.7512.1949",
+	"CreatedBy" : "Audiokinetic, Inc.",
+	"CreatedByURL" : "http://audiokinetic.com",
+	"EngineVersion" : "4.26.0",
+	"Description" : "Wwise integration for Unreal Engine 4",
+	"Category" : "Audio",
+	"EnabledByDefault" : true,
+	
+	"Modules" :
+	[
 		{
-			"Name": "AkAudio",
-			"Type": "Runtime",
-			"LoadingPhase": "PreDefault",
-			"AdditionalDependencies": [
-				"SignificanceManager"
-			]
+			"Name" : "AkAudio",
+			"Type" : "Runtime",
+			"LoadingPhase" : "PreDefault"
+		},
+		{
+			"Name" : "AudiokineticTools",
+			"Type" : "Editor"
 		}
 	],
-	"Plugins": [
-		{
-			"Name": "SignificanceManager",
-			"Enabled": true
-		}
-	]
+	
+	
+	
+	"CanContainContent" : true
 }

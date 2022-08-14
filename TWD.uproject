@@ -151,7 +151,11 @@
 		{
 			"Name": "ChaosSolverPlugin",
 			"Enabled": true
-		},
+		},
+		{
+			"Name": "PropertyAccessEditor",
+			"Enabled": true
+		},
 		{
 			"Name": "MLSDK",
 			"Enabled": true

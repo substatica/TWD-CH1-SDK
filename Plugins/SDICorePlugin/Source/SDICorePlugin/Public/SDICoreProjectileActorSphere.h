@@ -10,7 +10,7 @@ class SDICOREPLUGIN_API ASDICoreProjectileActorSphere : public ASDICoreProjectil
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USphereComponent* SphereCollision;
     
 public:
