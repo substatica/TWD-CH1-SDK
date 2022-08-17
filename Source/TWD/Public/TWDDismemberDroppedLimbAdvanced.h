@@ -30,7 +30,7 @@ protected:
     bool bShowAdvancedWoundDebugInfo;
     
 public:
-    ATWDDismemberDroppedLimbAdvanced();
+    ATWDDismemberDroppedLimbAdvanced(const FObjectInitializer& ObjectInitializer);
     UFUNCTION(BlueprintCallable)
     void SpawnDeferredSeverBouquetElements(ATWDCharacter* SourceCharacter);
     

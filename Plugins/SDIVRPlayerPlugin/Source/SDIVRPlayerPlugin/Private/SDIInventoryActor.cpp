@@ -147,7 +147,7 @@ void ASDIInventoryActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     DOREPLIFETIME(ASDIInventoryActor, bRepInsideInventory);
 }
 
-ASDIInventoryActor::ASDIInventoryActor() {
+ASDIInventoryActor::ASDIInventoryActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->RepInitialRepCountHack = 1;
     this->bOverrideInitialRepCount = false;
     this->RepCount = 1;

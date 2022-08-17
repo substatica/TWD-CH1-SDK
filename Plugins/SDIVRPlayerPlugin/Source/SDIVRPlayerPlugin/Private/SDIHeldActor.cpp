@@ -315,7 +315,7 @@ void ASDIHeldActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     DOREPLIFETIME(ASDIHeldActor, bRepLaunched);
 }
 
-ASDIHeldActor::ASDIHeldActor() {
+ASDIHeldActor::ASDIHeldActor(const FObjectInitializer&) {
     this->ImpactEffectsComponent = CreateDefaultSubobject<USDIImpactEffectsComponent>(TEXT("ImpactEffectsComponent"));
     this->PrimaryGripCollision = NULL;
     this->SecondaryGripCollision = NULL;

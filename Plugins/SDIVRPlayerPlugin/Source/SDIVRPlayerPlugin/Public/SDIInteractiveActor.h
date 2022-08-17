@@ -10,6 +10,7 @@
 
 class UTexture2D;
 
+
 UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDIInteractiveActor : public ASDIStimAndResponseActor, public ISDIInteractiveActorInterface, public ISDIExportInterface {
     GENERATED_BODY()

@@ -67,7 +67,7 @@ void ATWDNotebook::FlipToNextSection() {
 void ATWDNotebook::ActivateNonVRInteraction() {
 }
 
-ATWDNotebook::ATWDNotebook() {
+ATWDNotebook::ATWDNotebook(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->CurrentSectionIndex = ETWDNotebookSectionIndex::BEGIN;
     this->LeftTabsRoot = CreateDefaultSubobject<USceneComponent>(TEXT("LeftTabsRoot"));
     this->TabTasksCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("TabTasksCollision"));

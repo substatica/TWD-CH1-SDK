@@ -14,7 +14,7 @@ void ATWDDismemberDroppedLimbAdvanced::EndSplay(ATWDCharacter* SourceCharacter) 
 void ATWDDismemberDroppedLimbAdvanced::DeferSeverBouquetElement(FSpawnableBouquetElement& E) {
 }
 
-ATWDDismemberDroppedLimbAdvanced::ATWDDismemberDroppedLimbAdvanced() {
+ATWDDismemberDroppedLimbAdvanced::ATWDDismemberDroppedLimbAdvanced(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->SeveredTorsoExtremityMask = 0;
     this->bShowAdvancedWoundDebugInfo = false;
 }

@@ -24,7 +24,7 @@ USkeletalMeshComponent* ATWDInteractiveBookActor::GetBookMesh() const {
 void ATWDInteractiveBookActor::CommitPages() {
 }
 
-ATWDInteractiveBookActor::ATWDInteractiveBookActor() {
+ATWDInteractiveBookActor::ATWDInteractiveBookActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->PageMaterial = NULL;
     this->EdgeTouchHaptic = NULL;
     this->LookConeAngle = 60.00f;

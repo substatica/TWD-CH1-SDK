@@ -14,6 +14,6 @@ protected:
     UStaticMeshComponent* StaticMeshComponent;
     
 public:
-    ATWDDismemberLimbCap();
+    ATWDDismemberLimbCap(const FObjectInitializer& ObjectInitializer);
 };
 

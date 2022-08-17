@@ -11,7 +11,7 @@ bool ATWDDismemberDroppedLimb::CanBeDestroyed(bool bCheckStabStuckWeapons) const
     return false;
 }
 
-ATWDDismemberDroppedLimb::ATWDDismemberDroppedLimb() {
+ATWDDismemberDroppedLimb::ATWDDismemberDroppedLimb(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->SkeletalMeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMeshComponent"));
     this->bAllowDestructionInHub = true;
     this->DestructionMinDistanceFromPlayer = 1024.00f;

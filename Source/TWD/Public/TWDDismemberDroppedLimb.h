@@ -83,7 +83,7 @@ protected:
     TArray<FStuckWeapon> StuckWeapons;
     
 public:
-    ATWDDismemberDroppedLimb();
+    ATWDDismemberDroppedLimb(const FObjectInitializer& ObjectInitializer);
 protected:
     UFUNCTION(BlueprintCallable)
     void SelfDestructionCheck();

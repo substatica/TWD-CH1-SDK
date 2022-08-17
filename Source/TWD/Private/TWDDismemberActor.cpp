@@ -35,7 +35,7 @@ void ATWDDismemberActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     DOREPLIFETIME(ATWDDismemberActor, ReplicatedSkinData);
 }
 
-ATWDDismemberActor::ATWDDismemberActor() {
+ATWDDismemberActor::ATWDDismemberActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)  {
     this->DismemberRegion = ETWDCharacterHitRegion::None;
     this->Gender = EGender::Invalid;
     this->bDead = false;

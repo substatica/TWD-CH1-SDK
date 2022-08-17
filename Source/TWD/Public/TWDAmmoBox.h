@@ -21,7 +21,8 @@ protected:
     FTWDReplicatedDurabilityInterfaceData RepTWDDurabilityData;
     
 public:
-    ATWDAmmoBox();
+    ATWDAmmoBox(const FObjectInitializer& ObjectInitializer);
+    
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:

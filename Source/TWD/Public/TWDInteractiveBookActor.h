@@ -75,7 +75,7 @@ protected:
     bool bInteractPressed;
     
 public:
-    ATWDInteractiveBookActor();
+    ATWDInteractiveBookActor(const FObjectInitializer& ObjectInitializer);
 protected:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void UpdateBookOpen();

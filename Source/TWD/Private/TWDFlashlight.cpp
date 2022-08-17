@@ -1,6 +1,6 @@
 #include "TWDFlashlight.h"
 
-ATWDFlashlight::ATWDFlashlight() {
+ATWDFlashlight::ATWDFlashlight(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->bInsideOnRep_bRepInsideInventory = false;
 }
 

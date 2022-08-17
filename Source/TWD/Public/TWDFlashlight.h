@@ -12,6 +12,6 @@ private:
     bool bInsideOnRep_bRepInsideInventory;
     
 public:
-    ATWDFlashlight();
+    ATWDFlashlight(const FObjectInitializer& ObjectInitializer);
 };
 

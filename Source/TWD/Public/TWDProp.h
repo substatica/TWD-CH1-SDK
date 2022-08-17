@@ -33,7 +33,8 @@ protected:
     FTWDReplicatedInventoryActorInterfaceData RepTWDInventoryData;
     
 public:
-    ATWDProp();
+    ATWDProp(const FObjectInitializer& ObjectInitializer);
+    
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
     UFUNCTION(BlueprintCallable)

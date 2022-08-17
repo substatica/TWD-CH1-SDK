@@ -1,6 +1,7 @@
 #include "TWDProp.h"
 #include "Net/UnrealNetwork.h"
 #include "TWDAutoTickAkComponent.h"
+#include "TWDImpactEffectsComponent.h"
 
 class UAkAudioEvent;
 
@@ -42,7 +43,7 @@ void ATWDProp::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
     DOREPLIFETIME(ATWDProp, RepTWDInventoryData);
 }
 
-ATWDProp::ATWDProp() {
+ATWDProp::ATWDProp(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer.SetDefaultSubobjectClass<UTWDImpactEffectsComponent>(TEXT("ImpactEffectsComponent"))) {
     this->AkAudioComponent = CreateDefaultSubobject<UTWDAutoTickAkComponent>(TEXT("AkAudioComponent"));
 }
 

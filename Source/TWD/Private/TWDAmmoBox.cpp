@@ -10,7 +10,7 @@ void ATWDAmmoBox::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
     DOREPLIFETIME(ATWDAmmoBox, RepTWDDurabilityData);
 }
 
-ATWDAmmoBox::ATWDAmmoBox() {
+ATWDAmmoBox::ATWDAmmoBox(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->bMergeBasedOnDurability = false;
 }
 

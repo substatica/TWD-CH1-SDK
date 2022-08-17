@@ -5,7 +5,7 @@ float ATWDGutsActor::GetSwipeProgress() const {
     return 0.0f;
 }
 
-ATWDGutsActor::ATWDGutsActor() {
+ATWDGutsActor::ATWDGutsActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->SwipeAccumulator = 0.00f;
     this->SwipeDelta = 0.00f;
     this->SwipeAmountRequired = 500.00f;
