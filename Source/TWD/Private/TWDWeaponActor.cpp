@@ -1,6 +1,7 @@
 #include "TWDWeaponActor.h"
 #include "Net/UnrealNetwork.h"
 #include "TWDAutoTickAkComponent.h"
+#include "TWDImpactEffectsComponent.h"
 #include "TWDWeaponShoveComponent.h"
 
 class USceneComponent;
@@ -227,7 +228,7 @@ void ATWDWeaponActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME(ATWDWeaponActor, RepStabHit);
 }
 
-ATWDWeaponActor::ATWDWeaponActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+ATWDWeaponActor::ATWDWeaponActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer.SetDefaultSubobjectClass<UTWDImpactEffectsComponent>(TEXT("ImpactEffectsComponent"))) {
     this->AkAudioComponent = CreateDefaultSubobject<UTWDAutoTickAkComponent>(TEXT("AkAudioComponent"));
     this->WeaponShoveComp = CreateDefaultSubobject<UTWDWeaponShoveComponent>(TEXT("WeaponShove"));
     this->DraggingRagdollMinimumMass = 3.00f;

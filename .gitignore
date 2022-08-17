@@ -122,8 +122,8 @@
 /UE4CodeLitePreProcessor.txt
 
 # Add exceptions for .dlls needed to run built version
-!/Binaries/Win64/*
-!/Plugins/**/Binaries/Win64/*
+# !/Binaries/Win64/*
+# !/Plugins/**/Binaries/Win64/*
 *.pdb
 
 
