@@ -7,6 +7,6 @@ UCLASS(Blueprintable)
 class SDIVRPLAYERPLUGIN_API ASDIProjectileActor : public ASDIStimAndResponseProjectileActor {
     GENERATED_BODY()
 public:
-    ASDIProjectileActor();
+    ASDIProjectileActor(const FObjectInitializer& ObjectInitializer);
 };
 

@@ -14,6 +14,7 @@ void ATWDProjectileActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
     DOREPLIFETIME(ATWDProjectileActor, RepPlayerTimeDilationData);
 }
 
-ATWDProjectileActor::ATWDProjectileActor() {
+ATWDProjectileActor::ATWDProjectileActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+
 }
 

@@ -13,6 +13,6 @@ void ASDIStimAndResponseProjectileActor::GetLifetimeReplicatedProps(TArray<FLife
     DOREPLIFETIME(ASDIStimAndResponseProjectileActor, RepStimulusData);
 }
 
-ASDIStimAndResponseProjectileActor::ASDIStimAndResponseProjectileActor() {
+ASDIStimAndResponseProjectileActor::ASDIStimAndResponseProjectileActor(const FObjectInitializer&) {
 }
 

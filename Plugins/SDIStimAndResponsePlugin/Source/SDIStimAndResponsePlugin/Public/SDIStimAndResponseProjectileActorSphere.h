@@ -14,6 +14,6 @@ protected:
     USphereComponent* SphereCollision;
     
 public:
-    ASDIStimAndResponseProjectileActorSphere();
+    ASDIStimAndResponseProjectileActorSphere(const FObjectInitializer& ObjectInitializer);
 };
 

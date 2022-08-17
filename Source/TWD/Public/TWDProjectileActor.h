@@ -25,7 +25,7 @@ protected:
     FSDITuningAccumulator TuningAccumulator;
     
 public:
-    ATWDProjectileActor();
+    ATWDProjectileActor(const FObjectInitializer& ObjectInitializer);
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
     UFUNCTION(BlueprintCallable)
