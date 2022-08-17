@@ -27,7 +27,7 @@ FTransform ASDIWeaponFirearmAmmo::ApplySpread_Implementation(const FSDIWeaponFir
     return FTransform{};
 }
 
-ASDIWeaponFirearmAmmo::ASDIWeaponFirearmAmmo() {
+ASDIWeaponFirearmAmmo::ASDIWeaponFirearmAmmo(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->CurrencyClass = NULL;
     this->bNonPlayerHasInfiniteCurrency = true;
     this->Cost = 1;

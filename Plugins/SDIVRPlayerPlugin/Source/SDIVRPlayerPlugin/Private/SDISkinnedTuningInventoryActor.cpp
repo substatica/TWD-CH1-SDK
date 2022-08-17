@@ -24,6 +24,6 @@ void ASDISkinnedTuningInventoryActor::GetLifetimeReplicatedProps(TArray<FLifetim
     DOREPLIFETIME(ASDISkinnedTuningInventoryActor, ReplicatedSkinData);
 }
 
-ASDISkinnedTuningInventoryActor::ASDISkinnedTuningInventoryActor() {
+ASDISkinnedTuningInventoryActor::ASDISkinnedTuningInventoryActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
 

@@ -1,5 +1,5 @@
 #include "TWDWeaponFirearmAmmoLauncher.h"
 
-ATWDWeaponFirearmAmmoLauncher::ATWDWeaponFirearmAmmoLauncher() {
+ATWDWeaponFirearmAmmoLauncher::ATWDWeaponFirearmAmmoLauncher(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
 

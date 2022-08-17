@@ -19,7 +19,7 @@ void ATWDWeaponAttachment::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
     DOREPLIFETIME(ATWDWeaponAttachment, RepTWDInventoryData);
 }
 
-ATWDWeaponAttachment::ATWDWeaponAttachment() {
+ATWDWeaponAttachment::ATWDWeaponAttachment(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->AttachmentEditor = NULL;
 }
 

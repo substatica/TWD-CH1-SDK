@@ -16,7 +16,7 @@ TSubclassOf<ATWDAmmoProp> ATWDWeaponBow::GetArrowPropClass() const {
     return NULL;
 }
 
-ATWDWeaponBow::ATWDWeaponBow() {
+ATWDWeaponBow::ATWDWeaponBow(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->ArrowPropClass = NULL;
     this->bUseArrowProps = false;
 }

@@ -7,6 +7,6 @@ UCLASS(Blueprintable)
 class TWD_API ATWDIngredient : public ASDIInventoryActor {
     GENERATED_BODY()
 public:
-    ATWDIngredient();
+    ATWDIngredient(const FObjectInitializer& ObjectInitializer);
 };
 

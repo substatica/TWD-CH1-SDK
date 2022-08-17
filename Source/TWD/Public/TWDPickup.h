@@ -27,7 +27,7 @@ protected:
     FTWDReplicatedInventoryActorInterfaceData RepTWDInventoryData;
     
 public:
-    ATWDPickup();
+    ATWDPickup(const FObjectInitializer& ObjectInitializer);
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:

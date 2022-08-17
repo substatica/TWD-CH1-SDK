@@ -16,7 +16,7 @@ protected:
     FRuntimeFloatCurve DurabilityAdditionalSpreadDegrees;
     
 public:
-    ATWDWeaponFirearmAmmoProjectile();
+    ATWDWeaponFirearmAmmoProjectile(const FObjectInitializer& ObjectInitializer);
     UFUNCTION(BlueprintCallable)
     ATWDWeaponFirearmAmmoProjectile* TuneTWDWeaponFirearmAmmoProjectile(FSDITuningAttribute_TWDWeaponFirearmAmmoProjectile Attr, float PreModifier, float Add, float PostModifier);
     

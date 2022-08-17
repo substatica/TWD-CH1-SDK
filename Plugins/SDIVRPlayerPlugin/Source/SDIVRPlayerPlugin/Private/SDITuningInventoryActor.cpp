@@ -1,5 +1,5 @@
 #include "SDITuningInventoryActor.h"
 
-ASDITuningInventoryActor::ASDITuningInventoryActor() {
+ASDITuningInventoryActor::ASDITuningInventoryActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
 

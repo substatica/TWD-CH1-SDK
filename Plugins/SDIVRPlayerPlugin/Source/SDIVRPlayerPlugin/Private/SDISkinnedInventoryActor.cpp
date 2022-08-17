@@ -24,6 +24,6 @@ void ASDISkinnedInventoryActor::GetLifetimeReplicatedProps(TArray<FLifetimePrope
     DOREPLIFETIME(ASDISkinnedInventoryActor, ReplicatedSkinData);
 }
 
-ASDISkinnedInventoryActor::ASDISkinnedInventoryActor() {
+ASDISkinnedInventoryActor::ASDISkinnedInventoryActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
 

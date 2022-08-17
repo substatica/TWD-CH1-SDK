@@ -166,7 +166,7 @@ void ASDIWeaponFirearm::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
     DOREPLIFETIME(ASDIWeaponFirearm, RepChamberedAmmoCount);
 }
 
-ASDIWeaponFirearm::ASDIWeaponFirearm() {
+ASDIWeaponFirearm::ASDIWeaponFirearm(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->RepInitialRepAmmoCountHack = 0;
     this->RepInitialRepChamberedAmmoCountHack = 0;
     this->PrimaryClipEmptyFeedback = NULL;

@@ -14,7 +14,7 @@ protected:
     FSDITuningAccumulator TuningAccumulator;
     
 public:
-    ASDITuningInventoryActor();
+    ASDITuningInventoryActor(const FObjectInitializer& ObjectInitializer);
     
     // Fix for true pure virtual functions not being implemented
 };

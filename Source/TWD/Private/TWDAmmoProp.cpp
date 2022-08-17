@@ -14,7 +14,7 @@ ASDIInventoryActor* ATWDAmmoProp::GetCurrencyInstance(UObject* InventoryHolder, 
 void ATWDAmmoProp::DropAmmoProp_Implementation() {
 }
 
-ATWDAmmoProp::ATWDAmmoProp() {
+ATWDAmmoProp::ATWDAmmoProp(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->AmmoMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("AmmoMesh"));
     this->GripLeft = CreateDefaultSubobject<USDIPointGripComponent>(TEXT("GripLeft"));
     this->GripRight = CreateDefaultSubobject<USDIPointGripComponent>(TEXT("GripRight"));

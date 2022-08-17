@@ -7,6 +7,6 @@ UCLASS(Blueprintable)
 class ATWDWeaponFirearmAmmoLauncher : public ASDIWeaponFirearmAmmoLauncher {
     GENERATED_BODY()
 public:
-    ATWDWeaponFirearmAmmoLauncher();
+    ATWDWeaponFirearmAmmoLauncher(const FObjectInitializer& ObjectInitializer);
 };
 

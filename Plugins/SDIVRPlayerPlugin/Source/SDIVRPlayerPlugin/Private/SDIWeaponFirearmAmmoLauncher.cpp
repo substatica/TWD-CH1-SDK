@@ -22,7 +22,7 @@ TSubclassOf<ASDIHeldActor> ASDIWeaponFirearmAmmoLauncher::GetLaunchedClass_Imple
     return NULL;
 }
 
-ASDIWeaponFirearmAmmoLauncher::ASDIWeaponFirearmAmmoLauncher() {
+ASDIWeaponFirearmAmmoLauncher::ASDIWeaponFirearmAmmoLauncher(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->LaunchedClass = NULL;
 }
 

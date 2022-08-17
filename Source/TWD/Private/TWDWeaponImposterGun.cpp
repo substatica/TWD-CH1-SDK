@@ -16,7 +16,7 @@ bool ATWDWeaponImposterGun::IsHighThreat(ATWDCharacter* Character) {
     return false;
 }
 
-ATWDWeaponImposterGun::ATWDWeaponImposterGun() {
+ATWDWeaponImposterGun::ATWDWeaponImposterGun(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->FirearmToSpawnOnDrop = NULL;
     this->BrokenFirearmToSpawnOnDrop = NULL;
     this->BrokenFirearmSpawnChance = 0.50f;

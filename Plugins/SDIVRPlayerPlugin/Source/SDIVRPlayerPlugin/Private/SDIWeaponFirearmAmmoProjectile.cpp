@@ -18,7 +18,7 @@ TSubclassOf<ASDIProjectileActor> ASDIWeaponFirearmAmmoProjectile::GetProjectileC
     return NULL;
 }
 
-ASDIWeaponFirearmAmmoProjectile::ASDIWeaponFirearmAmmoProjectile() {
+ASDIWeaponFirearmAmmoProjectile::ASDIWeaponFirearmAmmoProjectile(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->ProjectileClass = NULL;
 }
 

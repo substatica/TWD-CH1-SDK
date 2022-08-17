@@ -14,6 +14,6 @@ protected:
     UStaticMeshComponent* StaticMeshComponent;
     
 public:
-    ASDIHeldActorStaticMesh();
+    ASDIHeldActorStaticMesh(const FObjectInitializer& ObjectInitializer);
 };
 

@@ -34,7 +34,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ASDIInventoryActor> AmmoCurrencyClass;
     
-    ATWDAmmoProp();
+    ATWDAmmoProp(const FObjectInitializer& ObjectInitializer);
     UFUNCTION(BlueprintCallable)
     ASDIInventoryActor* GetCurrencyInstance(UObject* InventoryHolder, TSubclassOf<ASDIInventoryActor> CurrencyClass);
     

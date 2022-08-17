@@ -175,7 +175,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<ATWDStash> StashActor;
     
-    ATWDBackpack();
+    ATWDBackpack(const FObjectInitializer& ObjectInitializer);
 protected:
     UFUNCTION(BlueprintCallable)
     void UpdateSlotIndexForCurrentPage();

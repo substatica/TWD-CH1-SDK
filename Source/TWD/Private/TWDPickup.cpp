@@ -19,6 +19,6 @@ void ATWDPickup::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifeti
     DOREPLIFETIME(ATWDPickup, RepTWDInventoryData);
 }
 
-ATWDPickup::ATWDPickup() {
+ATWDPickup::ATWDPickup(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
 

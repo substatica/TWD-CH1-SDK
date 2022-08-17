@@ -35,7 +35,7 @@ protected:
     TArray<AActor*> SpawnedActors;
     
 public:
-    ASDIWeaponActor();
+    ASDIWeaponActor(const FObjectInitializer& ObjectInitializer);
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:

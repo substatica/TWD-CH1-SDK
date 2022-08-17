@@ -86,7 +86,7 @@ protected:
     TMap<ESDIInteractiveInteractType, USDIWeaponFirearmFireModeComponent*> FireModeMap;
     
 public:
-    ASDIWeaponFirearm();
+    ASDIWeaponFirearm(const FObjectInitializer& ObjectInitializer);
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)

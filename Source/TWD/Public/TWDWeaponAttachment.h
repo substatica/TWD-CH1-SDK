@@ -31,7 +31,7 @@ protected:
     ATWDWeaponActorAttachmentEditor* AttachmentEditor;
     
 public:
-    ATWDWeaponAttachment();
+    ATWDWeaponAttachment(const FObjectInitializer& ObjectInitializer);
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:

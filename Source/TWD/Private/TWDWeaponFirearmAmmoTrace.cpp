@@ -10,7 +10,7 @@ float ATWDWeaponFirearmAmmoTrace::GetImpactNoiseRadius() const {
     return 0.0f;
 }
 
-ATWDWeaponFirearmAmmoTrace::ATWDWeaponFirearmAmmoTrace() {
+ATWDWeaponFirearmAmmoTrace::ATWDWeaponFirearmAmmoTrace(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->ImpactNoiseRadius = 0.00f;
     this->PassThroughMax = -1;
     this->ImpactAkEvent = NULL;

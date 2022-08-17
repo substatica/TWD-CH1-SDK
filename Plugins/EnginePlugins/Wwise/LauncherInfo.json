@@ -1,0 +1,40 @@
+{
+    "originalSdkFolder": "C:\\Program Files (x86)\\Audiokinetic\\Wwise 2019.2.11.7512\\SDK",
+    "currentVersion": {
+        "build": 1949,
+        "major": 2,
+        "minor": 11,
+        "nickname": "",
+        "year": 2019
+    },
+    "installedBundleGroups": [
+        {
+            "id": "Packages",
+            "valueId": "Unreal"
+        },
+        {
+            "id": "Packages",
+            "valueId": "UnrealStadia"
+        },
+        {
+            "id": "Packages",
+            "valueId": "UnrealPellegrino"
+        },
+        {
+            "id": "Packages",
+            "valueId": "UnrealChinook"
+        },
+        {
+            "id": "Packages",
+            "valueId": "UnrealGX"
+        },
+        {
+            "id": "Packages",
+            "valueId": "UnrealGDX"
+        },
+        {
+            "id": "DeploymentPlatforms",
+            "valueId": "UE426"
+        }
+    ]
+}

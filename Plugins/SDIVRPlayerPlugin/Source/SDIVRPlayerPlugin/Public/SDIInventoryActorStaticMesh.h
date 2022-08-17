@@ -14,6 +14,5 @@ protected:
     UStaticMeshComponent* StaticMeshComponent;
     
 public:
-    ASDIInventoryActorStaticMesh();
+    ASDIInventoryActorStaticMesh(const FObjectInitializer& ObjectInitializer);
 };
-

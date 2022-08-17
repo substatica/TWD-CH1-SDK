@@ -1,5 +1,5 @@
 #include "TWDIngredient.h"
 
-ATWDIngredient::ATWDIngredient() {
+ATWDIngredient::ATWDIngredient(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
 
