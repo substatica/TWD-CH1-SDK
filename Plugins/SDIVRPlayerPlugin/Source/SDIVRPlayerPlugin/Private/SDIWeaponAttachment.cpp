@@ -59,7 +59,7 @@ void ASDIWeaponAttachment::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
     DOREPLIFETIME(ASDIWeaponAttachment, bRepAttached);
 }
 
-ASDIWeaponAttachment::ASDIWeaponAttachment() {
+ASDIWeaponAttachment::ASDIWeaponAttachment(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->AttachmentType = ESDIWeaponAttachmentType::Tuner;
     this->bAllowRemoval = false;
     this->AttachDistance = 10.00f;

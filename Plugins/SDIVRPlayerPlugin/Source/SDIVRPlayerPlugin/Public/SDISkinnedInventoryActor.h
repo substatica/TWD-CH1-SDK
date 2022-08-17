@@ -32,7 +32,7 @@ protected:
     FSDISkinDynamicData DynamicSkinData;
     
 public:
-    ASDISkinnedInventoryActor();
+    ASDISkinnedInventoryActor(const FObjectInitializer& ObjectInitializer);
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:

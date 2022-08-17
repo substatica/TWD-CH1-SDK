@@ -14,7 +14,7 @@ ATWDWeaponBowV2* ATWDAmmoPropArrow::GetNockedBow() const {
     return NULL;
 }
 
-ATWDAmmoPropArrow::ATWDAmmoPropArrow() {
+ATWDAmmoPropArrow::ATWDAmmoPropArrow(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->ArrowHitCapsule = CreateDefaultSubobject<UTWDWeaponHitCapsuleComponent>(TEXT("ArrowHitCapsule"));
     this->ShaftGripLeft = CreateDefaultSubobject<USDISplineGripComponent>(TEXT("ShaftGripLeft"));
     this->ShaftGripRight = CreateDefaultSubobject<USDISplineGripComponent>(TEXT("ShaftGripRight"));

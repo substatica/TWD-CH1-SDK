@@ -203,7 +203,7 @@ protected:
     float LastPullAmount;
     
 public:
-    ATWDWeaponBowV2();
+    ATWDWeaponBowV2(const FObjectInitializer& ObjectInitializer);
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateAmmoWidget(UTWDWidgetComponent* WidgetComponent, TSubclassOf<ATWDAmmoPropArrow> ArrowType, int32 ArrowCount);

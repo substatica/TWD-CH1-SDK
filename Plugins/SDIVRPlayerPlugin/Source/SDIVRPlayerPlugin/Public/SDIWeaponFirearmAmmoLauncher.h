@@ -23,7 +23,7 @@ protected:
     FRFloatExp LaunchSpeed;
     
 public:
-    ASDIWeaponFirearmAmmoLauncher();
+    ASDIWeaponFirearmAmmoLauncher(const FObjectInitializer& ObjectInitializer);
 protected:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     ASDIHeldActor* SpawnLaunchedActor(const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform, const FTransform& SpreadShotTransform, TSubclassOf<ASDIHeldActor> SpawnLaunchedClass, AActor* LaunchedOwner);

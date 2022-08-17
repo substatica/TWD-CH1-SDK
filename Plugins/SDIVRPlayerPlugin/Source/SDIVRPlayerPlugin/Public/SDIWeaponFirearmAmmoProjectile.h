@@ -18,7 +18,7 @@ protected:
     TSubclassOf<ASDIProjectileActor> ProjectileClass;
     
 public:
-    ASDIWeaponFirearmAmmoProjectile();
+    ASDIWeaponFirearmAmmoProjectile(const FObjectInitializer& ObjectInitializer);
 protected:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     ASDIProjectileActor* SpawnProjectile(const FSDIWeaponFirearmFiredPelletInfo& FiredPelletInfo, const FTransform& ShotTransform, const FTransform& SpreadShotTransform, TSubclassOf<ASDIProjectileActor> SpawnProjectileClass, AActor* ProjectileOwner);

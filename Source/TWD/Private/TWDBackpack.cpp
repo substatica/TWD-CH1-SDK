@@ -148,7 +148,7 @@ bool ATWDBackpack::AutoPlaceInventory(ASDIInventoryActor* InventoryActor, bool b
 void ATWDBackpack::ActivateNonVRInteraction() {
 }
 
-ATWDBackpack::ATWDBackpack() {
+ATWDBackpack::ATWDBackpack(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->BackpackMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BackpackMeshComponent"));
     this->UIMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("UIMeshComponent"));
     this->SlotCollisionRadius = 5.00f;

@@ -480,7 +480,7 @@ protected:
     FTimerHandle NonVRDismemberTrailFXTimerHandle;
     
 public:
-    ATWDWeaponActor();
+    ATWDWeaponActor(const FObjectInitializer& ObjectInitializer);
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
     UFUNCTION(BlueprintCallable)

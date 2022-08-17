@@ -62,7 +62,7 @@ bool ATWDWeaponBowV2::AttemptNockArrow(ATWDAmmoPropArrow* Arrow) {
     return false;
 }
 
-ATWDWeaponBowV2::ATWDWeaponBowV2() {
+ATWDWeaponBowV2::ATWDWeaponBowV2(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->BowMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("BowMesh"));
     this->PrimaryGripLeft = CreateDefaultSubobject<USDIPointGripComponent>(TEXT("PrimaryGripLeft"));
     this->PrimaryGripRight = CreateDefaultSubobject<USDIPointGripComponent>(TEXT("PrimaryGripRight"));

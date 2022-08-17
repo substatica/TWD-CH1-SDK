@@ -59,7 +59,7 @@ bool ASDIWeaponFirearmAmmoTrace::AllowHitPassThrough_Implementation(int32 PassTh
     return false;
 }
 
-ASDIWeaponFirearmAmmoTrace::ASDIWeaponFirearmAmmoTrace() {
+ASDIWeaponFirearmAmmoTrace::ASDIWeaponFirearmAmmoTrace(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->TraceRange = 16384.00f;
     this->TraceImpactVelocity = 8192.00f;
     this->TraceImpactMass = 1.00f;

@@ -6,6 +6,6 @@ ATWDWeaponFirearmAmmoProjectile* ATWDWeaponFirearmAmmoProjectile::TuneTWDWeaponF
     return NULL;
 }
 
-ATWDWeaponFirearmAmmoProjectile::ATWDWeaponFirearmAmmoProjectile() {
+ATWDWeaponFirearmAmmoProjectile::ATWDWeaponFirearmAmmoProjectile(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
 

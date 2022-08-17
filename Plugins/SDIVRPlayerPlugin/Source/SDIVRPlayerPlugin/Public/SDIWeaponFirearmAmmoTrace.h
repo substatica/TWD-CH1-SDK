@@ -69,7 +69,7 @@ protected:
     FTimerHandle HandlePelletHitFXTimerHandle;
     
 public:
-    ASDIWeaponFirearmAmmoTrace();
+    ASDIWeaponFirearmAmmoTrace(const FObjectInitializer& ObjectInitializer);
     UFUNCTION(BlueprintCallable)
     ASDIWeaponFirearmAmmoTrace* TuneSDIWeaponFirearmAmmoTrace(FSDITuningAttribute_SDIWeaponFirearmAmmoTrace Attr, float PreModifier, float Add, float PostModifier);
     

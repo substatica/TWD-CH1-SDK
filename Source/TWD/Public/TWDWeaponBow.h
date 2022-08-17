@@ -19,7 +19,7 @@ protected:
     bool bUseArrowProps;
     
 public:
-    ATWDWeaponBow();
+    ATWDWeaponBow(const FObjectInitializer& ObjectInitializer);
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool ShouldUseArrowProps() const;
     

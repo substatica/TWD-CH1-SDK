@@ -120,7 +120,7 @@ void ASDIWeaponActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME(ASDIWeaponActor, RepAttachments);
 }
 
-ASDIWeaponActor::ASDIWeaponActor() {
+ASDIWeaponActor::ASDIWeaponActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->bSwappingAttachments = false;
 }
 
