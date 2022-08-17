@@ -143,7 +143,7 @@ void ATWDWeaponGun::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     DOREPLIFETIME(ATWDWeaponGun, RepDurabilityUnJamActionCounter);
 }
 
-ATWDWeaponGun::ATWDWeaponGun(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+ATWDWeaponGun::ATWDWeaponGun(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer.SetDefaultSubobjectClass<UTWDImpactEffectsComponent>(TEXT("ImpactEffectsComponent"))) {
     this->AkAudioComponent = CreateDefaultSubobject<UTWDAutoTickAkComponent>(TEXT("AkAudioComponent"));
     this->WeaponShoveComp = CreateDefaultSubobject<UTWDWeaponShoveComponent>(TEXT("WeaponShove"));
     this->FireNoiseRadius = 1024.00f;
