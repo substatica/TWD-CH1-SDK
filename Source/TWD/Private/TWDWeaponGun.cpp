@@ -3,6 +3,7 @@
 #include "Templates/SubclassOf.h"
 #include "SDIAsyncOverlapEventGeneratorComponent.h"
 #include "TWDAutoTickAkComponent.h"
+#include "TWDImpactEffectsComponent.h"
 #include "TWDWeaponShoveComponent.h"
 #include "Components/SceneComponent.h"
 #include "Components/CapsuleComponent.h"
