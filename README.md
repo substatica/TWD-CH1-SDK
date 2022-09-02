@@ -9,4 +9,6 @@
   * Integrate Wwise into an empty Unreal 4.26.2 project
   * Copy contents of [EmptyUnrealProject]\Plugins\Wwise\ to [TWD-proj]\Plugins\EnginePlugins\Wwise\
 * Build Visual Studio project
-* Open in Unreal
+  * Open TWD.sln (solution file) in Visual Studio (2019 or higher), you may have to install additional components depending on your Visual Studio install
+  * Right click on TWD in the Solution Explorer on the Right Side of Visual Studio and select Build
+* Open TWD.uproject in Unreal Editor
