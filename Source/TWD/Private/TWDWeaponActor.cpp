@@ -230,6 +230,8 @@ void ATWDWeaponActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 
 ATWDWeaponActor::ATWDWeaponActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer.SetDefaultSubobjectClass<UTWDImpactEffectsComponent>(TEXT("ImpactEffectsComponent"))) {
     this->AkAudioComponent = CreateDefaultSubobject<UTWDAutoTickAkComponent>(TEXT("AkAudioComponent"));
+    this->AkAudioComponent->AttachTo(GetRootComponent());
+    
     this->WeaponShoveComp = CreateDefaultSubobject<UTWDWeaponShoveComponent>(TEXT("WeaponShove"));
     this->DraggingRagdollMinimumMass = 3.00f;
     this->DraggingRagdollAngularDamping = 10.00f;

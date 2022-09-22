@@ -146,13 +146,25 @@ void ATWDWeaponGun::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
 
 ATWDWeaponGun::ATWDWeaponGun(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer.SetDefaultSubobjectClass<UTWDImpactEffectsComponent>(TEXT("ImpactEffectsComponent"))) {
     this->AkAudioComponent = CreateDefaultSubobject<UTWDAutoTickAkComponent>(TEXT("AkAudioComponent"));
+    this->AkAudioComponent->AttachTo(GetRootComponent());
+
     this->WeaponShoveComp = CreateDefaultSubobject<UTWDWeaponShoveComponent>(TEXT("WeaponShove"));
+
     this->FireNoiseRadius = 1024.00f;
+
     this->ReloadClipLocation = CreateDefaultSubobject<USceneComponent>(TEXT("ReloadClipLocation"));
+    this->ReloadClipLocation->AttachTo(GetRootComponent());
+
     this->ReloadClipFeedback = NULL;
+
     this->ReloadCollision = CreateDefaultSubobject<UCapsuleComponent>(TEXT("ReloadCollision"));
+    this->ReloadCollision->AttachTo(GetRootComponent());
+
     this->ReloadCollisionOverlapGenerator = CreateDefaultSubobject<USDIAsyncOverlapEventGeneratorComponent>(TEXT("ReloadCollisionOverlapGenerator"));
+
     this->ReloadDirection = CreateDefaultSubobject<UArrowComponent>(TEXT("ReloadDirection"));
+    this->ReloadDirection->AttachTo(GetRootComponent());
+
     this->ReloadConeAngle = 30.00f;
     this->FiredRoundAudioEvent = NULL;
     this->DryFireAudioEvent = NULL;
