@@ -1,4 +1,4 @@
-# TWD-proj
+# The Walking Dead: Saints & Sinners Chapter 1 SDK
 
 * Generate Visual Studio project files for Unreal 4.26.2
   * Right click on the .uproject file in File Explorer and select General Visual Studio project files
