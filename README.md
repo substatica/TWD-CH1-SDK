@@ -1,5 +1,7 @@
 # The Walking Dead: Saints & Sinners SDK
 
+This is an Unreal 4.26.2 shell project to be used as a platform for developing mods for Skydance Interative's game The Walking Dead: Saints & Sinners.
+
 * Generate Visual Studio project files for Unreal 4.26.2
   * Right click on the .uproject file in File Explorer and select General Visual Studio project files
   * If this option doesn't show in File Explorer context menu, ensure that file associations are in place to open .uproject files with Epic Launcher
@@ -13,3 +15,5 @@
   * Open TWD.sln (solution file) in Visual Studio (2019 or higher), you may have to install additional components depending on your Visual Studio install
   * Right click on TWD in the Solution Explorer on the Right Side of Visual Studio and select Build
 * Open TWD.uproject in Unreal Editor
+
+![Skydance Modding Guidelines](https://github.com/substatica/TWD-CH1-SDK/blob/main/Skydance_Modding_Guidelines.png)
