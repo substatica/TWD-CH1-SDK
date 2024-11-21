@@ -1,5 +1,7 @@
 # The Walking Dead: Saints & Sinners SDK
 
+Support by Getting 10% Off Meta Quest Games - https://referrals.substatica.com
+
 This is an Unreal 4.26.2 shell project to be used as a platform for developing mods for Skydance Interative's game The Walking Dead: Saints & Sinners.
 
 * Generate Visual Studio project files for Unreal 4.26.2
