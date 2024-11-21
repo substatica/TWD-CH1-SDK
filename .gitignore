@@ -17,6 +17,9 @@
 *
 !*/
 
+# Image
+!*.png
+
 # C/C++ source files
 !*.c
 !*.cc
